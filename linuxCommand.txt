@@ -1,0 +1,8 @@
+sudo apt-get install build-essential
+
+查看数据跳转了几个路由命令
+
+
+traceroute  www.baidu.com 
+
+rm -f “文件名” // nserverN.c
