@@ -6,3 +6,5 @@ sudo apt-get install build-essential
 traceroute  www.baidu.com 
 
 rm -f “文件名” // nserverN.c
+
+Mkdir // 创建文件夹
