@@ -8,3 +8,10 @@ traceroute  www.baidu.com
 rm -f “文件名” // nserverN.c
 
 Mkdir // 创建文件夹
+
+
+删除文件
+rm a.txt  删除普通文件a.txt
+rm -r a/  删除目录a
+rm -rf  a/  强制删除目录a
+-f  表示强制
