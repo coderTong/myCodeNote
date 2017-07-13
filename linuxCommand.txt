@@ -15,3 +15,22 @@ rm a.txt  删除普通文件a.txt
 rm -r a/  删除目录a
 rm -rf  a/  强制删除目录a
 -f  表示强制
+
+
+/*********************************************************************
+2017年07月13日21:14:33
+*/
+查看java相关属性
+which java
+>>:/usr/bin/java
+
+ll /usr/bin/java 
+>>: lrwxr-xr-x  1 root  wheel    74B Dec 10  2016 /usr/bin/java -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java
+
+
+ls -l /usr/bin/java
+>>:
+
+
+OPEN /Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk 
+>>:
