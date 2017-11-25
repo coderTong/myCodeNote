@@ -123,3 +123,8 @@ tcpdump -n icmp -i eth0
 
 ```
 # nmap 烧苗
+
+
+
+
+
