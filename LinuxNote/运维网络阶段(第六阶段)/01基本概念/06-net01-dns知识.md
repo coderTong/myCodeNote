@@ -244,4 +244,156 @@ www.google.com has IPv6 address 2404:6800:4001:800::2004
 --------------------
 
 
+ 1. 
+```
+
+cd /etc/sysconfig/network-scripts
+
+ **/etc/sysconfig/network-scripts** [04:26:59]
+
+**root$** cat ifcfg-eth0                   
+
+# Created by cloud-init on instance boot automatically, do not edit.
+
+#
+
+BOOTPROTO=none
+
+DEFROUTE=yes
+
+DEVICE=eth0
+
+GATEWAY=128.199.128.1
+
+HWADDR=2e:60:70:e5:4e:a3
+
+IPADDR=128.199.177.156
+
+IPADDR1=10.15.0.5
+
+MTU=1500
+
+NETMASK=255.255.192.0
+
+NETMASK1=255.255.0.0
+
+ONBOOT=yes
+
+TYPE=Ethernet
+
+USERCTL=no
+
+```
+
+
+#  TYPE 网络类型,以太网没?
+
+----------------------
+
+
+
+
+#  ONBOOT 为yes才能保证下次开机启动激活额网卡设备部
+
+----------------------
+
+
+
+
+#  BOOTPROTO 启动协议, 获取配置方式, 有 none|boop|dhcp
+
+----------------------
+
+
+
+
+#  HWADDR 以太网硬件地址
+
+----------------------
+
+  
+
+
+#  命令blkid 查看磁盘的UUID
+
+----------------------
+
+
+
+
+#   NETMASK  子网掩码
+----------------------
+
+
+
+#   网卡的生效
+----------------------
+
+```
+
+
+停掉
+ifdown eth0
+
+启动  
+
+ifup  etho 
+
+
+
+// 全部生效
+/etc/init.d/network restart
+
+
+```
+
+
+
+#   网卡的DNS优先于cat /etc/resolv.conf. 网卡配置了这里就不不生效
+
+```
+
+
+并且重启网卡, 会覆盖/etc/resolv.conf
+
+// nameserver 就是DNS
+cat /etc/resolv.conf
+nameserver 162.207.227.2
+```
+----------------------
+
+
+
+
+#   
+----------------------
+
+
+
+
+#   
+----------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
