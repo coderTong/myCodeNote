@@ -160,7 +160,6 @@ cat /etc/rsyncd.conf
 // 解释说明
 
 ***uid = rsync***    // 用户, 远端的命令使用rsync访问共享目录
-
 ***gid = rsync***  // 用户组
 ***use chroot = no***  // 安全相关
 ***max connections = 200***   // 最大连接数
@@ -174,10 +173,95 @@ cat /etc/rsyncd.conf
 ***read only = false***      // 可写
 ***list = false***   // 不能列表  不能ls啥的~
 
+hosts allow = xx.xx.xx.xx // 允许哪些机器过来连
+hosts deny = 0.0.0.0/32  // 拒绝哪些机器过来连,  0.0.0.0/32 表示谁都可以过来 
+auth users = rsync_backup    //虚拟用户,   独立于系统用户以外的虚拟用户 , 和系统账号没什么关系
+secrets file = /ect/rsync.password  // 虚拟用户的密码, 虚拟账户对应的账号和密码
+
+```
+
+vim /etc/rsyncd.conf 
+
+uid = rsync
+gid = rsync
+use chroot = no
+max connections = 4
+timeout = 300
+pid file = /var/run/rsyncd.pid
+lock file = /var/run/rsync.lock
+log file = /var/log/rsyncd.log
+[backup]
+path = /backup
+ignore errors
+read only = false
+list = false
+
+
+hosts allow = xx.xx.xx.xx
+hosts deny = 0.0.0.0/32
+auth users = rsync_backup
+secrets file = /ect/rsync.password
+```
+
+
+# 'rsync' 用户不存在
+
+
+```
+id rsync
+
+id: rsync: no such user
+
+
+
+
+useradd rsync -s /sbin/nologin -M  // 创建一个不需要登录, 没有家目录的虚拟用户
+
+useradd rsync -s /sbin/nologin -M
+
+ **~sync**  [05:11:58]
+
+**root$** tail -1 /etc/passwd
+
+rsync:x:1004:1005::/home/rsync:/sbin/nologin
 
 
 
 
 
 
+```
 
+
+
+
+# rsync --daemon (rsync 启动服务)
+
+
+# 怎么看启动服务
+
+```
+ps -ef|grep rsync|grep -v grep
+
+root  21918  1 0 17:13 ? 00:00:00 rsync --daemon
+
+```
+
+
+
+
+
+# 创建backup目录
+
+```
+mkdir /backup
+
+```
+
+
+# 改backup权限
+
+```
+chown rsync.rsync /backup/
+
+```
