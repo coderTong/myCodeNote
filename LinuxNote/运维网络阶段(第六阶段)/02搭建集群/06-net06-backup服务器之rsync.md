@@ -176,7 +176,7 @@ cat /etc/rsyncd.conf
 hosts allow = xx.xx.xx.xx // 允许哪些机器过来连
 hosts deny = 0.0.0.0/32  // 拒绝哪些机器过来连,  0.0.0.0/32 表示谁都可以过来 
 auth users = rsync_backup    //虚拟用户,   独立于系统用户以外的虚拟用户 , 和系统账号没什么关系
-secrets file = /ect/rsync.password  // 虚拟用户的密码, 虚拟账户对应的账号和密码
+secrets file = /ect/rsync.password  // 虚拟用户的密码, 虚拟账户对应的账号和密码 
 
 ```
 
@@ -197,7 +197,7 @@ read only = false
 list = false
 
 
-hosts allow = xx.xx.xx.xx
+hosts allow = 162.243.64.148/24
 hosts deny = 0.0.0.0/32
 auth users = rsync_backup
 secrets file = /ect/rsync.password
@@ -263,5 +263,116 @@ mkdir /backup
 
 ```
 chown rsync.rsync /backup/
+
+```
+
+
+# 创建 rsync.password
+
+```
+
+vim /etc/rsync.password
+
+chmod 600 /etc/rsync.password
+
+ls /etc/rsync.password -l
+```
+
+
+
+# lsof -i :873
+
+
+
+
+
+
+# 客户端配置密码文件就OK了
+
+```
+
+vim /etc/rsync.password
+
+
+// 创建backup目录
+mkdir -p backup
+
+
+// 创建100个文件
+touch stu{01..100}
+
+
+
+// 推文件了.......
+rsync -avz /backup/ rsync_backup@101.129.177.156::backup/ --password-file=/etc/rsync.password
+
+
+rsync -avz /backup/shutingY rsync_backup@128.199.177.156::backup/ --password-file=/etc/rsync.password
+
+
+
+rsync -avz /Users/codew/Desktop/netTest rsync_backup@128.199.177.156::backup/
+
+
+rsync -avz /backup/sss rsync_backup@128.199.177.156::backup/ --password-file=/etc/rsync.password
+
+```
+
+
+
+
+# 遇到的问题1 (skipping directory)
+
+```
+
+# rsync /backup/wtKKK/ rsync_backup@128.199.177.156::backup/
+
+skipping directory .
+
+```
+### 解决办法加个-r参数
+
+```
+
+
+
+```
+
+
+
+
+# ERROR: The remote path must start with a module name not a /
+## 解决办法
+
+```
+去掉::后面的/
+rsync -avzr /backup/wtKKK/ rsync_backup@19.99.17.156::/backup/ --password-file=/etc/rsync.password
+
+
+
+如下:
+rsync -avzr /backup/wtKKK/ rsync_backup@19.99.17.156::backup/ --password-file=/etc/rsync.password
+```
+
+
+
+
+# ERROR: auth failed on module Xxxxx
+
+## 解决办法
+```
+
+1. 看看那你客户端密码是不是对的?
+
+
+```
+
+
+# ERROR: Unknown module 'xxxxxx'
+
+## 解决办法
+```
+
+在服务器端添加客户端IP
 
 ```
