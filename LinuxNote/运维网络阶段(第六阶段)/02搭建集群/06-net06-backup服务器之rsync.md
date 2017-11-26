@@ -376,3 +376,164 @@ rsync -avzr /backup/wtKKK/ rsync_backup@19.99.17.156::backup/ --password-file=/e
 在服务器端添加客户端IP
 
 ```
+
+# ERROR: chdir failed (服务端没得文件夹......, 找不着服务端的目录)
+
+## 解决办法
+
+```
+
+
+创建你目录呗还能咋地~
+
+```
+
+
+# rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1183) [sender=3.1.1]
+
+# 创建了目录但是你没给文件夹授权
+
+```
+
+
+rsync -avz /backup/ rsync_backup@89.10.77.46::backup/ --password-file=/etc/rsync.password 
+
+sending incremental file list
+
+./
+
+rsync: failed to set times on "." (in backup): Operation not permitted (1)
+
+ccvt1.com
+
+ccvt10.com
+
+ccvt11.com
+
+ccvt12.com
+
+ccvt13.com
+
+ccvt14.com
+
+ccvt15.com
+
+ccvt16.com
+
+ccvt17.com
+
+ccvt18.com
+
+ccvt19.com
+
+ccvt2.com
+
+ccvt20.com
+
+ccvt3.com
+
+ccvt4.com
+
+ccvt5.com
+
+ccvt6.com
+
+ccvt7.com
+
+ccvt8.com
+
+ccvt9.com
+
+rsync: mkstemp ".ccvt1.com.ej7cTk" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt10.com.XXMpMn" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt11.com.ikKCFq" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt12.com.DKCQyt" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt13.com.UCJ4rw" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt14.com.j9Djlz" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt15.com.sRXzeC" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt16.com.TM4Q7E" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt17.com.wsv90H" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt18.com.99HtUK" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt19.com.iyDONN" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt2.com.TUfaHQ" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt20.com.kgoxAT" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt3.com.FC3UtW" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt4.com.Ur3inZ" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt5.com.x5CHg2" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt6.com.A6D794" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt7.com.XDDA37" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt8.com.MjU5Wa" (in backup) failed: Permission denied (13)
+
+rsync: mkstemp ".ccvt9.com.hFtFQd" (in backup) failed: Permission denied (13)
+
+sent 996 bytes received 2,132 bytes 893.71 bytes/sec
+
+total size is 0 speedup is 0.00
+
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1183) [sender=3.1.1]
+
+
+```
+## 解决办法
+
+```
+
+对文件夹授权你啊还能咋整
+
+chown rsync.rsync /backup/
+
+rsyncd.conf
+uid = rsync
+gid = rsync
+
+```
+
+
+
+
+
+
+# 修改了rsync的配置文件后我们要重启
+
+```
+
+// 先杀死
+pkill rsync
+
+// 看看是不是真的杀死了
+lsof -i :873
+
+// 重启
+rsync --daemon
+
+// 再看看是不是起来了
+lsof -i :873
+
+
+```
+
+
+
+
+# rm -fr /xxxx/删除文件夹
+
+
+# tail -4 /var/log/rsyncd.log (看rsync 的日志) 
