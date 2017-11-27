@@ -662,3 +662,66 @@ path = /oveLT
 rsync -avz --delete /xxxx/ rsync_backup@128.199.177.156::backup/
 
 ```
+
+
+
+
+
+#  rsync 小总结
+
+```
+
+一, rsync有三种模式   , 这三种模式并不能混用
+
+1. local:rsync(cp,rm)
+2. 通道模式
+rsync -avzP -e 'ssh -p 22' /etc root@10.10.10.1:/tmp
+一般配合ssh key 使用
+
+3. daemon模式
+一般来说没必要加密传输
+内网是不需要的, 都是局域网
+
+
+```
+
+
+
+
+#  --bwlimit=KBPS   rsync 限速
+
+# 限速100k
+
+```
+
+rsync -avz --delete --bwlimit=100 /backup rsync_backup@128.199.177.156::coderTom/ --password-file=/etc/rsync.password
+
+
+```
+
+
+
+# rsync 优缺点
+
+## rsync 优点
+```
+
+1.增量备份, 支持socket(daemon),  集中备份(支持推拉, 都是以客户端为参照物)
+2. 远程SHELL通道模式还可以加密(SSH)传输, socket(daemon)需要加密传输,可以利用vpn服务或者ipsec服务
+
+
+```
+
+
+## rsync 缺点
+
+```
+
+大量小文件的时候同步, 比对时间较长, 有时候,rsync进程可能会停止. 
+
+
+同步大文件, 10G这样的大文件有时也会有问题, 中断, 未完整同步前, 是隐藏文件
+
+```
+
+
