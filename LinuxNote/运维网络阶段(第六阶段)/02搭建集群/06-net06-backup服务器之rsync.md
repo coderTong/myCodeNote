@@ -725,3 +725,13 @@ rsync -avz --delete --bwlimit=100 /backup rsync_backup@128.199.177.156::coderTom
 ```
 
 
+# rsync实战题加答案
+
+###  题
+![06-jiqun17](image/06-jiqun17.png)
+
+### 答案
+http://edu.51cto.com/center/course/lesson/index?id=58902
+
+
+
