@@ -197,7 +197,7 @@ read only = false
 list = false
 
 
-hosts allow = 162.243.64.148/24
+hosts allow = 16.3.11.11/24
 hosts deny = 0.0.0.0/32
 auth users = rsync_backup
 secrets file = /ect/rsync.password
@@ -307,14 +307,14 @@ touch stu{01..100}
 rsync -avz /backup/ rsync_backup@101.129.177.156::backup/ --password-file=/etc/rsync.password
 
 
-rsync -avz /backup/shutingY rsync_backup@128.199.177.156::backup/ --password-file=/etc/rsync.password
+rsync -avz /backup/shutingY rsync_backup@122.90.77.65::backup/ --password-file=/etc/rsync.password
 
 
 
-rsync -avz /Users/codew/Desktop/netTest rsync_backup@128.199.177.156::backup/
+rsync -avz /Users/codew/Desktop/netTest rsync_backup@122.90.77.65::backup/
 
 
-rsync -avz /backup/sss rsync_backup@128.199.177.156::backup/ --password-file=/etc/rsync.password
+rsync -avz /backup/sss rsync_backup@122.90.77.65::backup/ --password-file=/etc/rsync.password
 
 ```
 
@@ -325,7 +325,7 @@ rsync -avz /backup/sss rsync_backup@128.199.177.156::backup/ --password-file=/et
 
 ```
 
-# rsync /backup/wtKKK/ rsync_backup@128.199.177.156::backup/
+# rsync /backup/wtKKK/ rsync_backup@122.90.77.65::backup/
 
 skipping directory .
 
@@ -537,3 +537,128 @@ lsof -i :873
 
 
 # tail -4 /var/log/rsyncd.log (看rsync 的日志) 
+
+
+
+
+
+
+
+# 多模块开始================================
+
+
+
+可以不同模块不同密码
+
+
+# 先来个备份
+
+```
+
+cp /etc/rsyncd.conf{,.bak}
+
+
+```
+
+
+# 修改rsyncd.conf (为其添加如下)
+```
+
+[coderTom]
+path = /coderTom
+ignore errors
+read only = false
+list = false
+hosts allow = 62.43.64.1/24
+#hosts deny = 0.0.0.0/32
+#auth users = rsync_backup
+#secrets file = /ect/rsync.password
+
+
+
+
+
+
+cat >>/etc/rsyncd.conf<<EOF
+
+[coderTom]
+
+path = /coderTom
+
+ignore errors
+
+read only = false
+
+list = false
+
+hosts allow = 12.23.14.8/24
+
+#hosts deny = 0.0.0.0/32
+
+#auth users = rsync_backup
+
+#secrets file = /ect/rsync.password
+
+EOF
+
+```
+
+
+# 多模块样板
+
+```
+ 
+
+vim /etc/rsyncd.conf 
+
+uid = rsync
+gid = rsync
+use chroot = no
+max connections = 4
+timeout = 300
+pid file = /var/run/rsyncd.pid
+lock file = /var/run/rsync.lock
+log file = /var/log/rsyncd.log
+ignore errors
+read only = false
+list = false
+hosts allow = 16.3.11.11
+#hosts deny = 0.0.0.0/32
+auth users = rsync_backup
+secrets file = /ect/rsync.password
+
+[backup]
+path = /backup
+[coderTom]
+path = /coderTom
+[oveLT]
+path = /oveLT
+
+```
+
+
+#  排除同步 (常见的是客户端排除,客户端指定)
+
+# 排除单个文件 (结果没有a)
+
+## rsync -avz --exclude=a  /backup/ rsync_backup@22.90.17.56::backup/ --password-file=/etc/rsync.password
+
+## rsync -avz --exclude={a..d}  /backup/ rsync_backup@22.90.17.56::backup/ --password-file=/etc/rsync.password
+
+
+```
+
+
+
+
+```
+
+
+# 无差异同步
+### xxx文件有啥 服务端那边就有啥, xxx有的服务端有要删除...
+
+```
+
+rsync -avz --delete /xxxx/ rsync_backup@128.199.177.156::backup/
+
+```

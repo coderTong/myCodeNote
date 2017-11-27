@@ -157,7 +157,7 @@ root$ dig www.codertomwu.com
 ;www.codertomwu.com.		IN	A
 
 ;; ANSWER SECTION:
-www.codertomwu.com.	600	IN	A	162.243.64.148
+www.codertomwu.com.	600	IN	A	16.243.64.8
 
 ;; Query time: 791 msec
 ;; SERVER: 67.207.67.2#53(67.207.67.2)
@@ -267,7 +267,7 @@ GATEWAY=128.199.128.1
 
 HWADDR=2e:60:70:e5:4e:a3
 
-IPADDR=128.199.177.156
+IPADDR=15.29.57.33
 
 IPADDR1=10.15.0.5
 
