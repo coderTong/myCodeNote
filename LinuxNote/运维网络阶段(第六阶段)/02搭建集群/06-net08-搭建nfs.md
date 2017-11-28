@@ -384,7 +384,7 @@ chown -R nfsnobody /data
 
 http://www.178linux.com/73581
 
-
+http://blog.csdn.net/xuplus/article/details/51669063
 
 
 
@@ -402,6 +402,7 @@ OS7停掉rpc顺序如下
 systemctl stop rpcbind.socket
 systemctl stop rpcbind
 
+systemctl stop nfs-server.service
 先干掉rpcbind.socket
 再干掉rpcbind
 
@@ -424,16 +425,31 @@ rpcinfo: can't contact portmapper: RPC: Remote system error - Connection refused
  systemctl status rpcbind.service
 
 ```
+systemctl stop rpcbind.socket
+systemctl stop rpcbind
+systemctl stop nfs-server.service
+
 
 # nfs 和 rpc开机自启动
 
 ```
 
-`systemctl ``enable` `rpcbind.service`
+systemctl enable rpcbind.service
 
-`systemctl ``enable` `nfs-server.service`
+systemctl enable nfs-server.service
 
 ```
+
+
+# 取消开机自启动
+
+```
+
+systemctl disable rpcbind.service
+systemctl disable nfs-server.service
+
+```
+
 # OS6的开机自启动
 
 ```
@@ -463,3 +479,134 @@ head /etc/init.d/nfs
 # systemctl stop
 
 # systemctl restart
+
+
+
+# ps -ef|egrep "nfs|rpc" 查看nfs和rpc的进程
+ps -ef|egrep "nfs|rpc"
+
+```
+
+ps -ef|egrep "nfs|rpc"
+
+
+```
+![06-T-07](image2/06-T-07.png)
+
+
+init.d 和 service 还是
+
+/etc/init.d/nfs start 好, service nfs start 还行~
+
+![06-net-nfs04](image2/06-net-nfs04.png)
+
+
+
+# cat /etc/exports NFS文件的配置路径, 默认是空的
+
+# man exports
+
+# 配置 NFS文件
+
+```
+
+格式:
+NFS共享的目录 NFS客户端地址(参数1, 参数2.......)
+
+一台iPhoneX  给哪个女孩  (只给看一下?, 可以摸, 完全给她)
+
+
+
+
+
+vim /etc/exports
+
+
+// rw 可读可写, sync直接写到池磁盘, 不是特别大的并发的话我们用sync, 特大并发的话我们用async-异步写入 
+/data 128.199.177.156(rw,sync)
+
+
+```
+# systemctl reload nfs-server
+# 重启我们用  ,  reload要比restart是丝滑些
+systemctl restart nfs-server
+
+
+# 啥是平滑重启,  优雅的, 平滑的
+
+```
+
+五点多了去银行拿到票了可以做着, 然后银行开始关门, 马上六点了不再放票. 已经拿到票的银行服务好,没拿到票的拒绝访问.
+reload就是这样
+
+```
+#  reload == exportfs -rv
+
+# 自我检查一哈: showmount -e 128.199.177.156 
+
+showmount -e 182.22.177.156
+
+Export list for 182.22.177.156:
+
+# NFS 没有账号密码限制
+
+
+
+# NFS客户端
+
+![06-net-nfs02](image2/06-net-nfs02.png)
+![06-net-nfs03](image2/06-net-nfs03.png)
+![nnfs](image2/nnfs.png)
+
+
+
+# 开始挂载了先showmount一下
+
+```
+
+ showmount -e 103.111.140.160     
+
+Export list for 103.111.140.160:
+
+/data 223.9.22.156
+
+```
+
+# mount -t nfs  103.111.140.160:/data /mnt 挂载 
+
+mount -t nfs 159.89.140.160:/data /mnt
+
+
+
+
+
+![06-NFS-08](image2/06-NFS-08.png)
+
+
+![06-net-nfs09](image2/06-net-nfs09.png)
+
+
+
+| 参数名称 | 参数用途 |
+|---|---|
+| all_squash | 不管访问NFS Server共享目录的用户身份如何，它的权限都将被压成匿名用户，同时它的UID和GID都会变成nfsnobody帐号身份。在早期多个NFS 客户端同时读写NFS Server数据时，这个参数很有用。在生产中配置NFS的重要技巧:1) 确保所有客户端服务器对NFS 共享目录具备相同的用户访问权限 |
+| rw | 读写 |
+| ro | 只读 |
+| sync | 磁盘同步 |
+| async | 写入时数据会先写到内存缓冲区，只到硬盘有空档才会再写入磁盘，这样可以提升写入效率! 风险为若服务器宕机或不正常关机，会损失缓冲区中未写入磁盘的数据( 解决办法: 服务器主板电池或加UPS 不间断电源) ! |
+| no_root_squash | 访问NFSServer共享目录的用户如果是root的话，它对该共享目录具有root权限。这个配置原本是为无盘客户端准备的。用户应避免使用! |
+| root_squash | 如果访问NFS Server 共享目录的用户是root,则它的权限将被压缩成置名用户，同时它的UID和GID通常会变成nfsnobody帐号身份。 |
+| all_squash | 不管访问NFS Server共享目录的用户身份如何，它的权限都将被压缩成置名用户，同时它的UID和GID都会变成nfsnobody帐号身份。在早期多个NFS客户端同时读写NFSServer数据时，这个参数很有用。在生产中配置NFS 的重要技巧:1) 确保所有客户端服务器对NFS共享目录具备相同的用户访问权限 a.all_squash把所有客户端都压缩成固定的匿名用户(UID相同) b.就是anonuid,anongid 指定的UID 和GID 的用户。 2) 所有的客户端和服务端都需要有一个相同的UID 和GID 的用户，即nfsnobody(UID 必须相同)。 |
+| anonuid | 参数以anon*开头即指anonymous匿名用户，这个用户的UID 设置值通常为nfsnobody的UID值，当然也可以自行设置这个UID值。但是，UID 必须存在于/etc/passwd 中。在多NFS Clients 时,如多台Web Server共享一个NFS 目录,通过这个参数可以使得不同的NFSClients写入的数据对所有NFSClients 保持同样的用户权限，即为配置的匿名UID对应用户权限，这个参数很有用，一般默认即可 |
+| anongid | 同anonuid,区别就是把uid(用户id)换成gid(组id) |
+
+
+
+ 
+
+
+
+
+
+
+
