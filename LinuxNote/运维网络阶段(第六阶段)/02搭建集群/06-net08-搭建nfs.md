@@ -602,11 +602,58 @@ mount -t nfs 159.89.140.160:/data /mnt
 
 
 
- 
+
+# NFS 服务的重点知识梳理
+
+```
+当多个NFS 客户端访问服务器端的读写文件时，需要具有以下几个权限:
+口
+NFS 服务器/etc/exports 设置需要开放可写入的权限，即服务端的共享权限。
+NFS 服务器实际要共享的NFS 目录权限具有可写入w 的权限，即服务端本地目
+录的安全权限。
+每台机器都对应存在和NFS默认配置UID的相同UID65534 的nfsnobody用户( 确
+保所有客户端的访问权限统一，否则每个机器需要同时建立相同UID的用户，并
+覆盖NFS 的默认用户配置)。
+只有满足上述三个条件，多个NFS 客户端才能具有查看、修改、删除其他任意NFS
+客户端上传文件的权限，这在大规模的集群环境中作为集群共享存储时尤为重要。
+表10-4 列出了常用的重点NFS 服务文件或命令。 
+
+```
 
 
 
+![06-net-nfs11](image2/06-net-nfs11.png)
+
+ ![06-net-nfs12](image2/06-net-nfs12.png)
+
+ ![06-net-nfs12](image2/06-net-nfs13.png)
 
 
+ ![06-net-nfs12](image2/06-net-nfs14.png)
+
+ ![06-net-nfs1](image2/06-net-nfs15.png)
+
+cat /proc/mounts
+
+
+
+# 后面的操作=======开始
+
+ ![06-net-nfs1](image2/06-net-nfs16.png)
+ ![06-net-nfs1](image2/06-net-nfs17.png)
+ ![06-net-nfs1](image2/06-net-nfs18.png)
+ ![06-net-nfs1](image2/06-net-nfs19.png)
+ ![06-net-nfs1](image2/06-net-nfs20.png)
+ ![06-net-nfs1](image2/06-net-nfs21.png)
+
+```
+ ![06-net-nfs1](image2/06-net-nfs21.png)
+ ![06-net-nfs1](image2/06-net-nfs21.png)
+ ![06-net-nfs1](image2/06-net-nfs21.png)
+ ![06-net-nfs1](image2/06-net-nfs21.png)
+
+```
+
+# 后面的操作=======结束
 
 
