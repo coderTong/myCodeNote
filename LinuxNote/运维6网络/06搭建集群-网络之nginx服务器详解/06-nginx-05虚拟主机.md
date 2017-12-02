@@ -404,6 +404,6 @@ access.log error.log nginx.pid
 ```
 
 
-# 日志一定不要加info!!!!!!!!!!!!!info会带来巨大的磁盘IO消耗
+# 日志一定不要加info!!!!!!!!!!!!!info会带来巨大的磁盘 IO消耗
 
 
