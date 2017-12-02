@@ -120,5 +120,56 @@ server {
 
 
 
+# Rewrite 应用场景
+
+Nginx的Rewrite功能在企业里应用非常广泛:
+ 1. 可以调整用户浏览的URL,看起来更规范，合乎开发及产品人员的需求。
+ 2. 为了让搜索引擎收录网站内容及用户体验更好，企业会将动态URL地址伪装成静态地
+址提供服务。
+3. 网站换新域名后，让旧的域名的访问跳转到新的域名商上，例如: 让京东的360buy换
+成了jd.com.
+4. 根据特殊变量、目录、客户端的信息进行URL跳转等。
+
+
+
+# add跳转案例, 老域名全部跳到新域名上去
+
+
+
+```
+
+server {
+
+ listen 80;
+
+ server_name wwww.codertomwu.win;
+
+ rewrite ^/(.*) http://www.codertomwu.com/$1 permanent;
+
+ }
+
+
+
+server {
+
+ listen 80;
+
+ server_name wwww.codertomwu.com;
+ location / {
+	root html/www;
+	index index.html index.htm;
+ }
+ access_log logs/www_access.log main;
+
+ }
+
+```
+
+
+# 别名状态码是200,  rewrite 的状态码是301
+
+
+
+
 
 
