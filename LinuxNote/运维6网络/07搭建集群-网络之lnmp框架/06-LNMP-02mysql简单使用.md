@@ -12,7 +12,7 @@ mysql -uroot -p
 
 ```
 
-mysqladmin -u root password '123456'
+mysqladmin -u root password '1'23456
 
 ```
 
