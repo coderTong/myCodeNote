@@ -12,3 +12,9 @@ iOS11 废弃了UIViewController的`automaticallyAdjustsScrollViewInsets`属性
 
 状态栏20-->44
 导航栏变成88
+
+
+[苹果官网文档](https://developer.apple.com/cn/ios/update-apps-for-iphone-x/)
+![iOS-01-01](Image-iOS/iOS-01-01.png)
+![iOS-01-0](Image-iOS/iOS-01-02.png)
+![iOS-01-0](Image-iOS/iOS-01-03.png)
