@@ -25,3 +25,20 @@ Update will only use exact matching of the old values of the columns here. Thus,
 ## 3. 主键自动增长
 
 ![iosDB-0](image/iosDB-09.png)
+
+
+
+# 查询
+
+![iosDB-0](image/iosDB-11.png)
+
+
+# 字段不能为空设置
+![iosDB-0](image/iosDB-16.png)
+
+# 字段不能重复设置
+![iosDB-0](image/iosDB-12.png)
+![iosDB-0](image/iosDB-13.png)
+![iosDB-0](image/iosDB-14.png)
+![iosDB-0](image/iosDB-15.png)
+![iosDB-0](image/iosDB-11.png)
