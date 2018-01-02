@@ -64,6 +64,10 @@ CREATE TABLE t_dbstudy02 (id integer, name text, age integer, score real);
 
 CREATE TABLE IF NOT EXISTS t_dbstudy02 (id integer, name text, age integer, score real);
 
+// 主键自动增长
+CREATE TABLE IF NOT EXISTS t_dbstu2 (id integer PRIMARY KEY AUTOINCREMENT, name text, age integer, score real DEFAULT 80);
+
+
 ```
 
 删除表

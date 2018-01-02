@@ -41,4 +41,7 @@ Update will only use exact matching of the old values of the columns here. Thus,
 ![iosDB-0](image/iosDB-13.png)
 ![iosDB-0](image/iosDB-14.png)
 ![iosDB-0](image/iosDB-15.png)
-![iosDB-0](image/iosDB-11.png)
+
+
+# 字段默认值设置
+![iosDB-0](image/iosDB-17.png)
