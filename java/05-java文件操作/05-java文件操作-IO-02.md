@@ -479,7 +479,7 @@ public class EncodingDemo {
 
 ![05-java-IO](image/05-java-IO-07.png)
 
-## 字节缓冲流
+## 字节缓冲流/
 ```
 
 package IODemo.Buffer;
@@ -523,6 +523,350 @@ public class BufferedStreamDemo {
 
 ```
 
+package IODemo.Buffer;
+
+import java.io.*;
+
+/**
+ * Created by codew on 2018/1/25.
+ */
+public class BufferedWriterReaderDemo {
+
+    public static void main(String[] args) throws Exception
+    {
+
+        // 字符缓冲流输出
+        BufferedWriter out = new BufferedWriter( new FileWriter("file/stream.txt"));
+        out.write("君不见黄河之上天上来");
+        out.newLine();
+        out.write("奔流到海不复回");
+        out.close();
+
+        // 字符缓冲流输入
+
+        BufferedReader reader = new BufferedReader(new FileReader("file/stream.txt"));
+//        char[] buffer = new char[1024];
+//        int len = -1;
+//        while ((len = reader.read(buffer)) != -1){
+//
+//            System.out.println( new String(buffer, 0, len));
+//        }
+        String line = null;
+        while ( (line = reader.readLine()) != null ){
+
+            System.out.println(line);
+        }
+
+
+        reader.close();
+    }
+}
+
+```
+
+## 节点流和缓冲流的对比
+
+```
+
+package IODemo.Buffer;
+
+import java.io.*;
+
+/**
+ * Created by codew on 2018/1/27.
+ */
+public class NodeStreamVSBufferedStreamDemo {
+
+    public static void main(String[] args) throws Exception
+    {
+
+        File srcFile = new File("欧体笔法-01-永字八法(田英章).mp4");
+        File destFile = new File("file/test_buffer_BufferedInputStream.mp4");
+
+        test4(srcFile, destFile);
+    }
+
+
+
+
+    private static void test1(File srcFile, File destFile) throws Exception
+    {
+        long begin = System.currentTimeMillis();
+
+        InputStream in = new FileInputStream(srcFile);
+        OutputStream out = new FileOutputStream(destFile);
+
+        /**
+         * 一个字节一个字节的读取, 画了将近一分半钟
+         * */
+        int len = -1;
+        while ( (len = in.read()) != -1)
+        {
+            out.write(len);
+        }
+        out.close();
+        in.close();
+        System.out.println( System.currentTimeMillis() - begin );
+    }
+
+
+    // 使用缓冲流, 从内存文件中一个字节一个字节的读写 : 花了288毫秒
+    private static void test2(File srcFile, File destFile) throws Exception
+    {
+        long begin = System.currentTimeMillis();
+
+        InputStream in = new BufferedInputStream( new FileInputStream(srcFile));
+        OutputStream out = new BufferedOutputStream( new FileOutputStream(destFile));
+
+        int len = -1;
+        while ( (len = in.read()) != -1)
+        {
+            out.write(len);
+        }
+        out.close();
+        in.close();
+        System.out.println( System.currentTimeMillis() - begin );
+    }
+
+    // 使用节点流, 从磁盘中每次读写1024字节 : 125毫秒
+    private static void test3(File srcFile, File destFile) throws Exception
+    {
+        long begin = System.currentTimeMillis();
+
+        InputStream in = new FileInputStream(srcFile);
+        OutputStream out = new FileOutputStream(destFile);
+
+        byte[] buffer = new byte[1024];
+        int len = -1;
+
+        while ( (len = in.read(buffer)) != -1)
+        {
+            out.write(buffer, 0, len);
+        }
+        out.close();
+        in.close();
+        System.out.println( System.currentTimeMillis() - begin );
+    }
+
+
+    // 使用缓冲流, 从内存文件中每次读写1024字节: 41毫秒
+    private static void test4(File srcFile, File destFile) throws Exception
+    {
+        long begin = System.currentTimeMillis();
+
+        InputStream in = new BufferedInputStream( new FileInputStream(srcFile));
+        OutputStream out = new BufferedOutputStream( new FileOutputStream(destFile));
+
+        byte[] buffer = new byte[1024];
+        int len = -1;
+
+        while ( (len = in.read(buffer)) != -1)
+        {
+            out.write(buffer, 0, len);
+        }
+
+        out.close();
+        in.close();
+        System.out.println( System.currentTimeMillis() - begin );
+    }
+}
 
 
 ```
+
+
+# 转换流和内存流
+### 转换流: 把字节流转成字符流
+`InputStreamReader`把字节输入流转成字符输入流
+`OutputStreamWriter`把字节输出流转换成字符输出流
+
+为什么有字节转字符流,没有字符转字节流.
+- 字节流可以操作一切文件(纯文本文件/二进制文件).
+- 字符流是用来操作中文纯文本使用的,本身是对字节流的增强.
+
+```
+
+package IODemo.Buffer;
+
+import java.io.*;
+import java.util.Properties;
+
+/**
+ * Created by codew on 2018/1/27.
+ */
+public class TransformDemo {
+
+    public static void main(String[] args) throws Exception
+    {
+
+        Properties p = System.getProperties();
+        System.out.println(p.get("sun.jnu.encoding"));
+
+
+
+        // 1. 创建源和目标
+        File srcFile = new  File("file/stream.txt");
+        File destFile = new  File("file/TransformDemo2.txt");
+
+        // 2. 创建输入管道(输入/输出流对象)
+//        InputStream in = new FileInputStream(srcFile);
+//        OutputStream out = new FileOutputStream(destFile);
+
+        Reader in = new InputStreamReader(new FileInputStream(srcFile), "UTF-8");
+        Writer out = new OutputStreamWriter( new FileOutputStream(destFile), "UTF-8" );
+
+
+        // 3.读取/写出操作
+        char[] buffer = new char[1024];
+
+        int len = -1;
+        while ( (len = in.read(buffer)) != -1 )
+        {
+            out.write(buffer, 0, len);
+        }
+        // 4.关闭管道
+        in.close();
+        out.close();
+    }
+}
+
+```
+
+## 内存流(数组流):
+
+内存流(数组流):适配器模式:
+
+  把数据先临时存在数组中,待会再从数组中获取出来.
+- 1):字节内存流: ByteArrayInputStream/ByteArrayOutputStream
+- 2):字符内存流: CharArrayReader/CharArrayWriter
+- 3):字符串流:StringReader/StringWriter(把数据临时存储到字符串中)
+
+字节的内存流
+```
+
+package IODemo.MemoryArray;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+
+/**
+ * Created by codew on 2018/1/27.
+ */
+public class ByteArrayDemo {
+
+    public static void main(String[] args) throws Exception
+    {
+        // 字节数组输出流: 程序 ---> 内存
+
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bos.write("ABCDEe".getBytes());
+
+        // 要使用存储的临时数据
+        byte[] buffer = bos.toByteArray();
+
+        // 字节数组输入流: 内存---->程序
+        ByteArrayInputStream bis = new ByteArrayInputStream(buffer);
+        byte[] bys = new byte[5];
+        int len = -1;
+
+        while ( (len = bis.read(bys)) != -1){
+
+            System.out.println(new String(bys, 0, len));
+        }
+
+        bis.close();
+        bos.close();
+    }
+}
+
+```
+字符内存流
+```
+
+package IODemo.MemoryArray;
+
+import java.io.CharArrayReader;
+import java.io.CharArrayWriter;
+
+/**
+ * Created by codew on 2018/1/27.
+ */
+
+// 字符内存流/字符数组流
+public class CharArrayDemo {
+
+    public static void main(String[] args) throws Exception
+    {
+
+        // 字符数组输出流
+        CharArrayWriter writer = new CharArrayWriter(128);
+        writer.write("哈哈哈哈");
+        char[] data = writer.toCharArray();
+
+        // 字符数组输入流
+        CharArrayReader reader = new CharArrayReader(data);
+
+
+        int len = -1;
+
+        while ( (len = reader.read()) != -1){
+
+            System.out.println( (char)len);
+            len = reader.read();
+        }
+
+    }
+}
+
+```
+
+字符串流
+
+```
+
+package IODemo.MemoryArray;
+
+import java.io.StringReader;
+import java.io.StringWriter;
+
+/**
+ * Created by codew on 2018/1/27.
+ */
+public class StringWriteReaderDemo {
+
+    public static void main(String[] args) throws Exception
+    {
+
+        // 字符串的输出流
+        StringWriter stringWriter = new StringWriter();
+        stringWriter.write("今天天气真好");
+        stringWriter.write("确实不错");
+
+        System.out.println(stringWriter.toString());
+
+
+        // 字符串的输入流
+        StringReader stringReader = new StringReader(stringWriter.toString());
+
+
+        char[] buffer = new char[1024];
+        int len = -1;
+        while ((len = stringReader.read(buffer)) != -1){
+
+            System.out.println((char)len);
+        }
+        stringWriter.close();
+    }
+}
+
+```
+
+
+# 合并流
+
+合并流/顺序流(SequenceInputStream):
+- 就是把多个输入流,合并成一个流对象.
+
+
+![05-java-IO-09](image/05-java-IO-09.png)
+
