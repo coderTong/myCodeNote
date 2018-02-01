@@ -27,3 +27,48 @@ Exception in thread "main" java.net.BindException: Address already in use (Bind 
 
 
 ```
+
+# NoSuchMethodException, 
+
+
+![00-javaError-03](image/00-javaError-03.png)
+
+```
+
+con = clz.getConstructor(String.class, int.class);
+System.out.println(con);
+
+```
+解决
+```
+
+con = clz.getDeclaredConstructor(String.class, int.class);
+System.out.println(con);
+
+```
+
+
+# IllegalAccessException
+
+调用私有方法?
+当应用程序试图反射性地创建一个实例（而不是数组）、设置或获取一个字段，或者调用一个方法，但当前正在执行的方法无法访问指定类、字段、方法或构造方法的定义时，抛出 IllegalAccessException。
+![00-javaError-04](image/00-javaError-04.png)
+
+
+
+# Exception in thread "main" java.lang.IllegalArgumentException: wrong number of arguments
+
+反射获取对象方法, 获取到的是无参数, 调用的时候传参数进去, 就会报错
+
+对象方法参数很多, 你传的实参数不够也会报错
+
+
+![00-javaError-05](image/00-javaError-05.png)
+
+
+
+# ConcurrentModificationException
+边遍历边删除
+
+![00-javaError-06](image/00-javaError-06.png)
+
