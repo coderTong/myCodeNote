@@ -72,3 +72,16 @@ System.out.println(con);
 
 ![00-javaError-06](image/00-javaError-06.png)
 
+# Error:java: Compilation failed: internal java compiler error
+Information:java: javacTask: 源发行版 1.8 需要目标发行版 1.8
+Information:java: Errors occurred while compiling module 'newStudy'
+Information:javac 1.8.0_131 was used to compile java sources
+Information:2018/2/1 PM5:54 - Compilation completed with 1 error and 0 warnings in 502ms
+Error:java: Compilation failed: internal java compiler error
+![00-javaError-07](image/00-javaError-08.png)
+解决办法
+![00-javaError-07](image/00-javaError-07.png)
+
+
+
+

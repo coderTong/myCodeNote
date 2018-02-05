@@ -441,3 +441,249 @@ Set判断两个对象是否相等用equals,而不是使用==。也就是说两�
 - 每一个存储到hash表中的对象,都得提供hashCode和equals方法,用来判断是否是同一个对象.
 - 存储在哈希表中的对象,都应该覆盖equals方法和hashCode方法,并且保证equals相等的时候,hashCode也应该相等.
 
+```
+
+如果需要把我们自定义的对象存储到哈希表中,该类型 的对象应该覆盖equals和hashCode方法,并在该方法中提供自己的判断规则.
+可以使用工具自动生成hashCode和equals方法.
+
+```
+![08-javaArray-08](image/08-javaArray-08.png)
+
+```
+
+package HashSetDemo;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * Created by codew on 2018/2/1.
+ */
+class ObjA{
+
+    @Override
+    public boolean equals(Object obj) {
+        return true;
+    }
+}
+class ObjB{
+
+    @Override
+    public int hashCode() {
+        return 1;
+    }
+}
+class ObjC{
+
+    @Override
+    public boolean equals(Object obj) {
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return 2;
+    }
+}
+
+public class HashSetDemo2  {
+
+    public static void main(String[] args){
+
+
+        Set set = new HashSet();
+        set.add(new ObjA());
+        set.add(new ObjA());
+        set.add(new ObjB());
+        set.add(new ObjB());
+        set.add(new ObjC());
+        set.add(new ObjC());
+
+        System.out.println(set.size());
+        System.out.println(set);
+
+
+    }
+}
+
+```
+
+```
+
+package HashSetDemo;
+
+import lombok.AllArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * Created by codew on 2018/2/1.
+ */
+@Setter
+//@AllArgsConstructor
+@ToString
+class StudentD{
+
+    private int sn;
+    private String name;
+    private int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        StudentD studentD = (StudentD) o;
+
+        return sn == studentD.sn;
+    }
+
+    @Override
+    public int hashCode() {
+        return sn;
+    }
+
+    public StudentD(int sn, String name, int age){
+
+        super();
+
+        this.age = age;
+        this.name = name;
+        this.sn = sn;
+    }
+
+
+    @Override
+    public String toString() {
+
+        return "StudentD [sn=" + sn + ", name = " + name + ", age = " + age + "]";
+    }
+
+
+}
+
+public class HashSetDemo3 {
+
+    public static void main(String[] args){
+
+        Set set = new HashSet();
+
+        set.add(new StudentD(1, "周杰伦", 17));
+        set.add(new StudentD(1, "周杰伦", 17));
+        set.add(new StudentD(1, "周星驰", 17));
+        set.add(new StudentD(3, "周大福", 17));
+        set.add(new StudentD(4, "周冬雨", 17));
+        set.add(new StudentD(5, "周润发", 17));
+
+
+        System.out.println(set.size());
+        System.out.println(set);
+
+
+//        System.out.println(new StudentD(5, "周润发", 17));
+    }
+}
+
+```
+# LinkedHashSet类
+
+![08-javaArray](image/08-javaArray-09.png)
+
+List接口: 允许元素重复,记录先后添加顺序.
+
+Set接口: 不允许元素重复,不记录先后添加顺序.
+
+`需求: 不允许元素重复,但是需要保证先后添加的顺序.`
+
+LinkedHashSet:`底层才有哈希表和链表算法.`
+
+- 哈希表:来保证唯一性,.此时就是HashSet,在哈希表中元素没有先后顺序.
+- 链表: 来记录元素的先后添加顺序.
+
+```
+
+package HashSetDemo;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+/**
+ * Created by codew on 2018/2/1.
+ */
+public class LinkedHashSetDemo {
+
+
+    public static void main(String[] args){
+
+
+        Set<String> set = new LinkedHashSet<>();
+
+        set.add("X");
+        set.add("B");
+        set.add("S");
+        set.add("DA");
+        set.add("sdf");
+
+        System.out.println(set);
+    }
+}
+
+```
+
+
+# TreeSet类
+
+
+![08-javaArray-10](image/08-javaArray-10.png)
+
+TreeSet集合底层才有红黑树算法,会对存储的元素默认使用自然排序(从小到大).
+
+  注意: `必须保证TreeSet集合中的元素对象是相同的数据类型,否则报错.`
+
+----------------------------------------------------------------------------------------------
+
+TreeSet的排序规则:
+
+`自然排序`(从小到大):
+
+TreeSet调用集合元素的compareTo方法来比较元素的大小关系,然后讲集合元素按照升序排列(从小到大).
+
+注意:`要求TreeSet集合中元素得实现java.util.Comparable接口.`
+![08-javaArray](image/08-javaArray-11.png)
+
+***java.util.Comparable接口:可比较的.***
+
+覆盖 public int compareTo(Object o)方法,在该方法中编写比较规则.
+
+在该方法中,比较当前对象(this)和参数对象o做比较(严格上说比较的是对象中的数据,`比如按照对象的年龄排序).`
+
+- this > o: 返回正整数. 1
+- this < o: 返回负整数. -1
+- this == o: 返回0. `此时认为两个对象为同一个对象.`
+
+--------------------------------------
+
+在TreeSet的自然排序中,认为如果两个对象做比较的compareTo方法返回的是0,则认为是同一个对象.
+
+--------------------------------------
+
+定制排序(从大到小,`按照名字的长短来排序`):
+
+在TreeSet构造器中传递java.lang.`Comparator对象`.并覆盖public int compare(Object o1, Object o2)再编写比较规则.
+
+--------------------------------------
+
+对于TreeSet集合来说,要么使用自然排序,要么使用定制排序.
+
+判断两个对象是否相等的规则:
+
+自然排序: compareTo方法返回0;
+
+定制排序: compare方法返回0;
