@@ -49,39 +49,39 @@ static void initializeAudioSession()
 
 static void startAudioSession(nvmedia_dir dir)
 {
-    UInt32 sessionCategory;
-    
-    if (dir == NVMEDIA_DIR_CAPTURE) {
-        
-        sessionCategory = kAudioSessionCategory_RecordAudio;
-    }
-    else if (dir == NVMEDIA_DIR_PLAYBACK){
-        
-        sessionCategory = kAudioSessionCategory_MediaPlayback;
-    }
-    else{
-        
-        sessionCategory = kAudioSessionCategory_PlayAndRecord;
-    }
-    
-#if MANAGE_AUDIO_SESSION
-    
-    AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,
-                        sizeof(sessionCategory),
-                        &sessionCategory);
-
-    AudioSessionSetActive(true);
-#endif
+//    UInt32 sessionCategory;
+//
+//    if (dir == NVMEDIA_DIR_CAPTURE) {
+//
+//        sessionCategory = kAudioSessionCategory_RecordAudio;
+//    }
+//    else if (dir == NVMEDIA_DIR_PLAYBACK){
+//
+//        sessionCategory = kAudioSessionCategory_MediaPlayback;
+//    }
+//    else{
+//
+//        sessionCategory = kAudioSessionCategory_PlayAndRecord;
+//    }
+//
+//#if MANAGE_AUDIO_SESSION
+//
+//    AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,
+//                        sizeof(sessionCategory),
+//                        &sessionCategory);
+//
+//    AudioSessionSetActive(true);
+//#endif
 }
 
 
 
 static void stopAudioSession()
 {
-#if MANAGE_AUDIO_SESSION
-    
-    AudioSessionSetActive(false);
-#endif
+//#if MANAGE_AUDIO_SESSION
+//
+//    AudioSessionSetActive(false);
+//#endif
 }
 
 /**
@@ -121,7 +121,7 @@ static OSStatus NVOutputBusRenderCallack(void                           *inRefCo
 {
     nvmedia_snd_stream *snd_strm = (nvmedia_snd_stream *)inRefCon;
     
-    
+//    printf("[NVOutputBusRenderCallack]:\n");
     
     return snd_strm->play_cb(snd_strm->user_data, ioData);
 }
@@ -243,12 +243,14 @@ int nvmedia_snd_open(int rec_id,
     memset(snd_strm, 0, sizeof(nvmedia_snd_stream));
     
     
-    snd_strm->rec_cb        = rec_id;
+    snd_strm->rec_id        = rec_id;
     snd_strm->play_id       = play_id;
     snd_strm->clock_rate    = clock_rate;
     snd_strm->rec_cb        = rec_cb;
+    snd_strm->play_cb       = play_cb;
     snd_strm->user_data     = user_data;
     snd_strm->isActive      = false;
+    
     
     snd_strm->inputBufferList = malloc( sizeof(AudioBufferList) );
     memset(snd_strm->inputBufferList, 0, sizeof(AudioBufferList));
@@ -265,14 +267,20 @@ int nvmedia_snd_open(int rec_id,
     
     if (rec_id >= 0 && play_id >= 0) {
         
-        snd_strm->dir = NVMEDIA_DIR_CAPTURE;
+        snd_strm->dir = NVMEDIA_DIR_CAPTURE_PLAYBACK;
     }
     else if (rec_id >= 0){
+        
+        snd_strm->dir = NVMEDIA_DIR_CAPTURE;
+    }
+    else if (play_id >= 0){
         
         snd_strm->dir = NVMEDIA_DIR_PLAYBACK;
     }
     
     status = AudioComponentInstanceNew(voiceUnitComponent, &(snd_strm->voiceUnit));
+    
+    
     
     if (status != noErr) {
         
@@ -286,6 +294,26 @@ int nvmedia_snd_open(int rec_id,
     
     if (snd_strm->dir & NVMEDIA_DIR_CAPTURE) {
         
+        printf("[NVMEDIA_DIR_CAPTURE]: seting.......");
+        
+        status = AudioUnitSetProperty(snd_strm->voiceUnit,
+                                      kAudioOutputUnitProperty_EnableIO,
+                                      kAudioUnitScope_Input,
+                                      inputBus,
+                                      &enable,
+                                      sizeof(enable));
+        
+        if (status != noErr) {
+            
+            printf("[NVMEDIA_DIR_CAPTURE]: set.......fail\n");
+            return -2;
+        }
+        printf("[NVMEDIA_DIR_CAPTURE]: set.......ok\n");
+    }
+    
+    if (snd_strm->dir & NVMEDIA_DIR_PLAYBACK) {
+        
+        printf("[NVMEDIA_DIR_PLAYBACK]: seting.......\n");
         enable = 1;
         status = AudioUnitSetProperty(snd_strm->voiceUnit,
                                       kAudioOutputUnitProperty_EnableIO,
@@ -295,9 +323,11 @@ int nvmedia_snd_open(int rec_id,
                                       sizeof(enable));
         
         if (status != noErr) {
-            
+            printf("[NVMEDIA_DIR_PLAYBACK]: set.......fail\n");
             return -3;
         }
+        
+        printf("[NVMEDIA_DIR_PLAYBACK]: set.......ok\n");
     }
     
     snd_strm->streamDesc.mSampleRate = clock_rate;
@@ -305,11 +335,11 @@ int nvmedia_snd_open(int rec_id,
     snd_strm->streamDesc.mFormatFlags = kLinearPCMFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
     
     
-    snd_strm->streamDesc.mBitsPerChannel = 16;
-    snd_strm->streamDesc.mChannelsPerFrame = 1;
-    snd_strm->streamDesc.mBytesPerFrame = snd_strm->streamDesc.mBitsPerChannel * snd_strm->streamDesc.mChannelsPerFrame / 8;
-    snd_strm->streamDesc.mFramesPerPacket = 1;
-    snd_strm->streamDesc.mBytesPerPacket = snd_strm->streamDesc.mBytesPerFrame * snd_strm->streamDesc.mFramesPerPacket;
+    snd_strm->streamDesc.mBitsPerChannel = 16; // 采样精度
+    snd_strm->streamDesc.mChannelsPerFrame = 1;// 声道数
+    snd_strm->streamDesc.mBytesPerFrame = snd_strm->streamDesc.mBitsPerChannel * snd_strm->streamDesc.mChannelsPerFrame / 8;// 每一个采样点的字节数
+    snd_strm->streamDesc.mFramesPerPacket = 1;// 每个数据包有多少个采样点
+    snd_strm->streamDesc.mBytesPerPacket = snd_strm->streamDesc.mBytesPerFrame * snd_strm->streamDesc.mFramesPerPacket; // 每个数据包字节数
     
     snd_strm->inputBufferList->mNumberBuffers = 1;
     snd_strm->inputBufferList->mBuffers[0].mNumberChannels = snd_strm->streamDesc.mChannelsPerFrame;
@@ -317,8 +347,8 @@ int nvmedia_snd_open(int rec_id,
     if (snd_strm->dir & NVMEDIA_DIR_CAPTURE) {
         
         status = AudioUnitSetProperty(snd_strm->voiceUnit,
-                                      kAudioUnitProperty_StreamFormat,
-                                      kAudioUnitScope_Output,
+                                      kAudioUnitProperty_StreamFormat,// 数据流格式
+                                      kAudioUnitScope_Output, // 输出,也就是手机录音
                                       inputBus,
                                       &(snd_strm->streamDesc),
                                       sizeof(snd_strm->streamDesc));
@@ -329,7 +359,7 @@ int nvmedia_snd_open(int rec_id,
         }
     }
     
-    startAudioSession(snd_strm->dir);
+//    startAudioSession(snd_strm->dir);
     
     status = AudioUnitInitialize(snd_strm->voiceUnit);
     
@@ -338,6 +368,7 @@ int nvmedia_snd_open(int rec_id,
         return -5;
     }
     
+    // 设置音频IO描述 啥声道数,采样精度,采样率啥的====================================================================================
     if (snd_strm->dir & NVMEDIA_DIR_PLAYBACK) {
         
         status = AudioUnitSetProperty(snd_strm->voiceUnit,
@@ -353,6 +384,7 @@ int nvmedia_snd_open(int rec_id,
         }
     }
     
+    // 设置音频数据?IO call back 函数====================================================================================
     AURenderCallbackStruct outputBusRenderCallback;
     outputBusRenderCallback.inputProc = NVOutputBusRenderCallack;
     outputBusRenderCallback.inputProcRefCon = snd_strm;
@@ -375,7 +407,7 @@ int nvmedia_snd_open(int rec_id,
     inputBusRenderCallback.inputProcRefCon = snd_strm;
     
     status = AudioUnitSetProperty(snd_strm->voiceUnit,
-                                  kAudioUnitProperty_SetRenderCallback,
+                                  kAudioOutputUnitProperty_SetInputCallback,
                                   kAudioUnitScope_Output,
                                   inputBus,
                                   &inputBusRenderCallback,
@@ -386,6 +418,7 @@ int nvmedia_snd_open(int rec_id,
         return -8;
     }
     
+    // 设置输出最大字节数 输出的最大字节数====================================================================================
     uint32_t maxFramesPerSlice = 1024;
     status = AudioUnitSetProperty(snd_strm->voiceUnit,
                                   kAudioUnitProperty_MaximumFramesPerSlice,
@@ -400,21 +433,6 @@ int nvmedia_snd_open(int rec_id,
         printf("AudioUnitSetProperty: maxFramesPerSlice failed..\n");
     }
     
-    uint32_t propSize = sizeof(uint32_t);
-    status = AudioUnitSetProperty(snd_strm->voiceUnit,
-                                  kAudioUnitProperty_MaximumFramesPerSlice,
-                                  kAudioUnitScope_Global,
-                                  outputBus,
-                                  &maxFramesPerSlice,
-                                  propSize);
-    
-    if (status != noErr) {
-        
-        printf("AudioUnitGetProperty: maxFramesPerSlice error\n");
-    }else{
-        
-        printf("AudioUnitGetProperty: maxFramesPerSlice=%d\n", maxFramesPerSlice);
-    }
     
     *p_snd_strm = snd_strm;
     

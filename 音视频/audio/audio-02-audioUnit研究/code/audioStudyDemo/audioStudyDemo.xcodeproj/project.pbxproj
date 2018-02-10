@@ -16,6 +16,8 @@
 		AC13700D202AAEAE001603A1 /* audioStudyDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC13700C202AAEAE001603A1 /* audioStudyDemoTests.m */; };
 		AC137018202AAEAE001603A1 /* audioStudyDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC137017202AAEAE001603A1 /* audioStudyDemoUITests.m */; };
 		AC137027202BE8CD001603A1 /* NVAudioDriver.c in Sources */ = {isa = PBXBuildFile; fileRef = AC137026202BE8CD001603A1 /* NVAudioDriver.c */; };
+		AC75CDB0202C6D4B005B9F2A /* NVAudioAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = AC75CDAF202C6D4B005B9F2A /* NVAudioAdaptor.m */; };
+		AC75CDB3202D3763005B9F2A /* NVSndUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AC75CDB2202D3763005B9F2A /* NVSndUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,10 @@
 		AC137019202AAEAE001603A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC137025202AB20D001603A1 /* NVAudioDriver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NVAudioDriver.h; sourceTree = "<group>"; };
 		AC137026202BE8CD001603A1 /* NVAudioDriver.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = NVAudioDriver.c; sourceTree = "<group>"; };
+		AC75CDAE202C6D4B005B9F2A /* NVAudioAdaptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NVAudioAdaptor.h; sourceTree = "<group>"; };
+		AC75CDAF202C6D4B005B9F2A /* NVAudioAdaptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NVAudioAdaptor.m; sourceTree = "<group>"; };
+		AC75CDB1202D3763005B9F2A /* NVSndUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NVSndUtil.h; sourceTree = "<group>"; };
+		AC75CDB2202D3763005B9F2A /* NVSndUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NVSndUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,10 @@
 				AC136FF4202AAEAE001603A1 /* AppDelegate.m */,
 				AC137025202AB20D001603A1 /* NVAudioDriver.h */,
 				AC137026202BE8CD001603A1 /* NVAudioDriver.c */,
+				AC75CDAE202C6D4B005B9F2A /* NVAudioAdaptor.h */,
+				AC75CDAF202C6D4B005B9F2A /* NVAudioAdaptor.m */,
+				AC75CDB1202D3763005B9F2A /* NVSndUtil.h */,
+				AC75CDB2202D3763005B9F2A /* NVSndUtil.m */,
 				AC136FF6202AAEAE001603A1 /* ViewController.h */,
 				AC136FF7202AAEAE001603A1 /* ViewController.m */,
 				AC136FF9202AAEAE001603A1 /* Main.storyboard */,
@@ -273,6 +283,8 @@
 				AC136FF8202AAEAE001603A1 /* ViewController.m in Sources */,
 				AC137003202AAEAE001603A1 /* main.m in Sources */,
 				AC137027202BE8CD001603A1 /* NVAudioDriver.c in Sources */,
+				AC75CDB3202D3763005B9F2A /* NVSndUtil.m in Sources */,
+				AC75CDB0202C6D4B005B9F2A /* NVAudioAdaptor.m in Sources */,
 				AC136FF5202AAEAE001603A1 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
