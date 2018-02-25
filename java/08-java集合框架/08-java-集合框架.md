@@ -680,10 +680,329 @@ TreeSet调用集合元素的compareTo方法来比较元素的大小关系,然后
 
 --------------------------------------
 
-对于TreeSet集合来说,要么使用自然排序,要么使用定制排序.
+对于TreeSet集合来说, ,要么使用定制排序.
 
 判断两个对象是否相等的规则:
 
 自然排序: compareTo方法返回0;
 
 定制排序: compare方法返回0;
+
+
+```
+
+package HashSetDemo;
+
+import lombok.Setter;
+
+import java.util.Comparator;
+import java.util.Set;
+import java.util.TreeSet;
+
+/**
+ * Created by codew on 2018/2/1.
+ */
+
+//@Setter
+//class TreeSetPerson implements Comparable
+//{
+//
+//     int age;
+//     String name;
+//
+//    public TreeSetPerson(String name, int age){
+//
+//        this.age = age;
+//        this.name = name;
+//
+//    }
+//
+//    public String toString(){
+//
+//        return "TreeSetPerson [name" + name + ", age=" + age + "]";
+//    }
+//
+//    @Override
+//    public int compareTo(Object o) {
+//
+//        TreeSetPerson person = (TreeSetPerson)o;
+//        int personAge = person.age;
+//        int selfAge = this.age;
+//
+//        return  selfAge - personAge;
+//    }
+//}
+
+
+@Setter
+class TreeSetPerson
+{
+
+    int age;
+    String name;
+
+    public TreeSetPerson(String name, int age){
+
+        this.age = age;
+        this.name = name;
+
+    }
+
+    public String toString(){
+
+        return "TreeSetPerson [name" + name + ", age=" + age + "]";
+    }
+
+}
+
+/**
+ * 用比较器比较
+ *
+ */
+
+class NameLengthComparator implements Comparator<TreeSetPerson>{
+
+
+    @Override
+    public int compare(TreeSetPerson o1, TreeSetPerson o2) {
+
+        // 如果名字相同
+        if (o1.name.length() == o2.name.length()){
+
+            int personAge = o2.age;
+            int selfAge = o1.age;
+            return  selfAge - personAge;
+        }
+        return o1.name.length() - o2.name.length();
+
+//        if (o1.name.length() > o2.name.length()){
+//
+//            return 1;
+//        }else if(o1.name.length() < o2.name.length()) {
+//
+//            return -1;
+//        }
+//
+//        return 0;
+    }
+}
+
+public class TreeSetDemo {
+
+    public static void main(String[] args){
+
+
+        // 按照名字长短 ====
+        Set<TreeSetPerson> set = new TreeSet<>( new NameLengthComparator() );
+
+
+        set.add(new TreeSetPerson("威尔史密斯", 24));
+        set.add(new TreeSetPerson("杰森·斯坦森", 26));
+        set.add(new TreeSetPerson("星爷", 28));
+        set.add(new TreeSetPerson("李小龙", 29));
+        set.add(new TreeSetPerson("西门楚云", 33));
+        set.add(new TreeSetPerson("西门", 33));
+        set.add(new TreeSetPerson("丁一", 33));
+        set.add(new TreeSetPerson("丁三", 33));
+        System.out.println(set);
+    }
+
+
+
+    public static void test2(){
+
+        Set<TreeSetPerson> set = new TreeSet<TreeSetPerson>();
+
+        set.add(new TreeSetPerson("周星驰", 28));
+        set.add(new TreeSetPerson("李小龙", 29));
+        set.add(new TreeSetPerson("威尔史密斯", 24));
+        set.add(new TreeSetPerson("杰森·斯坦森", 26));
+
+        System.out.println(set);
+    }
+
+
+    public static void test(){
+
+        TreeSet<String> set = new TreeSet<>();
+
+        set.add("Y");
+        set.add("a");
+        set.add("1");
+        set.add("S");
+        set.add("4");
+        set.add("H");
+        set.add("C");
+
+        System.out.println(set);
+
+        System.out.println(set.first());
+        System.out.println(set.last());
+        System.out.println(set.headSet("4"));
+    }
+}
+
+```
+
+![08-javaArray](image/08-javaArray-12.png)
+![08-javaArray](image/08-javaArray-13.png)
+
+
+# Set 实现类性能对比
+
+`Set`接口的实现类
+共同特点:
+
+- 1.都不允许元素重复
+- 2.都不是线程安全的类
+	- `解决方案:Set s = Collections.synchronizedSet(Set对象);`
+
+### HashSet
+
+不保证元素的先后添加顺序
+底层采用的是哈希表算法, 查询效率极高
+判断两个对象是否相等的规则:
+- 1):equals比较为true.
+- 2):hashCode值相同.
+
+要求: 要求存在在哈希中的对象元素都得覆盖equals和hashCode方法.
+
+
+### LinkedHashSet ----------有顺序
+HashSet的子类, 底层也采用的是哈希表算法, 但是也使用了链表算法来维持元素的先后添加顺序
+判断两个对象是否相等的规则是HashSet相同
+因为需要多使用一个链表来记录元素的顺序, 所以性能相对于HashSet较低.
+`一般少用, 如果要求一个集合既要保证元素不重复, 也需要记录添加先后顺序, 才选择使用LinkedHashSet`
+
+
+### TreeSet  ---- 会排个序
+
+不保证元素的先后`添加顺序` ,但是会对元素做一个`排序`
+底层采用红黑树算法
+TreeSet 要么采用自然排序, 要嘛定制排序
+
+自然排序: 要求在TreeSet集合的对象必须实现 java.lang.Comparable接口,并覆盖compareTo方法
+
+定制排序: 
+- 需求在构建TreeSet对象的时候, 传入一个比较器对象(必须实现java.lang.Comparator接口).
+- 在比较器中覆盖compare方法,并编写比较规则.
+
+*** Tree 判断是否是同一个对象***
+compareTo/compare方法是否返回0.如果返回0,则视为是同一个对象.
+
+
+***HashSet做等值查询效率高,TreeSet做范围查询效率高.***
+而我们更多的情况,都是做等值查询, 在数据库的索引中做范围查询较多,所以数结构主要用于做索引,用来提高查询效率.
+
+
+# Set 和 Map 之间的关系
+
+Map 和 Set 中有很多相似的类名
+
+
+| Set | Map | 算法 |
+|---|---|---|
+| HashSet 				| HashMap				 | 哈希表 |
+| TreeSet 					| TreeMap 				 | 红黑树 |
+| LinkedHashSet 		| LinkedHashMap	 | 哈希表/链表 |
+
+如果集合前缀相同, 说明底层算法是一样的, 现在单独使用HashSet和HashMap
+
+通过阅读源代码发现相同算法的Set底层的是相同算法的Map
+
+
+# Map 的实现类
+
+
+![08-javaArray](image/08-javaArray-14.png)
+![08-javaArray](image/08-javaArray-15.png)
+
+Map的常用实现类
+
+HashMap: 
+- 采用哈希表算法, 此时Map中的key不会保证添加的先后顺序,key也不允许重复.
+- key判断重复的标准是: key1和key2是否equals为true,并且hashCode相等.
+
+TreeMap:
+- 采用红黑树算法,此时Map中的key会按照自然顺序或定制排序进行排序,,key也不允许重复.
+- key判断重复的标准是: compareTo/compare的返回值是否为0.
+
+LinkedHashMap:
+- 采用链表和哈希表算法,此时Map中的key会保证先后添加的顺序,key不允许重复.
+- key判断重复的标准和HashMap中的key的标准相同.
+
+Hashtable: 
+- 采用哈希表算法,是HashMap的前身(类似于Vector是ArrayList的前身).`打死不用.`
+- 在Java的集合框架之前,表示映射关系就使用Hashtable.
+- `所有的方法都使用synchronized修饰符,线程安全的,但是性能相对HashMap较低.`
+
+Properties: 
+- Hashtable的子类,此时要求key和value都是String类型.
+- 用来加载资源文件(properties文件(IO再讲)).
+
+
+ `一般的,我们定义Map,key都使用不可变的类(String),把key作为value的唯一名称.`
+
+`HashMap`和`TreeMap`以及`LinkedHashMap`都是线程不安全的,但是性能较高:
+
+解决方案: `Map m = Collections.synchronizedMap(Map对象);`
+
+Hashtable类实现线程安全的,但是性能较低.
+`哈希表算法:做等值查询最快.`
+数结构算法:做范围查询最快-->应用到索引上.
+
+
+
+# List和Set 以及Map的选用
+
+![08-javaArray](image/08-javaArray-16.png)
+选用哪一种容器取决于每一种容器的存储特点以及当前业务的需求:
+
+List: 
+- 单一元素集合.
+- 允许元素重复/记录元素的添加顺序.
+
+Set:
+- 单一元素集合.
+- 不允许元素重复/不记录元素的添加顺序.
+
+`既要不重复,又要保证先后顺序:LinkedHashSet.`
+
+Map: 双元素集合. 如果存储数据的时候,还得给数据其为一个的一个名称,此时考虑使用Map.
+
+--------------------------------------------------------------------------------
+
+List和Set以及Map之间相互转换问题:
+
+` List<String> list = new ArrayList<>();`
+
+  把List转换为Set:
+
+ ` Set<String> set = new HashSet<>(list);//此时会消除重复的元素.`
+
+  把Set转换为List:
+
+  `List<String> list2 = new ArrayList<>(set );`
+
+ Map不能直接转换为List或Set(但是Map中的方法可以间接转换).
+
+![08-javaArray-15](image/08-javaArray-17.png)
+
+
+# List和Map的综合运用
+
+Map在以后运用的非常广泛:比如可以表示`JavaBean`对象,可以做缓存(工具箱).
+
+- JavaBean对象: 多对,属性名=属性值 (PS:属性名表示字段名)
+- Map对象:每一个key-value就好比是一对属性名=属性值.
+- 把Map对象转换为JavaBean对象,把JavaBean对象转换为Map对象.
+
+---------------------------------------------------------------------------------------------
+
+`Set`,`List`,`Map`三种集合并不是都一直是单独使用的,偶尔也会综合使用.
+List<Map<String,Object>> list = new ArrayList<>();
+
+![08-javaArray](image/08-javaArray-18.png)
+
+
+# 集合的工具类
