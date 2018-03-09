@@ -16,3 +16,11 @@ str2 = [str2 stringByAppendingPathExtension:@"NVT3"]
     NSLog(@"%@", str2);
 
 
+
+// 替换
+NSString*str =@"12345678";
+
+NSString*replacedStr = [str stringByReplacingOccurrencesOfString:@"345"withString:@"想要替换成的字符串"];
+
+NSLog(@"replacedStr ==== %@", replacedStr);
+
