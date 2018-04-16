@@ -19,6 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIView * t = [[UIView alloc]init];
+    [UIView setNeedsDisplay]
+    
     cornerButton = [[CustomButton alloc] initWithFrame:CGRectMake(100, 100, 120, 120)];
     cornerButton.backgroundColor = [UIColor blueColor];
     [cornerButton addTarget:self action:@selector(doAction:) forControlEvents:UIControlEventTouchUpInside];
