@@ -1,0 +1,809 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		63783B82204A501B0010DC4D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63783B81204A501B0010DC4D /* AppDelegate.m */; };
+		63783B85204A501B0010DC4D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63783B84204A501B0010DC4D /* ViewController.m */; };
+		63783B88204A501B0010DC4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63783B86204A501B0010DC4D /* Main.storyboard */; };
+		63783B8A204A501B0010DC4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63783B89204A501B0010DC4D /* Assets.xcassets */; };
+		63783B8D204A501B0010DC4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63783B8B204A501B0010DC4D /* LaunchScreen.storyboard */; };
+		63783B90204A501B0010DC4D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63783B8F204A501B0010DC4D /* main.m */; };
+		63783B9A204A501B0010DC4D /* KVO_TESTUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63783B99204A501B0010DC4D /* KVO_TESTUITests.m */; };
+		63783BA6204A50370010DC4D /* MObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 63783BA5204A50370010DC4D /* MObject.m */; };
+		63783BA9204A509C0010DC4D /* MObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 63783BA8204A509C0010DC4D /* MObserver.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		63783B96204A501B0010DC4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63783B75204A501B0010DC4D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63783B7C204A501B0010DC4D;
+			remoteInfo = KVO_TEST;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0A646E6C206E33FB00C2646F /* CFUUID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFUUID.h; sourceTree = "<group>"; };
+		0A646E6D206E33FB00C2646F /* CFUniCharPriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFUniCharPriv.h; sourceTree = "<group>"; };
+		0A646E6E206E33FB00C2646F /* CFBundle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFBundle.h; sourceTree = "<group>"; };
+		0A646E6F206E33FB00C2646F /* CFBigNumber.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFBigNumber.h; sourceTree = "<group>"; };
+		0A646E70206E33FB00C2646F /* CFXMLInputStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFXMLInputStream.h; sourceTree = "<group>"; };
+		0A646E71206E33FB00C2646F /* CFNumber.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFNumber.c; sourceTree = "<group>"; };
+		0A646E72206E33FB00C2646F /* CFError.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFError.c; sourceTree = "<group>"; };
+		0A646E73206E33FB00C2646F /* CFBundle_Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFBundle_Internal.h; sourceTree = "<group>"; };
+		0A646E74206E33FB00C2646F /* CFURL.inc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFURL.inc.h; sourceTree = "<group>"; };
+		0A646E75206E33FB00C2646F /* CFPropertyList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFPropertyList.c; sourceTree = "<group>"; };
+		0A646E76206E33FB00C2646F /* CFBag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFBag.h; sourceTree = "<group>"; };
+		0A646E77206E33FB00C2646F /* CFStringEncodingConverterPriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFStringEncodingConverterPriv.h; sourceTree = "<group>"; };
+		0A646E78206E33FB00C2646F /* CFRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFRuntime.h; sourceTree = "<group>"; };
+		0A646E79206E33FB00C2646F /* CFPreferences.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFPreferences.h; sourceTree = "<group>"; };
+		0A646E7A206E33FB00C2646F /* CFConcreteStreams.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFConcreteStreams.c; sourceTree = "<group>"; };
+		0A646E7B206E33FB00C2646F /* CoreFoundation_Prefix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreFoundation_Prefix.h; sourceTree = "<group>"; };
+		0A646E7C206E33FB00C2646F /* CFAvailability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFAvailability.h; sourceTree = "<group>"; };
+		0A646E7D206E33FB00C2646F /* SymbolAliases */ = {isa = PBXFileReference; lastKnownFileType = text; path = SymbolAliases; sourceTree = "<group>"; };
+		0A646E7E206E33FB00C2646F /* CFUserNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFUserNotification.h; sourceTree = "<group>"; };
+		0A646E7F206E33FB00C2646F /* CFTimeZone.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFTimeZone.c; sourceTree = "<group>"; };
+		0A646E80206E33FB00C2646F /* CFVersion.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFVersion.c; sourceTree = "<group>"; };
+		0A646E81206E33FB00C2646F /* ForFoundationOnly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForFoundationOnly.h; sourceTree = "<group>"; };
+		0A646E82206E33FB00C2646F /* CFBinaryPList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFBinaryPList.c; sourceTree = "<group>"; };
+		0A646E83206E33FB00C2646F /* CFXMLNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFXMLNode.h; sourceTree = "<group>"; };
+		0A646E84206E33FB00C2646F /* CFBundle_Resources.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFBundle_Resources.c; sourceTree = "<group>"; };
+		0A646E85206E33FB00C2646F /* CFStreamAbstract.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFStreamAbstract.h; sourceTree = "<group>"; };
+		0A646E86206E33FB00C2646F /* CFString.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFString.c; sourceTree = "<group>"; };
+		0A646E87206E33FB00C2646F /* CFBasicHash.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFBasicHash.c; sourceTree = "<group>"; };
+		0A646E88206E33FB00C2646F /* CFArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFArray.h; sourceTree = "<group>"; };
+		0A646E89206E33FB00C2646F /* CFBundle_InfoPlist.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFBundle_InfoPlist.c; sourceTree = "<group>"; };
+		0A646E8A206E33FB00C2646F /* CFXMLParser.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFXMLParser.c; sourceTree = "<group>"; };
+		0A646E8B206E33FB00C2646F /* CFBitVector.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFBitVector.c; sourceTree = "<group>"; };
+		0A646E8C206E33FB00C2646F /* CFStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFStream.h; sourceTree = "<group>"; };
+		0A646E8D206E33FB00C2646F /* CFRunLoop.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFRunLoop.c; sourceTree = "<group>"; };
+		0A646E8E206E33FB00C2646F /* CoreFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreFoundation.h; sourceTree = "<group>"; };
+		0A646E8F206E33FB00C2646F /* CFBundle_BinaryTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFBundle_BinaryTypes.h; sourceTree = "<group>"; };
+		0A646E90206E33FB00C2646F /* CFSocket.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFSocket.c; sourceTree = "<group>"; };
+		0A646E91206E33FB00C2646F /* CFDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFDictionary.h; sourceTree = "<group>"; };
+		0A646E92206E33FB00C2646F /* APPLE_LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = APPLE_LICENSE; sourceTree = "<group>"; };
+		0A646E93206E33FB00C2646F /* CFURL.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFURL.c; sourceTree = "<group>"; };
+		0A646E94206E33FB00C2646F /* CFApplicationPreferences.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFApplicationPreferences.c; sourceTree = "<group>"; };
+		0A646E95206E33FB00C2646F /* CFCharacterSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFCharacterSet.h; sourceTree = "<group>"; };
+		0A646E96206E33FB00C2646F /* CFBasicHashFindBucket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CFBasicHashFindBucket.m; sourceTree = "<group>"; };
+		0A646E97206E33FB00C2646F /* CFStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFStorage.h; sourceTree = "<group>"; };
+		0A646E98206E33FB00C2646F /* CFStringEncodingDatabase.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFStringEncodingDatabase.c; sourceTree = "<group>"; };
+		0A646E99206E33FB00C2646F /* CFSystemDirectories.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFSystemDirectories.c; sourceTree = "<group>"; };
+		0A646E9A206E33FB00C2646F /* CFUnicodeData-B.mapping */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CFUnicodeData-B.mapping"; sourceTree = "<group>"; };
+		0A646E9B206E33FB00C2646F /* CFCalendar.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFCalendar.c; sourceTree = "<group>"; };
+		0A646E9C206E33FB00C2646F /* CFOldStylePList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFOldStylePList.c; sourceTree = "<group>"; };
+		0A646E9D206E33FB00C2646F /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		0A646E9E206E33FB00C2646F /* CFDateFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFDateFormatter.h; sourceTree = "<group>"; };
+		0A646E9F206E33FB00C2646F /* CFPlugIn_Factory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFPlugIn_Factory.h; sourceTree = "<group>"; };
+		0A646EA0206E33FB00C2646F /* CFICUConverters.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFICUConverters.c; sourceTree = "<group>"; };
+		0A646EA1206E33FB00C2646F /* CFSet.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFSet.c; sourceTree = "<group>"; };
+		0A646EA2206E33FB00C2646F /* CFBase.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFBase.c; sourceTree = "<group>"; };
+		0A646EA3206E33FB00C2646F /* CFTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFTree.h; sourceTree = "<group>"; };
+		0A646EA4206E33FB00C2646F /* CFSortFunctions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFSortFunctions.c; sourceTree = "<group>"; };
+		0A646EA5206E33FB00C2646F /* CFBinaryHeap.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFBinaryHeap.c; sourceTree = "<group>"; };
+		0A646EA6206E33FB00C2646F /* CFMessagePort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFMessagePort.h; sourceTree = "<group>"; };
+		0A646EA7206E33FB00C2646F /* CFUtilities.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFUtilities.c; sourceTree = "<group>"; };
+		0A646EA8206E33FB00C2646F /* MakefileVersion */ = {isa = PBXFileReference; lastKnownFileType = text; path = MakefileVersion; sourceTree = "<group>"; };
+		0A646EA9206E33FB00C2646F /* CFUnicodePrecomposition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFUnicodePrecomposition.h; sourceTree = "<group>"; };
+		0A646EAA206E33FB00C2646F /* CFMachPort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFMachPort.h; sourceTree = "<group>"; };
+		0A646EAB206E33FB00C2646F /* CFICULogging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFICULogging.h; sourceTree = "<group>"; };
+		0A646EAC206E33FB00C2646F /* CFPlugInCOM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFPlugInCOM.h; sourceTree = "<group>"; };
+		0A646EAD206E33FB00C2646F /* CFPlugIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFPlugIn.h; sourceTree = "<group>"; };
+		0A646EAE206E33FB00C2646F /* CFFileUtilities.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFFileUtilities.c; sourceTree = "<group>"; };
+		0A646EAF206E33FB00C2646F /* CFLocaleKeys.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFLocaleKeys.c; sourceTree = "<group>"; };
+		0A646EB0206E33FB00C2646F /* CFUnicodeDecomposition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFUnicodeDecomposition.h; sourceTree = "<group>"; };
+		0A646EB1206E33FB00C2646F /* CFDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFDate.h; sourceTree = "<group>"; };
+		0A646EB2206E33FB00C2646F /* CFBurstTrie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFBurstTrie.h; sourceTree = "<group>"; };
+		0A646EB3206E33FB00C2646F /* CFStringEncodingConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFStringEncodingConverter.h; sourceTree = "<group>"; };
+		0A646EB4206E33FB00C2646F /* CFStreamInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFStreamInternal.h; sourceTree = "<group>"; };
+		0A646EB5206E33FB00C2646F /* CFStringEncodingConverterExt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFStringEncodingConverterExt.h; sourceTree = "<group>"; };
+		0A646EB6206E33FB00C2646F /* CFLocale.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFLocale.h; sourceTree = "<group>"; };
+		0A646EB7206E33FB00C2646F /* CFData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFData.h; sourceTree = "<group>"; };
+		0A646EB8206E33FB00C2646F /* CFUniChar.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFUniChar.c; sourceTree = "<group>"; };
+		0A646EB9206E33FB00C2646F /* CFNumberFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFNumberFormatter.h; sourceTree = "<group>"; };
+		0A646EBA206E33FB00C2646F /* CFURLAccess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFURLAccess.h; sourceTree = "<group>"; };
+		0A646EBB206E33FB00C2646F /* CFLocaleInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFLocaleInternal.h; sourceTree = "<group>"; };
+		0A646EBC206E33FB00C2646F /* CFStreamPriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFStreamPriv.h; sourceTree = "<group>"; };
+		0A646EBD206E33FB00C2646F /* CFLogUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFLogUtilities.h; sourceTree = "<group>"; };
+		0A646EBE206E33FB00C2646F /* CFRuntime.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFRuntime.c; sourceTree = "<group>"; };
+		0A646EBF206E33FB00C2646F /* CFPreferences.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFPreferences.c; sourceTree = "<group>"; };
+		0A646EC0206E33FB00C2646F /* CFUserNotification.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFUserNotification.c; sourceTree = "<group>"; };
+		0A646EC1206E33FB00C2646F /* CFTimeZone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFTimeZone.h; sourceTree = "<group>"; };
+		0A646EC2206E33FB00C2646F /* TargetConditionals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TargetConditionals.h; sourceTree = "<group>"; };
+		0A646EC3206E33FB00C2646F /* CFXMLPreferencesDomain.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFXMLPreferencesDomain.c; sourceTree = "<group>"; };
+		0A646EC4206E33FB00C2646F /* CFError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFError.h; sourceTree = "<group>"; };
+		0A646EC5206E33FB00C2646F /* CFNumber.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFNumber.h; sourceTree = "<group>"; };
+		0A646EC6206E33FB00C2646F /* CFBundlePriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFBundlePriv.h; sourceTree = "<group>"; };
+		0A646EC7206E33FB00C2646F /* README_CFLITE */ = {isa = PBXFileReference; lastKnownFileType = text; path = README_CFLITE; sourceTree = "<group>"; };
+		0A646EC8206E33FB00C2646F /* CFCharacterSetBitmaps.bitmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = CFCharacterSetBitmaps.bitmap; sourceTree = "<group>"; };
+		0A646EC9206E33FB00C2646F /* CFXMLInputStream.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFXMLInputStream.c; sourceTree = "<group>"; };
+		0A646ECA206E33FB00C2646F /* CFBag.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFBag.c; sourceTree = "<group>"; };
+		0A646ECB206E33FB00C2646F /* CFPropertyList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFPropertyList.h; sourceTree = "<group>"; };
+		0A646ECC206E33FB00C2646F /* CFBundle.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFBundle.c; sourceTree = "<group>"; };
+		0A646ECD206E33FB00C2646F /* CFSocketStream.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFSocketStream.c; sourceTree = "<group>"; };
+		0A646ECE206E33FB00C2646F /* CFBigNumber.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFBigNumber.c; sourceTree = "<group>"; };
+		0A646ECF206E33FB00C2646F /* CFUUID.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFUUID.c; sourceTree = "<group>"; };
+		0A646ED0206E33FB00C2646F /* PropertyList.dtd */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PropertyList.dtd; sourceTree = "<group>"; };
+		0A646ED1206E33FB00C2646F /* CFPlugIn_Instance.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFPlugIn_Instance.c; sourceTree = "<group>"; };
+		0A646ED2206E33FB00C2646F /* CFPriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFPriv.h; sourceTree = "<group>"; };
+		0A646ED3206E33FB00C2646F /* CFByteOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFByteOrder.h; sourceTree = "<group>"; };
+		0A646ED4206E33FB00C2646F /* CFBuiltinConverters.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFBuiltinConverters.c; sourceTree = "<group>"; };
+		0A646ED5206E33FB00C2646F /* CFStorage.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFStorage.c; sourceTree = "<group>"; };
+		0A646ED7206E33FB00C2646F /* plconvert.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = plconvert.c; sourceTree = "<group>"; };
+		0A646ED8206E33FB00C2646F /* CFCharacterSet.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFCharacterSet.c; sourceTree = "<group>"; };
+		0A646ED9206E33FB00C2646F /* CFDictionary.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFDictionary.c; sourceTree = "<group>"; };
+		0A646EDA206E33FB00C2646F /* CFSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFSocket.h; sourceTree = "<group>"; };
+		0A646EDB206E33FB00C2646F /* CFURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFURL.h; sourceTree = "<group>"; };
+		0A646EDC206E33FB00C2646F /* CFInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFInternal.h; sourceTree = "<group>"; };
+		0A646EDD206E33FB00C2646F /* CFBitVector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFBitVector.h; sourceTree = "<group>"; };
+		0A646EDE206E33FB00C2646F /* CFXMLParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFXMLParser.h; sourceTree = "<group>"; };
+		0A646EDF206E33FB00C2646F /* CFXMLTree.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFXMLTree.c; sourceTree = "<group>"; };
+		0A646EE0206E33FB00C2646F /* CFRunLoop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFRunLoop.h; sourceTree = "<group>"; };
+		0A646EE1206E33FB00C2646F /* CFStream.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFStream.c; sourceTree = "<group>"; };
+		0A646EE2206E33FB00C2646F /* CFLocaleIdentifier.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFLocaleIdentifier.c; sourceTree = "<group>"; };
+		0A646EE3206E33FB00C2646F /* CFXMLNode.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFXMLNode.c; sourceTree = "<group>"; };
+		0A646EE4206E33FB00C2646F /* CFArray.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFArray.c; sourceTree = "<group>"; };
+		0A646EE5206E33FB00C2646F /* CFBasicHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFBasicHash.h; sourceTree = "<group>"; };
+		0A646EE6206E33FB00C2646F /* CFString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFString.h; sourceTree = "<group>"; };
+		0A646EE7206E33FB00C2646F /* CFPlatform.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFPlatform.c; sourceTree = "<group>"; };
+		0A646EE8206E33FB00C2646F /* CFStringScanner.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFStringScanner.c; sourceTree = "<group>"; };
+		0A646EE9206E33FB00C2646F /* CFMachPort.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFMachPort.c; sourceTree = "<group>"; };
+		0A646EEA206E33FB00C2646F /* CFUnicodePrecomposition.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFUnicodePrecomposition.c; sourceTree = "<group>"; };
+		0A646EEB206E33FB00C2646F /* CFBinaryHeap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFBinaryHeap.h; sourceTree = "<group>"; };
+		0A646EEC206E33FB00C2646F /* CFMessagePort.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFMessagePort.c; sourceTree = "<group>"; };
+		0A646EED206E33FB00C2646F /* CFTree.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFTree.c; sourceTree = "<group>"; };
+		0A646EEE206E33FB00C2646F /* CFBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFBase.h; sourceTree = "<group>"; };
+		0A646EEF206E33FB00C2646F /* CFURLPriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFURLPriv.h; sourceTree = "<group>"; };
+		0A646EF0206E33FB00C2646F /* CFSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFSet.h; sourceTree = "<group>"; };
+		0A646EF1206E33FB00C2646F /* CFUnicodeData-L.mapping */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CFUnicodeData-L.mapping"; sourceTree = "<group>"; };
+		0A646EF2206E33FB00C2646F /* CFPlatformConverters.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFPlatformConverters.c; sourceTree = "<group>"; };
+		0A646EF3206E33FB00C2646F /* CFUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFUtilities.h; sourceTree = "<group>"; };
+		0A646EF4206E33FB00C2646F /* CFPlugIn_Factory.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFPlugIn_Factory.c; sourceTree = "<group>"; };
+		0A646EF5206E33FB00C2646F /* CFDateFormatter.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFDateFormatter.c; sourceTree = "<group>"; };
+		0A646EF6206E33FB00C2646F /* CFICUConverters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFICUConverters.h; sourceTree = "<group>"; };
+		0A646EF7206E33FB00C2646F /* CF-855.17.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "CF-855.17.xcodeproj"; sourceTree = "<group>"; };
+		0A646EFA206E33FB00C2646F /* CFUniCharPropertyDatabase.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = CFUniCharPropertyDatabase.data; sourceTree = "<group>"; };
+		0A646EFB206E33FB00C2646F /* MakefileLinux */ = {isa = PBXFileReference; lastKnownFileType = text; path = MakefileLinux; sourceTree = "<group>"; };
+		0A646EFC206E33FB00C2646F /* CFStringUtilities.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFStringUtilities.c; sourceTree = "<group>"; };
+		0A646EFD206E33FB00C2646F /* CFStringEncodingDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFStringEncodingDatabase.h; sourceTree = "<group>"; };
+		0A646EFE206E33FB00C2646F /* CFStringDefaultEncoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFStringDefaultEncoding.h; sourceTree = "<group>"; };
+		0A646EFF206E33FB00C2646F /* CFCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFCalendar.h; sourceTree = "<group>"; };
+		0A646F00206E33FB00C2646F /* CFError_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFError_Private.h; sourceTree = "<group>"; };
+		0A646F01206E33FB00C2646F /* CFWindowsUtilities.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFWindowsUtilities.c; sourceTree = "<group>"; };
+		0A646F02206E33FB00C2646F /* plconvert.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = plconvert.c; sourceTree = "<group>"; };
+		0A646F03206E33FB00C2646F /* CFURLAccess.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFURLAccess.c; sourceTree = "<group>"; };
+		0A646F04206E33FB00C2646F /* CFNumberFormatter.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFNumberFormatter.c; sourceTree = "<group>"; };
+		0A646F05206E33FB00C2646F /* CFStringEncodings.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFStringEncodings.c; sourceTree = "<group>"; };
+		0A646F06206E33FB00C2646F /* CFLocale.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFLocale.c; sourceTree = "<group>"; };
+		0A646F07206E33FB00C2646F /* CFStringEncodingExt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFStringEncodingExt.h; sourceTree = "<group>"; };
+		0A646F08206E33FB00C2646F /* CFUniChar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFUniChar.h; sourceTree = "<group>"; };
+		0A646F09206E33FB00C2646F /* CFCharacterSetPriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFCharacterSetPriv.h; sourceTree = "<group>"; };
+		0A646F0A206E33FB00C2646F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A646F0B206E33FB00C2646F /* CFData.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFData.c; sourceTree = "<group>"; };
+		0A646F0C206E33FB00C2646F /* CFStringEncodingConverter.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFStringEncodingConverter.c; sourceTree = "<group>"; };
+		0A646F0D206E33FB00C2646F /* CFBurstTrie.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFBurstTrie.c; sourceTree = "<group>"; };
+		0A646F0E206E33FB00C2646F /* CFDate.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFDate.c; sourceTree = "<group>"; };
+		0A646F0F206E33FB00C2646F /* CFUnicodeDecomposition.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFUnicodeDecomposition.c; sourceTree = "<group>"; };
+		0A646F10206E33FB00C2646F /* CFPlugIn_PlugIn.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFPlugIn_PlugIn.c; sourceTree = "<group>"; };
+		0A646F11206E33FB00C2646F /* CFPlugIn.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CFPlugIn.c; sourceTree = "<group>"; };
+		63783B7D204A501B0010DC4D /* KVO_TEST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KVO_TEST.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63783B80204A501B0010DC4D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		63783B81204A501B0010DC4D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		63783B83204A501B0010DC4D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		63783B84204A501B0010DC4D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		63783B87204A501B0010DC4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		63783B89204A501B0010DC4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		63783B8C204A501B0010DC4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		63783B8E204A501B0010DC4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63783B8F204A501B0010DC4D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		63783B95204A501B0010DC4D /* KVO_TESTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KVO_TESTUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63783B99204A501B0010DC4D /* KVO_TESTUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KVO_TESTUITests.m; sourceTree = "<group>"; };
+		63783B9B204A501B0010DC4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63783BA4204A50370010DC4D /* MObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MObject.h; sourceTree = "<group>"; };
+		63783BA5204A50370010DC4D /* MObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MObject.m; sourceTree = "<group>"; };
+		63783BA7204A509C0010DC4D /* MObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MObserver.h; sourceTree = "<group>"; };
+		63783BA8204A509C0010DC4D /* MObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MObserver.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		63783B7A204A501B0010DC4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63783B92204A501B0010DC4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A646E6B206E33FB00C2646F /* CF-855.17 */ = {
+			isa = PBXGroup;
+			children = (
+				0A646E6C206E33FB00C2646F /* CFUUID.h */,
+				0A646E6D206E33FB00C2646F /* CFUniCharPriv.h */,
+				0A646E6E206E33FB00C2646F /* CFBundle.h */,
+				0A646E6F206E33FB00C2646F /* CFBigNumber.h */,
+				0A646E70206E33FB00C2646F /* CFXMLInputStream.h */,
+				0A646E71206E33FB00C2646F /* CFNumber.c */,
+				0A646E72206E33FB00C2646F /* CFError.c */,
+				0A646E73206E33FB00C2646F /* CFBundle_Internal.h */,
+				0A646E74206E33FB00C2646F /* CFURL.inc.h */,
+				0A646E75206E33FB00C2646F /* CFPropertyList.c */,
+				0A646E76206E33FB00C2646F /* CFBag.h */,
+				0A646E77206E33FB00C2646F /* CFStringEncodingConverterPriv.h */,
+				0A646E78206E33FB00C2646F /* CFRuntime.h */,
+				0A646E79206E33FB00C2646F /* CFPreferences.h */,
+				0A646E7A206E33FB00C2646F /* CFConcreteStreams.c */,
+				0A646E7B206E33FB00C2646F /* CoreFoundation_Prefix.h */,
+				0A646E7C206E33FB00C2646F /* CFAvailability.h */,
+				0A646E7D206E33FB00C2646F /* SymbolAliases */,
+				0A646E7E206E33FB00C2646F /* CFUserNotification.h */,
+				0A646E7F206E33FB00C2646F /* CFTimeZone.c */,
+				0A646E80206E33FB00C2646F /* CFVersion.c */,
+				0A646E81206E33FB00C2646F /* ForFoundationOnly.h */,
+				0A646E82206E33FB00C2646F /* CFBinaryPList.c */,
+				0A646E83206E33FB00C2646F /* CFXMLNode.h */,
+				0A646E84206E33FB00C2646F /* CFBundle_Resources.c */,
+				0A646E85206E33FB00C2646F /* CFStreamAbstract.h */,
+				0A646E86206E33FB00C2646F /* CFString.c */,
+				0A646E87206E33FB00C2646F /* CFBasicHash.c */,
+				0A646E88206E33FB00C2646F /* CFArray.h */,
+				0A646E89206E33FB00C2646F /* CFBundle_InfoPlist.c */,
+				0A646E8A206E33FB00C2646F /* CFXMLParser.c */,
+				0A646E8B206E33FB00C2646F /* CFBitVector.c */,
+				0A646E8C206E33FB00C2646F /* CFStream.h */,
+				0A646E8D206E33FB00C2646F /* CFRunLoop.c */,
+				0A646E8E206E33FB00C2646F /* CoreFoundation.h */,
+				0A646E8F206E33FB00C2646F /* CFBundle_BinaryTypes.h */,
+				0A646E90206E33FB00C2646F /* CFSocket.c */,
+				0A646E91206E33FB00C2646F /* CFDictionary.h */,
+				0A646E92206E33FB00C2646F /* APPLE_LICENSE */,
+				0A646E93206E33FB00C2646F /* CFURL.c */,
+				0A646E94206E33FB00C2646F /* CFApplicationPreferences.c */,
+				0A646E95206E33FB00C2646F /* CFCharacterSet.h */,
+				0A646E96206E33FB00C2646F /* CFBasicHashFindBucket.m */,
+				0A646E97206E33FB00C2646F /* CFStorage.h */,
+				0A646E98206E33FB00C2646F /* CFStringEncodingDatabase.c */,
+				0A646E99206E33FB00C2646F /* CFSystemDirectories.c */,
+				0A646E9A206E33FB00C2646F /* CFUnicodeData-B.mapping */,
+				0A646E9B206E33FB00C2646F /* CFCalendar.c */,
+				0A646E9C206E33FB00C2646F /* CFOldStylePList.c */,
+				0A646E9D206E33FB00C2646F /* Makefile */,
+				0A646E9E206E33FB00C2646F /* CFDateFormatter.h */,
+				0A646E9F206E33FB00C2646F /* CFPlugIn_Factory.h */,
+				0A646EA0206E33FB00C2646F /* CFICUConverters.c */,
+				0A646EA1206E33FB00C2646F /* CFSet.c */,
+				0A646EA2206E33FB00C2646F /* CFBase.c */,
+				0A646EA3206E33FB00C2646F /* CFTree.h */,
+				0A646EA4206E33FB00C2646F /* CFSortFunctions.c */,
+				0A646EA5206E33FB00C2646F /* CFBinaryHeap.c */,
+				0A646EA6206E33FB00C2646F /* CFMessagePort.h */,
+				0A646EA7206E33FB00C2646F /* CFUtilities.c */,
+				0A646EA8206E33FB00C2646F /* MakefileVersion */,
+				0A646EA9206E33FB00C2646F /* CFUnicodePrecomposition.h */,
+				0A646EAA206E33FB00C2646F /* CFMachPort.h */,
+				0A646EAB206E33FB00C2646F /* CFICULogging.h */,
+				0A646EAC206E33FB00C2646F /* CFPlugInCOM.h */,
+				0A646EAD206E33FB00C2646F /* CFPlugIn.h */,
+				0A646EAE206E33FB00C2646F /* CFFileUtilities.c */,
+				0A646EAF206E33FB00C2646F /* CFLocaleKeys.c */,
+				0A646EB0206E33FB00C2646F /* CFUnicodeDecomposition.h */,
+				0A646EB1206E33FB00C2646F /* CFDate.h */,
+				0A646EB2206E33FB00C2646F /* CFBurstTrie.h */,
+				0A646EB3206E33FB00C2646F /* CFStringEncodingConverter.h */,
+				0A646EB4206E33FB00C2646F /* CFStreamInternal.h */,
+				0A646EB5206E33FB00C2646F /* CFStringEncodingConverterExt.h */,
+				0A646EB6206E33FB00C2646F /* CFLocale.h */,
+				0A646EB7206E33FB00C2646F /* CFData.h */,
+				0A646EB8206E33FB00C2646F /* CFUniChar.c */,
+				0A646EB9206E33FB00C2646F /* CFNumberFormatter.h */,
+				0A646EBA206E33FB00C2646F /* CFURLAccess.h */,
+				0A646EBB206E33FB00C2646F /* CFLocaleInternal.h */,
+				0A646EBC206E33FB00C2646F /* CFStreamPriv.h */,
+				0A646EBD206E33FB00C2646F /* CFLogUtilities.h */,
+				0A646EBE206E33FB00C2646F /* CFRuntime.c */,
+				0A646EBF206E33FB00C2646F /* CFPreferences.c */,
+				0A646EC0206E33FB00C2646F /* CFUserNotification.c */,
+				0A646EC1206E33FB00C2646F /* CFTimeZone.h */,
+				0A646EC2206E33FB00C2646F /* TargetConditionals.h */,
+				0A646EC3206E33FB00C2646F /* CFXMLPreferencesDomain.c */,
+				0A646EC4206E33FB00C2646F /* CFError.h */,
+				0A646EC5206E33FB00C2646F /* CFNumber.h */,
+				0A646EC6206E33FB00C2646F /* CFBundlePriv.h */,
+				0A646EC7206E33FB00C2646F /* README_CFLITE */,
+				0A646EC8206E33FB00C2646F /* CFCharacterSetBitmaps.bitmap */,
+				0A646EC9206E33FB00C2646F /* CFXMLInputStream.c */,
+				0A646ECA206E33FB00C2646F /* CFBag.c */,
+				0A646ECB206E33FB00C2646F /* CFPropertyList.h */,
+				0A646ECC206E33FB00C2646F /* CFBundle.c */,
+				0A646ECD206E33FB00C2646F /* CFSocketStream.c */,
+				0A646ECE206E33FB00C2646F /* CFBigNumber.c */,
+				0A646ECF206E33FB00C2646F /* CFUUID.c */,
+				0A646ED0206E33FB00C2646F /* PropertyList.dtd */,
+				0A646ED1206E33FB00C2646F /* CFPlugIn_Instance.c */,
+				0A646ED2206E33FB00C2646F /* CFPriv.h */,
+				0A646ED3206E33FB00C2646F /* CFByteOrder.h */,
+				0A646ED4206E33FB00C2646F /* CFBuiltinConverters.c */,
+				0A646ED5206E33FB00C2646F /* CFStorage.c */,
+				0A646ED6206E33FB00C2646F /* Examples */,
+				0A646ED8206E33FB00C2646F /* CFCharacterSet.c */,
+				0A646ED9206E33FB00C2646F /* CFDictionary.c */,
+				0A646EDA206E33FB00C2646F /* CFSocket.h */,
+				0A646EDB206E33FB00C2646F /* CFURL.h */,
+				0A646EDC206E33FB00C2646F /* CFInternal.h */,
+				0A646EDD206E33FB00C2646F /* CFBitVector.h */,
+				0A646EDE206E33FB00C2646F /* CFXMLParser.h */,
+				0A646EDF206E33FB00C2646F /* CFXMLTree.c */,
+				0A646EE0206E33FB00C2646F /* CFRunLoop.h */,
+				0A646EE1206E33FB00C2646F /* CFStream.c */,
+				0A646EE2206E33FB00C2646F /* CFLocaleIdentifier.c */,
+				0A646EE3206E33FB00C2646F /* CFXMLNode.c */,
+				0A646EE4206E33FB00C2646F /* CFArray.c */,
+				0A646EE5206E33FB00C2646F /* CFBasicHash.h */,
+				0A646EE6206E33FB00C2646F /* CFString.h */,
+				0A646EE7206E33FB00C2646F /* CFPlatform.c */,
+				0A646EE8206E33FB00C2646F /* CFStringScanner.c */,
+				0A646EE9206E33FB00C2646F /* CFMachPort.c */,
+				0A646EEA206E33FB00C2646F /* CFUnicodePrecomposition.c */,
+				0A646EEB206E33FB00C2646F /* CFBinaryHeap.h */,
+				0A646EEC206E33FB00C2646F /* CFMessagePort.c */,
+				0A646EED206E33FB00C2646F /* CFTree.c */,
+				0A646EEE206E33FB00C2646F /* CFBase.h */,
+				0A646EEF206E33FB00C2646F /* CFURLPriv.h */,
+				0A646EF0206E33FB00C2646F /* CFSet.h */,
+				0A646EF1206E33FB00C2646F /* CFUnicodeData-L.mapping */,
+				0A646EF2206E33FB00C2646F /* CFPlatformConverters.c */,
+				0A646EF3206E33FB00C2646F /* CFUtilities.h */,
+				0A646EF4206E33FB00C2646F /* CFPlugIn_Factory.c */,
+				0A646EF5206E33FB00C2646F /* CFDateFormatter.c */,
+				0A646EF6206E33FB00C2646F /* CFICUConverters.h */,
+				0A646EF7206E33FB00C2646F /* CF-855.17.xcodeproj */,
+				0A646EFA206E33FB00C2646F /* CFUniCharPropertyDatabase.data */,
+				0A646EFB206E33FB00C2646F /* MakefileLinux */,
+				0A646EFC206E33FB00C2646F /* CFStringUtilities.c */,
+				0A646EFD206E33FB00C2646F /* CFStringEncodingDatabase.h */,
+				0A646EFE206E33FB00C2646F /* CFStringDefaultEncoding.h */,
+				0A646EFF206E33FB00C2646F /* CFCalendar.h */,
+				0A646F00206E33FB00C2646F /* CFError_Private.h */,
+				0A646F01206E33FB00C2646F /* CFWindowsUtilities.c */,
+				0A646F02206E33FB00C2646F /* plconvert.c */,
+				0A646F03206E33FB00C2646F /* CFURLAccess.c */,
+				0A646F04206E33FB00C2646F /* CFNumberFormatter.c */,
+				0A646F05206E33FB00C2646F /* CFStringEncodings.c */,
+				0A646F06206E33FB00C2646F /* CFLocale.c */,
+				0A646F07206E33FB00C2646F /* CFStringEncodingExt.h */,
+				0A646F08206E33FB00C2646F /* CFUniChar.h */,
+				0A646F09206E33FB00C2646F /* CFCharacterSetPriv.h */,
+				0A646F0A206E33FB00C2646F /* Info.plist */,
+				0A646F0B206E33FB00C2646F /* CFData.c */,
+				0A646F0C206E33FB00C2646F /* CFStringEncodingConverter.c */,
+				0A646F0D206E33FB00C2646F /* CFBurstTrie.c */,
+				0A646F0E206E33FB00C2646F /* CFDate.c */,
+				0A646F0F206E33FB00C2646F /* CFUnicodeDecomposition.c */,
+				0A646F10206E33FB00C2646F /* CFPlugIn_PlugIn.c */,
+				0A646F11206E33FB00C2646F /* CFPlugIn.c */,
+			);
+			name = "CF-855.17";
+			path = "../../../../../../CF-855.17";
+			sourceTree = "<group>";
+		};
+		0A646ED6206E33FB00C2646F /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				0A646ED7206E33FB00C2646F /* plconvert.c */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
+		0A646EF8206E33FB00C2646F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		63783B74204A501B0010DC4D = {
+			isa = PBXGroup;
+			children = (
+				63783B7F204A501B0010DC4D /* KVO_TEST */,
+				63783B98204A501B0010DC4D /* KVO_TESTUITests */,
+				63783B7E204A501B0010DC4D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		63783B7E204A501B0010DC4D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63783B7D204A501B0010DC4D /* KVO_TEST.app */,
+				63783B95204A501B0010DC4D /* KVO_TESTUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		63783B7F204A501B0010DC4D /* KVO_TEST */ = {
+			isa = PBXGroup;
+			children = (
+				0A646E6B206E33FB00C2646F /* CF-855.17 */,
+				63783B80204A501B0010DC4D /* AppDelegate.h */,
+				63783B81204A501B0010DC4D /* AppDelegate.m */,
+				63783BA4204A50370010DC4D /* MObject.h */,
+				63783BA5204A50370010DC4D /* MObject.m */,
+				63783BA7204A509C0010DC4D /* MObserver.h */,
+				63783BA8204A509C0010DC4D /* MObserver.m */,
+				63783B83204A501B0010DC4D /* ViewController.h */,
+				63783B84204A501B0010DC4D /* ViewController.m */,
+				63783B86204A501B0010DC4D /* Main.storyboard */,
+				63783B89204A501B0010DC4D /* Assets.xcassets */,
+				63783B8B204A501B0010DC4D /* LaunchScreen.storyboard */,
+				63783B8E204A501B0010DC4D /* Info.plist */,
+				63783B8F204A501B0010DC4D /* main.m */,
+			);
+			path = KVO_TEST;
+			sourceTree = "<group>";
+		};
+		63783B98204A501B0010DC4D /* KVO_TESTUITests */ = {
+			isa = PBXGroup;
+			children = (
+				63783B99204A501B0010DC4D /* KVO_TESTUITests.m */,
+				63783B9B204A501B0010DC4D /* Info.plist */,
+			);
+			path = KVO_TESTUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		63783B7C204A501B0010DC4D /* KVO_TEST */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63783B9E204A501B0010DC4D /* Build configuration list for PBXNativeTarget "KVO_TEST" */;
+			buildPhases = (
+				63783B79204A501B0010DC4D /* Sources */,
+				63783B7A204A501B0010DC4D /* Frameworks */,
+				63783B7B204A501B0010DC4D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KVO_TEST;
+			productName = KVO_TEST;
+			productReference = 63783B7D204A501B0010DC4D /* KVO_TEST.app */;
+			productType = "com.apple.product-type.application";
+		};
+		63783B94204A501B0010DC4D /* KVO_TESTUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63783BA1204A501B0010DC4D /* Build configuration list for PBXNativeTarget "KVO_TESTUITests" */;
+			buildPhases = (
+				63783B91204A501B0010DC4D /* Sources */,
+				63783B92204A501B0010DC4D /* Frameworks */,
+				63783B93204A501B0010DC4D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63783B97204A501B0010DC4D /* PBXTargetDependency */,
+			);
+			name = KVO_TESTUITests;
+			productName = KVO_TESTUITests;
+			productReference = 63783B95204A501B0010DC4D /* KVO_TESTUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		63783B75204A501B0010DC4D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = yangyang;
+				TargetAttributes = {
+					63783B7C204A501B0010DC4D = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					63783B94204A501B0010DC4D = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 63783B7C204A501B0010DC4D;
+					};
+				};
+			};
+			buildConfigurationList = 63783B78204A501B0010DC4D /* Build configuration list for PBXProject "KVO_TEST" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 63783B74204A501B0010DC4D;
+			productRefGroup = 63783B7E204A501B0010DC4D /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0A646EF8206E33FB00C2646F /* Products */;
+					ProjectRef = 0A646EF7206E33FB00C2646F /* CF-855.17.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				63783B7C204A501B0010DC4D /* KVO_TEST */,
+				63783B94204A501B0010DC4D /* KVO_TESTUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		63783B7B204A501B0010DC4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63783B8D204A501B0010DC4D /* LaunchScreen.storyboard in Resources */,
+				63783B8A204A501B0010DC4D /* Assets.xcassets in Resources */,
+				63783B88204A501B0010DC4D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63783B93204A501B0010DC4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		63783B79204A501B0010DC4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63783BA6204A50370010DC4D /* MObject.m in Sources */,
+				63783BA9204A509C0010DC4D /* MObserver.m in Sources */,
+				63783B85204A501B0010DC4D /* ViewController.m in Sources */,
+				63783B90204A501B0010DC4D /* main.m in Sources */,
+				63783B82204A501B0010DC4D /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63783B91204A501B0010DC4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63783B9A204A501B0010DC4D /* KVO_TESTUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		63783B97204A501B0010DC4D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 63783B7C204A501B0010DC4D /* KVO_TEST */;
+			targetProxy = 63783B96204A501B0010DC4D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		63783B86204A501B0010DC4D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63783B87204A501B0010DC4D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		63783B8B204A501B0010DC4D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63783B8C204A501B0010DC4D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		63783B9C204A501B0010DC4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		63783B9D204A501B0010DC4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		63783B9F204A501B0010DC4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KVO_TEST/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.imooc.www.KVO-TEST";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		63783BA0204A501B0010DC4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KVO_TEST/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.imooc.www.KVO-TEST";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		63783BA2204A501B0010DC4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KVO_TESTUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.imooc.www.KVO-TESTUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KVO_TEST;
+			};
+			name = Debug;
+		};
+		63783BA3204A501B0010DC4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = KVO_TESTUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.imooc.www.KVO-TESTUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KVO_TEST;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		63783B78204A501B0010DC4D /* Build configuration list for PBXProject "KVO_TEST" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63783B9C204A501B0010DC4D /* Debug */,
+				63783B9D204A501B0010DC4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63783B9E204A501B0010DC4D /* Build configuration list for PBXNativeTarget "KVO_TEST" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63783B9F204A501B0010DC4D /* Debug */,
+				63783BA0204A501B0010DC4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63783BA1204A501B0010DC4D /* Build configuration list for PBXNativeTarget "KVO_TESTUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63783BA2204A501B0010DC4D /* Debug */,
+				63783BA3204A501B0010DC4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 63783B75204A501B0010DC4D /* Project object */;
+}
