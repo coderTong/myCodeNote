@@ -62,7 +62,7 @@ CHANGES conf  contrib LICENSE README
 先来一个OpenSSL和gcc
 ```
 
-yum install openssl openssl-devel -y
+yum install openssl openssl-devel gcc -y
 yum install gcc -y
 ```
 
