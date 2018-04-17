@@ -10,4 +10,6 @@
 
 @interface MObserver : NSObject
 
+//@property (nonatomic, mutableCopy) NSString *<#desc#>;
+
 @end

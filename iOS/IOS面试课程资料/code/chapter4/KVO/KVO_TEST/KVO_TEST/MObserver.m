@@ -12,6 +12,10 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     
+//    [object addObserver:@"" forKeyPath:@"" options:@"" context:@""];
+    
+    
+    [keyPath mutableCopy];
     if ([object isKindOfClass:[MObject class]] &&
          [keyPath isEqualToString:@"value"]) {
         
