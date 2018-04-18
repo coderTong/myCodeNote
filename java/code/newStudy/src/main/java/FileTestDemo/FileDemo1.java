@@ -1,6 +1,7 @@
 package FileTestDemo;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * Created by codew on 2018/1/24.
@@ -8,6 +9,8 @@ import java.io.File;
 
 
 public class FileDemo1 {
+
+
 
     public static void main(String[] args)
     {
@@ -18,7 +21,14 @@ public class FileDemo1 {
         File dir = new File("/Users/codew/Desktop/Test/AAC");
         File f3 = new File(dir, "abc.m");
         System.out.println(f1);
-}
+
+        List list = null;
+
+    }
+    @Deprecated
+    public void show1(){
+
+    }
 
 
 
