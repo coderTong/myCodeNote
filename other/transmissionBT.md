@@ -40,7 +40,7 @@ rpc-whitelist-enabled": false
 
 ```
 
-etc/init.d/transmission-daemon 这个文件里面，默认调用了参数 -T
+vim /etc/init.d/transmission-daemon 这个文件里面，默认调用了参数 -T
 
 如：
 
@@ -52,13 +52,13 @@ DAEMON_ARGS="-T --blocklist -g $TRANSMISSION_HOME/.config/transmission"
 
 而在
 
- transmission-daemon -help
+ transmission-daemon -help
 
 有帮助说明的
 
--t   --auth                             Require authentication
+-t   --auth                             Require authentication
 
--T   --no-auth                          Don't require authentication
+-T   --no-auth                          Don't require authentication
 
 ```
 
