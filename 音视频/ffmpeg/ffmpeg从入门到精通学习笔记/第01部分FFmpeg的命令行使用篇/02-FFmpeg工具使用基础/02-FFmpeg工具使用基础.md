@@ -157,6 +157,57 @@ Print help / information / capabilities:
 - 第四列是滤镜作用说明
 
 
+### ./ffmpeg --help full
+
+通过`./ffmpeg --help full`, 可以查看ffmpeg支持的所有封装格式(`demuxer`, `muxer`), 编解码器(`encoders`, `decoders`) 和滤镜处理器(`filers`)
+
+### ./ffmpeg -h xxx=xxx 具体支持的类型
+
+#### 1.查看FLV`封装`器的参数支持 (`ffmpeg -h muxer=flv`)
+
+![02-FFmpeg工具使用基础-08](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-08.png)
+
+FVL的muxer的信息包含两大部分, 具体如下
+  - 第一部分为FLV封装的`默认配置描述`, 如扩展名, MIME类型, 默认的视频编码格式, 默认的音频编码格式 
+  - 第二部分为FLV封装时可以支持的配置参数及相关说明
+
+
+#### 2.查看flv`解封装`器的参数支持: `./ffmpeg -h demuxer=flv`
+
+![02-FFmpeg工具使用基础-09](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-09.png)
+
+FVL的demuxer的信息包含两大部分, 具体如下
+  - 第一部分为FLV解封装默认的扩展名文件
+  - 第二部分为FLV解封装设置的参数及相关说明
+
+#### 3.查看H.264(AVC)的`编码`参数支持:  ./ffmpeg -h encoder=h264
+
+![02-FFmpeg工具使用基础-10](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-11.png)
+H.264编码参数包含两大部分
+  - 第一部分为H.264所支持的基本编码方式, 支持的多线程编码方式(列入帧级别多线程编码或Slice级别多线程编码), 编码器所支持的像素的色彩格式.
+
+  - 第二部为编码的具体配置参数及相关说明.
+
+
+
+
+#### 4. 查看H.264(AVC), 的解码参数支持: ./ffmpeg -h decoder=h264
+
+![02-FFmpeg工具使用基础-12](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-12.png)
+
+H.264解码参数也包两大部分
+
+- 第一部分为解码H.264时可以采用的常规支持, 多线程方式支持(帧级别多线程解码或者Slice级别多线程解码)
+- 第二部分为解码H.264时可以采用的解码参数及相关说明
+
+#### 5.查看colorkey滤镜的参数支持: ./ffmpeg -h filter=colorkey
+
+![02-FFmpeg工具使用基础-13](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-13.png)
+
+colorkey 滤镜参数查看信息包含两大部分
+- colorkey所支持的彩色格式信息, colorkey 所支持的多线程处理方法, 输入或输出支持
+- 
+
 
 
 
