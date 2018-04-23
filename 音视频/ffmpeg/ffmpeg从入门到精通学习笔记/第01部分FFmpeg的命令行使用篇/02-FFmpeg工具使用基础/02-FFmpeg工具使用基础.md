@@ -95,7 +95,70 @@ Print help / information / capabilities:
 ### ffmpeg --help long 查看高级参数
 ###  ./ffmpeg --help all 查看全部帮助
 ### ./ffmpeg -L 查看支持的license协议
-### 
+###  ./ffmpeg -version
+
+![02-FFmpeg工具使用基础-02](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-02.png)
+
+### ./ffmpeg -formats 查看支持的视频文件格式
+
+使用ffmpeg的时候, 有时可能会遇到无法解析的视频文件或者无法生成视频文件, 用这个命令查看
+
+![02-FFmpeg工具使用基础-03](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-03.png)
+
+- 第一列是多媒体文件封装格式的Demuxing支持与Muxing支持
+- 第二列是多媒体文件格式
+- 第三列是文件格式的详细说明
+
+
+###  ./ffmpeg -codecs 查看支持的编解码格式(All)
+
+- ./ffmpeg -encoders 查看支持的编码格式
+- ./ffmpeg -decoders 查看解码
+
+
+***ffmpeg -decoders***
+
+![02-FFmpeg工具使用基础-05](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-05.png)
+
+
+- 第一列包含6个字段, 
+  - 第1表示此编码器为音频、视频还是字幕, 
+  - 第2表示帧级别的多线程支持, 
+  - 第3表示分片级别的多线程, 
+  - 第4表示该编码为试验版本, 
+  - 第5表示draw horiz band模式支持, 
+  - 第6表示直接渲染模式支持
+- 第二列是编码格式
+- 第三列是编码格式的详细说明
+
+
+
+***./ffmpeg -encoders***
+
+![02-FFmpeg工具使用基础-06](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-06.png)
+
+- 第一列包含6个字段, 
+  - 第1表示此编码器为音频、视频还是字幕, 
+  - 第2表示帧级别的多线程支持, 
+  - 第3表示分片级别的多线程, 
+  - 第4表示该编码为试验版本, 
+  - 第5表示draw horiz band模式支持, 
+  - 第6表示直接渲染模式支持
+- 第二列是编码格式
+- 第三列是编码格式的详细说明
+
+### ./ffmpeg -filters 查看支持的滤镜
+
+![02-FFmpeg工具使用基础-07](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-07.png)
+
+- 第一列三个字段, 第一个字段是时间轴支持, 第二个字段是分片线程处理支持, 第三是命令支持
+- 第二列是滤镜名
+- 第三列是转换方式, 如音频转音频, 视频转视频, 创建音频, 创建视频等操作
+- 第四列是滤镜作用说明
+
+
+
+
 
 ## 2.1.1 的封装转换 
 ## 2.1.2 的转码参数
