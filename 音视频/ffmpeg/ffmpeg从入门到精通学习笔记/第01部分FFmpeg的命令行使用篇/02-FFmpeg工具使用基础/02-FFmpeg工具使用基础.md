@@ -206,13 +206,60 @@ H.264解码参数也包两大部分
 
 colorkey 滤镜参数查看信息包含两大部分
 - colorkey所支持的彩色格式信息, colorkey 所支持的多线程处理方法, 输入或输出支持
-- 
+- colorkey所支持的参数及说明
 
 
 
 
-## 2.1.1 的封装转换 
+## 2.1.1 的封装转换
+
+封装转换在`AVFormat`模块中, 通过libavformat库进行Mux和Demux操作.
+`多媒体文件的格式有很多种, 这些格式中的很多参数在Mux与Demux的操作参数中是共用的`
+如下
+
+![02-FFmpeg工具使用基础-14](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-14.png)
+
+
+
+| Ffmpeg AVFormatContext 主要参数帮助 |
+| 参数 | 类型 | 说明 |
+|---|---|---|
+| avioflags | 标记 | format的缓冲设置, 默认为0, 就是有缓冲 |
+| direct | 无缓冲状态 |
+| probesize | 整数 | 在进行媒体数据处理前获得文件内容大小, 可用在预读取文件头时提高速度, 也可以设置足够大的值来读取到足够多的音视频数据信息 |
+| fflags | 标记 |  |
+| fflags | flush_packets | 立即将packets数据刷新写入文件中 |
+| fflags | genpts | 输出时按照正常规则产生pts |
+| fflags | nofillin | 不填写可以精确计算缺失的值 |
+| fflags | igndts | 忽略dts |
+| fflags | discardcorrupt | 丢弃损坏的帧 |
+| fflags | sortdts | 尝试以dts的顺序为准输出 |
+| fflags | keepside | 不合并数据 |
+| fflags | fastseek | 快速seek(定位)操作, 但是不够精确 |
+| fflags | latm | 设置 RTP MP4_LATM生效 |
+| fflags | nobuffer | 直接读取或写出, 不存入buffer, 用于在直播采集时降低延迟 |
+| fflags | bitexact | 不写入随机或者不稳定的数据 |
+| fflags | seek2any | 整数 | 支持随意位置seek, 这个seek不以keyframe为参考 |
+| analyzeduration | 整数 | 指定解析媒体所需要花销的时间, 这里设置的值越高, 解析越准确, 如果在直播中为了降低延迟, 这个值可以设置得低一些 |
+| codec_whitelist | 列表 | 设置可以解析的codec的白名单 |
+| format_whitelist | 列表 | 设置可以解析的format的白名单 |
+| output_ts_offset | 整数 | 设置输出文件的起始时间 |
+
+上面这些都是通用的封装,解封装操作时使用的参数. 后面会说具体用
+
+
+
+ 
 ## 2.1.2 的转码参数
+
+ffmpeg编解码部分的功能主要是通过模块`AVCodec `来完成的, 通过`libavcodec`库进行Encode与Decode操作
+多媒体编码格式公共参数如下
+
+
+
+
+
+
 ## 2.1.3 的基本转码原理
 
 # 2.2 ffprobe常用命令
