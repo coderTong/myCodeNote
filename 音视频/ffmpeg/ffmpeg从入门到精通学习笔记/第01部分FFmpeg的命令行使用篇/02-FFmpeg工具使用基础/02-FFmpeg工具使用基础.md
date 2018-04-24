@@ -1747,4 +1747,24 @@ chi le mei
 ## 2.3.3 ffplay的数据可视化分析
 
 
+### 1. 查看音频波形: ./ffplay -showmode 1 107.mp3
+
+
+![02-FFmpeg工具使用基础-29](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-29.png)
+
+
+
+### 2.体验解码器是如何解码每个宏块: ./ffplay -debug vis_mb_type -window_title "ss" -ss 20 -t 10 -autoexit 0357.mp4
+
+
+
+
+### 3.查看B帧P帧信息: ./ffplay -vismv pf 0357.mp4
+
+### 4.运动矢量: ./ffplay -flags2 +export_mvs -ss 40 0357.mp4 -vf codecview=mv=pf+bf+bb
+
+
+![02-FFmpeg工具使用基础-30](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-30.png)
+
+
 
