@@ -1451,6 +1451,55 @@ Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'output.mp4':
 
 # 2.3 ffplay常用命令
 
+一般编译是没有ffplay, 需要安装SDL
+
+## 1.安装SDL MAC
+
+```
+
+
+cd /FFmpeg(源码文件夹)
+vim configure // 看看ffplay_deps是SDL几, 然后下几, 我这里是2, 所以我下2.0.8
+
+
+
+
+https://www.libsdl.org/
+
+下载:https://www.libsdl.org/release/SDL2-2.0.8.zip
+
+
+./configure
+
+make
+
+make install
+
+
+```
+
+
+
+## 2.编译ffmpeg生成ffplay
+
+```
+cd /FFmpeg(源码文件夹)
+
+修改config.h中的宏定义#define CONFIG_FFPLAY 0，将值改为1.
+
+vim config.h
+
+./configure --yasmexe=/Users/codew/Desktop/code4-av/yasm/yasmB/yasm-1.3.0/bin/yasm --enable-ffplay --prefix=/Users/codew/Desktop/code4-av/ffmpegBinNew
+
+make 
+
+make install
+
+
+```
+
+
+
 ## 2.3.1 ffplay常用参数
 ## 2.3.2 ffplay高级参数
 ## 2.3.3 ffplay的数据可视化分析
