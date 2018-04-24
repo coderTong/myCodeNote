@@ -399,15 +399,1055 @@ flags=__
 
 ## 例子3: 查看多媒体封装格式:./ffprobe -show_format output.mp4
 
-
+mp4
 ![02-FFmpeg工具使用基础-23](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-23.png)
 
+format_name=mov,mp4,m4a,3gp,3g2,mj2
+
+`mov,mp4,m4a,3gp,3g2,mj2`这几种封装格式在ffmpeg中所识别的标签基本相同
 
 
+mkv
 ![02-FFmpeg工具使用基础-24](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-24.png)
 ![02-FFmpeg工具使用基础-25](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-25.png)
 
 
+![02-FFmpeg工具使用基础-26](image/02-FFmpeg%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E5%9F%BA%E7%A1%80-26.png)
+
+
+| 字段 | 说明 |
+|---|---|---|
+| fliename | 文件名 |
+| nb_streams | 媒体中包含的流的个数 |
+| nb_programs | 节目数(相关概念2.3详解) |
+| format_name | 使用的封装模块的名称 |
+| format_long_name | 封装的完整名称 |
+| start_time | 媒体文件的起始时间 |
+| duration | 媒体文件的总时间长度 |
+| size | 媒体文件的大小 |
+| bit_rate | 媒体文件的码率 |
+
+
+`帧信息`
+## 例子4: 查看视频文件的帧信息./ffprobe -show_frames output.mp4
+	
+```
+
+[FRAME]
+
+media_type=video
+
+stream_index=0
+
+key_frame=0
+
+pkt_pts=102036480
+
+pkt_pts_time=6643.000000
+
+pkt_dts=102036480
+
+pkt_dts_time=6643.000000
+
+best_effort_timestamp=102036480
+
+best_effort_timestamp_time=6643.000000
+
+pkt_duration=1029
+
+pkt_duration_time=0.066992
+
+pkt_pos=471040267
+
+pkt_size=351
+
+width=1280
+
+height=536
+
+pix_fmt=yuv420p
+
+sample_aspect_ratio=1:1
+
+pict_type=P
+
+coded_picture_number=99645
+
+display_picture_number=0
+
+interlaced_frame=0
+
+top_field_first=0
+
+repeat_pict=0
+
+color_range=unknown
+
+color_space=unknown
+
+color_primaries=unknown
+
+color_transfer=unknown
+
+chroma_location=left
+
+[SIDE_DATA]
+
+side_data_type=QP table data
+
+[/SIDE_DATA]
+
+[SIDE_DATA]
+
+side_data_type=QP table properties
+
+[/SIDE_DATA]
+
+[/FRAME]
+
+
+```
+
+
+| frame 字段说明 |
+| 属性 | 说明 | 值 |
+|---|---|---|
+| media_type | 帧的类型(视频,音频, 字幕等) | video |
+| stream_index | 帧所在的索引区域 | 0 |
+| key_frame | 是否为关键帧 | 0 |
+| pkt_pts | frame包的pts | 102036480 |
+| pkt_pts_time | frame包的 pts的时间显示 | 6643.000000 |
+| pkt_dts | frame包的 dts | 102036480 |
+| pkt_dts_time | frame包的 dts 的时间显示 | 6643.000000 |
+| pkt_duration | frame包的 时长 | 1029 |
+| pkt_duration_time | frame包的 时长时间显示 | 0.066992 |
+| pkt_pos | frame包的 所在文件的偏移位置 | 471040267 |
+| width | 帧显示的宽度 | 1280 |
+| height | 帧显示的高度 | 536 |
+| pix_fmt | 帧的图像色彩格式 | yuv420p |
+| pict_type | 帧类型 | P |
+
+
+`流信息`
+## 例子5: 看多媒体文件中的`流信息`, 流的信息将使用STREAM标签括起来:./ffprobe -show_streams output.mp4
+
+
+```
+
+./ffprobe -show_streams output.mp4
+
+ffprobe version N-90810-g153e920 Copyright (c) 2007-2018 the FFmpeg developers
+
+ built with gcc 4.4.7 (GCC) 20120313 (Red Hat 4.4.7-18)
+
+ configuration: --yasmexe=/application/yasm-1.3.0/bin/yasm --prefix=/application/FFmpeg/
+
+ libavutil 56\. 15.100 / 56\. 15.100
+
+ libavcodec  58\. 19.100 / 58\. 19.100
+
+ libavformat 58\. 13.100 / 58\. 13.100
+
+ libavdevice 58. 4.100 / 58. 4.100
+
+ libavfilter  7\. 19.100 / 7\. 19.100
+
+ libswscale 5. 2.100 / 5. 2.100
+
+ libswresample  3. 2.100 / 3. 2.100
+
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'output.mp4':
+
+ Metadata:
+
+ major_brand  : isom
+
+ minor_version  : 512
+
+ compatible_brands: isomiso2mp41
+
+ title  : Pacific.Rim.2.Uprising.2018.720p.KORSUB.HDRip.x264.AAC2.0-STUTTERSHIT
+
+ encoder  : Lavf58.13.100
+
+ Duration: 01:50:43.07, start: 0.000000, bitrate: 567 kb/s
+
+ Stream #0:0(und): Video: mpeg4 (Simple Profile) (mp4v / 0x7634706D), yuv420p, 1280x536 [SAR 1:1 DAR 160:67], 567 kb/s, 15 fps, 15 tbr, 15360 tbn, 15 tbc (default)
+
+ Metadata:
+
+ handler_name : VideoHandler
+
+[STREAM]
+
+index=0
+
+codec_name=mpeg4
+
+codec_long_name=MPEG-4 part 2
+
+profile=Simple Profile
+
+codec_type=video
+
+codec_time_base=1/15
+
+codec_tag_string=mp4v
+
+codec_tag=0x7634706d
+
+width=1280
+
+height=536
+
+coded_width=1280
+
+coded_height=536
+
+has_b_frames=0
+
+sample_aspect_ratio=1:1
+
+display_aspect_ratio=160:67
+
+pix_fmt=yuv420p
+
+level=1
+
+color_range=unknown
+
+color_space=unknown
+
+color_transfer=unknown
+
+color_primaries=unknown
+
+chroma_location=left
+
+field_order=unknown
+
+timecode=N/A
+
+refs=1
+
+quarter_sample=false
+
+divx_packed=false
+
+id=N/A
+
+r_frame_rate=15/1
+
+avg_frame_rate=15/1
+
+time_base=1/15360
+
+start_pts=0
+
+start_time=0.000000
+
+duration_ts=102037509
+
+duration=6643.066992
+
+bit_rate=567256
+
+max_bit_rate=567256
+
+bits_per_raw_sample=N/A
+
+nb_frames=99646
+
+nb_read_frames=N/A
+
+nb_read_packets=N/A
+
+DISPOSITION:default=1
+
+DISPOSITION:dub=0
+
+DISPOSITION:original=0
+
+DISPOSITION:comment=0
+
+DISPOSITION:lyrics=0
+
+DISPOSITION:karaoke=0
+
+DISPOSITION:forced=0
+
+DISPOSITION:hearing_impaired=0
+
+DISPOSITION:visual_impaired=0
+
+DISPOSITION:clean_effects=0
+
+DISPOSITION:attached_pic=0
+
+DISPOSITION:timed_thumbnails=0
+
+TAG:language=und
+
+TAG:handler_name=VideoHandler
+
+[/STREAM]
+
+
+```
+
+
+
+
+| 属性 | 说明 | 值 |
+|---|---|---|
+| index | 流所在的索引区域 | 0 |
+| codec_name | 编码名 | mpeg4 |
+| codec_long_name | 编码全名 | MPEG-4 part 2 |
+| profile | 编码的profile | Simple Profile |
+| level | 编码的level | 1/15 |
+| has_b_frames | 包含B帧信息 | 0 |
+| codec_type | 编码类型 | video |
+| codec_time_base | 编码的时间戳计算基础单位 | 1/15 |
+| pix_fmt | 图像显示的色彩格式 | yuv420p |
+| coded_width | 图像的宽度 | 1280 |
+| coded_height | 图像的高度 | 536 |
+| codec_tag_string | 编码的标签数据 | mp4v |
+
+
+
+### stream 字段其他说明
+
+```
+
+r_frame_rate=15/1
+
+avg_frame_rate=15/1
+
+time_base=1/15360
+
+bit_rate=567256
+
+max_bit_rate=567256
+
+nb_frames=99646
+```
+
+
+| 属性 | 说明 | 值 |
+|---|---|---|
+| r_frame_rate | 实际帧率 | 15/1 |
+| avg_frame_rate | 平均帧数 | 15/1 |
+| time_base | 时间基数(用来进行timestamp 计算) | 1/15360 |
+| bit_rate | 码率 | 567256 |
+| max_bit_rate | 最大码率 | 567256 |
+| nb_frames | 帧数 | 99646 |
+
+
+
+
+
+
+## XML格式输出show_streams: ./ffprobe -of xml -show_streams output.mp4
+
+```
+
+./ffprobe -of xml -show_streams output.mp4
+
+ffprobe version N-90810-g153e920 Copyright (c) 2007-2018 the FFmpeg developers
+
+ built with gcc 4.4.7 (GCC) 20120313 (Red Hat 4.4.7-18)
+
+ configuration: --yasmexe=/application/yasm-1.3.0/bin/yasm --prefix=/application/FFmpeg/
+
+ libavutil 56\. 15.100 / 56\. 15.100
+
+ libavcodec  58\. 19.100 / 58\. 19.100
+
+ libavformat 58\. 13.100 / 58\. 13.100
+
+ libavdevice 58. 4.100 / 58. 4.100
+
+ libavfilter  7\. 19.100 / 7\. 19.100
+
+ libswscale 5. 2.100 / 5. 2.100
+
+ libswresample  3. 2.100 / 3. 2.100
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ffprobe>
+
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'output.mp4':
+
+ Metadata:
+
+ major_brand  : isom
+
+ minor_version  : 512
+
+ compatible_brands: isomiso2mp41
+
+ title  : Pacific.Rim.2.Uprising.2018.720p.KORSUB.HDRip.x264.AAC2.0-STUTTERSHIT
+
+ encoder  : Lavf58.13.100
+
+ Duration: 01:50:43.07, start: 0.000000, bitrate: 567 kb/s
+
+ Stream #0:0(und): Video: mpeg4 (Simple Profile) (mp4v / 0x7634706D), yuv420p, 1280x536 [SAR 1:1 DAR 160:67], 567 kb/s, 15 fps, 15 tbr, 15360 tbn, 15 tbc (default)
+
+ Metadata:
+
+ handler_name : VideoHandler
+
+ <streams>
+
+ <stream index="0" codec_name="mpeg4" codec_long_name="MPEG-4 part 2" profile="Simple Profile" codec_type="video" codec_time_base="1/15" codec_tag_string="mp4v" codec_tag="0x7634706d" width="1280" height="536" coded_width="1280" coded_height="536" has_b_frames="0" sample_aspect_ratio="1:1" display_aspect_ratio="160:67" pix_fmt="yuv420p" level="1" chroma_location="left" refs="1" quarter_sample="false" divx_packed="false" r_frame_rate="15/1" avg_frame_rate="15/1" time_base="1/15360" start_pts="0" start_time="0.000000" duration_ts="102037509" duration="6643.066992" bit_rate="567256" max_bit_rate="567256" nb_frames="99646">
+
+ <disposition default="1" dub="0" original="0" comment="0" lyrics="0" karaoke="0" forced="0" hearing_impaired="0" visual_impaired="0" clean_effects="0" attached_pic="0" timed_thumbnails="0"/>
+
+ <tag key="language" value="und"/>
+
+ <tag key="handler_name" value="VideoHandler"/>
+
+ </stream>
+
+ </streams>
+
+</ffprobe>
+
+
+```
+
+
+## INI 格式输出: ./ffprobe -of ini -show_streams output.mp4
+
+
+```
+
+./ffprobe -of ini -show_streams output.mp4
+
+ffprobe version N-90810-g153e920 Copyright (c) 2007-2018 the FFmpeg developers
+
+ built with gcc 4.4.7 (GCC) 20120313 (Red Hat 4.4.7-18)
+
+ configuration: --yasmexe=/application/yasm-1.3.0/bin/yasm --prefix=/application/FFmpeg/
+
+ libavutil 56\. 15.100 / 56\. 15.100
+
+ libavcodec  58\. 19.100 / 58\. 19.100
+
+ libavformat 58\. 13.100 / 58\. 13.100
+
+ libavdevice 58. 4.100 / 58. 4.100
+
+ libavfilter  7\. 19.100 / 7\. 19.100
+
+ libswscale 5. 2.100 / 5. 2.100
+
+ libswresample  3. 2.100 / 3. 2.100
+
+# ffprobe output
+
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'output.mp4':
+
+ Metadata:
+
+ major_brand  : isom
+
+ minor_version  : 512
+
+ compatible_brands: isomiso2mp41
+
+ title  : Pacific.Rim.2.Uprising.2018.720p.KORSUB.HDRip.x264.AAC2.0-STUTTERSHIT
+
+ encoder  : Lavf58.13.100
+
+ Duration: 01:50:43.07, start: 0.000000, bitrate: 567 kb/s
+
+ Stream #0:0(und): Video: mpeg4 (Simple Profile) (mp4v / 0x7634706D), yuv420p, 1280x536 [SAR 1:1 DAR 160:67], 567 kb/s, 15 fps, 15 tbr, 15360 tbn, 15 tbc (default)
+
+ Metadata:
+
+ handler_name : VideoHandler
+
+[streams.stream.0]
+
+index=0
+
+codec_name=mpeg4
+
+codec_long_name=MPEG-4 part 2
+
+profile=Simple Profile
+
+codec_type=video
+
+codec_time_base=1/15
+
+codec_tag_string=mp4v
+
+codec_tag=0x7634706d
+
+width=1280
+
+height=536
+
+coded_width=1280
+
+coded_height=536
+
+has_b_frames=0
+
+sample_aspect_ratio=1\:1
+
+display_aspect_ratio=160\:67
+
+pix_fmt=yuv420p
+
+level=1
+
+color_range=unknown
+
+color_space=unknown
+
+color_transfer=unknown
+
+color_primaries=unknown
+
+chroma_location=left
+
+field_order=unknown
+
+timecode=N/A
+
+refs=1
+
+quarter_sample=false
+
+divx_packed=false
+
+id=N/A
+
+r_frame_rate=15/1
+
+avg_frame_rate=15/1
+
+time_base=1/15360
+
+start_pts=0
+
+start_time=0.000000
+
+duration_ts=102037509
+
+duration=6643.066992
+
+bit_rate=567256
+
+max_bit_rate=567256
+
+bits_per_raw_sample=N/A
+
+nb_frames=99646
+
+nb_read_frames=N/A
+
+nb_read_packets=N/A
+
+[streams.stream.0.disposition]
+
+default=1
+
+dub=0
+
+original=0
+
+comment=0
+
+lyrics=0
+
+karaoke=0
+
+forced=0
+
+hearing_impaired=0
+
+visual_impaired=0
+
+clean_effects=0
+
+attached_pic=0
+
+timed_thumbnails=0
+
+[streams.stream.0.tags]
+
+language=und
+
+handler_name=VideoHandler
+
+```
+
+## FLAT 格式输出:./ffprobe -of flat -show_streams output.mp4
+
+```
+
+./ffprobe -of flat -show_streams output.mp4
+
+ffprobe version N-90810-g153e920 Copyright (c) 2007-2018 the FFmpeg developers
+
+ built with gcc 4.4.7 (GCC) 20120313 (Red Hat 4.4.7-18)
+
+ configuration: --yasmexe=/application/yasm-1.3.0/bin/yasm --prefix=/application/FFmpeg/
+
+ libavutil 56\. 15.100 / 56\. 15.100
+
+ libavcodec  58\. 19.100 / 58\. 19.100
+
+ libavformat 58\. 13.100 / 58\. 13.100
+
+ libavdevice 58. 4.100 / 58. 4.100
+
+ libavfilter  7\. 19.100 / 7\. 19.100
+
+ libswscale 5. 2.100 / 5. 2.100
+
+ libswresample  3. 2.100 / 3. 2.100
+
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'output.mp4':
+
+ Metadata:
+
+ major_brand  : isom
+
+ minor_version  : 512
+
+ compatible_brands: isomiso2mp41
+
+ title  : Pacific.Rim.2.Uprising.2018.720p.KORSUB.HDRip.x264.AAC2.0-STUTTERSHIT
+
+ encoder  : Lavf58.13.100
+
+ Duration: 01:50:43.07, start: 0.000000, bitrate: 567 kb/s
+
+ Stream #0:0(und): Video: mpeg4 (Simple Profile) (mp4v / 0x7634706D), yuv420p, 1280x536 [SAR 1:1 DAR 160:67], 567 kb/s, 15 fps, 15 tbr, 15360 tbn, 15 tbc (default)
+
+ Metadata:
+
+ handler_name : VideoHandler
+
+streams.stream.0.index=0
+
+streams.stream.0.codec_name="mpeg4"
+
+streams.stream.0.codec_long_name="MPEG-4 part 2"
+
+streams.stream.0.profile="Simple Profile"
+
+streams.stream.0.codec_type="video"
+
+streams.stream.0.codec_time_base="1/15"
+
+streams.stream.0.codec_tag_string="mp4v"
+
+streams.stream.0.codec_tag="0x7634706d"
+
+streams.stream.0.width=1280
+
+streams.stream.0.height=536
+
+streams.stream.0.coded_width=1280
+
+streams.stream.0.coded_height=536
+
+streams.stream.0.has_b_frames=0
+
+streams.stream.0.sample_aspect_ratio="1:1"
+
+streams.stream.0.display_aspect_ratio="160:67"
+
+streams.stream.0.pix_fmt="yuv420p"
+
+streams.stream.0.level=1
+
+streams.stream.0.color_range="unknown"
+
+streams.stream.0.color_space="unknown"
+
+streams.stream.0.color_transfer="unknown"
+
+streams.stream.0.color_primaries="unknown"
+
+streams.stream.0.chroma_location="left"
+
+streams.stream.0.field_order="unknown"
+
+streams.stream.0.timecode="N/A"
+
+streams.stream.0.refs=1
+
+streams.stream.0.quarter_sample="false"
+
+streams.stream.0.divx_packed="false"
+
+streams.stream.0.id="N/A"
+
+streams.stream.0.r_frame_rate="15/1"
+
+streams.stream.0.avg_frame_rate="15/1"
+
+streams.stream.0.time_base="1/15360"
+
+streams.stream.0.start_pts=0
+
+streams.stream.0.start_time="0.000000"
+
+streams.stream.0.duration_ts=102037509
+
+streams.stream.0.duration="6643.066992"
+
+streams.stream.0.bit_rate="567256"
+
+streams.stream.0.max_bit_rate="567256"
+
+streams.stream.0.bits_per_raw_sample="N/A"
+
+streams.stream.0.nb_frames="99646"
+
+streams.stream.0.nb_read_frames="N/A"
+
+streams.stream.0.nb_read_packets="N/A"
+
+streams.stream.0.disposition.default=1
+
+streams.stream.0.disposition.dub=0
+
+streams.stream.0.disposition.original=0
+
+streams.stream.0.disposition.comment=0
+
+streams.stream.0.disposition.lyrics=0
+
+streams.stream.0.disposition.karaoke=0
+
+streams.stream.0.disposition.forced=0
+
+streams.stream.0.disposition.hearing_impaired=0
+
+streams.stream.0.disposition.visual_impaired=0
+
+streams.stream.0.disposition.clean_effects=0
+
+streams.stream.0.disposition.attached_pic=0
+
+streams.stream.0.disposition.timed_thumbnails=0
+
+streams.stream.0.tags.language="und"
+
+streams.stream.0.tags.handler_name="VideoHandler"
+
+
+```
+## JSON格式输出: ./ffprobe -of json -show_streams output.mp4
+
+
+```
+
+ ./ffprobe -of json -show_streams output.mp4
+
+ffprobe version N-90810-g153e920 Copyright (c) 2007-2018 the FFmpeg developers
+
+ built with gcc 4.4.7 (GCC) 20120313 (Red Hat 4.4.7-18)
+
+ configuration: --yasmexe=/application/yasm-1.3.0/bin/yasm --prefix=/application/FFmpeg/
+
+ libavutil 56\. 15.100 / 56\. 15.100
+
+ libavcodec  58\. 19.100 / 58\. 19.100
+
+ libavformat 58\. 13.100 / 58\. 13.100
+
+ libavdevice 58. 4.100 / 58. 4.100
+
+ libavfilter  7\. 19.100 / 7\. 19.100
+
+ libswscale 5. 2.100 / 5. 2.100
+
+ libswresample  3. 2.100 / 3. 2.100
+
+{
+
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'output.mp4':
+
+ Metadata:
+
+ major_brand  : isom
+
+ minor_version  : 512
+
+ compatible_brands: isomiso2mp41
+
+ title  : Pacific.Rim.2.Uprising.2018.720p.KORSUB.HDRip.x264.AAC2.0-STUTTERSHIT
+
+ encoder  : Lavf58.13.100
+
+ Duration: 01:50:43.07, start: 0.000000, bitrate: 567 kb/s
+
+ Stream #0:0(und): Video: mpeg4 (Simple Profile) (mp4v / 0x7634706D), yuv420p, 1280x536 [SAR 1:1 DAR 160:67], 567 kb/s, 15 fps, 15 tbr, 15360 tbn, 15 tbc (default)
+
+ Metadata:
+
+ handler_name : VideoHandler
+
+ "streams": [
+
+ {
+
+ "index": 0,
+
+ "codec_name": "mpeg4",
+
+ "codec_long_name": "MPEG-4 part 2",
+
+ "profile": "Simple Profile",
+
+ "codec_type": "video",
+
+ "codec_time_base": "1/15",
+
+ "codec_tag_string": "mp4v",
+
+ "codec_tag": "0x7634706d",
+
+ "width": 1280,
+
+ "height": 536,
+
+ "coded_width": 1280,
+
+ "coded_height": 536,
+
+ "has_b_frames": 0,
+
+ "sample_aspect_ratio": "1:1",
+
+ "display_aspect_ratio": "160:67",
+
+ "pix_fmt": "yuv420p",
+
+ "level": 1,
+
+ "chroma_location": "left",
+
+ "refs": 1,
+
+ "quarter_sample": "false",
+
+ "divx_packed": "false",
+
+ "r_frame_rate": "15/1",
+
+ "avg_frame_rate": "15/1",
+
+ "time_base": "1/15360",
+
+ "start_pts": 0,
+
+ "start_time": "0.000000",
+
+ "duration_ts": 102037509,
+
+ "duration": "6643.066992",
+
+ "bit_rate": "567256",
+
+ "max_bit_rate": "567256",
+
+ "nb_frames": "99646",
+
+ "disposition": {
+
+ "default": 1,
+
+ "dub": 0,
+
+ "original": 0,
+
+ "comment": 0,
+
+ "lyrics": 0,
+
+ "karaoke": 0,
+
+ "forced": 0,
+
+ "hearing_impaired": 0,
+
+ "visual_impaired": 0,
+
+ "clean_effects": 0,
+
+ "attached_pic": 0,
+
+ "timed_thumbnails": 0
+
+ },
+
+ "tags": {
+
+ "language": "und",
+
+ "handler_name": "VideoHandler"
+
+ }
+
+ }
+
+ ]
+
+}
+
+
+```
+# CSV格式输出
+
+```
+
+ ./ffprobe -of csv -show_streams output.mp4
+
+ffprobe version N-90810-g153e920 Copyright (c) 2007-2018 the FFmpeg developers
+
+ built with gcc 4.4.7 (GCC) 20120313 (Red Hat 4.4.7-18)
+
+ configuration: --yasmexe=/application/yasm-1.3.0/bin/yasm --prefix=/application/FFmpeg/
+
+ libavutil 56\. 15.100 / 56\. 15.100
+
+ libavcodec  58\. 19.100 / 58\. 19.100
+
+ libavformat 58\. 13.100 / 58\. 13.100
+
+ libavdevice 58. 4.100 / 58. 4.100
+
+ libavfilter  7\. 19.100 / 7\. 19.100
+
+ libswscale 5. 2.100 / 5. 2.100
+
+ libswresample  3. 2.100 / 3. 2.100
+
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'output.mp4':
+
+ Metadata:
+
+ major_brand  : isom
+
+ minor_version  : 512
+
+ compatible_brands: isomiso2mp41
+
+ title  : Pacific.Rim.2.Uprising.2018.720p.KORSUB.HDRip.x264.AAC2.0-STUTTERSHIT
+
+ encoder  : Lavf58.13.100
+
+ Duration: 01:50:43.07, start: 0.000000, bitrate: 567 kb/s
+
+ Stream #0:0(und): Video: mpeg4 (Simple Profile) (mp4v / 0x7634706D), yuv420p, 1280x536 [SAR 1:1 DAR 160:67], 567 kb/s, 15 fps, 15 tbr, 15360 tbn, 15 tbc (default)
+
+ Metadata:
+
+ handler_name : VideoHandler
+
+stream,0,mpeg4,MPEG-4 part 2,Simple Profile,video,1/15,mp4v,0x7634706d,1280,536,1280,536,0,1:1,160:67,yuv420p,1,unknown,unknown,unknown,unknown,left,unknown,N/A,1,false,false,N/A,15/1,15/1,1/15360,0,0.000000,102037509,6643.066992,567256,567256,N/A,99646,N/A,N/A,1,0,0,0,0,0,0,0,0,0,0,0,und,VideoHandler
+
+
+```
+
+
+## 使用select_streams配合show_frames, 查看视频(v), 音频(a), 字幕(s), 的信息
+`./ffprobe -show_frames -select_streams v -of xml output.mp4`
+
+输出的frame 信息全部为视频相关的信息
+
+
+```
+
+
+**➜** **bin** ./ffprobe -show_frames -select_streams v -of xml output.mp4
+
+ffprobe version N-90810-g153e920 Copyright (c) 2007-2018 the FFmpeg developers
+
+ built with gcc 4.4.7 (GCC) 20120313 (Red Hat 4.4.7-18)
+
+ configuration: --yasmexe=/application/yasm-1.3.0/bin/yasm --prefix=/application/FFmpeg/
+
+ libavutil 56\. 15.100 / 56\. 15.100
+
+ libavcodec  58\. 19.100 / 58\. 19.100
+
+ libavformat 58\. 13.100 / 58\. 13.100
+
+ libavdevice 58. 4.100 / 58. 4.100
+
+ libavfilter  7\. 19.100 / 7\. 19.100
+
+ libswscale 5. 2.100 / 5. 2.100
+
+ libswresample  3. 2.100 / 3. 2.100
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ffprobe>
+
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'output.mp4':
+
+ Metadata:
+
+ major_brand  : isom
+
+ minor_version  : 512
+
+ compatible_brands: isomiso2mp41
+
+ title  : Pacific.Rim.2.Uprising.2018.720p.KORSUB.HDRip.x264.AAC2.0-STUTTERSHIT
+
+ encoder  : Lavf58.13.100
+
+ Duration: 01:50:43.07, start: 0.000000, bitrate: 567 kb/s
+
+ Stream #0:0(und): Video: mpeg4 (Simple Profile) (mp4v / 0x7634706D), yuv420p, 1280x536 [SAR 1:1 DAR 160:67], 567 kb/s, 15 fps, 15 tbr, 15360 tbn, 15 tbc (default)
+
+ Metadata:
+
+ handler_name : VideoHandler
+
+ <frames>
+
+ <frame media_type="video" stream_index="0" key_frame="1" pkt_pts="0" pkt_pts_time="0.000000" pkt_dts="0" pkt_dts_time="0.000000" best_effort_timestamp="0" best_effort_timestamp_time="0.000000" pkt_duration="1024" pkt_duration_time="0.066667" pkt_pos="44" pkt_size="65630" width="1280" height="536" pix_fmt="yuv420p" sample_aspect_ratio="1:1" pict_type="I" coded_picture_number="0" display_picture_number="0" interlaced_frame="0" top_field_first="0" repeat_pict="0" chroma_location="left">
+
+ <side_data_list>
+
+ <side_data side_data_type="QP table data"/>
+
+ <side_data side_data_type="QP table properties"/>
+
+ </side_data_list>
+
+ </frame>
+
+ <frame media_type="video" stream_index="0" key_frame="0" pkt_pts="1024" pkt_pts_time="0.066667" pkt_dts="1024" pkt_dts_time="0.066667" best_effort_timestamp="1024" best_effort_timestamp_time="0.066667" pkt_duration="1024" pkt_duration_time="0.066667" pkt_pos="65674" pkt_size="56482" width="1280" height="536" pix_fmt="yuv420p" sample_aspect_ratio="1:1" pict_type="P" coded_picture_number="1" display_picture_number="0" interlaced_frame="0" top_field_first="0" repeat_pict="0" chroma_location="left">
+
+ <side_data_list>
+
+ <side_data side_data_type="QP table data"/>
+
+ <side_data side_data_type="QP table properties"/>
+
+ </side_data_list>
+
+ </frame>
+
+
+```
 
 # 2.3 ffplay常用命令
 
