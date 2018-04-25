@@ -78,15 +78,60 @@ mp4标准中描述的moov和mdat的存放位置前后并没有进行强制要求
 
 
 - 如图我打开的这个mp4是一个moov在最后的mp4文件, 所以要想看这个文件,就得下载完整mp4文件才能看
-- 第二我这个MP4的moov = size(4字节) + type(4字节) + subAtoms(1018字节=mvhd(108) + trak(910));
-
-
+- 第二我这个MP4的moov = size(4字节) + type(4字节) + subAtoms(1018字节=mvhd(108) + trak(910)) = 1026, 如下
 ![03-FFmpeg转封装-08-moov02](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-08-moov02.png)
 
+- 
 
-#### 2.解析mvhd 子容器
+
+#### 2.解析mvhd 子容器 (电影文件头.....)
+
+![03-FFmpeg转封装-09-mvhd](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-09-mvhd.png)
+
+![03-FFmpeg转封装-09-mvhd02](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-09-mvhd02.png)
+
+
+![03-FFmpeg转封装-09-mvhd03](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-09-mvhd03.png)
+
+
+
 #### 3.解析trak子容器
+trak容器中定义了媒体文件中的一个track(轨)的信息, 什么轨? 就是音轨呀, 视频轨呀....
+
+看这个图, 可以看到这个moov只有一个track(视频轨), 因为这个mp4是我自己生成的我把音频去掉了, 它是一个没有声音的mp4 
+![03-FFmpeg转封装-08-moov02](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-08-moov02.png)
+
+一般的moov都有两个track, 音频+视频嘛....如下
+
+![03-FFmpeg转封装-09-mvhd04](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-09-mvhd04.png)
+![03-FFmpeg转封装-09-mvhd05](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-09-mvhd05.png)
+
+所以说一个多媒体文件可以有多个trak容器, 1个, 2个, 其他个?(暂时没见过)
+
+我们往下看看, 看看trak容器里面装了些啥.....
+trak1, `有两个trak, 里面有tkhd, edts, mdia`
+![03-FFmpeg转封装-10-trak01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-10-trak01.png)
+trak2, `有一个trak, 里面有tkhd, tapt, edts, mdia`
+![03-FFmpeg转封装-10-trak01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-10-trak02.png)
+trak3, `有两个trak, 里面有tkhd, mdia`
+![03-FFmpeg转封装-10-trak01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-10-trak03.png)
+基本上都是有tkhd,mdia这两家伙的
+先说说使用trak容器的目的:
+- 包含媒体数据的引用和描述
+- 包含modifier track信息
+- 流媒体协议的打包信息(hint  track), hint track可以引用或者复制对应的媒体采样数据
+
+`hint  track` 和 `modifier track` 必须保证完整性...同时要与至少一个`mdia track`一起存在
+
+一个`trak`容器中要求必须要有一个Track Header Atom(tkhd) 和一个 `Media Atom(mdia)`其他都是可选的.....
+
+
 ####  4. 解析tkhd
+
+![03-FFmpeg转封装-11-tkhd01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-11-tkhd01.png)
+
+
+
 ####  5.解析mdia
 ####  6. 解析mdhd容器
 ####  7. 解析hdlr容器
