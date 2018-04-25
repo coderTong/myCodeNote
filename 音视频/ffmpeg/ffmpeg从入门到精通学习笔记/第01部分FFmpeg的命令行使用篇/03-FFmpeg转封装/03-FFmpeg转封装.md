@@ -127,17 +127,73 @@ trak3, `有两个trak, 里面有tkhd, mdia`
 
 
 ####  4. 解析tkhd
-
+看了下一个tkhd基本上都是由20个属性组成的
 ![03-FFmpeg转封装-11-tkhd01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-11-tkhd01.png)
+
+下面是书上对其中17项的解释, 作图实在太浪费时间了.......
+![03-FFmpeg转封装-11-tkhd02](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-11-tkhd02.png)
+![03-FFmpeg转封装-11-tkhd03](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-11-tkhd03.png)
+
+
+怎么判断一个	`trak`是音轨还是视频轨,?
+- 看`tkhd`的Volume(音量)是否有值,不是0是音频
+- 看宽高是否为0, 不为0为视频
+
+那个不管是视频的tkhd还是音频的, 他们大小都一样, 都是`92`字节.
 
 
 
 ####  5.解析mdia
+
+![03-FFmpeg转封装-12-mdia01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-12-mdia01.png)
+
+可以看到`mdia`包含三个子容器
+- 一个媒体头:Media Header Atom (mdhd)
+- 一个句柄参考: Handler Reference (hdlr) 
+- 一个媒体信息 Media Infomation (minf) 或者用户数据User Data Atom(udta)
+
+
+
 ####  6. 解析mdhd容器
+
+![03-FFmpeg转封装-13-mdhd01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-13-mdhd01.png)
+
+![03-FFmpeg转封装-13-mdhd02](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-13-mdhd02.png)
+
+说:解析版本为1的和解析版本为0的是不一样的...
+
 ####  7. 解析hdlr容器
+
+![03-FFmpeg转封装-14-hdlr01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-14-hdlr01.png)
+
+
+![03-FFmpeg转封装-14-hdlr02](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-14-hdlr02.png)
+
 ####  8.解析minf容器
+
+![03-FFmpeg转封装-15-minf01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-15-minf01.png)
+
+minf里面包含了音视频采样等信息, minf容器中的信息将作为音视频数据的映射存在. 内容如下:
+- 视频信息头: Video Media Information Header (vmhd 子容器)
+- 音频信息头: Sound Media Information Header (sound 子容器)
+- 数据信息: Data Information (dinf 子容器)
+- 采样表: Sample Table (stbl 子容器)
+
+
+
 ####  9.解析vmhd容器
+
+
+![03-FFmpeg转封装-16-vmhd01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-16-vmhd01.png)
+![03-FFmpeg转封装-16-vmhd02](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-16-vmhd02.png)
+
+
 ####  10.解析smhd容器
+音频Header
+
+
+
+
 ####  11. 解析dinf容器
 ####  12. 解析stbl容器
 ####  13.解析edts容器
