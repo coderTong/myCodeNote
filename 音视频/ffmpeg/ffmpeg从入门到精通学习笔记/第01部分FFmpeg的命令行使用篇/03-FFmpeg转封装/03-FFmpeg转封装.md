@@ -192,10 +192,48 @@ minf里面包含了音视频采样等信息, minf容器中的信息将作为音�
 音频Header
 
 
+![03-FFmpeg转封装-17-smhd01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-17-smhd01.png)
+![03-FFmpeg转封装-17-smhd02](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-17-smhd02.png)
+
+- Balance(均衡): 音频的均衡是用来控制计算机的两个扬声器的声音混合效果, 一般是0 
+
 
 
 ####  11. 解析dinf容器
+
+![03-FFmpeg转封装-18-dinf01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-18-dinf01.png)
+
+![03-FFmpeg转封装-18-dinf02](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-18-dinf02.png)
+
+
 ####  12. 解析stbl容器
+
+
+![03-FFmpeg转封装-19-stbl01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-19-stbl01.png)
+一般只有:`stsd`, `stts`, `stsz`, `stsc`, `stco`
+有的有: `stss`,`stsh`
+
+stbl容器又称为	`采样参数列表`,的容器(Sample Table Atom), 该容器包含转换媒体时间到实际的Sample的信息, 也说明了解释Sample的信息, 例如, 视频数据是否需要解压缩, 解压缩算法是什么等信息. 
+- 采样描述容器: Sample Description Atom (stsd)
+- 采样时间容器: Time To Sample Atom(stts)
+- 采样同步容器: Sync Sample Atom (stss)
+- Chunk采样容器: Sample to Chunk Atom (stsc)
+- 采样大小容器: Sample size Atom (stsz)
+- Chunk偏移容器: Chunk Offset Atom(stco)
+- Shadow同容器: Shadow Sync Atom(stsh)
+
+
+
+
+`stbl` 包含`track`中`media Sample` 的所有`时间`和`数据索引`, 利用这个容器中的Sample信息, 就可以定位Sample的`媒体时间`, 决定其`类型`,`大小`, 以及如何在其他容器中找到紧邻的Sample. 如果`Sample Table Atom`所在的track没有引用任何数据. 那么它就不是一个有用的Media track, 不需要包含任何子Atom
+
+
+如果`Sample Table Atom`所在的track引用了数据, 那么其必须包含以下子Atom.
+- 采样描述容器: Sample Description Atom (stsd)
+- 采样大小容器: Sample size Atom (stsz)
+- Chunk采样容器: Sample to Chunk Atom (stsc)
+- Chunk偏移容器: Chunk Offset Atom(stco)
+
 ####  13.解析edts容器
 
 
