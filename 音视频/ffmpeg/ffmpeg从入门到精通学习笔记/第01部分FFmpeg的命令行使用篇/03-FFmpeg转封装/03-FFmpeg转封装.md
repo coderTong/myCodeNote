@@ -234,12 +234,34 @@ stbl容器又称为	`采样参数列表`,的容器(Sample Table Atom), 该容器
 - Chunk采样容器: Sample to Chunk Atom (stsc)
 - Chunk偏移容器: Chunk Offset Atom(stco)
 
+stbl是必不可少的一个Atom, 而且必须包含至少一个条目, 因为它包含了数据引用Atom检索Media Sample的目录信息. 没有Sample Description, 就不可能计算出media Sample 存储的位置. Sync Sample Atom 是可选的, 如果没有, 则表明所有的Sample 都是sync Sample.
+
 ####  13.解析edts容器
 
 
+![03-FFmpeg转封装-20-edts01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-20-edts01.png)
+
+edts 容器定义了`创建`Movie媒体文件中一个track的一部分媒体, 所有的edts数据都在一个表里, 包括每一部分的时间偏移量和长度. 如果没有该表, 那么这个track就会立即开始播放, 一个`空的`edts数据`用来定位`到track的起始时间偏移位置.
 
 ## 3.1.2 MP4分析工具
+- 1.Elecard StreamEye 
+- 2. mp4box 
+- 3. mp4info
+- 4. synalyze it! po
+
+
 ## 3.1.3 MP4在FFMpeg中的Demuxer
+
+查看mp4的Demuxer: `./ffmpeg -h demuxer=mp4 ./mp4/33.mp4`
+
+![03-FFmpeg转封装-21-demuxer01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-21-demuxer01.png)
+
+![03-FFmpeg转封装-21](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-21.png)
+
+![03-FFmpeg转封装-22](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-22.png)
+
+
+
 ## 3.1.4  MP4在FFMpeg中的muxer
 
 
