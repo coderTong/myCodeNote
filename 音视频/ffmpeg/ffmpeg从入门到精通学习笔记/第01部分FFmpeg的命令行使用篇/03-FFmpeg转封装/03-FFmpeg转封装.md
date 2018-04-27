@@ -363,12 +363,47 @@ FLV支持多种视频格式, 下面是视频数据VideoData 部分的相关说�
 
 ![03-FFmpeg转封装-24-flv10](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-24-flv10.png)
 
+![03-FFmpeg转封装-24-flv11](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-24-flv11.png)
+
+
+Mono : 单声道
+Stereo: 双声道
 
 
 ## 3.2.2  FFmpeg 转FLV参数
+
+
+![03-FFmpeg转封装-24-flv13](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-24-flv13.png)
+
+`在生成FLV文件时, 写入视频, 音频数据时, 均需要写入 Sequence Header数据`
+
+
 ## 3.2.3 FFmpeg文件转FLV举例
+
+如果将FLV不支持的音频合成,会出错
+`./ffmpeg -i ./mp4/input_ac3.mp4 -c copy -f flv output.flv`,  这句说mp4里面的音频是`ac3`的, flv不支持这个音频就会报错
+
+
+为了成功封装现将`ac3`-->`aac`:
+`./ffmpeg -i ./mp4/input_ac3.mp4 -vcodec copy -acodec aac -f flv output.flv`
+
+
+
 ## 3.2.4 FFmpeg生成带关键索引的FLV
+
+
+![03-FFmpeg转封装-24-flv14](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-24-flv14.png)
+
+
+
+![03-FFmpeg转封装-24-flv15](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-24-flv15.png)
+
+
 ## 3.2.5  FLV文件格式分析工具
+
+`flvparse`  `flvAnalyzer`
+
+ffrobe 查看: `./ffprobe -v trace -i keyframe.flv`
 
 
 # 3.3 音视频文件转M3U8
