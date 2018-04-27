@@ -409,7 +409,76 @@ ffrobe 查看: `./ffprobe -v trace -i keyframe.flv`
 # 3.3 音视频文件转M3U8
 
 ## 3.3.1  M3U8格式标准介绍
+
+- M3U8是一种常见的`流媒体格式`, 主要以`文件列表`的形式存在, 既支持直播又支持点播.它是一个文件,是一个列表文件, `描述文件`
+- HLS，Http Live Streaming 是由Apple公司定义的用于实时`流传输的协议`，HLS基于HTTP协议实现，传输内容包括两部分，一是M3U8描述文件，二是TS媒体文件。
+- TS, 传输流文件. 实际的音视频数据文件, 这个文件才能播....
+
+我们用VLC播放器或者其他播放器,双击m3u8文件可以播放视频, 是按照里面写好的先播哪个ts再播哪个ts, 实际还是去找ts文件.
+
+
+
+m3u8 例子
+
+
+![03-FFmpeg转封装-25-m3u8-01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-25-m3u8-01.png)
+
+
+```
+
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:17
+#EXT-X-MEDIA-SEQUENCE:5
+#EXTINF:16.666667,
+m3u8f15.ts
+#EXTINF:16.666667,
+m3u8f16.ts
+#EXTINF:16.666667,
+m3u8f17.ts
+#EXTINF:16.666667,
+m3u8f18.ts
+#EXTINF:4.533333,
+m3u8f19.ts
+#EXT-X-ENDLIST
+
+
+
+```
+
+
+下面是标签介绍
+### 1. EXTM3U
+M3U8文件必须包含的标签,   并且必须放在第一行
+
+### 2.EXT-X-VERSION 
+版本常见为3
+
+### 3.EXT-X-TARGETDURATION
+每一个分片都会有一个分片自己的duration, 这个标签是最大的那个分片的浮点数四舍五入后的正整数数值.
+
+### 4.EXT-X-MEDIA-SEQUENCE
+M3U8直播时的直播切片`序列`, 当播放打开M3U8时, 以这个标签的值为参考, 播放对应的序号的切片.
+- 分片必须是动态改变的, 序列不能相同, 并且序列必须是增序
+- 当m3u8列表中没有出现 `EXT-X-ENDLIST`, 无论列表中有多少分片, 都从倒数第三个开始播放, 不满三片不播放.
+- 有这个`EXT-X-ENDLIST`的话就从列表第一个开始呗~
+
+### 5.EXTINF
+`EXTINF`是每一个分片的持续时间..`EXTINF`标签除了duration值以外, 还可以包含其他信息,以`,`隔开
+
+### 6.#EXT-X-ENDLIST
+若`EXT-X-ENDLIST`出现了表面m3u8不会产生更多切片了.m3u8停止更新
+
+
 ## 3.3.2 FFmpeg 转HLS参数
+
+FFmpeg中自带HLS的封装参数, 使用HLS格式即可进行HLS的封装, 但是生成HLS的时候有各种参数可以进行参考. 
+- 设置HLS列表的中切片的前置路径
+- 生成HLS的TS切片时设置TS的分片参数
+- 生成HLS时设置M3U8列表中保存的
+
+
+
 ## 3.3.3 FFmpeg 转HLS举例
 
 
