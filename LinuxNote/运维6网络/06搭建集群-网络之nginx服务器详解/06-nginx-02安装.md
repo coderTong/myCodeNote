@@ -74,6 +74,16 @@ yum install gcc -y
  
 
 ```
+
+### WebDAV服务器
+```
+
+
+./configure --user=www --group=www --with-http_ssl_module --with-http_dav_module --with-http_stub_status_module --prefix=/application/nginxWebDAV/
+
+```
+
+
 到上一步位置都是配置过程,还没有涉及到安装
 
 看看配置有没有成功, 返回0就是成功

@@ -475,11 +475,283 @@ M3U8直播时的直播切片`序列`, 当播放打开M3U8时, 以这个标签的
 FFmpeg中自带HLS的封装参数, 使用HLS格式即可进行HLS的封装, 但是生成HLS的时候有各种参数可以进行参考. 
 - 设置HLS列表的中切片的前置路径
 - 生成HLS的TS切片时设置TS的分片参数
-- 生成HLS时设置M3U8列表中保存的
+- 生成HLS时设置M3U8列表中保存的TS个数等
+
+![03-FFmpeg转封装-25-m3u8-02](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-25-m3u8-02.png)
+
 
 
 
 ## 3.3.3 FFmpeg 转HLS举例
+
+常规文件转换:  `./ffmpeg -re -i ./mp4/0036.mp4 -c copy -f hls -bsf:v h264_mp4toannexb m3u8f1.m3u8`
+
+`-bsf:v h264_mp4toannexb` 这个参数是将`mp4`中的`H.264`数据转换为 `H.264 AnnexB`标准的编码.
+
+`AnnexB`标准的编码常见于实时传输流中, FLV TS这些里面就是
+
+### 1.strat_number 参数
+
+设置M3U8列表中的第一片的序列
+
+`./ffmpeg -re -i ./mp4/0036.mp4 -c copy -f hls -bsf:v h264_mp4toannexb -start_number 300 m3u8f1.m3u8`
+
+```
+
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:17
+#EXT-X-MEDIA-SEQUENCE:300
+#EXTINF:16.666667,
+m3u8f1300.ts
+#EXTINF:16.666667,
+m3u8f1301.ts
+#EXTINF:16.666667,
+m3u8f1302.ts
+#EXTINF:15.000000,
+m3u8f1303.ts
+#EXT-X-ENDLIST
+
+
+
+```
+![03-FFmpeg转封装-25-m3u8-03](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-25-m3u8-03.png)
+
+
+
+###  2.hls_time 参数
+设置每一片的时长
+
+`./ffmpeg -re -i ./mp4/0036.mp4 -c copy -f hls -bsf:v h264_mp4toannexb -hls_time 20 m3u8f1.m3u8`
+
+`这个切片规则采用的的方式是从关键帧处开始切片GOP, 所以并不是你设置多少切出来就一定是多少 `
+
+### 3.hls_list_size参数
+设置M3U8中分片的个数,
+
+我测试了一下, 仿佛没什么卵用, 我设置了3个切出来6个, 我设置了4个切了6个, 我设置8个也是6个, 所以应该按照i
+`./ffmpeg -re -i ff.mp4 -c copy -f hls -bsf:v h264_mp4toannexb -hls_list_size 4 m3u8f1.m3u8`
+
+### 4. 设置hls_wrap参数--对CND不友好, 后面将去掉它!-----没什么卵前途
+hls_wrap参数用于为M3U8列表中TS设置刷新回滚参数, 当TS分片序号等于hls_wrap参数设置的数值时回滚.
+
+当切片序号大于3时回滚为0
+`./ffmpeg -re -i ff.mp4 -c copy -f hls -bsf:v h264_mp4toannexb -hls_wrap 3 m3u8f.m3u8`
+
+```
+
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:6
+#EXT-X-MEDIA-SEQUENCE:1
+#EXTINF:5.996000,
+m3u8f11.ts
+#EXTINF:5.996000,
+m3u8f12.ts
+#EXTINF:5.996000,
+m3u8f10.ts
+#EXTINF:5.996000,
+m3u8f11.ts
+#EXTINF:3.997333,
+m3u8f12.ts
+#EXT-X-ENDLIST
+
+
+
+```
+
+### 5. hls_base_url参数
+hls_base_url参数吗用于为M3U8列表中的文件路径设置前置基本路径参数, 因为在FFmpeg中生成的M3U8时写入的TS切片路径默认为与M3U8生成路径相同, 但是实际上TS所存储的路径既可以为本地绝对路径, 也可以为当前相对路径, 还可以为网络路径, 因此使用hls_base_url参数可以达到该效果.
+
+
+`/application/FFmpeg/bin/ffmpeg -re -i fastMoov.mp4 -c copy -f hls -hls_base_url http://139.59.56.129:9999/cc/ -bsf:v h264_mp4toannexb output.m3u8`
+
+
+```
+
+#EXTM3U
+
+#EXT-X-VERSION:3
+
+#EXT-X-TARGETDURATION:6
+
+#EXT-X-MEDIA-SEQUENCE:1
+
+#EXTINF:5.996000,
+
+http://139.59.56.129:9999/cc/output1.ts
+
+#EXTINF:5.996000,
+
+http://139.59.56.129:9999/cc/output2.ts
+
+#EXTINF:5.996000,
+
+http://139.59.56.129:9999/cc/output3.ts
+
+#EXTINF:5.996000,
+
+http://139.59.56.129:9999/cc/output4.ts
+
+#EXTINF:3.997333,
+
+http://139.59.56.129:9999/cc/output5.ts
+
+#EXT-X-ENDLIST
+
+```
+
+### 6. hls_segment_filename 参数
+
+设置名字的
+
+`./ffmpeg -re -i ff.mp4 -c copy -f hls -hls_segment_filename test_output-%d.ts -bsf:v h264_mp4toannexb outputf.m3u8`
+
+
+### 7. hls_flags
+hls_flags 参数包含了一些子参数, 子参数包含了:
+- 正常文件索引
+- 删除过期切片
+- 整数显示duration
+- 列表开始插入discontinuity标签
+- M3U8结束不追加endlist标签等
+
+- 1, delete_segments 
+使用`delete_segments`参数用于删除已经`不在M3U8列表中`的旧文件, 这里要注意的是, FFmpeg删除切片时会将hls_list_size大小的2倍作为删除的依据.
+
+`./ffmpeg -re -i ff.mp4 -c copy -f hls -hls_flags delete_segments -hls_list_size 4 -bsf:v h264_mp4toannexb outputf.m3u8`
+不在列表中的会被删除....
+
+
+
+- 2, round_durations
+
+每一片的秒数都搞成整数, 不知道有啥用
+
+```
+
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:6
+#EXT-X-MEDIA-SEQUENCE:1
+#EXTINF:6,
+outputf1.ts
+#EXTINF:6,
+outputf2.ts
+#EXTINF:6,
+outputf3.ts
+#EXTINF:6,
+outputf4.ts
+#EXTINF:4,
+outputf5.ts
+#EXT-X-ENDLIST
+
+
+
+
+```
+
+
+
+- 3. discont_start
+
+`./ffmpeg -re -i ff.mp4 -c copy -f hls -hls_flags discont_start -bsf:v h264_mp4toannexb outputf.m3u8`
+生产时生成`EXT-X-DISCONTINUITY`, 这个标签常用于在切片不连续时作特别声明用.
+
+
+```
+
+// 生产中出现#EXT-X-DISCONTINUITY
+
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:6
+#EXT-X-MEDIA-SEQUENCE:0
+#EXT-X-DISCONTINUITY
+#EXTINF:5.996000,
+outputf0.ts
+#EXTINF:5.996000,
+outputf1.ts
+#EXTINF:5.996000,
+outputf2.ts
+#EXTINF:5.996000,
+outputf3.ts
+
+// 生产完成
+
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:6
+#EXT-X-MEDIA-SEQUENCE:1
+#EXTINF:5.996000,
+outputf1.ts
+#EXTINF:5.996000,
+outputf2.ts
+#EXTINF:5.996000,
+outputf3.ts
+#EXTINF:5.996000,
+outputf4.ts
+#EXTINF:3.997333,
+outputf5.ts
+#EXT-X-ENDLIST
+
+
+
+```
+
+
+- 4.omit_endlist 
+
+` ./ffmpeg -re -i ff.mp4 -c copy -f hls -hls_flags omit_endlist -bsf:v h264_mp4toannexb outputf.m3u8`
+这个参数就是结束时不加`#EXT-X-ENDLIST`
+当m3u8列表中没有出现 `EXT-X-ENDLIST`, 无论列表中有多少分片, 都从倒数第三个开始播放, 不满三片不播放.
+
+
+- 5. split_by_time
+这设置了以后说多少秒就是多少秒, 之前`hls_time`这个是根据关键帧切的. 加上这个后说多少就是多少...
+
+`但是这值, 比如下面设置只有2秒, 切出来可能就只有音频没有画面`
+
+`./ffmpeg -re -i ff.mp4 -c copy -f hls -hls_time 2 -hls_flags split_by_time -bsf:v h264_mp4toannexb outputf.m3u8`
+
+
+```
+
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:2
+#EXT-X-MEDIA-SEQUENCE:12
+#EXTINF:1.932044,
+outputf12.ts
+#EXTINF:2.065289,
+outputf13.ts
+#EXTINF:1.998667,
+outputf14.ts
+#EXTINF:1.932044,
+outputf15.ts
+#EXTINF:2.065289,
+outputf16.ts
+#EXT-X-ENDLIST
+
+
+
+```
+
+
+### 8.use_localtime
+
+使用系统名作为切片名
+
+`./ffmpeg -re -i ff.mp4 -c copy -f hls -use_localtime 1 -bsf:v h264_mp4toannexb outputf.m3u8`
+![03-FFmpeg转封装-25-m3u8-04](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-25-m3u8-04.png)
+
+
+### 9.method
+
+- Method参数 用于设置HLS将M3U8及TS文件上传至HTTP服务器, 使用该功能你要有台HTTP服务器, 支持上传相关的方法, 例如PUT, POST, 
+- 可以搞一台Nginx的webdav模块来完成
+
+`./ffmpeg -i fastMoov.mp4 -c copy -f hls -hls_time 3 -hls_list_size 0 -method PUT -t 30 http://139.59.56.129:9243/cc/output_test.m3u8`
 
 
 
