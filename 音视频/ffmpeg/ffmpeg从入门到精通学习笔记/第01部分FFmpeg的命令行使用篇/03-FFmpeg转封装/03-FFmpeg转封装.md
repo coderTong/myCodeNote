@@ -758,8 +758,241 @@ outputf16.ts
 # 3.4视频文件切片
 
 ## 3.4.1 FFmpeg切片segment参数
+
+![03-FFmpeg转封装-26-切片-01](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-26-%E5%88%87%E7%89%87-01.png)
+
+
 ## 3.4.2  FFmpeg切片segment举例
+
+
+### 1. segment_format 指定切片文件的格式
+
+- MP4切MP4
+`./ffmpeg -re -i dashMP4.mp4 -c copy -f segment -segment_format mp4 test_output-%d.mp4`
+
+
+![03-FFmpeg转封装-26-切片-02](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-26-%E5%88%87%E7%89%87-02.png)
+
+查看第一分片MP4的最后的时间戳:`./ffprobe -v quiet -show_packets -select_streams v test_output-0.mp4 2> x|grep pts_time | tail -n 3`
+
+
+![03-FFmpeg转封装-26-切片-03](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-26-%E5%88%87%E7%89%87-03.png)
+
+
+查看第二片分片MP4的最开始的时间戳:`./ffprobe -v quiet -show_packets -select_streams v test_output-1.mp4 2> x|grep pts_time | head -n 3`
+
+
+![03-FFmpeg转封装-26-切片-04](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-26-%E5%88%87%E7%89%87-04.png)
+
+
+6.133008-6.066016=0.066992;.......说上说这个值是正常的duration, 0.040
+
+
+
+
+
+### 2.segment_list 与 segment_list_type 指定切片索引列表
+
+- 生成ffconcat格式索引文件
+` ./ffmpeg -re -i dashMP4.mp4 -c copy -f segment -segment_format mp4 -segment_list_type ffconcat -segment_list output.lst test_output-%d.mp4`
+
+
+![03-FFmpeg转封装-26-切片-05](image/03-FFmpeg%E8%BD%AC%E5%B0%81%E8%A3%85-26-%E5%88%87%E7%89%87-05.png)
+
+
+```
+**codew$** cat output.lst
+
+ffconcat version 1.0
+
+file test_output-0.mp4
+
+file test_output-1.mp4
+
+file test_output-2.mp4
+
+file test_output-3.mp4
+
+file test_output-4.mp4
+
+file test_output-5.mp4
+
+
+
+```
+ffconcat, 用于虚拟轮播等场景
+
+
+
+- 生成FLAT格式索引
+`./ffmpeg -re -i dashMP4.mp4 -c copy -f segment -segment_format mp4 -segment_list_type flat -segment_list filelist.txt test_output-%d.mp4`
+
+
+```
+**codew$** cat filelist.txt
+
+test_output-0.mp4
+
+test_output-1.mp4
+
+test_output-2.mp4
+
+test_output-3.mp4
+
+test_output-4.mp4
+
+test_output-5.mp4
+
+
+```
+
+- 生成CSV格式索引文件------用来作图
+
+
+		
+`./ffmpeg -re -i dashMP4.mp4 -c copy -f segment -segment_format mp4 -segment_list_type csv -segment_list filelist.csv test_output-%d.mp4`
+		
+```
+
+**codew$** cat filelist.csv
+
+test_output-0.mp4,0.000000,6.133594
+
+test_output-1.mp4,6.133984,12.133594
+
+test_output-2.mp4,12.133984,18.133594
+
+test_output-3.mp4,18.133984,24.133594
+
+test_output-4.mp4,24.133984,30.133594
+
+test_output-5.mp4,30.133984,34.133594
+
+
+```
+
+- 生成M3U8格式索引文件
+
+`./ffmpeg -re -i dashMP4.mp4 -c copy -f segment -segment_format mp4 -segment_list_type m3u8 -segment_list output.m3u8 test_output-%d.mp4`
+
+```
+
+cat output.m3u8 
+
+#EXTM3U
+
+#EXT-X-VERSION:3
+
+#EXT-X-MEDIA-SEQUENCE:0
+
+#EXT-X-ALLOW-CACHE:YES
+
+#EXT-X-TARGETDURATION:7
+
+#EXTINF:6.133594,
+
+test_output-0.mp4
+
+#EXTINF:5.999609,
+
+test_output-1.mp4
+
+#EXTINF:5.999609,
+
+test_output-2.mp4
+
+#EXTINF:5.999609,
+
+test_output-3.mp4
+
+#EXTINF:5.999609,
+
+test_output-4.mp4
+
+#EXTINF:3.999609,
+
+test_output-5.mp4
+
+#EXT-X-ENDLIST
+
+```
+
+
+### 3. reset_timestamps 使切片时间戳归0
+
+`./ffmpeg -re -i dashMP4.mp4 -c copy -f segment -segment_format mp4 -reset_timestamps 1 test_output-%d.mp4`
+
+
+```
+
+**codew$** ls -l test_output-*
+
+-rw-r--r-- 1 codew staff 190740 Apr 29 02:27 test_output-0.mp4
+
+-rw-r--r-- 1 codew staff 191752 Apr 29 02:27 test_output-1.mp4
+
+-rw-r--r-- 1 codew staff 182671 Apr 29 02:27 test_output-2.mp4
+
+-rw-r--r-- 1 codew staff 180042 Apr 29 02:28 test_output-3.mp4
+
+-rw-r--r-- 1 codew staff 146044 Apr 29 02:28 test_output-4.mp4
+
+-rw-r--r-- 1 codew staff  47670 Apr 29 02:28 test_output-5.mp4
+
+
+```
+
+- 查看第一片末尾时间戳
+
+```
+
+**codew$** ./ffprobe -v quiet -show_packets -select_streams v test_output-0.mp4 2> x|grep pts_time | tail -n 3
+
+pts_time=5.866016
+
+pts_time=6.066016
+
+pts_time=5.999023
+
+
+```
+- 查看第二片开始时间戳
+
+```
+
+
+**codew$** ./ffprobe -v quiet -show_packets -select_streams v test_output-1.mp4 2> x|grep pts_time | head -n 3
+
+pts_time=0.000000
+
+pts_time=0.133008
+
+pts_time=0.066016
+
+
+
+```
+每一片的开始时间戳均已归0,  ......
+
+
+
+
+### 4. segment_times 按照时间点剪切
+
+对文件进行切片时, 有时候需要均匀的切片, 有时候需要按照指定的时间长度进行切片, segment可以根据指定的时间点进行切片, 
+
+` ./ffmpeg -re -i dashMP4.mp4 -c copy -f segment -segment_format mp4 -segment_times 3,9,12 test_output-%d.mp4`
+
+
+根据命令行参数可以看到, 切片时间分别为第三秒, 第九秒, 第12秒, 在这三个时间点进行切片
+
+`其实并不准确, 不准....应该又是i帧的关系`
+
+
 ## 3.4.3 FFmpeg使用ss与t参数进行切片
+
+### 1. 使用ss指定剪切开头部分
+		` ./ffmpeg -ss 10 -i dashMP4.mp4 -c copy output.ts`, 剪出来的居然是`ts`的
 
 
 
