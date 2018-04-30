@@ -992,16 +992,402 @@ pts_time=0.066016
 ## 3.4.3 FFmpeg使用ss与t参数进行切片
 
 ### 1. 使用ss指定剪切开头部分
-		` ./ffmpeg -ss 10 -i dashMP4.mp4 -c copy output.ts`, 剪出来的居然是`ts`的
+		` ./ffmpeg -ss 10 -i dashMP4.mp4 -c copy output.ts`, 剪出来的居然是`ts`的...
+生成一个output.ts, 
+
+之所以不是相差8秒, 可能是因为关键帧....
+```
+
+**codew$** ./ffprobe -v quiet -show_format dashMP4.mp4 | grep duration; ./ffprobe -v quiet -show_format output.ts | grep duration
+
+**duration**=34.200000
+
+**duration**=28.096478
 
 
+```
+
+### 2. 使用t指定视频的总长度
+
+搞一个10秒的视频出来...
+
+`./ffmpeg -i dashMP4.mp4 -c copy -t 10 -copyts outputT.mp4`
+
+这个好像准, 说10秒就是10秒
+
+```
+
+**➜** **video** ffprobe -v quiet -show_format input.mp4 | grep start_time; ffprobe -v quiet -show_format output.mp4 | grep start_time
+
+**start_time**=0.000000
+
+**➜** **video** ffprobe -v quiet -show_format ffmpeg.mp4 | grep start_time; ffprobe -v quiet -show_format output.mp4 | grep start_time
+
+**start_time**=0.000000
+
+**start_time**=0.000000
+
+**➜** **video** ffprobe -v quiet -show_format ffmpeg.mp4 | grep duration; ffprobe -v quiet -show_format output.mp4 | grep duration
+
+**duration**=8675.771000
+
+**duration**=10.005000
+
+
+```
+
+### 3. 使用output_ts_offset 指定输出 start_time
+
+
+`FFmpeg` 支持`ss`和`t`两个参数一同使用,  切中间某一段.  但是这个不能指定输出文件的start_time, 而且也不希望时间错归0, 就可以使用`output_ts_offset`来达到指定输出文件的start_time的目的.
+
+`ffmpeg -i ffmpeg.mp4 -c copy -t 10 -output_ts_offset 120 output.mp4`
+
+
+`ffprobe -show_format output.mp4`
+```
+
+[FORMAT]
+
+filename=output.mp4
+
+nb_streams=2
+
+nb_programs=0
+
+format_name=mov,mp4,m4a,3gp,3g2,mj2
+
+format_long_name=QuickTime / MOV
+
+start_time=120.000000
+
+duration=10.005000
+
+size=2429696
+
+bit_rate=1942785
+
+probe_score=100
+
+TAG:major_brand=isom
+
+TAG:minor_version=512
+
+TAG:compatible_brands=isomiso2avc1mp41
+
+TAG:encoder=Lavf58.13.100
+
+[/FORMAT]
+
+
+
+
+// 这个没有使用....
+
+[FORMAT]
+
+filename=output.mp4
+
+nb_streams=2
+
+nb_programs=0
+
+format_name=mov,mp4,m4a,3gp,3g2,mj2
+
+format_long_name=QuickTime / MOV
+
+start_time=0.000000
+
+duration=10.005000
+
+size=2429684
+
+bit_rate=1942775
+
+probe_score=100
+
+TAG:major_brand=isom
+
+TAG:minor_version=512
+
+TAG:compatible_brands=isomiso2avc1mp41
+
+TAG:encoder=Lavf58.13.100
+
+[/FORMAT]
+
+```
+可以的看到使用了`output_ts_offset`就是从120秒开始的, duration=10.005000
+.
 
 # 3.5 音视频文件音视频流抽取
 
 ## 3.5.1  FFmpeg抽取音视频文件中的AAC音频流
+
+// 这个MP4里面是MP3
+`ffmpeg -i output.mp4 -vn -acodec copy output.mp3`
+
+```
+
+ffmpeg -i output.mp4 -vn -acodec copy output.mp3
+
+ffmpeg version N-90893-gcae6f80 Copyright (c) 2000-2018 the FFmpeg developers
+
+ built with gcc 4.4.7 (GCC) 20120313 (Red Hat 4.4.7-18)
+
+ configuration: --yasmexe=/application/yasm-1.3.0/bin/yasm --prefix=/application/FFmpeg/
+
+ libavutil 56\. 17.100 / 56\. 17.100
+
+ libavcodec  58\. 19.100 / 58\. 19.100
+
+ libavformat 58\. 13.100 / 58\. 13.100
+
+ libavdevice 58. 4.100 / 58. 4.100
+
+ libavfilter  7\. 21.100 / 7\. 21.100
+
+ libswscale 5. 2.100 / 5. 2.100
+
+ libswresample  3. 2.100 / 3. 2.100
+
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'output.mp4':
+
+ Metadata:
+
+ major_brand  : isom
+
+ minor_version  : 512
+
+ compatible_brands: isomiso2avc1mp41
+
+ encoder  : Lavf58.13.100
+
+ Duration: 00:00:10.01, start: 120.000000, bitrate: 1942 kb/s
+
+ Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 856x480 [SAR 480:481 DAR 856:481], 1844 kb/s, SAR 17186:17221 DAR 919451:516630, 29.97 fps, 29.97 tbr, 11988 tbn, 59.94 tbc (default)
+
+ Metadata:
+
+ handler_name : VideoHandler
+
+ Stream #0:1(und): Audio: mp3 (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 127 kb/s (default)
+
+ Metadata:
+
+ handler_name : SoundHandler
+
+Output #0, mp3, to 'output.mp3':
+
+ Metadata:
+
+ major_brand  : isom
+
+ minor_version  : 512
+
+ compatible_brands: isomiso2avc1mp41
+
+ TSSE : Lavf58.13.100
+
+ Stream #0:0(und): Audio: mp3 (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 127 kb/s (default)
+
+ Metadata:
+
+ handler_name : SoundHandler
+
+Stream mapping:
+
+ Stream #0:1 -> #0:0 (copy)
+
+Press [q] to stop, [?] for help
+
+[mp3 @ 0x3ccc480] Packet with invalid duration -5290848 in stream 0
+
+size=  157kB time=00:00:09.97 bitrate= 128.8kbits/s speed=3.57e+03x    
+
+video:0kB audio:156kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.352953%
+
+
+```
+
+
+
+//
+`./ffmpeg -i dashMP4.mp4 -vn -acodec copy dd.aac`
+
+```
+
+./ffmpeg -i dashMP4.mp4 -vn -acodec copy dd.aac
+
+ffmpeg version N-90810-g153e920892 Copyright (c) 2000-2018 the FFmpeg developers
+
+ built with Apple LLVM version 9.1.0 (clang-902.0.39.1)
+
+ configuration: --yasmexe=/Users/codew/Desktop/code4-av/yasm/yasmB/yasm-1.3.0/bin/yasm --enable-ffplay --prefix=/Users/codew/Desktop/code4-av/ffmpegBinNew
+
+ libavutil 56\. 15.100 / 56\. 15.100
+
+ libavcodec  58\. 19.100 / 58\. 19.100
+
+ libavformat 58\. 13.100 / 58\. 13.100
+
+ libavdevice 58. 4.100 / 58. 4.100
+
+ libavfilter  7\. 19.100 / 7\. 19.100
+
+ libswscale 5. 2.100 / 5. 2.100
+
+ libswresample  3. 2.100 / 3. 2.100
+
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'dashMP4.mp4':
+
+ Metadata:
+
+ major_brand  : iso5
+
+ minor_version  : 512
+
+ compatible_brands: iso6mp41
+
+ encoder  : Lavf58.13.100
+
+ Duration: 00:00:34.20, start: 0.000000, bitrate: 215 kb/s
+
+ Stream #0:0(und): Video: h264 (Main) (avc1 / 0x31637661), yuv420p, 512x288 [SAR 1:1 DAR 16:9], 183 kb/s, 15 fps, 15 tbr, 16k tbn, 30 tbc (default)
+
+ Metadata:
+
+ handler_name : VideoHandler
+
+ Stream #0:1(und): Audio: aac (HE-AAC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 30 kb/s (default)
+
+ Metadata:
+
+ handler_name : SoundHandler
+
+Output #0, adts, to 'dd.aac':
+
+ Metadata:
+
+ major_brand  : iso5
+
+ minor_version  : 512
+
+ compatible_brands: iso6mp41
+
+ encoder  : Lavf58.13.100
+
+ Stream #0:0(und): Audio: aac (HE-AAC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 30 kb/s (default)
+
+ Metadata:
+
+ handler_name : SoundHandler
+
+Stream mapping:
+
+ Stream #0:1 -> #0:0 (copy)
+
+Press [q] to stop, [?] for help
+
+size=  132kB time=00:00:34.08 bitrate= 31.8kbits/s speed=1.03e+04x    
+
+video:0kB audio:127kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 3.943224%
+
+
+```
+
 ## 3.5.2  FFmpeg抽取音视频文件中的H264视频流
+
+`ffmpeg -i output.mp4 -vcodec copy -an outputh264.h264`
+
+```
+
+ffmpeg -i output.mp4 -vcodec copy -an outputh264.h264
+
+ffmpeg version N-90893-gcae6f80 Copyright (c) 2000-2018 the FFmpeg developers
+
+ built with gcc 4.4.7 (GCC) 20120313 (Red Hat 4.4.7-18)
+
+ configuration: --yasmexe=/application/yasm-1.3.0/bin/yasm --prefix=/application/FFmpeg/
+
+ libavutil 56\. 17.100 / 56\. 17.100
+
+ libavcodec  58\. 19.100 / 58\. 19.100
+
+ libavformat 58\. 13.100 / 58\. 13.100
+
+ libavdevice 58. 4.100 / 58. 4.100
+
+ libavfilter  7\. 21.100 / 7\. 21.100
+
+ libswscale 5. 2.100 / 5. 2.100
+
+ libswresample  3. 2.100 / 3. 2.100
+
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'output.mp4':
+
+ Metadata:
+
+ major_brand  : isom
+
+ minor_version  : 512
+
+ compatible_brands: isomiso2avc1mp41
+
+ encoder  : Lavf58.13.100
+
+ Duration: 00:00:10.01, start: 120.000000, bitrate: 1942 kb/s
+
+ Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 856x480 [SAR 480:481 DAR 856:481], 1844 kb/s, SAR 17186:17221 DAR 919451:516630, 29.97 fps, 29.97 tbr, 11988 tbn, 59.94 tbc (default)
+
+ Metadata:
+
+ handler_name : VideoHandler
+
+ Stream #0:1(und): Audio: mp3 (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 127 kb/s (default)
+
+ Metadata:
+
+ handler_name : SoundHandler
+
+Output #0, h264, to 'outputh264.h264':
+
+ Metadata:
+
+ major_brand  : isom
+
+ minor_version  : 512
+
+ compatible_brands: isomiso2avc1mp41
+
+ encoder  : Lavf58.13.100
+
+ Stream #0:0(und): Video: h264 (High) (avc1 / 0x31637661), yuv420p, 856x480 [SAR 17186:17221 DAR 919451:516630], q=2-31, 1844 kb/s, 29.97 fps, 29.97 tbr, 29.97 tbn, 29.97 tbc (default)
+
+ Metadata:
+
+ handler_name : VideoHandler
+
+Stream mapping:
+
+ Stream #0:0 -> #0:0 (copy)
+
+Press [q] to stop, [?] for help
+
+[h264 @ 0x340e480] Packet with invalid duration -3601 in stream 0
+
+frame= 294 fps=0.0 q=-1.0 Lsize= 2208kB time=00:00:10.01 bitrate=1807.2kbits/s speed=2.11e+03x    
+
+video:2208kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown
+
+
+```
+
+
+
 ## 3.5.3  FFmpeg抽取音视频文件中的H265视频流
 
+`./ffmpeg -i dashMP4.mp4 -vcodec copy -an -bsf hevc_mp4toannexb -f hevc outputh264.hevc`
 
 
 # 3.6 系统资源使用情况
