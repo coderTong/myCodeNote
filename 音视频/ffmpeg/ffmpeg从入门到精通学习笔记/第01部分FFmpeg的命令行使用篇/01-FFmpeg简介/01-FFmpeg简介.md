@@ -136,6 +136,18 @@ make install
 // 仅仅支持H.264视频与AAC音频的编码
 ./configure --yasmexe=/application/yasm-1.3.0/bin/yasm --enable-libx264 --enable-libfdk-aac --enable-gpl --enable-nonfree
 
+
+./configure --yasmexe=/application/yasm-1.3.0/bin/yasm --enable-libx264 --enable-libfdk-aac --enable-gpl --enable-nonfree
+
+
+
+
+cd /FFmpeg
+./configure --yasmexe=/application/yasm-1.3.0/bin/yasm --enable-libx264 --enable-libfdk-aac --enable-gpl --enable-nonfree --prefix=/application/FFmpegH264/
+
+./configure --yasmexe=/application/yasm-1.3.0/bin/yasm --enable-libx264  --enable-gpl --enable-nonfree --prefix=/application/FFmpegH264/
+
+
 ```
 
 # 没有libfdk_aac错误(暂时不解决)
