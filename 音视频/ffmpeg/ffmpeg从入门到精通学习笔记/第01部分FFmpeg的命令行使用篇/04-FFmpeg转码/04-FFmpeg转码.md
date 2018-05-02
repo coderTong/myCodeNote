@@ -1275,9 +1275,24 @@ video:0kB audio:314kB subtitle:0kB other streams:0kB global headers:0kB muxing o
 
 ## 4.4.1 高质量AAC设置
 
+### 1.HE-AAC 音频编码设置
 
+	
+`ffmpeg -i mv3.mp3 -c:a libfdk_aac -profile:a aac_he -b:a 64k heAAC.m4a`	
+![04-FFmpeg转码-01-x264-30](image/04-FFmpeg%E8%BD%AC%E7%A0%81-01-x264-30.png)
+ 
+
+
+### 2.HEv2-AAC 音频编码设置
+
+		
+![04-FFmpeg转码-01-x264-31](image/04-FFmpeg%E8%BD%AC%E7%A0%81-01-x264-31.png)
+`ffmpeg -i mv3.mp3 -c:a libfdk_aac -profile:a aac_he_v2 -b:a 32k HEv2-AAC.m4a`
 
 ## 4.4.1 AAC音频质量对比
 
 
+### libfdk_aac音频编码质量最优
+### FFmpeg内置AAC编码次于, libfdk_aac, 优于libfaac
+### libfaac在FFmpeg内置AAC编码为实验品时除了libfdk_aac之外
 
