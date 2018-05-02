@@ -832,6 +832,189 @@ h264_videotoolbox AVOptions:
 
 ## 4.3.2 MP3编码质量设置
 
+我这里的这个mp4里面的音频就是MP3, 所以相当于抠出来mp3.
+
+抽取mp4中的MP3出来, 相当于是把mp4转成mp3,  mp4文件里面不是mp3的也会转成MP3
+`ffmpeg -i mp3Video.mp4 -acodec libmp3lame mv3.mp3`
+
+
+
+
+- 调整mp3的码率
+
+
+`ffmpeg -i aac.mp3 -acodec libmp3lame -q:a 8 qa8.mp3`
+执行完上面的命令后, 将生成的qa8.mp3的码率区间设置在70kbit/s 至 105kbit/s之间....,  参照下图 
+![04-FFmpeg转码-01-x264-25](image/04-FFmpeg%E8%BD%AC%E7%A0%81-01-x264-25.png)
+
+
+
+比较两个mp3`ffprobe -show_format qa8.mp3`,   `ffprobe -show_format aac.mp3`, 发现两个一个128, 一个变成了46.
+ 
+
+```
+
+ffprobe -show_format qa8.mp3                      
+
+ffprobe version N-90893-gcae6f80 Copyright (c) 2007-2018 the FFmpeg developers
+
+ built with gcc 4.4.7 (GCC) 20120313 (Red Hat 4.4.7-18)
+
+ configuration: --prefix=/root/ffmpeg_build --pkg-config-flags=--static --extra-cflags=-I/root/ffmpeg_build/include --extra-ldflags=-L/root/ffmpeg_build/lib --extra-libs=-lpthread --extra-libs=-lm --bindir=/root/bin --enable-gpl --enable-libfdk_aac --enable-libfreetype --enable-libmp3lame --enable-libx264 --enable-nonfree
+
+ libavutil 56\. 17.100 / 56\. 17.100
+
+ libavcodec  58\. 19.100 / 58\. 19.100
+
+ libavformat 58\. 13.100 / 58\. 13.100
+
+ libavdevice 58. 4.100 / 58. 4.100
+
+ libavfilter  7\. 21.100 / 7\. 21.100
+
+ libswscale 5. 2.100 / 5. 2.100
+
+ libswresample  3. 2.100 / 3. 2.100
+
+ libpostproc 55. 2.100 / 55. 2.100
+
+Input #0, mp3, from 'qa8.mp3':
+
+ Metadata:
+
+ major_brand  : isom
+
+ minor_version  : 512
+
+ compatible_brands: isomiso2mp41
+
+ encoder  : Lavf58.13.100
+
+ Duration: 00:00:40.07, start: 0.025057, bitrate: 46 kb/s
+
+ Stream #0:0: Audio: mp3, 44100 Hz, stereo, fltp, 46 kb/s
+
+ Metadata:
+
+ encoder  : Lavc58.19
+
+[FORMAT]
+
+filename=qa8.mp3
+
+nb_streams=1
+
+nb_programs=0
+
+format_name=mp3
+
+format_long_name=MP2/3 (MPEG audio layer 2/3)
+
+start_time=0.025057
+
+duration=40.071837
+
+size=235384
+
+bit_rate=46992
+
+probe_score=51
+
+TAG:major_brand=isom
+
+TAG:minor_version=512
+
+TAG:compatible_brands=isomiso2mp41
+
+TAG:encoder=Lavf58.13.100
+
+[/FORMAT]
+
+**➜** **video** ffprobe -show_format aac.mp3
+
+ffprobe version N-90893-gcae6f80 Copyright (c) 2007-2018 the FFmpeg developers
+
+ built with gcc 4.4.7 (GCC) 20120313 (Red Hat 4.4.7-18)
+
+ configuration: --prefix=/root/ffmpeg_build --pkg-config-flags=--static --extra-cflags=-I/root/ffmpeg_build/include --extra-ldflags=-L/root/ffmpeg_build/lib --extra-libs=-lpthread --extra-libs=-lm --bindir=/root/bin --enable-gpl --enable-libfdk_aac --enable-libfreetype --enable-libmp3lame --enable-libx264 --enable-nonfree
+
+ libavutil 56\. 17.100 / 56\. 17.100
+
+ libavcodec  58\. 19.100 / 58\. 19.100
+
+ libavformat 58\. 13.100 / 58\. 13.100
+
+ libavdevice 58. 4.100 / 58. 4.100
+
+ libavfilter  7\. 21.100 / 7\. 21.100
+
+ libswscale 5. 2.100 / 5. 2.100
+
+ libswresample  3. 2.100 / 3. 2.100
+
+ libpostproc 55. 2.100 / 55. 2.100
+
+Input #0, mp3, from 'aac.mp3':
+
+ Metadata:
+
+ major_brand  : isom
+
+ minor_version  : 512
+
+ compatible_brands: isomiso2mp41
+
+ encoder  : Lavf58.13.100
+
+ Duration: 00:00:40.07, start: 0.025057, bitrate: 128 kb/s
+
+ Stream #0:0: Audio: mp3, 44100 Hz, stereo, fltp, 128 kb/s
+
+ Metadata:
+
+ encoder  : Lavc58.19
+
+[FORMAT]
+
+filename=aac.mp3
+
+nb_streams=1
+
+nb_programs=0
+
+format_name=mp3
+
+format_long_name=MP2/3 (MPEG audio layer 2/3)
+
+start_time=0.025057
+
+duration=40.071837
+
+size=641501
+
+bit_rate=128070
+
+probe_score=51
+
+TAG:major_brand=isom
+
+TAG:minor_version=512
+
+TAG:compatible_brands=isomiso2mp41
+
+TAG:encoder=Lavf58.13.100
+
+[/FORMAT]
+
+
+```
+
+本来是70-105 kbit/s
+书上说那个表只是作为一个参考, 并不一定准确....
+
+
+
+
 ## 4.3.3 平均码率编码参数ABR
 
 
