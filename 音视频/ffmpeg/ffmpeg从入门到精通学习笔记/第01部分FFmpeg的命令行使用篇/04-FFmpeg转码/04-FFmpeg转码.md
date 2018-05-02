@@ -1291,8 +1291,8 @@ video:0kB audio:314kB subtitle:0kB other streams:0kB global headers:0kB muxing o
 
 ## 4.4.1 AAC音频质量对比
 
-
+#新版的FFmpeg中, libfaac已经被删除了
 ### libfdk_aac音频编码质量最优
 ### FFmpeg内置AAC编码次于, libfdk_aac, 优于libfaac
-### libfaac在FFmpeg内置AAC编码为实验品时除了libfdk_aac之外
+### libfaac在FFmpeg内置AAC编码为实验品时除了libfdk_aac之外的唯一选择
 
