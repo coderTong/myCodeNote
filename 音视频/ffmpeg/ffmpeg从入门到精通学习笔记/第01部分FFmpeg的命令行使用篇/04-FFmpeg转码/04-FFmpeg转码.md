@@ -1015,20 +1015,269 @@ TAG:encoder=Lavf58.13.100
 
 
 
+
+### 设置平均码率CBR
+
+
+
+`ffmpeg -i aac.mp3 -acodec libmp3lame -b:a 64k cbr2.mp3`
+
+`ffprobe -show_format cbr2.mp3`
+
+```
+
+ffprobe -show_format cbr2.mp3
+
+ffprobe version N-90893-gcae6f80 Copyright (c) 2007-2018 the FFmpeg developers
+
+ built with gcc 4.4.7 (GCC) 20120313 (Red Hat 4.4.7-18)
+
+ configuration: --prefix=/root/ffmpeg_build --pkg-config-flags=--static --extra-cflags=-I/root/ffmpeg_build/include --extra-ldflags=-L/root/ffmpeg_build/lib --extra-libs=-lpthread --extra-libs=-lm --bindir=/root/bin --enable-gpl --enable-libfdk_aac --enable-libfreetype --enable-libmp3lame --enable-libx264 --enable-nonfree
+
+ libavutil 56\. 17.100 / 56\. 17.100
+
+ libavcodec  58\. 19.100 / 58\. 19.100
+
+ libavformat 58\. 13.100 / 58\. 13.100
+
+ libavdevice 58. 4.100 / 58. 4.100
+
+ libavfilter  7\. 21.100 / 7\. 21.100
+
+ libswscale 5. 2.100 / 5. 2.100
+
+ libswresample  3. 2.100 / 3. 2.100
+
+ libpostproc 55. 2.100 / 55. 2.100
+
+Input #0, mp3, from 'cbr2.mp3':
+
+ Metadata:
+
+ major_brand  : isom
+
+ minor_version  : 512
+
+ compatible_brands: isomiso2mp41
+
+ encoder  : Lavf58.13.100
+
+ Duration: 00:00:40.07, start: 0.025057, bitrate: 64 kb/s
+
+ Stream #0:0: Audio: mp3, 44100 Hz, stereo, fltp, 64 kb/s
+
+ Metadata:
+
+ encoder  : Lavc58.19
+
+[FORMAT]
+
+filename=cbr2.mp3
+
+nb_streams=1
+
+nb_programs=0
+
+format_name=mp3
+
+format_long_name=MP2/3 (MPEG audio layer 2/3)
+
+start_time=0.025057
+
+duration=40.071837
+
+size=320926
+
+bit_rate=64070
+
+probe_score=51
+
+TAG:major_brand=isom
+
+TAG:minor_version=512
+
+TAG:compatible_brands=isomiso2mp41
+
+TAG:encoder=Lavf58.13.100
+
+[/FORMAT]
+
+
+
+```
+
+
+
+
+
 ## 4.3.3 平均码率编码参数ABR
 
+ABR是VBR与CBR的混合产物, 表示`平均码率编码.`, 使用ABR参数之后,  编码速度将会比VBR高,  但是质量会比VBR的编码稍微逊色一些,  比CBR编码好一些, 在 FFmpeg中可以使用参数, 	`-ahr`来控制MP3编码为ABR编码方式....
+
+
+`ffmpeg -i aac.mp3 -acodec libmp3lame -b:a 64k -abr 1 abrtest.mp3`
+
+
+```
+
+ffmpeg -i aac.mp3 -acodec libmp3lame -b:a 64k -abr 1 abrtest.mp3
+
+ffmpeg version N-90893-gcae6f80 Copyright (c) 2000-2018 the FFmpeg developers
+
+ built with gcc 4.4.7 (GCC) 20120313 (Red Hat 4.4.7-18)
+
+ configuration: --prefix=/root/ffmpeg_build --pkg-config-flags=--static --extra-cflags=-I/root/ffmpeg_build/include --extra-ldflags=-L/root/ffmpeg_build/lib --extra-libs=-lpthread --extra-libs=-lm --bindir=/root/bin --enable-gpl --enable-libfdk_aac --enable-libfreetype --enable-libmp3lame --enable-libx264 --enable-nonfree
+
+ libavutil 56\. 17.100 / 56\. 17.100
+
+ libavcodec  58\. 19.100 / 58\. 19.100
+
+ libavformat 58\. 13.100 / 58\. 13.100
+
+ libavdevice 58. 4.100 / 58. 4.100
+
+ libavfilter  7\. 21.100 / 7\. 21.100
+
+ libswscale 5. 2.100 / 5. 2.100
+
+ libswresample  3. 2.100 / 3. 2.100
+
+ libpostproc 55. 2.100 / 55. 2.100
+
+Input #0, mp3, from 'aac.mp3':
+
+ Metadata:
+
+ major_brand  : isom
+
+ minor_version  : 512
+
+ compatible_brands: isomiso2mp41
+
+ encoder  : Lavf58.13.100
+
+ Duration: 00:00:40.07, start: 0.025057, bitrate: 128 kb/s
+
+ Stream #0:0: Audio: mp3, 44100 Hz, stereo, fltp, 128 kb/s
+
+ Metadata:
+
+ encoder  : Lavc58.19
+
+Stream mapping:
+
+ Stream #0:0 -> #0:0 (mp3 (mp3float) -> mp3 (libmp3lame))
+
+Press [q] to stop, [?] for help
+
+Output #0, mp3, to 'abrtest.mp3':
+
+ Metadata:
+
+ major_brand  : isom
+
+ minor_version  : 512
+
+ compatible_brands: isomiso2mp41
+
+ TSSE : Lavf58.13.100
+
+ Stream #0:0: Audio: mp3 (libmp3lame), 44100 Hz, stereo, fltp, 64 kb/s
+
+ Metadata:
+
+ encoder  : Lavc58.19.100 libmp3lame
+
+size=  315kB time=00:00:40.04 bitrate= 64.4kbits/s speed=44.1x    
+
+video:0kB audio:314kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.109355%
+
+
+```
 
 
 
 # 4.4  FFmpeg 输出AAC
 
+## AAC的q:a 和mp3的不同,  这个q的有效范围在 0.1-2之间
+
+
+
 ## 4.4.1 FFmpeg 中的AAC编码器使用
+
+
+
+`ffmpeg -i aacVideo.mp4 -c:a aac -b:a 160k aacVideoSound.aac`
+![04-FFmpeg转码-01-x264-26](image/04-FFmpeg%E8%BD%AC%E7%A0%81-01-x264-26.png)
+
+
+
+使用`-q:a`设置AAC的输出质量
+`ffmpeg -i aacVideoSound.aac -c:a aac -q:a 2 aacQAtest.m4a`
+
+
 
 ## 4.4.1 FDKAAC 第三方库的AAC编码codec 库
 
+
+### 1. 恒定码率 (CBR)模式
+
+
+- 将一个mp4中的aac扣出来, 转成一个恒定码率为64kbit/s的aac, 
+- `b:a`和mp3的参数是一样的. 就是CBR的意思
+
+`ffmpeg -i aacVideo.mp4 -c:a libfdk_aac -b:a 64k fdkaac64k.m4a`
+
+
+
+将一个音频为mp3的mp4, 转换成恒定码率aac的mp4,  码率为384kbit/s,
+
+`ffmpeg -i mp3Video.mp4 -c:v copy -c:a libfdk_aac -b:a 384k mp3VToCBRAACVideo.mp4`
+
+
+
+### 2. 动态码率(VBR)模式
+
+- 使用VBR可以有更好的音频质量
+- 使用libfdk_aac进行VBR模式的AAC编码时, 可以设置4个等级
+
+
+![04-FFmpeg转码-01-x264-27](image/04-FFmpeg%E8%BD%AC%E7%A0%81-01-x264-27.png)
+
+- 第一列为VBR的类型
+- 第二列为每通道编码后的码率
+- 第三列中三种AAC编码信息
+  - LC: Low Complexity AAC, 这种编码相对来说体积比较大, 质量稍差
+  - HE: High-Efficiency AAC, 这种编码相对来说体积较小, 质量较好
+  - HEv2: Hight-Efficiency AAC version 2, 体积小, 质量优
+
+
+
+#### AAC 编码LC, HE,  HEv2推荐参数
+
+
+![04-FFmpeg转码-01-x264-28](image/04-FFmpeg%E8%BD%AC%E7%A0%81-01-x264-28.png)
+![04-FFmpeg转码-01-x264-29](image/04-FFmpeg%E8%BD%AC%E7%A0%81-01-x264-29.png)
+
+
+用fdkaac将mp3转成一个aac
+
+	`ffmpeg -i mv3.mp3 -c:a libfdk_aac -vbr 3 output.m4a`
+
+
+ 
+
+
+
+
+
+
+
 ## 4.4.1 高质量AAC设置
+
+
 
 ## 4.4.1 AAC音频质量对比
 
 
-# 4.1 FFmpeg
+
