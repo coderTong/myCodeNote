@@ -7,6 +7,8 @@
 
 `ffmpeg -ss 2400 -i opengl.mp4 -c copy -t 40 aacVideo.mp4`
 
+
+ffmpeg -ss 4800 -i ffmpeg.mp4 -c copy -t 480 rtmpflv.mp4
 # 只要某一段的音频
 
 里面是什么音频, 抠出来就是什么
@@ -17,12 +19,14 @@
 
 # 调整mp4的moov
 
-	`ffmpeg -i cuc_ieschool.flv -c copy -f mp4 -movflags faststart fastmoov.mp4`
+	`ffmpeg -i wechat.mp4 -c copy -f mp4 -movflags faststart fastmoov.mp4`
 
 
 
 # MP4==>flv
 
 `ffmpeg -i mp3Video.mp4 -c copy -f flv rtmpVideo.flv`
+
+
 
 
