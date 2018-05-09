@@ -8,6 +8,9 @@
 `ffmpeg -ss 2400 -i opengl.mp4 -c copy -t 40 aacVideo.mp4`
 
 
+
+
+
 ffmpeg -ss 4800 -i ffmpeg.mp4 -c copy -t 480 rtmpflv.mp4
 # 只要某一段的音频
 

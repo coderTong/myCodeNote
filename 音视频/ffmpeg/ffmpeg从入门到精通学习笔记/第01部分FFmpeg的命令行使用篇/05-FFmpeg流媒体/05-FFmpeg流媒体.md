@@ -39,6 +39,7 @@ rtmp_app 后面接的名字要和Nginx里面设置的一样
 
 
 
+
 这样就不会出现了, 实际上我测试, 这样我反而播不了了, 上面那个没加`class`的播放是正常的....
 
 app + class简化版
@@ -56,7 +57,7 @@ app + class简化版
 `ffmpeg -rtmp_app liveyo -rtmp_playpath class -i rtmp://206.189.128.41 -c copy -f flv savef.flv`
 
 没加就这样, 本身发布没加, 保存这里反而加了的话, 我测试好像动不了了......, 这条测试有效.....
-`ffmpeg -rtmp_app liveyo -i rtmp://206.189.128.41 -c copy -f flv savef.flv`
+`ffmpeg -rtmp_app liveyo -i rtmp://26.189.128.41 -c copy -f flv savef.flv`
 
 
 
@@ -135,32 +136,167 @@ rtmp_pageurl: 放盗链
 
 FFmpeg默认的user_agent是`Lavf`, 通过如下可以修改`user_agent`
 
-`ffmpeg -user_agent "coderTomwu Player" -i http://165.227.50.226/cc/fastmoov.mp4 -c copy userAgent.mp4`
+`ffmpeg -user_agent "coderTomwu Player" -i http://15.227.50.226/cc/fastmoov.mp4 -c copy userAgent.mp4`
 
 
-
-
-## 三, HTTP拉流录制
 ## 四, 拉取HTTP中的流录制FLV
+
+- 1, 拉取FLV直播流录制为FLV
+`ffmpeg -i http://15.227.50.226:9777/ff/ccz.mp4 -c copy -f flv outputF.flv`
+
+- 2.拉取TS直播流录制为FLV
+`ffmpeg -i http://15.227.50.226:9777/ff/ccz.ts -c copy -f flv outputF.flv`
+
+
+- 3.拉取HLS直播流录制为FLV
+`ffmpeg -i http://15.227.50.226:9777/ff/ccz.m3u8 -c copy -f flv outputF.flv`
 
 # 5.4 FFmpeg 录制和发布UDP/TCP流
 
 ## 一, TCP 与 UDP 参数说明
+
+![05-FFmpeg流媒体-08](image/05-FFmpeg%E6%B5%81%E5%AA%92%E4%BD%93-08.png)
+
+
+![05-FFmpeg流媒体-09](image/05-FFmpeg%E6%B5%81%E5%AA%92%E4%BD%93-09.png)
+
+
+
 ## 二, TCP参数使用举例
+
+### 如果是两台真实服务器, 就需要设置真的ip地址,而不是127.0.0.1
+
+使用FFmpeg既可以进行TCP的监听, 也可以使用FFmpeg进行TCP的链接请求, 使用TCP监听与请求可以是对称方式
+
+- 1,TCP监听接收流
+
+`ffmpeg -listen 1 -f flv -i tcp://127.0.0.1:1234/wt -c copy -f flv output.flv`
+
+
+- 2. TCP请求发布流
+
+`ffmpeg -re -i ccz.mp4 -c copy -f flv tcp://26.189.128.41:1234/wt/video`
+
+- 3. 监听端口超时listen_timeout
+  - 没设置的话默认是持续监听的
+  - 这里的单位是毫秒
+
+5秒钟没连过来我就停止监听, `listen_timeout`单位是毫秒所以为5000
+`time ffmpeg -listen_timeout 5000 -listen 1 -f flv -i tcp://26.189.128.41:1234/wt/video -c copy -f flv output.flv`
+
+
+- 4. TCP拉流超时参数 timeout
+
+`time ffmpeg -timeout 200000 -i tcp://26.189.128.41:1935/live/stream -c copy -f flv output.flv`
+
+
+
+- 5. TCP 传输buffer大小设置 send_buffer_size/recv_buffer_size
+`buffer`设置得越小, 传输就会越频繁, 网络开销就越大.
+
+
+`ffmpeg -re -i ccz.mp4 -c copy -send_buffer_size 256 -f flv tcp://26.189.128.41:1936/wt/video`
+
+
+- 6.绑定本地UDP端口, localport
+
+### 使用FFmpeg的UDP传输数据时, 默认会由系统分配本地端口, 使用localport参数时可以设置监听本地端口.
+
+`ffmpeg -re -i ccz.mp4 -c copy -localport 23456 -f flv udp://26.189.128.41:12345/wt/video`
+
+
+
 ## 三, TCP/UDP 使用小结
+
+
 
 # 5.5 FFmpeg 推多路流
 
-## 一, 管道方式输出多路流
-## 二, tee 封装格式输出多路流
-## 三, tee协议输出多路流
+关键词: `一次编码输出多个封装`
+
+
+- 管道,两路输出
+`ffmpeg -i ccn.mp4 -vcodec libx264 -acodec aac -f flv - | ffmpeg -f flv -i - -c copy -f flv rtmp://26.189.128.41/liveyo/class1 -c copy -f flv rtmp://26.189.128.41/liveyo/class2`
+
+- tee 封装格式输出多路流
+
+```
+
+ffmpeg -re -i aacVideo.mp4 -vcodec libx264 -acodec aac -map 0 -f tee "[f=flv]rtmp://26.189.128.41/liveyo/class1 | [f=flv]rtmp://26.189.128.41/liveyo/class2"
+
+
+```
+
+验证两路流是不是一样
+
+```
+
+ffmpeg -i rtmp://26.189.128.41/liveyo/class1 -i rtmp://26.189.128.41/liveyo/class2
+
+
+```
+- tee协议输出多路流
+
+```
+
+ffmpeg -re -i ccn.mp4 -vcodec libx264 -acodec aac -f flv "tee:rtmp://206.189.128.41/liveyo/class1|rtmp://206.189.128.41/liveyo/class2"
+
+```
+
+
 
 
 # 5.6 FFmpeg 生成HDS流
 
 
+`ffmpeg -h muxer=hds`
+![05-FFmpeg流媒体-10](image/05-FFmpeg%E6%B5%81%E5%AA%92%E4%BD%93-10.png)
+
+
 ## 一, HDS 参数说明
+
+
+![05-FFmpeg流媒体-11](image/05-FFmpeg%E6%B5%81%E5%AA%92%E4%BD%93-11.png)
+
+
+
 ## 二, HDS 使用举例
+
+- 1.window_size 参数控制文件列表大小
+设置HDS为直播模式时, 需要实时更新列表, 可以通过window_size参数控制文件列表窗口大小
+HDS文件列表中只保存4个文件, 通过window_size设置
+
+
+` ffmpeg -i ccn.mp4 -c copy -f hds -window_size 4 output`
+
+
+![05-FFmpeg流媒体-12](image/05-FFmpeg%E6%B5%81%E5%AA%92%E4%BD%93-12.png)
+
+看了下好像不是4个
+
+- index.f4m, 索引文件, 主要为F4M参考标准中mainfest相关, Metadata信息等
+- stream0.abst: 文件流相关描述信息
+- stream0Seg1-Frag844 : 相似规则文件切片, 文件切片中均为mdat信息
+
+
+`ffmpeg -i ccn.mp4 -c copy -f hds output`默认没有设置
+
+
+
+- 2. extra_window_size 参数控制文件个数
+
+在控制`window_size`之后, HLS切片的情况与之类似, 列表之外的文件会有一些残留.  通过`extra_window_size` 可以控制文件残留个数
+
+设置文件残留个数为1.
+`ffmpeg -re -i test.mp4 -c copy -f hds -window_size 4 -extra_window_size 1 output`
+
+
+![05-FFmpeg流媒体-13](image/05-FFmpeg%E6%B5%81%E5%AA%92%E4%BD%93-13.png)
+
+
+
+
+
 
 
 # 5.7 FFmpeg 生成DASH流

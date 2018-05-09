@@ -73,6 +73,8 @@ yum install gcc -y
 ./configure --user=www --group=www --with-http_ssl_module --with-http_stub_status_module --prefix=/application/nginx-1.6.3/
  
 
+
+./configure --user=www --group=www --with-http_ssl_module --with-http_stub_status_module --prefix=/application/nginx-1.10.3/
 ```
 
 ### WebDAV服务器
@@ -133,6 +135,13 @@ ln -s /application/nginx-1.6.3/ /application/nginx
 ll /application/nginx                             
 
 lrwxrwxrwx. 1 root root 25 Nov 30 17:00 /application/nginx -> /application/nginx-1.6.3/
+
+
+
+
+ln -s /application/nginx-1.10.3/ /application/nginxBt
+
+
 ```
 
 将来我看
@@ -174,5 +183,7 @@ nginx  12629 www 6u IPv4 1806327 0t0 TCP *:http (LISTEN)
 ```
 
 
+
+/application/nginx/sbin/nginx -t
 
 
