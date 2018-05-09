@@ -294,12 +294,13 @@ HDS文件列表中只保存4个文件, 通过window_size设置
 ![05-FFmpeg流媒体-13](image/05-FFmpeg%E6%B5%81%E5%AA%92%E4%BD%93-13.png)
 
 
+- 3. remove_at_exit
 
 
 
 
 
-# 5.7 FFmpeg 生成DASH流
+# 5.7 FFmpeg 生成DASH流----略
 
 ## DASH参数说明
 ## DASH 参数使用举例
