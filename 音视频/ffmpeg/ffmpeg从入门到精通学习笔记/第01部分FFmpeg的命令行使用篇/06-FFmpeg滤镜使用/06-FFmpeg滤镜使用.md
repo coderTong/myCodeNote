@@ -107,30 +107,136 @@ Filter基本格式
 
 
 
+`ffmpeg -re -i input.mp4 -vf "movie=sub.mp4,scale=200x200[test]; [in][test]overlay[out]" -vcodec libx264 overlaytest1.mp4`
+
+
+- 生成一个flv的话中画
+
+`ffmpeg -re -i input.mp4 -vf "movie=sub.mp4,scale=200x200[test]; [in][test]overlay=x=main_w-200:y=main_h-200 [out]" -vcodec libx264 overlaytest2.flv`
+
+这条命令除了显示在overlay画面中, 子视频将会定位在主画面的最右边减去子视频的宽度, 最下边减去子视频的高度位置,
+
+
+- 让画中画动起来
+
+使用overlay还可以配合正则表达式进行跑马灯式画中画处理, 动态改变子画面的x坐标与y坐标即可
+
+`ffmpeg -re -i input.mp4 -vf "movie=sub.mp4,scale=200x200[test]; [in][test]overlay=x='if(gte(t,2), -w+(t-2)*20, NAN)' :y=0 [out]" -vcodec libx264 overlaytest3.mp4`
+
+
+子视频从左侧渐渐向右移动 
+
 # 6.4 FFmpeg视频多宫格处理
 
 
+
+```
+
+
+ffmpeg -re -i 1.mp4 -re -i 2.mp4 -re -i 3.mp4 -re -i 4.mp4 -filter_complex "nullsrc=size=640x480 [base]; [0:v] setpts=PTS-STARTPTS, scale=320x240 [upperleft];[1:v] setpts=PTS-STARTPTS, scale=320x240 [upperright]; [2:v] setpts=PTS-STARTPTS, scale=320x240 [lowerleft]; [3:v] setpts=PTS-STARTPTS, scale=320x240 [lowerright]; [base][upperleft] overlay=shortest=1[tmp1]; [tmp1][upperright] overlay=shortest=1:x=320 [tmp2]; [tmp2][lowerleft]overlay=shortest=1:y=240 [tmp3]; [tmp3][lowerright] overlay=shortest=1:x=320:y=240" -c:v libx264 voerlay5.mp4
+
+
+```
+
+执行完命令行之后, 即可以通过nullsrc创建一个overlay 画布, 画布的大小为宽640像素, 搞480像素, 使用`[0:v][1:v][2:v][3:v]` 将输入的4个视频流去除, 分别进行缩放处理, 处理为宽320, 高240的视频, 然后基于nullsrc生成的画布进行视频平铺, 平铺的整体情况如图
+
+
+![06-FFmpeg滤镜使用-05](image/06-FFmpeg%E6%BB%A4%E9%95%9C%E4%BD%BF%E7%94%A8-05.png)
 
 
 
 
 # 6.5 FFmpeg音频流滤镜操作
 
+FFmpeg可以对音频做些啥?
+`拆分声道`, `合并多声道为单声道`, `调整声道布局`, `调整音频采样频率`
+有哪些滤镜了?
+`amix`,  `amerge`, `pan`, `channelsplit`, `volume`, `volumedetect`
+
 ## 1. 双声道合并单声道
+
+## 看看FFmpeg对音频的声道布局支持情况 ffmpeg -layouts
+
+- 双声道(stereo)==>单声道(mono)
+
+`ffmpeg -i 2_stereo.aac -ac 1 2_mono.aac`
+
+
+
+
 ## 2. 双声道提取
+
+
+`ffmpeg -i 2_stereo.aac -map_channel 0.0.0 left.aac -map_channel 0.0.1 right.aac`
+
+`ffmpeg -i 2_stereo.aac -filter_complex "[0:0]pan=1c|c0=c0[left];[0:0]pan=1c|c0=c1[right]" -map "[left]" left2.aac -map "[right]" right2.aac`
+
+
+
 ## 3.双声道转双音频流
+
+将双声道音频提取出来转为一个音频文件两个音频流, 每个音频流为一个声道
+
+`ffmpeg -i qt.aac -filter_complex channelsplit=channel_layout=stereo qt.mka`
+
+
+
+![06-FFmpeg滤镜使用-06](image/06-FFmpeg%E6%BB%A4%E9%95%9C%E4%BD%BF%E7%94%A8-06.png)
+![06-FFmpeg滤镜使用-07](image/06-FFmpeg%E6%BB%A4%E9%95%9C%E4%BD%BF%E7%94%A8-07.png)
+
+### 大多数播放器默认情况下,只会播放第一个Stream
+
 ## 4.单声道转双声道
+
+`ffmpeg -i 1_mono.aac -ac 2 1_stereo.m4a`
+mono布局====>stereo布局
+
+
+`ffmpeg -i 1_mono.aac -filter_complex "[0:a][0:a]amerge=inputs=2[aout]" -map "[aout]" 1stereo.m4a`
+
+
+通过这两种只是布局变成了双声道stereo, 是假的双声道, 音频质量并不会好
+
 ## 5. 两个音频源合并双声道
+
+`ffmpeg -i qleft.aac -i 1_mono.aac -filter_complex "[0:a][1:a]amerge=inputs=2[aout]" -map "[aout]" mmmuxer.aac`
+
+
+- 转成aac的音频
+`ffmpeg -i qleft.aac -i 1_mono.aac -filter_complex "[0:a][1:a]amerge=inputs=2[aout]" -map "[aout]" -acodec aac mmmuxer2.mka`
+
+
 ## 6. 多个音频合并为多声道
+
+`ffmpeg -i 1.aac -i 2.aac -i 3.aac -i 4.aac -i 5.aac -i 6.aac -filter_complex "[0:a][1:a][2:a][3:a][4:a][5:a]amerge=inputs=6[aout]" -map "[aout]" -acodec aac auto.aac`
+
 
 
 
 # 6.6 FFmpeg音频音量探测
 
 ## 1. 音频音量获得
+
+`ffmpeg -i 1.aac -filter_complex volumedetect -c:v copy -f null ./`
+
+
+![06-FFmpeg滤镜使用-08](image/06-FFmpeg%E6%BB%A4%E9%95%9C%E4%BD%BF%E7%94%A8-08.png)
+mean_volume: 音频的平均大小, -16.6dB
+
+
+
 ## 2. 绘制音频波形
 
 
+`ffmpeg -i 1.aac -filter_complex "showwavespic=s=640x120" -frames:v 1 output.png`
+
+
+![06-FFmpeg滤镜使用-09](image/06-FFmpeg%E6%BB%A4%E9%95%9C%E4%BD%BF%E7%94%A8-09.png)
+
+
+- 看不同声道
+
+`ffmpeg -i auto.aac -filter_complex "showwavespic=s=640x240:split_channels=1" -frames:v 1 channels1.png`
 
 
 # 6.7 FFmpeg为视频加字幕

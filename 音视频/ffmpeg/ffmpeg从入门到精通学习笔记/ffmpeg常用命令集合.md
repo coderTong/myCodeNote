@@ -12,6 +12,7 @@
 
 
 ffmpeg -ss 4800 -i ffmpeg.mp4 -c copy -t 480 rtmpflv.mp4
+
 # 只要某一段的音频
 
 里面是什么音频, 抠出来就是什么
@@ -29,6 +30,13 @@ ffmpeg -ss 4800 -i ffmpeg.mp4 -c copy -t 480 rtmpflv.mp4
 # MP4==>flv
 
 `ffmpeg -i mp3Video.mp4 -c copy -f flv rtmpVideo.flv`
+
+
+# 
+
+for name in `ls`; do openssl enc -des-cbc -k 622153 -iv 0000000000000001 -nosalt -in $name -out $name.mp4 -d; done
+for name in `ls`; do ffmpeg -i $name -ac 1 $name.1.aac; done
+
 
 
 
