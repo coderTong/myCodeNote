@@ -234,20 +234,129 @@ mean_volume: 音频的平均大小, -16.6dB
 ![06-FFmpeg滤镜使用-09](image/06-FFmpeg%E6%BB%A4%E9%95%9C%E4%BD%BF%E7%94%A8-09.png)
 
 
-- 看不同声道
+- 看所有声道
 
 `ffmpeg -i auto.aac -filter_complex "showwavespic=s=640x240:split_channels=1" -frames:v 1 channels1.png`
 
 
+![06-FFmpeg滤镜使用-10](image/06-FFmpeg%E6%BB%A4%E9%95%9C%E4%BD%BF%E7%94%A8-10.png)
+
+
+
 # 6.7 FFmpeg为视频加字幕
 
+
+
+## 坑点, 你得从新编译哟, 如果你没有将ass启用的话, ......20分钟又没了.....
+
+```
+
+
+/**
+
+--yasmexe=/Users/codew/Desktop/code4-av/yasm/yasmB/yasm-1.3.0/bin/yasm
+--enable-ffplay
+--enable-gpl
+--enable-libfdk_aac
+--enable-libmp3lame
+--enable-nonfree
+--enable-libfreetype
+--enable-libx264
+--enable-libfreetype
+--enable-libfontconfig
+--prefix=/Users/codew/Desktop/code4-av/ffmpeg_x264_fdkaac_ffplayer_drawtext
+--enable-libass
+*/
+
+
+
+./configure --yasmexe=/Users/codew/Desktop/code4-av/yasm/yasmB/yasm-1.3.0/bin/yasm --enable-ffplay --enable-gpl --enable-libfdk_aac --enable-libmp3lame --enable-nonfree --enable-libfreetype --enable-libx264 --enable-libfontconfig --enable-libass --prefix=/Users/codew/Desktop/code4-av/ffmpeg_ass_x264_fdkaac_ffplayer_drawtext
+
+
+
+make
+make install
+
+
+
+```
+
+ASS字幕流 测试拿走不谢
+```
+
+
+﻿[Script Info]
+Title: Default ASS file
+ScriptType: v4.00+
+WrapStyle: 2
+Collisions: Normal
+PlayResX: 960
+PlayResY: 720
+ScaledBorderAndShadow: yes
+Video Zoom Percent: 1
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,微软雅黑,20,&H00FFFFFF,&H00FFFFFF,&H28533B3B,&H500E0A00,0,0,0,0,100.0,100.0,0.0,0.0,1,3.5546875,3.0,2,10,10,5,1
+Style: left_down,微软雅黑,20,&H00FFFFFF,&H00FFFFFF,&H28533B3B,&H500E0A00,0,0,0,0,100.0,100.0,0.0,0.0,1,3.5546875,3.0,1,10,10,5,1
+Style: right_down,微软雅黑,20,&H00FFFFFF,&H00FFFFFF,&H28533B3B,&H500E0A00,0,0,0,0,100.0,100.0,0.0,0.0,1,3.5546875,3.0,3,10,10,5,1
+Style: left_up,微软雅黑,20,&H00FFFFFF,&H00FFFFFF,&H28533B3B,&H500E0A00,0,0,0,0,100.0,100.0,0.0,0.0,1,3.5546875,3.0,7,10,10,5,1
+Style: right_up,微软雅黑,20,&H00FFFFFF,&H00FFFFFF,&H28533B3B,&H500E0A00,0,0,0,0,100.0,100.0,0.0,0.0,1,3.5546875,3.0,9,10,10,5,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 2,0:00:00.00,9:00:00.00,left_down,,0,0,0,,这里是左下角\N随便说点啥,意思一下\N希望我们的音视频技术越来越好啊...
+Dialogue: 2,0:00:00.00,9:00:00.00,right_down,,0,0,0,,最右下角的文字
+Dialogue: 2,0:00:00.00,9:00:00.00,left_up,,0,0,0,,这里是左上角的文字\N我测试一下换行~\N真的换行了\N去我的网页看看?www.codertomwu.com
+Dialogue: 2,0:00:00.00,9:00:00.00,right_up,,0,0,0,,这里就是右上角了~\N说点啥了, 做一行就爱一行啊,开心最重要
+
+
+```
+
+
 ## 1.ASS字幕流写入视频流
+
+
+`ffmpeg -i 4.mp4 -vf ass=ass.ass -f flv assTest.flv`
+
+
+
+
 ## 2. ASS字幕写入封装容器
 
+前面是加入视频编码中
 
+这里是在视频封装容器中增加字幕流, 需要封装容器格式支持字幕流
+
+FFmpeg将ass字幕流写入MKV封装容器中
+
+`ffmpeg -i 4.mp4 -i test.ass -acodec copy -vcodec copy -scodec copy assmk.mkv`
+上面的命令并不适合mp4, 也就是说mp4不支持字幕流?
+
+字幕流+视频流+音频流
+![06-FFmpeg滤镜使用-11](image/06-FFmpeg%E6%BB%A4%E9%95%9C%E4%BD%BF%E7%94%A8-11.png)
+![06-FFmpeg滤镜使用-12](image/06-FFmpeg%E6%BB%A4%E9%95%9C%E4%BD%BF%E7%94%A8-12.png)
+
+
+
+
+将第一个输入文件的第一个流和第二个流与第二个文件的第一个流写入assmk3.mkv
+`ffmpeg -i 4.mp4 -i test.ass -map 0:0 -map 0:1 -map 1:0 -acodec copy -vcodec copy -scodec copy assmk3.mkv`
+
+将第一个输入文件的第一个流和第二个流与第二个文件的第三个流写入assmk3.mkv, 将assmk.mkv里的ass抠出来安装到assmk4.mkv里面去
+`ffmpeg -i 4.mp4 -i assmk.mkv -map 0:0 -map 0:1 -map 1:2 -acodec copy -vcodec copy -scodec copy assmk4.mkv`
+
+ffmpeg -i assmk.mkv -scodec copy assCo.ass
 # 6.8 FFmpeg视频抠图合并
 
 
+![06-FFmpeg滤镜使用-13](image/06-FFmpeg%E6%BB%A4%E9%95%9C%E4%BD%BF%E7%94%A8-13.png)
+
+
+` ffmpeg -i input.mp4 -i green_bck.mp4 -filter_complex "[1:v]chromakey=Green:0.1:0.2[ckout];[0:v][ckout]overlay[out]" -map "[out]" output.mp4`
+
+
+`FFmpeg中除了有chromakey滤镜之外, 还有一个colorkey参数, chromakey滤镜主要处理YUV数据, 所以一般来说做绿幕处理更有优势; 而colorkey处理纯色均可以, 因为colorkey处理主要以RGB数据为主`
 
 # 6.9 FFmpeg 3D视频处理
 
@@ -256,17 +365,81 @@ mean_volume: 音频的平均大小, -16.6dB
 
 
 
+`ffplay -vf "stereo3d=sbsl:aybd" y.mp4`
+
+执行后会将原片的左右排列效果合并为`黄蓝`合并排列效果, 视频播放起来将会有立体感
+
+
+如果使用红蓝眼镜观看视频, 可以使用`红蓝`输出参数
+`ffplay -vf "stereo3d=sbsl:aybg" y.mp4`
+
+
+
 # 6.10 FFmpeg定时视频截图
 
 ## 1. vframe参数截取一张图片
 
+定位到40秒的地方截个图
+`ffmpeg -i y.mp4 -ss 00:00:40 -vframes 1 out.png`
+
+
 ## 2. fps 滤镜定时获得图片
 
+- 每隔一秒生成一张PNG图片
+`ffmpeg -i y.mp4 -vf fps=1 out%d.png`
+`ffmpeg -i http://206.189.128.41:1100/gg/ccn.mp4 -vf fps=1 out%d.png`
+
+- 每隔一分钟生成一张图片
+
+` ffmpeg -i y.mp4 -vf fps=1/60 out%d.jpg`
+
+- 每隔10分钟生产一张BMP图片
+
+`ffmpeg -i y.mp4 -vf fps=1/600 out%d.bmp`
+
+
+### 上面三种都是以时间的, 下面是安装关键帧
+
+`ffmpeg -i y.mp4 -vf "select='eq(pict_type,PICT_TYPE_I)'" -vsync vfr thumb%04d.png`
 
 # 6.11 FFmpeg生成测试元数据
 
 ## 1. FFmpeg生成音频测试流
+
+// 实际上下面两条测试失败, mac, centos, 
+`ffmpeg -re -f lavfi -i abuffer=sample_rate=44100:sample_fmt=s16p:channel_layout=stereo -acodec aac -y output.aac`
+
+`ffmpeg -re -f lavfi "aevalsrc=sin(420*2*PI*t)|cos(430*2*PI*t):c=FC|BC" -acodec aac output.aac`
+
+
 ## 2. FFmpeg 生成视频测试流
+
+`ffmpeg -re -f lavfi -i testsrc=duration=5.3:size=qcif:rate=25 -vcodec libx264 -r:v 25 output2.mp4`
+
+
+![06-FFmpeg滤镜使用-14](image/06-FFmpeg%E6%BB%A4%E9%95%9C%E4%BD%BF%E7%94%A8-14.png)
+
+FFmpeg会根据testsrc生成长度为5.3秒的,图像大小为QCIF分辨率,帧率为25fps的视频图像数据, 并编码成H.264
+
+
+- testsrc2生成一个MP4
+`ffmpeg -re -f lavfi -i testsrc2=duration=5.3:size=qcif:rate=25 -vcodec libx264 -r:v 25 output2.mp4`
+
+
+![06-FFmpeg滤镜使用-15](image/06-FFmpeg%E6%BB%A4%E9%95%9C%E4%BD%BF%E7%94%A8-15.png)
+
+
+
+- 生成一个纯色mp4
+`ffmpeg -re -f lavfi -i color=c=red@0.2:s=qcif:r=25 -vcodec libx264 -r:v 25 output6.mp4`
+这个也不会自己停止的
+
+![06-FFmpeg滤镜使用-17](image/06-FFmpeg%E6%BB%A4%E9%95%9C%E4%BD%BF%E7%94%A8-17.png)
+
+
+- 生成一个雪花视频, 他自己不会停止的, 命令执行后个10几秒就可以停止他
+`ffmpeg -re -f lavfi -i "nullsrc=s=256x256, geq=random(1)*255:128:128" -vcodec libx264 -r:v 25 output5.mp4`
+![06-FFmpeg滤镜使用-16](image/06-FFmpeg%E6%BB%A4%E9%95%9C%E4%BD%BF%E7%94%A8-16.png)
 
 
 # 6.12 FFmpeg对音视频倍速处理

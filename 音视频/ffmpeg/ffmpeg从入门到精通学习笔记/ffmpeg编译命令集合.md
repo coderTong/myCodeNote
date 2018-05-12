@@ -1,6 +1,84 @@
 # ./configure --help 看看可以加的东西
 
 
+# ==========Mac+x264+fdkAAC+filter+ass
+
+
+
+```
+
+
+brew install automake fdk-aac git lame libass libtool libvorbis libvpx opus sdl shtool texi2html theora wget x264 x265 xvid nasm
+
+
+```
+
+
+```
+
+
+wget http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz
+
+tar xf yasm-1.3.0.tar.gz
+
+cd yasm-1.3.0
+
+./configure --prefix=/application/yasm-1.3.0/
+
+make
+
+make install
+
+
+
+```
+
+
+
+
+```
+
+/**
+
+--yasmexe=/Users/codew/Desktop/code4-av/yasm/yasmB/yasm-1.3.0/bin/yasm
+--enable-ffplay
+--enable-gpl
+--enable-libfdk_aac
+--enable-libmp3lame
+--enable-nonfree
+--enable-libfreetype
+--enable-libx264
+--enable-libfreetype
+--enable-libfontconfig
+--prefix=/Users/codew/Desktop/code4-av/ffmpeg_x264_fdkaac_ffplayer_drawtext
+--enable-libass
+*/
+
+
+
+./configure --yasmexe=/Users/codew/Desktop/code4-av/yasm/yasmB/yasm-1.3.0/bin/yasm --enable-ffplay --enable-gpl --enable-libfdk_aac --enable-libmp3lame --enable-nonfree --enable-libfreetype --enable-libx264 --enable-libfontconfig --enable-libass --prefix=/Users/codew/Desktop/code4-av/ffmpeg_ass_x264_fdkaac_ffplayer_drawtext
+
+
+
+make
+make install
+
+
+
+
+
+
+
+
+ln -s /Users/codew/Desktop/code4-av/ffmpeg_x264_fdkaac_ffplayer_drawtext/bin/ffprobe /usr/local/bin/ffprobe
+
+ln -s /Users/codew/Desktop/code4-av/ffmpeg_x264_fdkaac_ffplayer_drawtext/bin/ffmpeg /usr/local/bin/ffmpeg
+
+ln -s /Users/codew/Desktop/code4-av/ffmpeg_x264_fdkaac_ffplayer_drawtext/bin/ffplay /usr/local/bin/ffplay
+
+```
+
+
 
 
 # ==========Mac+x264+fdkAAC+filter
