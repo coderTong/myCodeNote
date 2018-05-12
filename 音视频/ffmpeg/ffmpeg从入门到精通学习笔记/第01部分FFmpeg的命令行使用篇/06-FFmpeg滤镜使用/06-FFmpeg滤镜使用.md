@@ -432,7 +432,7 @@ FFmpeg会根据testsrc生成长度为5.3秒的,图像大小为QCIF分辨率,帧�
 
 - 生成一个纯色mp4
 `ffmpeg -re -f lavfi -i color=c=red@0.2:s=qcif:r=25 -vcodec libx264 -r:v 25 output6.mp4`
-这个也不会自己停止的
+这个也不会自己停止的..
 
 ![06-FFmpeg滤镜使用-17](image/06-FFmpeg%E6%BB%A4%E9%95%9C%E4%BD%BF%E7%94%A8-17.png)
 
@@ -445,4 +445,29 @@ FFmpeg会根据testsrc生成长度为5.3秒的,图像大小为QCIF分辨率,帧�
 # 6.12 FFmpeg对音视频倍速处理
 
 ## 1. atempo 音频倍速处理
+
+0.5和2倍速度
+`ffmpeg -i 1stereo.aac -filter_complex "atempo=tempo=2.0" -acodec aac 2.aac`
+`ffmpeg -i 1stereo.aac -filter_complex "atempo=tempo=0.5" -acodec aac 2.aac`
 ## 2. setpts视频倍速处理
+
+
+![06-FFmpeg滤镜使用-18](image/06-FFmpeg%E6%BB%A4%E9%95%9C%E4%BD%BF%E7%94%A8-18.png)
+
+- 半速处理 --只是视频半速音频没有
+`ffmpeg -re -i 4.mp4 -filter_complex "setpts=PTS*2" pts2.mp4`
+
+- 音视频都半速
+`ffmpeg -re -i 4.mp4 -filter_complex "setpts=PTS*2;atempo=tempo=0.5" pts2c.mp4`
+
+
+- 两倍速-纯视频
+
+`ffmpeg -re -i 4.mp4 -filter_complex "setpts=PTS/2" pts4.mp4`
+
+- 音视频都两倍
+
+
+`ffmpeg -re -i 4.mp4 -filter_complex "setpts=PTS/2;atempo=tempo=2.0" pts4c.mp4`
+
+
