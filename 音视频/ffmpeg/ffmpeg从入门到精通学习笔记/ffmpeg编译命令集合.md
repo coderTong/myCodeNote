@@ -1,6 +1,88 @@
 # ./configure --help 看看可以加的东西
 
 
+
+
+# =======iOS
+
+```
+
+
+CONFIGURE_FLAGS=
+
+MTTPATH=/Users/codew/Desktop/code4-av/ffmios/armv7s
+./configure \
+--prefix=$MTTPATH
+--target-os=darwin
+--cc=xcrun -sdk iphoneos clang \
+--arch=arm64 \
+--extra-cflags="-arch=armv7s -mios-version-min=8.0 -Ifdk_aac/include -Ix264/include" \
+--extra-ldflags="-arch=armv7s -mios-version-min=8.0 -Lfdk_aac/lib -Lx264/lib" \
+--disable-shared \
+--enable-static \
+--disable-stripping \
+--disable-ffmpeg \
+--disable-ffplay \
+--disable-ffserver \
+--disable-ffprobe \
+--disable-avdevice \
+--disable-devices \
+--disable-indevs \
+--disable-outdevs \
+--disable-debug \
+--disable-asm \
+--disable-yasm \
+--disable-doc \
+--enable-small \
+--enable-dct \
+--enable-dwt \
+--enable-lsp \
+--enable-mdct \
+--enable-rdft \
+--enable-fft \
+--enable-version3 \
+--enable-nonfree \
+--disable-filters \
+--disable-postproc \
+--disable-bsfs \
+--enable-bsf=aac_adtstoasc \
+--enable-bsf=h264_mp4toannexb \
+--disable-encoders \
+--enable-encoder=pcm_s16le \
+--enable-encoder=aac \
+--enable-encoder=libvo_aacenc \
+--disable-decoders \
+--enable-decoder=aac \
+--enable-decoder=mp3 \
+--enable-decoder=pcm_s16le \
+--disable-parsers \
+--enable-parser=aac \
+--disable-muxers \
+--enable-muxer=flv \
+--enable-muxer=wav \
+--enable-muxer=adts \
+--disable-demuxers \
+--enable-demuxer=flv \
+--enable-demuxer=wav \
+--enable-demuxer=aac \
+--disable-protocols \
+--enable-protocol=rtmp \
+--enable-protocol=file \
+--enable-libfdk_aac \
+--enable-libx264 \
+--enable-cross-compile \
+
+
+
+
+--cc=xcrun -sdk iphoneos clang \
+
+```
+
+
+
+
+
 # ==========Mac+x264+fdkAAC+filter+ass
 
 
