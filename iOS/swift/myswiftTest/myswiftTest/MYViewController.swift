@@ -12,6 +12,7 @@ class MYViewController: UIViewController {
 
     var httptools: MyHttpTools = MyHttpTools()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,7 +41,7 @@ class MYViewController: UIViewController {
         
         // 解决循环引用方式二
 //        weak var weakSelf = self
-        
+//
 //        httptools.loadData {[weak self] (string) in
 //
 //            print(string)

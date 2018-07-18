@@ -7,18 +7,149 @@
 //
 
 import UIKit
-
+import CoreLocation
 
 class ViewController: UIViewController {        
+    
+    
+    func latitudeCenter(array:[CLLocationCoordinate2D]) -> Double {
+        
+        var latArray:[Double]! =  []
+        
+        for item in array {
+            
+            latArray?.append(item.latitude)
+            
+        }
+        
+        
+        for i in 0..<latArray!.count {
+            for j in 0 ..< latArray!.count - 1 - i {
+                if latArray![j] > latArray![j + 1] {
+                    let temp = latArray![j]
+                    latArray![j] = latArray![j + 1]
+                    latArray![j + 1] = temp
+                }
+            }
+        }
+        
+        
+//        print(latArray)
+        
+        let count = (latArray?.count)! - 1
+        return (latArray![count] - latArray![0])/2.0 +  latArray[0]
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var arr:[CLLocationCoordinate2D] = []
+        
+         arr.append(CLLocationCoordinate2DMake(1.2, 2.1))
+        arr.append(CLLocationCoordinate2DMake(4.2, 5.3))
+        arr.append(CLLocationCoordinate2DMake(9.1, 2.2))
+        arr.append(CLLocationCoordinate2DMake(7.0, 1.5))
+        arr.append(CLLocationCoordinate2DMake(2.9, 9.4))
+        
+        print(latitudeCenter(array: arr))
+//        latitudeCenter(array: arr)
+        
+        
+        
+        
+        let str:NSString? = "e10adc3949ba59abbe56e057f20f883e"
+        
+        print(str?.uppercased)
+        
+        
+        
+        
+        
+        
+//
+//        let typeValue:Int = 1
+//
+//        switch typeValue {
+//        case 1:
+//            print("1111111")
+//        case 2:
+//            print("hhhh")
+//
+//        default: break
+//
+//        }
+        
+//        var str :NSString = "139-8980-9340";
+//
+//
+//        let arr = str.components(separatedBy: ";")
+//
+//
+//        print(arr)
+//        str = str.replacingOccurrences(of: "-", with: "") as NSString
+//
+//        print(str)
+//
+//        str  = [strlstringByReplacingOccurrencesOfString:@"-"withString:@""];
+//
+//
+//        NSLog(@"%@",str);
+//
+//        结果为：13989809340
+        
+        
+        
+        
+        
+        
+        
 //        myClassOne();
+        
+//        kkkk()
+//        str.componentsSeparatedByString(";")
+        
         
         
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    
+    func kkkk() -> [CLLocationCoordinate2D]{
+    
+        let drawString:NSString = "113.9461624918,22.5936518894258;113.944040704325,22.5859870976428;113.944150866591,22.5804480879936;113.954479790054,22.5806290063821;113.954802596751,22.5861305757934;113.954334077527,22.5884452991872";
+        
+        guard drawString.range(of: ";").location != NSNotFound else {
+    
+            return []
+        }
+        
+        let longitudeLatitudeStringArr = drawString.components(separatedBy: ";");
+        
+        var coordinates = [CLLocationCoordinate2D]()
+//        coordinates.append(CLLocationCoordinate2DMake(0, 0));
+        
+        for longitudeLatitudeString in longitudeLatitudeStringArr {
+            
+            let longitudeLatitudeNSStr = longitudeLatitudeString as NSString
+            guard longitudeLatitudeNSStr.range(of: ",").location != NSNotFound else {
+                continue
+            }
+            
+            let pointStringArr = longitudeLatitudeNSStr.components(separatedBy: ",");
+            let latitudeStr:NSString = pointStringArr[0] as NSString
+            let longitudeStr:NSString = pointStringArr[1] as NSString
+            
+            coordinates.append(CLLocationCoordinate2DMake(latitudeStr.doubleValue, longitudeStr.doubleValue));
+        }
+        
+        
+        
+        print(coordinates)
+        
+        return coordinates
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -27,7 +158,31 @@ class ViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+//        _ = names.count
+//        _ = names.count
+//        _ = names.count
+//        _ = names.count
+//
+//        print(names)
         
+//        var randomStr = ""
+//        let string:NSString = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
+//
+//        let len = UInt32(string.length - 4);
+//        var lenInt:Int?
+//        for _ in 0..<15{
+//
+//            lenInt = Int(arc4random() % len)
+//            randomStr = randomStr + string.substring(with: NSRange(location: lenInt!, length: 1))
+//        }
+//
+//        print(randomStr)
+    
+//        let ui = ProcessInfo.processInfo.globallyUniqueString;
+//
+////        NSProcessInfo.pro
+////        NSString *udid = [[NSProcessInfo processInfo] globallyUniqueString];
+//        print(ui)
     }
     
     

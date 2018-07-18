@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC190CE120CBEF8300CE9DA5 /* ssss.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC190CE020CBEF8300CE9DA5 /* ssss.swift */; };
-		AC190CE320CBF03300CE9DA5 /* sff.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC190CE220CBF03300CE9DA5 /* sff.swift */; };
-		AC190CE520CBF05A00CE9DA5 /* 1111111.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC190CE420CBF05A00CE9DA5 /* 1111111.swift */; };
-		AC190CE720CD6AC200CE9DA5 /* 2018年06月10日22:18:37.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC190CE620CD6AC200CE9DA5 /* 2018年06月10日22:18:37.swift */; };
-		AC190CEF20CE599B00CE9DA5 /* 111222.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC190CEE20CE599B00CE9DA5 /* 111222.swift */; };
+		AC0C96DE20E07FA100E8626A /* LLObjc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0C96DD20E07FA100E8626A /* LLObjc.swift */; };
+		AC6A303820D3F2E000E8A7E7 /* 懒加载.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A303720D3F2E000E8A7E7 /* 懒加载.swift */; };
+		AC6A303A20D3F39A00E8A7E7 /* 数组.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A303920D3F39A00E8A7E7 /* 数组.swift */; };
+		AC6A303C20D3F41F00E8A7E7 /* 字典.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A303B20D3F41F00E8A7E7 /* 字典.swift */; };
+		AC6A303E20D3F46D00E8A7E7 /* 元祖.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A303D20D3F46D00E8A7E7 /* 元祖.swift */; };
 		AC79B9B020CF5455009A815F /* 加载本地json.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC79B9AF20CF5455009A815F /* 加载本地json.swift */; };
 		AC7D7B5A20BEE5BB00E79E71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D7B5920BEE5BB00E79E71 /* AppDelegate.swift */; };
 		AC7D7B5C20BEE5BB00E79E71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D7B5B20BEE5BB00E79E71 /* ViewController.swift */; };
@@ -23,6 +23,7 @@
 		AC7D7B8820C2AF6600E79E71 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7D7B8720C2AF6600E79E71 /* Student.swift */; };
 		AC99BA5320C3CCF200F67640 /* MyHttpTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC99BA5220C3CCF200F67640 /* MyHttpTools.swift */; };
 		AC99BA5520C3D11000F67640 /* MYViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC99BA5420C3D11000F67640 /* MYViewController.swift */; };
+		ACF4D83E20D901A500DDDF4D /* myString.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF4D83D20D901A500DDDF4D /* myString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,11 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AC190CE020CBEF8300CE9DA5 /* ssss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ssss.swift; sourceTree = "<group>"; };
-		AC190CE220CBF03300CE9DA5 /* sff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sff.swift; sourceTree = "<group>"; };
-		AC190CE420CBF05A00CE9DA5 /* 1111111.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 1111111.swift; sourceTree = "<group>"; };
-		AC190CE620CD6AC200CE9DA5 /* 2018年06月10日22:18:37.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "2018年06月10日22:18:37.swift"; sourceTree = "<group>"; };
-		AC190CEE20CE599B00CE9DA5 /* 111222.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 111222.swift; sourceTree = "<group>"; };
+		AC0C96DD20E07FA100E8626A /* LLObjc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLObjc.swift; sourceTree = "<group>"; };
+		AC6A303720D3F2E000E8A7E7 /* 懒加载.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "懒加载.swift"; sourceTree = "<group>"; };
+		AC6A303920D3F39A00E8A7E7 /* 数组.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "数组.swift"; sourceTree = "<group>"; };
+		AC6A303B20D3F41F00E8A7E7 /* 字典.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "字典.swift"; sourceTree = "<group>"; };
+		AC6A303D20D3F46D00E8A7E7 /* 元祖.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "元祖.swift"; sourceTree = "<group>"; };
 		AC79B9AF20CF5455009A815F /* 加载本地json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "加载本地json.swift"; sourceTree = "<group>"; };
 		AC7D7B5620BEE5BB00E79E71 /* myswiftTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myswiftTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC7D7B5920BEE5BB00E79E71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +66,7 @@
 		AC7D7B8720C2AF6600E79E71 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		AC99BA5220C3CCF200F67640 /* MyHttpTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHttpTools.swift; sourceTree = "<group>"; };
 		AC99BA5420C3D11000F67640 /* MYViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYViewController.swift; sourceTree = "<group>"; };
+		ACF4D83D20D901A500DDDF4D /* myString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,15 +120,16 @@
 				AC7D7B5920BEE5BB00E79E71 /* AppDelegate.swift */,
 				AC7D7B8720C2AF6600E79E71 /* Student.swift */,
 				AC7D7B5B20BEE5BB00E79E71 /* ViewController.swift */,
-				AC190CE020CBEF8300CE9DA5 /* ssss.swift */,
 				AC99BA5420C3D11000F67640 /* MYViewController.swift */,
-				AC190CE220CBF03300CE9DA5 /* sff.swift */,
 				AC99BA5220C3CCF200F67640 /* MyHttpTools.swift */,
-				AC190CE420CBF05A00CE9DA5 /* 1111111.swift */,
-				AC190CEE20CE599B00CE9DA5 /* 111222.swift */,
 				AC79B9AF20CF5455009A815F /* 加载本地json.swift */,
-				AC190CE620CD6AC200CE9DA5 /* 2018年06月10日22:18:37.swift */,
 				AC7D7B5D20BEE5BB00E79E71 /* Main.storyboard */,
+				AC6A303720D3F2E000E8A7E7 /* 懒加载.swift */,
+				AC6A303920D3F39A00E8A7E7 /* 数组.swift */,
+				AC6A303B20D3F41F00E8A7E7 /* 字典.swift */,
+				AC6A303D20D3F46D00E8A7E7 /* 元祖.swift */,
+				ACF4D83D20D901A500DDDF4D /* myString.swift */,
+				AC0C96DD20E07FA100E8626A /* LLObjc.swift */,
 				AC7D7B6020BEE5BD00E79E71 /* Assets.xcassets */,
 				AC7D7B6220BEE5BD00E79E71 /* LaunchScreen.storyboard */,
 				AC7D7B6520BEE5BD00E79E71 /* Info.plist */,
@@ -284,16 +287,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC7D7B5C20BEE5BB00E79E71 /* ViewController.swift in Sources */,
+				ACF4D83E20D901A500DDDF4D /* myString.swift in Sources */,
 				AC7D7B8820C2AF6600E79E71 /* Student.swift in Sources */,
 				AC7D7B5A20BEE5BB00E79E71 /* AppDelegate.swift in Sources */,
 				AC79B9B020CF5455009A815F /* 加载本地json.swift in Sources */,
-				AC190CE720CD6AC200CE9DA5 /* 2018年06月10日22:18:37.swift in Sources */,
-				AC190CEF20CE599B00CE9DA5 /* 111222.swift in Sources */,
+				AC0C96DE20E07FA100E8626A /* LLObjc.swift in Sources */,
+				AC6A303820D3F2E000E8A7E7 /* 懒加载.swift in Sources */,
 				AC99BA5520C3D11000F67640 /* MYViewController.swift in Sources */,
-				AC190CE320CBF03300CE9DA5 /* sff.swift in Sources */,
+				AC6A303E20D3F46D00E8A7E7 /* 元祖.swift in Sources */,
+				AC6A303C20D3F41F00E8A7E7 /* 字典.swift in Sources */,
 				AC99BA5320C3CCF200F67640 /* MyHttpTools.swift in Sources */,
-				AC190CE120CBEF8300CE9DA5 /* ssss.swift in Sources */,
-				AC190CE520CBF05A00CE9DA5 /* 1111111.swift in Sources */,
+				AC6A303A20D3F39A00E8A7E7 /* 数组.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
