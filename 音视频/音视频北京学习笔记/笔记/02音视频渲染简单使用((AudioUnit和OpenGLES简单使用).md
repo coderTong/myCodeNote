@@ -368,7 +368,19 @@ iOS按照AudioUnit的用途将AudioUnit分为五大类型
 
 ```
 
-- Time Pitch: 子类型是
+- Time Pitch: 子类型是`kAudioUnitSubType_NewTimePitch` 即变速变调效果器, 这是一个很有意思的效果器, 可以对声音的音高, 速度进行调整, 像"会说话的Tom猫"类似的应用场景就可以使用这个效果器来实现
+
+
+### 5. Generator Units
+类型是`kAudioUnitType_Generator`, 在开发中我们经常使用它来提供播放器的功能. 其子类型及用途说明如下.
+
+- AudioUnitFilePlayer: 子类型`kAudioUnitSubType_AudioFilePlayer`, 在AudioUnit 里面, 如果我们的输入不是麦克风, 而希望其是一个媒体文件, 当然, 也可以类似于代码仓库中的AudioPlayer项目自行解码, 转换之后将数据输送给RemoteIO Unit播放出来, 但是其实还有一种更简单, 方便的方式. 那就是使用AudioFilePlayer这个 AudioUnit, 可以参考代码仓库中的AUPlayer项目, 
+
+```
+
+需要注意的是, 必须在初始化AUGraph之后, 再去配置AudioFilerPlayer的数据源以及播放范围等属性, 否者就会出现错误,其实数据源还是会调用AudioFile的解码功能, 将媒体文件中的压缩数据解压成为PCM裸数据, 最终再交给AudioFilePlayer Unit进行后续处理.
+
+```
 
 
 ## 5. 构造一个AUGraph
