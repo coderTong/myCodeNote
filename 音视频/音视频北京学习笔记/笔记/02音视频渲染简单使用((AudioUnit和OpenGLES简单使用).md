@@ -145,7 +145,161 @@ RemoteIO Unit 分为`Element0`和`Element1`
 `Element0`控制输出端
 `Element1`控制输入端
 
+每个 `Element`有分为`Input Scope` 和 `Output  Scope`
 
+
+如果想使用扬声器的声音播放功能, 那么必须将这个Unit的 `Element0 `的  `Output  Scope`
+和`Speaker(扬声器 或耳机)`进行连接.
+
+
+```
+
+// 如果想使用扬声器的声音播放功能, 那么必须将这个Unit的 `Element0 `的 `Output Scope`和`Speaker`进行连接.
+
+ OSStatus status = noErr;
+
+ UInt32 oneFlag = 1;
+
+ UInt32 bueZero = 0; // Element0
+
+ status = AudioUnitSetProperty(ioUnit,
+
+ kAudioOutputUnitProperty_EnableIO,
+
+ kAudioUnitScope_Output,
+
+ bueZero,
+
+ &oneFlag,
+
+ sizeof(oneFlag));
+
+ CheckStatus(status, @"Could not Connect To Speaker", YES);
+
+
+```
+
+
+
+如果想使用麦克风的录音功能, 那么必须将这个Unit的 `Element1`的 `Input Scope`和麦克风进行连接
+
+```
+
+// 启用麦克风
+
+  // 如果想使用麦克风的录音功能, 那么必须将这个Unit的 `Element1`的 `Input Scope`和麦克风进行连接
+
+ UInt32 busOne = 1; // Element1
+
+  AudioUnitSetProperty(ioUnit,
+
+  kAudioOutputUnitProperty_EnableIO,
+
+ kAudioUnitScope_Input,
+
+ busOne,
+
+ &oneFlag,
+
+ sizeof(oneFlag));
+
+```
+上面这段代码就是把AudioUnit的 `Element1`的`Input Scope`和麦克风进行连接, 连接成功之后, 就应该给AudioUnit设`置数据格式`了, AudioUnit的数据格式分为输入和输出两个部分, 下面先来看一个AudioUnit Stream Format的描述..
+
+```
+
+
+/// 给AudioUnit设`置数据格式`
+
+ UInt32 bytesPerSample = sizeof(Float32); // 采样深度?
+
+  AudioStreamBasicDescription asbd;
+
+ bzero(&asbd, sizeof(asbd));
+
+ asbd.mFormatID = kAudioFormatLinearPCM;
+
+ asbd.mSampleRate = 44100;
+
+ asbd.mBitsPerChannel = 2;
+
+ asbd.mFramesPerPacket = 1; // 仿佛固定为1, NVT也是1
+
+ asbd.mFormatFlags = kAudioFormatFlagsNativeFloatPacked | kAudioFormatFlagIsNonInterleaved; // NVT 是kLinearPCMFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
+
+ asbd.mBitsPerChannel = 8 * bytesPerSample;
+
+ asbd.mBytesPerFrame = bytesPerSample;
+
+ asbd.mBytesPerPacket = bytesPerSample;
+
+
+```
+
+上面这段代码展示了如何填充AudioStreamBasicDescription结构体, 其实在iOS平台做音视频开发久了就会知道: `不论音频还是视频的API都会接触到很多StreamBasic Description. 改Description就是用来描述音视频具体格式的.`  下面是上述代码的分析
+
+-  mFormatID 参数可用来指定音频的编码格式. 此处指定音频的编码格式为PCM格式.
+- 接下来是设置声音的采样率, 声道数, 以及`每个Packet有几个Frame`
+
+- mFormatFlags 是用来描述声音表示格式的参数, 代码中的第一个参数`kAudioFormatFlagsNativeFloatPacked`指定每个Sample的表示格式是Float格式, 这点类似于之前讲解的每个Sample都是使用两个字节(SInt16)来表示.. 第二个参数`kAudioFormatFlagIsNonInterleaved`,  NonInterleaved字面理解这个单词的意思是非交错的,其实对于音频来讲就是`左右声道是非交错存放的`实际的音频数据会存储在一个`AudioBufferList`结构中的变量mBuffers中, 如果mFormatFlags 指定的是`NonInterleaved`那么左声道就会在mBuffers[0]里面, 右声道就会在mBuffers[1]里面; 二如果`mFormatFlags`指定的是`Interleaved`的话, 那么左右声道就会交错排列在mBuffer[0]里面, 理解这一点对于后续的开发将十分重要的.
+
+- mBitsPerChannel 表示的是一个声道的音频数据用多少位来表示, 前面已经提到过每个采样使用Float来表示, 所以这里是使用8乘以`每个采样的字节数`来赋值
+
+- 最终的参数`mBytesPerFrame`和`mBytesPerPacket`的赋值, 这里需要根据 `mFormatFlags`的值来进行分配, 如果是`NonInterleaved`的情况下, 就赋值为bytesPerSample(`因为左右声道是分开存放的`); 如果是`Interleaved`的话,那么就应该是bytesPerSample * channels( `因为左右声道是交错存放的` ), 这样才能表示一个Frame里面到底有多少个byte
+
+
+```
+
+snd_strm->streamDesc.mSampleRate  = clock_rate;
+
+ snd_strm->streamDesc.mFormatID  = kAudioFormatLinearPCM;
+
+ snd_strm->streamDesc.mFormatFlags = kLinearPCMFormatFlagIsSignedInteger | kAudioFormatFlagIsPacked;
+
+  // TODO
+
+  /* !!! IMP !!! */
+
+  // We specifically configure core audio in stereo.
+
+ snd_strm->streamDesc.mBitsPerChannel  = 16;
+
+ snd_strm->streamDesc.mChannelsPerFrame = 1;
+
+ snd_strm->streamDesc.mBytesPerFrame = snd_strm->streamDesc.mBitsPerChannel * snd_strm->streamDesc.mChannelsPerFrame / 8;
+
+ snd_strm->streamDesc.mFramesPerPacket = 1;
+
+ snd_strm->streamDesc.mBytesPerPacket  = snd_strm->streamDesc.mBytesPerFrame * snd_strm->streamDesc.mFramesPerPacket;
+
+ snd_strm->inputBufferList->mNumberBuffers = 1;
+
+ snd_strm->inputBufferList->mBuffers[0].mNumberChannels = snd_strm->streamDesc.mChannelsPerFrame;
+
+
+```
+
+
+
+至此, 我们就完全构造好了这个BasicDescription结构体, 下面将这个结构体设置给对应的AudioUnit, 代码:
+
+```
+
+// 至此, 我们就完全构造好了这个BasicDescription结构体, 下面将这个结构体设置给对应的AudioUnit, 代码:
+
+  AudioUnitSetProperty(ioUnit,
+
+  kAudioUnitProperty_StreamFormat,
+
+ kAudioUnitScope_Output,
+
+ 1,
+
+ &asbd,
+
+ sizeof(asbd));
+
+```
 
 ## 4. AudioUnit的分类
 
