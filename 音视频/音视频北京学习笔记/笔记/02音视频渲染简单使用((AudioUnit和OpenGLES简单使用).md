@@ -385,3 +385,92 @@ iOS按照AudioUnit的用途将AudioUnit分为五大类型
 
 ## 5. 构造一个AUGraph
 
+![IMG_6097](images/IMG_6097.jpg)
+如图, 首先要知道数据可以在`通道中传递`是由最右端Speaker( `RemoteIO Unit` )来驱动的.  它会向其前一级--AUNode要数据, 然后它的前一级会继续向上一级节点要数据, 并最终从RemoteIOUnit的Element1( 即麦克风)中要数据, 这样就可以将数据按照相反的方向一级一级地传递下去.最终传递到RemoteIOUnit的Element0( 即Speaker )并播放给用户听到./
+
+```
+
+当你可能想到离线处理的时候, 应该由谁来进行驱动了? 其实在进行离线处理的时候应该使用Mixer Unit大类类型下面子类型为 Generic Output的Audio Unit来做驱动端. 那么这些AudioUnit 或者AUNode是如何进行连接的呢? 有两种方式, 第一种方式是直接将AUNode连接起来; 第二种方式是通过回调的方式将两个AUNode 连接起来, 下面就来分别介绍这两种方式.
+
+
+```
+
+-  直接连接的方式
+```
+
+// 直接连接的方式
+AUGraphConnectNodeInput(processingGraph, mPlayerNode, 0, mPlayerIONode, 0);
+
+```
+以上是本节AUPlayer实例中的一段代码, 目标是将Audio Filer Player Unit和 RemoteIO Unit直接连接起来, 当RemoteIO Unit 需要播放数据的时候, 就会调用AudioFilePlayer Unit来获取数据, 这样就把这两个Audio Unit连接起来.
+
+
+- 回调的方式
+
+```
+
+AURenderCallbackStruct renderProc;
+
+renderProc.inputProc = &inoutAvailableCallbck;
+
+renderProc.inputProcRefCon = (__bridge void *)self;
+
+AUGraphSetNodeInputCallback(mGraph, ioNode, 0, &finalRenderProc);
+
+
+```
+这段代码首先是构造一个`AURenderCallback`的结构体, 并指定一个回调函数, 然后设置给RemoteIO Unit的输入端, 当RemoteIO Unit 需要数据输入的时候就会回调该回调函数, 回调函数代码如下:
+
+```
+
+static OSStatus renderCallback(void * inRefCon,
+
+ AudioUnitRenderActionFlags * __nullable ioActionFlags,
+
+ const AudioTimeStamp * inTimeStamp,
+
+ UInt32 inBusNumber,
+
+ UInt32 inNumberFrames,
+
+ AudioBufferList * ioData)
+
+{
+
+ OSStatus result = noErr;
+
+  __unsafe_unretained  ViewController *THIS = (__bridge  ViewController *)inRefCon;
+
+ AudioUnitRender(THIS->mixerUnit, ioActionFlags,
+
+ inTimeStamp,
+
+ 0,
+
+ inNumberFrames,
+
+ ioData);
+
+ result = ExtAudioFileWriteAsync(THIS->finalAudioFile,
+
+ inNumberFrames,
+
+ ioData);
+
+ return result;
+
+}
+
+
+```
+
+该回调函数主要完成两件事情: 第一件事是去Mixer Unit 里面要数据, 通过调用`AudioUnitRender`的方式来驱动`Mixer Unit` 获取数据, 得到数据之后放入ioData中, 从而填充回调方法中的参数,  将`Mixer Unit`与`RemoteIO Unit`连接了起来; 第二件事情则是利用`ExtAudioFile`将这段声音编码并写入本地磁盘的一个文件中.
+
+
+
+
+
+
+# AudioUnit小结
+
+本节的讲解是从`创建音频会话`开始, 然后`构建一个AudioUnit`, 并`给AudioUnit设置参数`, 然后`介绍AudioUnit的分类`
