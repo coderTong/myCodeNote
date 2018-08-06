@@ -9,7 +9,7 @@
 
 
 
-
+ffmpeg -ss 360 -i c.mp4 -c copy -t 40 c1.mp4
 
 ffmpeg -ss 4800 -i ffmpeg.mp4 -c copy -t 480 rtmpflv.mp4
 
@@ -26,7 +26,7 @@ ffmpeg -ss 4800 -i ffmpeg.mp4 -c copy -t 480 rtmpflv.mp4
 	`ffmpeg -i wechat.mp4 -c copy -f mp4 -movflags faststart fastmoov.mp4`
 
 
-
+ffmpeg -i ccz.mp4 -c copy -f mp4 -movflags faststart fastmoov.mp4
 # MP4==>flv
 
 `ffmpeg -i mp3Video.mp4 -c copy -f flv rtmpVideo.flv`
