@@ -2,6 +2,10 @@
 
 目标iOS能用的: ffmpeg + x264 + fdkaac
 
+
+![ffmpegIconForiOS](image/ffmpegIconForiOS.png)
+
+
 # 什么是iOS能用?
 
 iOS能用是说iOS的基本设备能用.
