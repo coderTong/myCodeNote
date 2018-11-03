@@ -22,3 +22,11 @@ jdk1.8之后
 
 
 
+# HashSet 存储自定义对象
+
+
+
+自定义类必须重写必须重写equals和hashCode
+
+
+
