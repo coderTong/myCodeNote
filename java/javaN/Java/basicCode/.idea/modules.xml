@@ -10,7 +10,10 @@
       <module fileurl="file://$PROJECT_DIR$/My1103/My1103.iml" filepath="$PROJECT_DIR$/My1103/My1103.iml" />
       <module fileurl="file://$PROJECT_DIR$/My1103Thread/My1103Thread.iml" filepath="$PROJECT_DIR$/My1103Thread/My1103Thread.iml" />
       <module fileurl="file://$PROJECT_DIR$/My1104BBaozi/My1104BBaozi.iml" filepath="$PROJECT_DIR$/My1104BBaozi/My1104BBaozi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/My1104Lambda/My1104Lambda.iml" filepath="$PROJECT_DIR$/My1104Lambda/My1104Lambda.iml" />
       <module fileurl="file://$PROJECT_DIR$/My1104ThreadPool/My1104ThreadPool.iml" filepath="$PROJECT_DIR$/My1104ThreadPool/My1104ThreadPool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/My1109Lambda/My1109Lambda.iml" filepath="$PROJECT_DIR$/My1109Lambda/My1109Lambda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/My1109ZFile/My1109ZFile.iml" filepath="$PROJECT_DIR$/My1109ZFile/My1109ZFile.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/basicCode.iml" filepath="$PROJECT_DIR$/.idea/basicCode.iml" />
       <module fileurl="file://$PROJECT_DIR$/my01_code/my01_code.iml" filepath="$PROJECT_DIR$/my01_code/my01_code.iml" />
       <module fileurl="file://$PROJECT_DIR$/my02_code/my02_code.iml" filepath="$PROJECT_DIR$/my02_code/my02_code.iml" />
