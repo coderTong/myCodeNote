@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/My1109IO01/My1109IO01.iml" filepath="$PROJECT_DIR$/My1109IO01/My1109IO01.iml" />
       <module fileurl="file://$PROJECT_DIR$/My1110IO/My1110IO.iml" filepath="$PROJECT_DIR$/My1110IO/My1110IO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/My1110Net/My1110Net.iml" filepath="$PROJECT_DIR$/My1110Net/My1110Net.iml" />
       <module fileurl="file://$PROJECT_DIR$/My18StudyNew.iml" filepath="$PROJECT_DIR$/My18StudyNew.iml" />
+      <module fileurl="file://$PROJECT_DIR$/my1110IOBuffered/my1110IOBuffered.iml" filepath="$PROJECT_DIR$/my1110IOBuffered/my1110IOBuffered.iml" />
     </modules>
   </component>
 </project>
