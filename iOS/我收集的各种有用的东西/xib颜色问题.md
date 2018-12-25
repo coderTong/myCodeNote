@@ -1,0 +1,1 @@
+`xcode`默认的色彩空间是`Generic RGB`, 只要把它切换到 `sRGB`上就可以了.
