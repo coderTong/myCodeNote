@@ -1,5 +1,21 @@
 # 配置参数
 
+
+#import <AliyunOSSiOS/OSSService.h>
+#import <AliyunOSSiOS/OSSCompat.h>
+//#import "AliyunOSSUpload.h"
+
+#import "VSHTTPRequest.h"
+//#import "NSObject+SBJSON.h"
+//NSString * const AccessKey = @"***";
+//NSString * const SecretKey = @"***";
+NSString * const endPoint = @"https://oss-cn-beijing.aliyuncs.com";
+
+OSSClient * client;
+
+
+
+
 ## 1.  bucketName, 问后台要, 如图
 ![aliyunOss01](images/aliyunOss01.png)
 

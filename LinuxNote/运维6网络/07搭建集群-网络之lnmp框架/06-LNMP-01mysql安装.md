@@ -290,6 +290,8 @@ sed -i 's#/usr/local/#/application/mysql/#g' mysql.server
 cp support-files/mysql.server /etc/init.d/mysqld
 
 
+cp ./mysql.server /etc/init.d/mysqld
+
 /etc/init.d/mysqld
 /etc/init.d/mysqld start
 
