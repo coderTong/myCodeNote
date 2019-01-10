@@ -8,7 +8,7 @@ update user set host = '%'  where user = 'root';
 
 select host from user where user = 'root';
 
-mysql> select host,user from user where user='root';
+# mysql> select host,user from user where user='root';
 
 
 
