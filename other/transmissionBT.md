@@ -1,5 +1,19 @@
 # lscpu
 
+```
+
+
+
+
+```
+
+```
+sudo yum install zsh git -y && sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" && cd /  && mkdir wt && cd wt && 
+
+wget http://mirror.pnl.gov/epel/6/x86_64/epel-release-6-8.noarch.rpm && rpm -Uvh epel-release-6-8.noarch.rpm && yum -y update && yum -y install transmission transmission-daemon && service transmission-daemon start && service transmission-daemon stop
+
+```
+
 wget http://mirror.pnl.gov/epel/6/x86_64/epel-release-6-8.noarch.rpm
 
 
