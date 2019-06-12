@@ -3,6 +3,9 @@ package com.codertomwu.myio01.Demo02;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.LinkedList;
 
 /**
  * Created by codew on 11/10/18.
@@ -24,7 +27,7 @@ import java.io.IOException;
  */
 
 
-public class MyIOInputStream02 {
+public class MyIOInputStream02  {
 
     public static void main(String[] args) throws IOException {
 
@@ -39,6 +42,7 @@ public class MyIOInputStream02 {
 
             System.out.println(new String(bytes,0,len));
         }
+
 
         fileInputStream.close();
     }

@@ -12,7 +12,7 @@ Rewrite 模块，如果不安装pcre 库，则Nginx 无法使用Rewite 模块功
 
 ```
 yum install pcre pcre-devel -y && wget -q http://nginx.org/download/nginx-1.6.3.tar.gz && useradd www -s /sbin/nologin -M && tar xf nginx-1.6.3.tar.gz && cd nginx-1.6.3 && 
-yum install openssl openssl-devel gcc -y && ./configure --user=www --group=www --with-http_ssl_module --with-http_stub_status_module --prefix=/application/nginx-1.6.3/ && make && make install
+yum install openssl openssl-devel gcc -y && ./configure --user=www --group=www --with-http_ssl_module --with-http_stub_status_module --prefix=/application/nginx-1.6.3/ && make && make install &&  ln -s /application/nginx-1.6.3/ /application/nginx
 
 ```
 
