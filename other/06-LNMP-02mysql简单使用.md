@@ -307,7 +307,7 @@ Query OK, 0 rows affected (0.01 sec)
 如果的drop 删除不了(一般是特殊字符或大写), 可以哦用下面
 
 delete from mysql.user where user='root' and host='name';
-
+flush PRIVILEGES;
 ```
 
 
