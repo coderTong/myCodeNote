@@ -1,6 +1,6 @@
 
 ```
-yum install wget && yum install vim
+yum install wget && yum install vim -y && sudo yum install zsh git -y && sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" -y
 
 curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py" && python get-pip.py && pip install --upgrade pip && pip install shadowsocks
 
@@ -8,8 +8,8 @@ curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py" && python get-pip.py
 vim /etc/shadowsocks.json
 {
   "server": "0.0.0.0",
-  "server_port": 8388,
-  "password": "uzon57jd0v869t7w",
+  "server_port": 9388,
+  "password": "a469t7w",
   "method": "aes-256-cfb"
 }
 
