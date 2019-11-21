@@ -1,0 +1,29 @@
+
+2018年10月22日21:53:52
+
+# IDEA小技巧
+
+PSVM 直接生产main方法
+
+sout 打印语句
+
+自动补全 见图片
+
+
+alt + enter // 尝试修复错误
+
+control + Y // 删除所在行
+
+control + D// 重复当前行
+
+control + alt + L// 格式化代码
+
+control + / // 注释
+control + shift + / // 多行注释
+
+alt + shift + 上下 // 调整代码上下行
+
+
+
+
+
