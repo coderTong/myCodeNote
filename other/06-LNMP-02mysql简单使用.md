@@ -175,6 +175,47 @@ mysql -u root -p
 ```
 
 
+# 查看库的建表语句
+
+```
+
+mysql> show create database mysql\G
+
+*************************** 1\. row ***************************
+
+ Database: mysql
+
+Create Database: CREATE DATABASE `mysql` /*!40100 DEFAULT CHARACTER SET latin1 */
+
+1 row in set (0.01 sec)
+
+
+
+```
+
+# 编译的时候没有指定字符集或者指定了和程序不同的字符集,如何解决..  指定字符集创建 数据库即可
+
+```
+
+create database wutong_utf8 CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+create database wutong_utf8 CHARACTER SET gbk COLLATE gbk_general_ci;
+
+mysql> show create database wutong_utf8\G
+
+*************************** 1\. row ***************************
+
+ Database: wutong_utf8
+
+Create Database: CREATE DATABASE `wutong_utf8` /*!40100 DEFAULT CHARACTER SET utf8 */
+
+1 row in set (0.00 sec)
+
+
+```
+
+
 ```
 
 
