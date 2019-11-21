@@ -216,6 +216,101 @@ Create Database: CREATE DATABASE `wutong_utf8` /*!40100 DEFAULT CHARACTER SET ut
 ```
 
 
+
+# 进入数据库
+
+```
+
+use mysql;
+
+
+```
+
+
+# 显示当前数据库
+
+
+```
+
+mysql> select database();
+
++------------+
+
+| database() |
+
++------------+
+
+| mysql |
+
++------------+
+
+1 row in set (0.00 sec)
+
+```
+
+
+# 删库跑路
+
+```
+
+drop database wutg_utf8;
+
+```
+
+
+# 查看用户
+
+```
+
+mysql> select user,host from mysql.user;
+
++---------+-----------+
+
+| user | host |
+
++---------+-----------+
+
+| root | 127.0.0.1 |
+
+| root | ::1  |
+
+|  | localhost |
+
+| codetom | localhost |
+
+| root | localhost |
+
+|  | sanfan |
+
+| root | sanfan |
+
++---------+-----------+
+
+7 rows in set (0.00 sec)
+
+
+```
+
+
+# 删除多余的用户
+
+```
+// 语法
+drop  user "user"@"主机域";
+
+
+mysql> drop user "codetom"@"localhost";
+
+Query OK, 0 rows affected (0.01 sec)
+
+
+如果的drop 删除不了(一般是特殊字符或大写), 可以哦用下面
+
+delete from mysql.user where user='root' and host='name';
+
+```
+
+
 ```
 
 
