@@ -16,10 +16,50 @@
 yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel wget vim zsh gcc -y && wget https://github.com/git/git/archive/v2.24.0.tar.gz && tar -zxf v2.24.0.tar.gz && cd git-2.24.0 && make prefix=/usr/local all && sudo make prefix=/usr/local install && sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 
+
+cd / && mkdir application wt
+
 yum install libaio -y
+&&
+wget https://dev.mysql.com/get/Downloads/MySQL-5.5/mysql-5.5.58-linux-glibc2.12-x86_64.tar.gz
+&&
+useradd -s /sbin/nologin mysql -M
+&&
+tar xf mysql-5.5.58-linux-glibc2.12-x86_64.tar.gz
+&&
+mv mysql-5.5.58-linux-glibc2.12-x86_64 /application/mysql-5.5.58
+&&
+ln -s /application/mysql-5.5.58/ /application/mysql
+&&
+cd /application/mysql && chown -R mysql.mysql /application/mysql
+&&
+./scripts/mysql_install_db --basedir=/application/mysql/ --datadir=/application/mysql/data --user=mysql
+&&
+cd /application/mysql/bin
+&&
+sed -i 's#/usr/local/#/application/#g' mysqld_safe
+&&
+cd /application/mysql 
+&&
+cp support-files/my-small.cnf /etc/my.cnf
+&&
+cd /application/mysql/support-files
+&&
+sed -i 's#/usr/local/#/application/#g' mysql.server
+&&
+cp ./mysql.server /etc/init.d/mysqld
+&&
+/etc/init.d/mysqld start
+&&
+echo 'export PATH=/application/mysql/bin:$PATH'>>/etc/profile && tail -1 /etc/profile && source /etc/profile && echo $PATH
 
-  && cd / && mkdir wt application &&  cd /wt && wget -q https://dev.mysql.com/get/Downloads/MySQL-5.5/mysql-5.5.58-linux-glibc2.12-x86_64.tar.gz &&  useradd -s /sbin/nologin mysql -M && tar xf mysql-5.5.58-linux-glibc2.12-x86_64.tar.gz && mv mysql-5.5.58-linux-glibc2.12-x86_64 /application/mysql-5.5.58 && ln -s /application/mysql-5.5.58/ /application/mysql && cd /application/mysql && chown -R mysql.mysql /application/mysql && ./scripts/mysql_install_db --basedir=/application/mysql/ --datadir=/application/mysql/data --user=mysql && cd /application/mysql/bin && sed -i 's#/usr/local/#/application/#g' mysqld_safe && cd /application/mysql && cp support-files/my-small.cnf /etc/my.cnf && cd /application/mysql/support-files && cp ./mysql.server /etc/init.d/mysqld && /etc/init.d/mysqld start && echo 'export PATH=/application/mysql/bin:$PATH'>>/etc/profile &&  tail -1 /etc/profile  && source /etc/profile && echo $PATH
 
+
+
+
+
+
+yum install libaio -y && wget https://dev.mysql.com/get/Downloads/MySQL-5.5/mysql-5.5.58-linux-glibc2.12-x86_64.tar.gz && useradd -s /sbin/nologin mysql -M && tar xf mysql-5.5.58-linux-glibc2.12-x86_64.tar.gz && mv mysql-5.5.58-linux-glibc2.12-x86_64 /application/mysql-5.5.58 && ln -s /application/mysql-5.5.58/ /application/mysql &&  cd /application/mysql && chown -R mysql.mysql /application/mysql && ./scripts/mysql_install_db --basedir=/application/mysql/ --datadir=/application/mysql/data --user=mysql && cd /application/mysql/bin && sed -i 's#/usr/local/#/application/#g' mysqld_safe && cd /application/mysql && cp support-files/my-small.cnf /etc/my.cnf && cd /application/mysql/support-files && sed -i 's#/usr/local/#/application/#g' mysql.server && cp ./mysql.server /etc/init.d/mysqld && /etc/init.d/mysqld start && echo 'export PATH=/application/mysql/bin:$PATH'>>/etc/profile && tail -1 /etc/profile && source /etc/profile && echo $PATH
 ```
 
 
@@ -35,6 +75,9 @@ yum install libaio -y
 
 wget -q https://dev.mysql.com/get/Downloads/MySQL-5.5/mysql-5.5.58-linux-glibc2.12-x86_64.tar.gz
 
+
+
+
 ```
 
 
@@ -43,6 +86,8 @@ wget -q https://dev.mysql.com/get/Downloads/MySQL-5.5/mysql-5.5.58-linux-glibc2.
 ```
 
 useradd -s /sbin/nologin mysql -M
+
+
 
 ```
 
@@ -60,6 +105,9 @@ bin  data  include  lib  mysql-test  scripts  sql-bench
 
 COPYING docs INSTALL-BINARY man README share  support-files
 
+
+
+
 ```
 
 
@@ -68,6 +116,7 @@ COPYING docs INSTALL-BINARY man README share  support-files
 ```
 
 mv mysql-5.5.58-linux-glibc2.12-x86_64 /application/mysql-5.5.58
+
 
 ```
 
@@ -90,7 +139,7 @@ cd /application/mysql
 
 chown -R mysql.mysql /application/mysql
 
-&& cd /application/mysql && chown -R mysql.mysql /application/mysql
+&& 
 ```
 
 
@@ -149,7 +198,7 @@ at http://bugs.mysql.com/
 ./scripts/mysql_install_db --basedir=/application/mysql/ --datadir=/application/mysql/data --user=mysql
 
 
-./scripts/mysql_install_db --basedir=/application/mysql/ --datadir=/application/mysql/data --user=mysql
+
 
 
 ```
@@ -285,6 +334,9 @@ sed -i 's#/usr/local/#/application/mysql/#g' mysqld_safe
 
 sed -i 's#/usr/local/#/application/#g' mysqld_safe
 
+
+
+
 ```
 
 # 再看看cat mysqld_safe | grep /usr/local/
@@ -335,6 +387,10 @@ cp ./mysql.server /etc/init.d/mysqld
 
 /etc/init.d/mysqld
 /etc/init.d/mysqld start
+
+
+
+
 
 ```
 
@@ -542,6 +598,9 @@ echo 'export PATH=/application/mysql/bin:$PATH'>>/etc/profile
 tail -1 /etc/profile
 source /etc/profile
 echo $PATH
+
+
+echo 'export PATH=/application/mysql/bin:$PATH'>>/etc/profile && tail -1 /etc/profile && source /etc/profile && echo $PATH
 
 ```
 
