@@ -311,6 +311,45 @@ flush PRIVILEGES;
 ```
 
 
+# 创建用户并授权
+
+```
+
+CREATE USER 'jeffrey'@'localhost' IDENTIFIED BY 'mypass';
+
+GRANT ALL ON db1.* TO 'jeffrey'@'localhost';
+
+GRANT SELECT ON db2.invoice TO 'jeffrey'@'localhost';
+
+GRANT USAGE ON *.* TO 'jeffrey'@'localhost' WITH MAX_QUERIES_PER_HOUR 90;
+
+
+
+// 1. 创建用户 + 授权
+// 创建用户
+CREATE USER 'jeffrey'@'localhost' IDENTIFIED BY 'mypass';
+// 授权
+GRANT ALL ON db1.* TO 'jeffrey'@'localhost';
+
+
+//  2. 上面两条相当于下面一条
+GRANT ALL ON db1.* TO 'jeffrey'@'localhost' IDENTIFIED BY 'mypass';
+
+
+GRANT: 授权命令
+all privileges: 对应权限
+on dbname.* : 目标:库和表
+to username@'localhost': 用户名和客户端主机
+IDENTIFIED BY 'mypass': 用户密码
+
+
+// 3. 创建一个doukeyi用户密码是123456a7, 从哪里 都可以登录, 所有库所有表都可以访问
+grant all on *.* to 'doukeyi'@'%' identified by '123456a7'
+
+grant all on *.* to 'mytest1'@'111.194.40.169' identified by '123456a78';
+```
+
+
 ```
 
 

@@ -1,6 +1,17 @@
 
 ```
-yum install wget && yum install vim -y && sudo yum install zsh git -y && sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" -y
+查看防火墙状态
+systemctl status firewalld.service
+
+关闭运行的防火墙
+systemctl stop firewalld.service    
+
+install net-tools
+
+
+
+
+yum install wget vim zsh git -y net-tools && sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" -Y
 
 curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py" && python get-pip.py && pip install --upgrade pip && pip install shadowsocks
 

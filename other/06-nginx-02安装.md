@@ -185,6 +185,7 @@ drwxr-xr-x. 6 root root 54 Nov 30 16:58 nginx-1.6.3
 看看服务起来没
 
 ```
+install net-tools
 netstat -lntup|grep 80
 
 tcp 0 0 0.0.0.0:**80** 0.0.0.0:*  LISTEN 12627/nginx: master
