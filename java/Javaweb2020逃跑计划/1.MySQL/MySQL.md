@@ -305,7 +305,9 @@ Create Database: CREATE DATABASE `mysql` /*!40100 DEFAULT CHARACTER SET latin1 *
 
 ```
 
-### mysql  character
+
+### mysql character
+
 ### 编译的时候没有指定字符集或者指定了和程序不同的字符集,如何解决..  指定字符集创建 数据库即可
 
 ```
