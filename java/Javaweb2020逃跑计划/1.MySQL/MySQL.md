@@ -6,6 +6,10 @@
 
 - 2.0 [sql分类](#sql分类)
   - 2.0.1 [DDL 数据定义语言,操作数据库、表 ](#ddl)
+    - 2.0.1.1 [1. 操作数据库：CRUD ](#1crud)
+    - 2.0.1.2 [2 操作表](#2-操作表)
+  - 2.0.2 [DML 数据操作语言](#dml)
+  - 2.0.3[DQL：查询表中的记录](#dql)
 
 - 2.1 [查看-mysql-的历史记录](#查看-mysql-的历史记录) 
 - 2.2 [改变mysql输出样式](#改变mysql输出样式) 
@@ -132,7 +136,9 @@ yum install libaio -y && wget https://dev.mysql.com/get/Downloads/MySQL-5.5/mysq
 ### ddl
 ### DDL 数据定义语言,操作数据库、表 
 
-#### 1. 操作数据库：CRUD
+
+#### 1crud
+#### 1. 操作数据库 CRUD
 
 1. C(Create):创建
 
@@ -196,7 +202,7 @@ show create database 数据库名称;
 			
 
 
-#### 2. 操作表
+#### 2 操作表
 
 1. C(Create):创建
 注意：最后一列，不需要加逗号（,）
@@ -288,6 +294,174 @@ show create database 数据库名称;
 
 ```
 			
+
+
+### dml
+### DML 数据操作语言
+DO Make Love -> DML
+操
+作
+语言
+
+
+
+1. 添加数据：
+
+```
+		* 语法：
+			* insert into 表名(列名1,列名2,...列名n) values(值1,值2,...值n);
+		* 注意：
+			1. 列名和值要一一对应。
+			2. 如果表名后，不定义列名，则默认给所有列添加值
+				insert into 表名 values(值1,值2,...值n);
+			3. 除了数字类型，其他类型需要使用引号(单双都可以)引起来
+			
+```
+	
+2. 删除数据：
+```
+		* 语法：
+			* delete from 表名 [where 条件]
+		* 注意：
+			1. 如果不加条件，则删除表中所有记录。
+			2. 如果要删除所有记录
+				1. delete from 表名; -- 不推荐使用。有多少条记录就会执行多少次删除操作
+				2. TRUNCATE TABLE 表名; -- 推荐使用，效率更高 先删除表，然后再创建一张一样的表。
+```
+
+
+3. 修改数据：
+
+```
+		
+		* 语法：
+			* update 表名 set 列名1 = 值1, 列名2 = 值2,... [where 条件];
+
+		* 注意：
+			1. 如果不加任何条件，则会将表中所有记录全部修改。
+			
+```
+
+
+
+### dql
+### DQL：查询表中的记录
+	* select * from 表名;
+
+
+1. 语法：
+```
+
+        select
+			字段列表
+		from
+			表名列表
+		where
+			条件列表
+		group by
+			分组字段
+		having
+			分组之后的条件
+		order by
+			排序
+		limit
+			分页限定
+
+
+```
+		
+
+2. 基础查询
+
+```
+
+		1. 多个字段的查询
+			select 字段名1，字段名2... from 表名；
+			* 注意：
+				* 如果查询所有字段，则可以使用*来替代字段列表。
+		2. 去除重复：
+			* distinct
+		3. 计算列
+			* 一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算）
+			* ifnull(表达式1,表达式2)：null参与的运算，计算结果都为null
+				* 表达式1：哪个字段需要判断是否为null
+				* 如果该字段为null后的替换值。
+		4. 起别名：
+			* as：as也可以省略
+
+
+```
+
+			
+
+3. 条件查询
+
+```
+
+        1. where子句后跟条件
+		2. 运算符
+			* > 、< 、<= 、>= 、= 、<>
+			* BETWEEN...AND  
+			* IN( 集合) 
+			* LIKE：模糊查询
+				* 占位符：
+					* _:单个任意字符
+					* %：多个任意字符
+			* IS NULL  
+			* and  或 &&
+			* or  或 || 
+			* not  或 !
+			
+				-- 查询年龄大于20岁
+
+				SELECT * FROM student WHERE age > 20;
+				
+				SELECT * FROM student WHERE age >= 20;
+				
+				-- 查询年龄等于20岁
+				SELECT * FROM student WHERE age = 20;
+				
+				-- 查询年龄不等于20岁
+				SELECT * FROM student WHERE age != 20;
+				SELECT * FROM student WHERE age <> 20;
+				
+				-- 查询年龄大于等于20 小于等于30
+				
+				SELECT * FROM student WHERE age >= 20 &&  age <=30;
+				SELECT * FROM student WHERE age >= 20 AND  age <=30;
+				SELECT * FROM student WHERE age BETWEEN 20 AND 30;
+				
+				-- 查询年龄22岁，18岁，25岁的信息
+				SELECT * FROM student WHERE age = 22 OR age = 18 OR age = 25
+				SELECT * FROM student WHERE age IN (22,18,25);
+				
+				-- 查询英语成绩为null
+				SELECT * FROM student WHERE english = NULL; -- 不对的。null值不能使用 = （!=） 判断
+				
+				SELECT * FROM student WHERE english IS NULL;
+				
+				-- 查询英语成绩不为null
+				SELECT * FROM student WHERE english  IS NOT NULL;
+	
+
+
+				-- 查询姓马的有哪些？ like
+				SELECT * FROM student WHERE NAME LIKE '马%';
+				-- 查询姓名第二个字是化的人
+				
+				SELECT * FROM student WHERE NAME LIKE "_化%";
+				
+				-- 查询姓名是3个字的人
+				SELECT * FROM student WHERE NAME LIKE '___';
+				
+				
+				-- 查询姓名中包含德的人
+				SELECT * FROM student WHERE NAME LIKE '%德%';
+
+
+
+```
+		
 
 
 
