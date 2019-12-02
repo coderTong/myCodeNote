@@ -879,3 +879,27 @@ mysql> select host,user from user where user='root';
 
 ### 4-MySQL 多表 事务
 
+
+
+
+
+
+# 出现的问题
+
+
+## 乱码
+
+![QQ20191203-000110@2x](images/QQ20191203-000110@2x.png)
+![QQ20191203-000203@2x](images/QQ20191203-000203@2x.png)
+
+
+```
+
+locale -a
+echo $LANG
+yum groupinstall chinese-support
+cat  /etc/sysconfig/i18n    ###   查看字符集配置文件
+
+vim /etc/sysconfig/i18n
+
+```
