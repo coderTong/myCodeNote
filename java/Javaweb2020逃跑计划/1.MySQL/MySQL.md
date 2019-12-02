@@ -3,6 +3,10 @@
 
 1. [linux 安装](#1-linux-安装)
 2. [MySQL基础](#2-mysql-基础)
+
+- 2.0 [sql分类](#sql分类)
+- 2.0.1 [DDL 数据定义语言,操作数据库、表 ](#ddl)
+
 - 2.1 [查看-mysql-的历史记录](#查看-mysql-的历史记录) 
 - 2.2 [改变mysql输出样式](#改变mysql输出样式) 
 - 2.3 [远程登录](#远程登录) 
@@ -108,6 +112,104 @@ yum install libaio -y && wget https://dev.mysql.com/get/Downloads/MySQL-5.5/mysq
 
 
 # 2 mysql 基础
+
+
+## sql分类
+
+
+`定义`,`操作`,`查询`,`控制`
+
+1. DDL 数据定义语言
+  - 用来定义数据库对象：数据库，表，列等。关键字：create, drop,alter 等
+2. DML 数据操作语言
+  - 用来对数据库中表的数据进行增删改。关键字：insert, delete, update 等
+3. DQL 数据查询语言
+  - 用来查询数据库中表的记录(数据)。关键字：select, where 等
+4. DCL 数据控制语言
+  - 用来定义数据库的访问权限和安全级别，及创建用户。关键字：GRANT， REVOKE 等
+
+
+### ddl
+### DDL 数据定义语言,操作数据库、表 
+
+#### 1. 操作数据库：CRUD
+
+1. C(Create):创建
+
+```
+
+1. C(Create):创建
+创建数据库：create database 数据库名称;
+创建数据库，判断不存在，再创建： create database if not exists 数据库名称;
+创建数据库，并指定字符集:create database 数据库名称 character set 字符集名;
+练习： 创建db4数据库，判断是否存在，并制定字符集为gbk
+create database if not exists db4 character set gbk;
+
+
+```
+
+
+2. R(Retrieve)：查询
+
+```
+
+查询所有数据库的名称: show databases;
+
+查询某个数据库的字符集:查询某个数据库的创建语句
+show create database 数据库名称;
+
+
+```
+
+
+3. U(Update):修改
+
+>  修改数据库的字符集: alter database 数据库名称 character set 字符集名称;
+
+
+
+			* 
+		4. D(Delete):删除
+			* 删除数据库
+				* drop database 数据库名称;
+			* 判断数据库存在，存在再删除
+				* drop database if exists 数据库名称;
+		5. 使用数据库
+			* 查询当前正在使用的数据库名称
+				* select database();
+			* 使用数据库
+				* use 数据库名称;1. 操作数据库：CRUD
+		1. C(Create):创建
+			* 创建数据库：
+				* create database 数据库名称;
+			* 创建数据库，判断不存在，再创建：
+				* create database if not exists 数据库名称;
+			* 创建数据库，并指定字符集
+				* create database 数据库名称 character set 字符集名;
+
+			* 练习： 创建db4数据库，判断是否存在，并制定字符集为gbk
+				* create database if not exists db4 character set gbk;
+		2. R(Retrieve)：查询
+			* 查询所有数据库的名称:
+				* show databases;
+			* 查询某个数据库的字符集:查询某个数据库的创建语句
+				* show create database 数据库名称;
+		3. U(Update):修改
+			* 修改数据库的字符集
+				* alter database 数据库名称 character set 字符集名称;
+		4. D(Delete):删除
+			* 删除数据库
+				* drop database 数据库名称;
+			* 判断数据库存在，存在再删除
+				* drop database if exists 数据库名称;
+		5. 使用数据库
+			* 查询当前正在使用的数据库名称
+				* select database();
+			* 使用数据库
+				* use 数据库名称;
+
+
+
 
 ### 查看-mysql-的历史记录
 
