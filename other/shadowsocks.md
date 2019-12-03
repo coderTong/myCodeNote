@@ -11,7 +11,7 @@ install net-tools
 
 
 
-yum install wget vim zsh git -y net-tools && sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" -Y
+yum install wget vim zsh git -y && sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" -Y
 
 curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py" && python get-pip.py && pip install --upgrade pip && pip install shadowsocks
 
