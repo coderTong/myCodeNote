@@ -55,19 +55,9 @@
   - 3.3.3 [创建完表后 添加主键](#创建完表后-添加主键)
   - 3.3.4 [自动增长](#自动增长)
   - 3.3.5 [自动增长 创建表时 添加主键约束 并且完成主键自增长](#自动增长-创建表时-添加主键约束-并且完成主键自增长)
-  - 3.3.6 [](#)
-  - 3.3.7 [](#)
+  - 3.3.6 [删除自动增长](#删除自动增长)
+  - 3.3.7 [添加自动增长](#添加自动增长)
 
-
-
-
-#### 
-#### 
-#### 
-#### 
-#### 
-#### 删除自动增长
-#### 添加自动增长
 
 #### 1.创建表时](#)
 4. [MySQL多表&事务](#4-MySQL-多表-事务)
@@ -1517,17 +1507,64 @@ mysql> show create table stu2;
 
 主键约束：primary key。
 
-> 1
+> 1. 非空 且唯一
+> 一张表只能有一个字段是主键
+> 
 
 #### 在创建表时 添加主键约束
+
+```
+
+CREATE TABLE stu3(
+	id INT PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+	phoneNumber VARCHAR(20) UNIQUE
+);
+
+
+```
+
 #### 删除主键
+show create table stu3;
+alter table stu3 drop primary key;
+
+
 #### 创建完表后 添加主键
+alter table stu3 modify id int primary key;
+
+
 #### 自动增长
 
-#### 自动增长-创建表时-添加主键约束-并且完成主键自增长
-#### 删除自动增长
-#### 添加自动增长
+```
 
+5. 自动增长：
+			1.  概念：如果某一列是数值类型的，使用 auto_increment 可以来完成值得自动增长
+
+			2. 在创建表时，添加主键约束，并且完成主键自增长
+
+
+```
+
+#### 自动增长-创建表时-添加主键约束-并且完成主键自增长
+
+```
+
+CREATE TABLE stu4(
+	id INT PRIMARY KEY auto_increment,
+	name VARCHAR(100) NOT NULL,
+	phoneNumber VARCHAR(20) UNIQUE
+);
+
+
+```
+
+#### 删除自动增长
+
+show create table stu4;
+alter table stu4 modify id int;
+
+#### 添加自动增长
+alter table stu4 modify id int AUTO_INCREMENT;
 
 
 ## 4-MySQL 多表 事务
