@@ -631,3 +631,37 @@ mysql> select age, avg(math),count(id) from student where age>18 group by age ha
 
 
 ```
+
+
+
+# 2019年12月06日00:38:38
+
+
+```
+
+
+create table if not EXISTS department(
+ id int primary key auto_increment,
+ dep_name varchar(20),
+ dep_location varchar(20)
+);
+
+
+create table  if not EXISTS employee(
+id int primary key auto_increment, name varchar(20),
+age int,
+dep_id int, -- 外键对应主表的主键
+-- 创建外键约束
+constraint emp_depid_fk foreign key (dep_id) references
+  department(id) on update cascade on delete cascade
+);
+
+insert into department values(null, '研发部','广州'),(null, '销售部', '深圳'); select * from department;
+
+
+INSERT INTO employee (NAME, age, dep_id) VALUES ('张三', 20, 1); INSERT INTO employee (NAME, age, dep_id) VALUES ('李四', 21, 1); INSERT INTO employee (NAME, age, dep_id) VALUES ('王五', 20, 1);
+
+INSERT INTO employee (NAME, age, dep_id) VALUES ('老王', 20, 2); INSERT INTO employee (NAME, age, dep_id) VALUES ('大王', 22, 2); INSERT INTO employee (NAME, age, dep_id) VALUES ('小王', 18, 2);
+
+
+```

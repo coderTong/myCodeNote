@@ -34,7 +34,7 @@
 - 2.18 [查看用户](#查看用户)
 - 2.19 [删除多余的用户](#删除多余的用户)
 - 2.20 [创建用户并授权](#创建用户并授权)
-- 2.21 [](#)
+- 2.21 [为现有的表加字段](#为现有的表加字段)
 - 2.2 [](#)
 - 2.2 [](#)
 
@@ -58,8 +58,12 @@
   - 3.3.6 [删除自动增长](#删除自动增长)
   - 3.3.7 [添加自动增长](#添加自动增长)
 
+- 3.4 [外键约束](#外键约束)
+  - 3.4.1 [在创建表时 可以添加外键](#在创建表时-可以添加外键)
+  - 3.4.2 [删除外键](#删除外键)
+  - 3.4.3 [创建表之后 添加外键](#创建表之后-添加外键)
+  - 3.4.4 [级联操作](#级联操作)
 
-#### 1.创建表时](#)
 4. [MySQL多表&事务](#4-MySQL-多表-事务)
   - 4.1[](#) 
   - 4.2[](#) 
@@ -1233,6 +1237,16 @@ mysql> select host,user from user where user='root';
 
 
 
+### 为现有的表加字段
+
+ALTER TABLE 表名 ADD 列名 类型;
+
+```
+
+alter table employee ADD `weihao` varchar(20);
+
+```
+
 
 ## 3 mysql 约束
 
@@ -1565,6 +1579,119 @@ alter table stu4 modify id int;
 
 #### 添加自动增长
 alter table stu4 modify id int AUTO_INCREMENT;
+
+
+
+
+### 外键约束
+
+> 好比函数抽取
+
+将公共的抽取为另一个表,
+
+：foreign key,让表于表产生关系，从而保证数据的正确性。
+
+
+
+#### 在创建表时 可以添加外键
+
+1.  新建表时增加外键:
+
+  [CONSTRAINT] [外键约束名称] FOREIGN KEY(外键字段名) REFERENCES 主表名(主键字段名)
+
+```
+
+
+CREATE TABLE employee(
+`id` int PRIMARY KEY AUTO_INCREMENT,
+`name` VARCHAR(20),
+`age` int,
+`dep_id` int,
+-- 外键对应的主表
+
+CONSTRAINT emp_depid_fk FOREIGN KEY (`dep_id`) REFERENCES department(`id`)
+);
+
+
+```
+
+
+#### 删除外键
+ALTER TABLE 从表 drop foreign key 外键名称;
+
+![QQ20191206-001121@2x](images/QQ20191206-001121@2x.png)
+
+```
+
+alter table employee drop foreign key dep_key_tes;
+
+
+```
+
+
+#### 创建表之后 添加外键
+
+```
+
+ alter table employee ADD constraint dep_key_tes foreign key (dep_id2) references department(id);
+
+```
+
+
+#### 级联操作
+在修改和删除主表的主键时，同时更新或删除副表的外键值，称为级联操作
+
+**级联以后,如果从表不死, 主表就死不了~~~~**
+
+```
+
+级联更新，只能是创建表的时候创建级联关系。更新主表中的主键，从表中的外键 列也自动同步更新
+
+ON UPDATE CASCADE
+
+
+```
+
+```
+
+ON DELETE CASCADE 级联删除
+
+
+```
+
+
+
+```
+
+
+create table if not EXISTS department(
+ id int primary key auto_increment,
+ dep_name varchar(20),
+ dep_location varchar(20)
+);
+
+
+create table  if not EXISTS employee(
+id int primary key auto_increment, name varchar(20),
+age int,
+dep_id int, -- 外键对应主表的主键
+-- 创建外键约束
+constraint emp_depid_fk foreign key (dep_id) references
+  department(id) on update cascade on delete cascade
+);
+
+insert into department values(null, '研发部','广州'),(null, '销售部', '深圳'); select * from department;
+
+
+INSERT INTO employee (NAME, age, dep_id) VALUES ('张三', 20, 1); 
+INSERT INTO employee (NAME, age, dep_id) VALUES ('李四', 21, 1); 
+INSERT INTO employee (NAME, age, dep_id) VALUES ('王五', 20, 1);
+INSERT INTO employee (NAME, age, dep_id) VALUES ('老王', 20, 2); 
+INSERT INTO employee (NAME, age, dep_id) VALUES ('大王', 22, 2); 
+INSERT INTO employee (NAME, age, dep_id) VALUES ('小王', 18, 2);
+
+
+```
 
 
 ## 4-MySQL 多表 事务
