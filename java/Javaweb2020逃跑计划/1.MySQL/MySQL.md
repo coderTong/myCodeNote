@@ -80,6 +80,7 @@
 - 6.1[表连接查询](#表连接查询) 
 - 6.2[内连接](#内连接) 
 - 6.3[外连接](#外连接) 
+- 6.4[取了别名就必须全部用别名](#取了别名就必须全部用别名)
 
 7. [7子查询](#7子查询)
 -  7.1[概念](#概念)
@@ -2087,6 +2088,20 @@ SELECT emp.`id`,emp.`name`,emp.`gender`,emp.`salary`, dept.`name` FROM emp  e  J
 
 
 ```
+
+
+#### 给显示的样子也取个别名
+
+```
+
+SELECT e.`id` 员工编号,e.`name` 员工名字,e.`gender` 员工性别,e.`salary` 员工工资, d.`name` 部门名称 FROM emp  e  JOIN dept d on e.dept_id = d.id WHERE e.`name` = '唐僧';
+
+
+
+```
+
+
+![QQ20191215-211456@2x](images/QQ20191215-211456@2x.png)
 
 
 ### 外连接
