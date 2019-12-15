@@ -2054,6 +2054,23 @@ SELECT * from emp e INNER JOIN dept d on e.dept_id = d.id WHERE e.`name`='唐僧
 
 
 
+-- 不用别名 
+SELECT emp.`id`,emp.`name`,emp.`gender`,emp.`salary`, dept.`name` FROM emp  JOIN dept on emp.dept_id = dept.id WHERE emp.`name` = '唐僧';
+/*
+取了别名, 又 只有 后面用前面不用
+这样是不行的=======================Error
+SELECT emp.`id`,emp.`name`,emp.`gender`,emp.`salary`, dept.`name` FROM emp  e  JOIN dept d on e.dept_id = d.id WHERE e.`name` = '唐僧';
+*/
+
+-- 全用别名
+SELECT e.`id`,e.`name`,e.`gender`,e.`salary`, d.`name` FROM emp  e  JOIN dept d on e.dept_id = d.id WHERE e.`name` = '唐僧';
+
+
+--  给显示的样子也取个别名
+
+SELECT e.`id` 员工编号,e.`name` 员工名字,e.`gender` 员工性别,e.`salary` 员工工资, d.`name` 部门名称 FROM emp  e  JOIN dept d on e.dept_id = d.id WHERE e.`name` = '唐僧';
+
+
 
 
 ```
@@ -2106,13 +2123,147 @@ SELECT e.`id` 员工编号,e.`name` 员工名字,e.`gender` 员工性别,e.`sala
 
 ### 外连接
 
+内连接会过滤掉没有数据的值
+外连接则不会, 如果没有值的话就显示NULL
+
+```
+
+
+-- 左外连接
+
+-- INSERT INTO dept (name) VALUES ('销售部');
+
+-- SELECT * FROM dept;
+
+-- 先用内连接试一下
+
+-- SELECT * FROM dept d INNER JOIN emp e on d.`id` = e.`dept_id`; 
+
+
+-- 用外连接试一下
+
+SELECT * FROM dept d LEFT JOIN emp e ON d.`id` = e.`dept_id`;
+
+```
+
 ## 7子查询
 
 ### 概念
+
+
+> 1.一个查询的结果作为另一个查询的条件
+> 2.有查询的嵌套, 内部的查询称为子查询
+> 3. 子查询需要 使用括号
+
+```
+
+-- select id from dept where name='开发部' ;
+-- select * from emp where dept_id = 1;
+
+-- 子查询
+SELECT * FROM emp WHERE dept_id = (SELECT id FROM dept WHERE name='市场部'); 
+
+```
+
+
 ### 三种情况
+
+> 1. 子查询的结果是单行单列
+> 2. 子查询的结果是多行单列的
+> 3. 子查询的结果是多行多列的
+
+
 ### 结果一个值
+
+子查询的结果只要是单行单列, 肯定在where 后面作为条件, 父查询使用: 比较运费算符, 如: >, <, <>, =等
+
+select 查询字段 from 表 where 字段 = ( 子查询 );
+
+
+```
+
+
+-- 单行单列
+
+--  查询工资最高的是多少
+
+-- SELECT MAX(salary) FROM emp;
+
+-- 查询最高工资那个家伙是谁
+
+-- SELECT * from emp WHERE salary = (SELECT MAX(salary) FROM emp);
+
+
+/*
+avg(salary) 正确
+avg(salary ) 正确?
+avg( salary) 正确?
+avg( salary ) 正确?
+*/
+-- 查询员工小于平均工资的员工
+
+SELECT * from emp where salary < ( SELECT avg( salary ) FROM emp ); 
+
+
+
+```
+
+
 ### 结果是多行单列
+
+**子查询结果是单例多行，结果集类似于一个数组，父查询使用 IN 运算符**
+
+
+```
+
+-- 
+-- -- 多行单列
+-- 
+-- -- 查询工资大于5000的员工, 来至哪个部门, 输出名字
+-- 
+-- -- select name from dept where id in (select dept_id from emp where salary > 5000);
+-- 
+-- -- SELECT name FROM dept WHERE id IN (SELECT dept_id FROM emp WHERE salary > 5000);
+--  
+-- 
+-- --  查询开发部与财务部所有的员工信息
+-- 
+-- SELECT * FROM emp WHERE dept_id in ( SELECT id FROM dept WHERE `name` in ('开发部', '财务部') );
+
+
+```
+
 ### 结果是多行多列
+
+子查询结果只要是多列, 肯定在from 后面作为表
+
+
+select 查询字段 from (子查询) 表别名 where 条件;
+
+```
+
+
+-- 多行多列
+
+-- 查询2011年以后入职的员工信息, 包括部门名称
+
+-- SELECT * from dept d, (SELECT * FROM emp WHERE join_date >='2011-1-1') e  WHERE d.`id` = e.`dept_id`;
+
+-- 也可以使用表连接
+
+
+-- SELECT * FROM emp INNER JOIN dept ON emp.dept_id = dept.id WHERE join_date >= '2011-1-1';
+
+-- SELECT * FROM emp INNER JOIN dept ON emp.dept_id = dept.id AND join_date >= '2011-1-1'; 
+
+
+
+```
+
+子查询小结
+
+> 子查询结果只要是单列, 则在where后面作为条件
+> 子查询结果只要是多列, 则在from后面作为表进行二次查询
 
 
 ## 8事务
