@@ -76,8 +76,40 @@
 - 5.3[2nf](#2nf) 
 - 5.4[3nf](#3nf) 
 
-6. [](#)
-7. [](#)
+6. [6多表查询](#6多表查询)
+- 6.1[表连接查询](#表连接查询) 
+- 6.2[内连接](#内连接) 
+- 6.3[外连接](#外连接) 
+
+7. [7子查询](#7子查询)
+-  7.1[概念](#概念)
+- 7.2 [三种情况](#三种情况) 
+- 7.3 [结果一个值?](#结果一个值) 
+- 7.4 [结果是多行单列](#结果是多行单列)
+- 7.5 [结果是多行多列](#结果是多行多列)
+
+8. [8事务](#8事务)
+- 8.1 [使用场景](#使用场景) 
+- 8.2 [手动提交](#手动提交) 
+- 8.3 [自动提交](#自动提交)
+- 8.4 [事务原理](#事务原理)
+- 8.5 [回滚点](#回滚点)
+- 8.6 [事务的隔离级别](#事务的隔离级别)
+ 
+
+9. [9用户管理和权限](#9用户管理和权限)
+- 9.1 [创建用户](#创建用户) 
+- 9.2 [给用户授权](#给用户授权) 
+- 9.3 [撤销授权](#撤销授权) 
+- 9.4 [查看权限](#查看权限) 
+- 9.5 [删除用户](#删除用户) 
+- 9.6 [修改管理员密码](#修改管理员密码) 
+- 9.7 [修改普通用户密码](#修改普通用户密码) 
+
+
+
+
+
 
 
 
@@ -356,6 +388,9 @@ DO Make Love -> DML
 			2. 如果要删除所有记录
 				1. delete from 表名; -- 不推荐使用。有多少条记录就会执行多少次删除操作
 				2. TRUNCATE TABLE 表名; -- 推荐使用，效率更高 先删除表，然后再创建一张一样的表。
+
+
+
 ```
 
 
@@ -371,6 +406,7 @@ DO Make Love -> DML
 
 
 
+UPDATE emp set join_date='2008-08-08'  WHERE `name`='唐僧';
 
 ```
 
@@ -1874,6 +1910,215 @@ INSERT INTO tab_favorite VALUES (1, '2018-01-01', 1), -- 老王选择厦门
 | 1NF    | 原子性: 表中 每一列不可拆分  | 
 | 2NF     | 不产生局部依赖,   一张表只描述一件事  |
 | 3NF     | 不产生传递依赖,表中每一列都直接依赖于主键. 而不是通过其他列间接依赖于主键 | 
+
+
+
+
+## 6多表查询
+
+### 表连接查询
+
+多表查询的作用: 比如:我们想查询孙悟空的名字和他所在的部门的名字，则需要使用多表查询。
+如果一条 SQL 语句查询多张表，因为查询结果在多张不同的表中。每张表取 1 列或多列。
+
+笛卡尔积 = 等于 两个表的数据乘积
+
+**SELECT * from emp, dept; **
+
+
+```
+
+/*
+创建部门表
+*/
+
+-- CREATE TABLE if not EXISTS dept(
+-- 
+-- `id` int PRIMARY KEY auto_increment,
+-- `name` VARCHAR(20)
+-- 
+-- );
+-- 
+-- /*
+-- 
+-- 创建员工表
+-- */
+-- 
+-- CREATE TABLE if not EXISTS emp(
+-- 
+-- `id` int primary key auto_increment, 
+-- `name` varchar(10),
+-- `gender` char(1), -- 性别 
+-- `salary` double, -- 工资
+-- join_date date, -- 入职日期
+-- dept_id int,
+-- foreign key (dept_id) references dept(id) -- 外键，关联部门表(部门表的主键)
+-- 
+-- );
+
+-- INSERT into dept (name) VALUES ('开发部'), ('市场部'), ('财务部');
+
+-- INSERT INTO emp (name, gender, salary, join_date, dept_id) VALUES('孙悟空', '男', 7200, '2013-02-24', 1);
+/*
+错误外键测试
+INSERT INTO emp (name, gender, salary, join_date, dept_id) VALUES('孙悟空', '男', 7200, '2013-02-24', 9);
+*/
+
+-- insert into emp(name,gender,salary,join_date,dept_id) values('猪八戒','男 ',3600,'2010-12-02',2);
+-- insert into emp(name,gender,salary,join_date,dept_id) values('唐僧','男',9000,'2008-08-08',2);
+-- insert into emp(name,gender,salary,join_date,dept_id) values('白骨精','女 ',5000,'2015-10-07',3);
+-- insert into emp(name,gender,salary,join_date,dept_id) values('蜘蛛精','女 ',4500,'2011-03-14',1);
+
+
+
+
+-- SELECT * from emp, dept; 
+
+```
+
+
+简单清除笛卡尔积
+
+```
+
+ SELECT * from emp, dept WHERE `emp`.`dept_id` = `dept`.`id`;
+
+
+SELECT emp.`name`, dept.`name` FROM  emp,dept WHERE emp.`dept_id` = dept.`id`;
+
+
+```
+
+
+
+
+### 内连接
+
+用`左边`表的记录去`匹配``右边`表的记录, 如果条件符合则显示..
+如: 从表.`外键` = 主表.`主键`
+
+#### 隐式内连接 
+
+隐式内连接: 看不到 `JOIN` 关键字, 条件使用 `where` 指定
+
+`select 字段名  from 左表,右表 where 条件`
+
+
+```
+
+SELECT * from emp,dept WHERE emp.dept_id = dept.id;
+
+```
+
+
+#### 显示内连接 
+
+显示内连接: 使用`INNER JOIN ... ON `预计语句, 可以省略 `INNER`
+
+`SELECT 字段名 from 左表 [INNER] JOIN 右表 ON 条件`
+
+最简单相当于`SELECT * from emp, dept; `
+
+```
+
+SELECT * from emp INNER JOIN dept;
+
+```
+
+
+
+相当于`SELECT * from emp,dept WHERE emp.dept_id = dept.id;`
+其中`e`和`d`是取的别名
+```
+
+SELECT * from emp e INNER JOIN dept d on e.dept_id=d.id;
+
+```
+
+
+
+再查询其中的叫唐僧的
+
+```
+
+SELECT * from emp e INNER JOIN dept d on e.dept_id = d.id WHERE e.`name`='唐僧';
+
+
+```
+
+
+这次 只要 员工id name 工资.
+部门的话就只要部门的名字
+```
+
+
+
+
+
+```
+
+#### 取了别名就必须全部用别名
+
+
+```
+
+
+/**
+要嘛不取 别名=========ok
+
+*/
+SELECT emp.`id`,emp.`name`,emp.`gender`,emp.`salary`, dept.`name` FROM emp  JOIN dept on emp.dept_id = dept.id WHERE emp.`name` = '唐僧';
+
+
+/***
+要嘛取了别名就用别名=========ok
+*/
+SELECT e.`id`,e.`name`,e.`gender`,e.`salary`, d.`name` FROM emp  e  JOIN dept d on e.dept_id = d.id WHERE e.`name` = '唐僧';
+
+
+
+
+/*
+
+取了别名, 又 只有 后面用前面不用
+这样是不行的=======================Error
+*/
+SELECT emp.`id`,emp.`name`,emp.`gender`,emp.`salary`, dept.`name` FROM emp  e  JOIN dept d on e.dept_id = d.id WHERE e.`name` = '唐僧';
+
+
+```
+
+
+### 外连接
+
+## 7子查询
+
+### 概念
+### 三种情况
+### 结果一个值
+### 结果是多行单列
+### 结果是多行多列
+
+
+## 8事务
+
+### 使用场景
+### 手动提交
+### 自动提交
+### 事务原理
+### 回滚点
+### 事务的隔离级别
+
+## 9用户管理和权限
+
+### 创建用户
+### 给用户授权
+### 撤销授权
+### 查看权限
+### 删除用户
+### 修改管理员密码
+### 修改普通用户密码
+
 
 
 # 出现的问题
