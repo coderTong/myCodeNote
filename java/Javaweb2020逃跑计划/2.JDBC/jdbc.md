@@ -617,15 +617,109 @@ PreparedStatement
 ### 继承结构和作用
 
 ### preparedstatement的执行原理
+
+**预编译**
+
+1) 因为有预先编译的功能，提高 SQL 的执行效率。
+2) 可以有效的防止 SQL 注入的问题，安全性更高。
+
 ### connection创建preparedstatement
+
+```
+
+Connection connection = JDBCToolObjTest.getConnection();
+
+PreparedStatement ps = connection.prepareStatement("insert into t_jdbcStuudent3 values(null, ?, ?, ?)");
+
+
+```
 
 ### 方法和好处
 
+```
+
+1.  PreparedStatement 接口中的方法
+int executeUpdate() 执行 DML，增删改的操作，返回影响的行数。
+
+
+ResultSet executeQuery() 执行 DQL，查询的操作，返回结果集
+
+```
+
+
+PreparedSatement 的好处
+
+1. prepareStatement()会先将 SQL 语句发送给数据库预编译。PreparedStatement 会引用着预编译后的结果。 
+2. 可以多次传入不同的参数给 PreparedStatement 对象并执行。减少 SQL 编译次数，提高效率。 安全性更高，没有 SQL 注入的隐患。
+3. 提高了程序的可读性
+
 ### 使用步骤
+
+使用 PreparedStatement 的步骤:
+
+1. 编写 SQL 语句，未知内容使用?占位:"SELECT * FROM user WHERE name=? AND password=?";
+2.  获得 PreparedStatement 对象
+3. 设置实际参数:setXxx(占位符的位置, 真实的值) 
+4. 执行参数化 SQL 语句
+5. 关闭资源
 
 ### 表和类的关系
 
 ### pre执行dml
+
+```
+
+package com.domanshow.jdbc.demo1;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class JDBCPreparedStatementDML {
+
+    public static void main(String[] args) throws SQLException {
+
+//        insert();
+  delete();
+    }
+
+    private static void insert() throws SQLException {
+
+        Connection connection = JDBCToolObjTest.getConnection();
+
+        PreparedStatement ps = connection.prepareStatement("insert into t_jdbcStuudent3 values(null, ?, ?, ?)");
+
+        ps.setString(1,"白龙马");
+        ps.setBoolean(2, true);
+        ps.setDate(3, java.sql.Date.valueOf("1990-11-11"));
+
+        int row = ps.executeUpdate();
+
+        System.out.println("插入了" + row + "条记录");
+        JDBCToolObjTest.close(connection,ps);
+
+    }
+
+    /**
+ * 删除记录 * */  private static void delete() throws SQLException {
+
+        Connection connection = JDBCToolObjTest.getConnection();
+
+        PreparedStatement ps = connection.prepareStatement("delete from t_jdbcStuudent3 where id=?");
+
+        ps.setInt(1,5);
+
+        int row = ps.executeUpdate();
+
+        System.out.println("删除了" + row + "条记录");
+
+        JDBCToolObjTest.close(connection,ps);
+
+    }
+}
+
+
+```
 
 
 ## jdbc处理事务
