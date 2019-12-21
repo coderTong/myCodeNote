@@ -725,9 +725,108 @@ public class JDBCPreparedStatementDML {
 ## jdbc处理事务
 
 ### api介绍
+
+**void setAutoCommit(boolean autoCommit)**
+```
+
+参数是 true 或 false 如果设置为 false，表示关闭自动提交，相当于开启事务
+
+
+```
+
+**void commit()**
+
+```
+提交事务
+
+```
+
+
+**void rollback()**
+
+```
+
+回滚事务
+
+```
+
 ### 开发步骤
 
+开发步骤
 
+1.  1)  获取连接
+
+2.  2)  开启事务
+
+3.  3)  获取到 PreparedStatement
+
+4.  4)  使用 PreparedStatement 执行两次更新操作
+
+5.  5)  正常情况下提交事务
+
+6.  6)  出现异常回滚事务
+
+7.  7)  最后关闭资源
+
+
+```
+
+package com.domanshow.jdbc.demo1;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class JDBCPreparedStatementAutoCommit {
+
+    public static void main(String[] args) {
+
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        try{
+
+            // 2. 获取连接
+  connection = JDBCToolObjTest.getConnection();
+            // 3.开启事务
+  connection.setAutoCommit(false);
+
+            int addOrValue = 500;
+
+            ps = connection.prepareStatement("update account set balance = balance - ? where name=?");
+
+            ps.setInt(1, addOrValue);
+            ps.setString(2,"李四");
+
+            ps.executeUpdate();
+
+            // 做个异常 //            System.out.println(100/0);       // 给张三价钱    ps = connection.prepareStatement("update account set balance= balance + ? where name=?");
+            ps.setInt(1, addOrValue);
+            ps.setString(2,"张三");
+            ps.executeUpdate();
+
+            // 提交事务    connection.commit();
+
+            System.out.println("转账成功");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+            try {
+                // 事务回滚
+  connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }finally {
+
+            JDBCToolObjTest.close(connection,ps);
+        }
+
+    }
+}
+
+```
 
 
 
