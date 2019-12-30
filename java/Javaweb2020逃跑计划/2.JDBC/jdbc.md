@@ -64,6 +64,10 @@
 - 9.1 [中文乱码](#中文乱码)
 - 9.2 [idea字符集集设置](#idea字符集集设置)
 
+10. [连接池](#连接池)
+- 10.1[数据库连接池](#数据库连接池)
+- 10.2[spring jdbc](#spring-jdbc)
+
 
 ```
 - 2.0.1 [ ](#)
@@ -827,6 +831,83 @@ public class JDBCPreparedStatementAutoCommit {
 }
 
 ```
+
+
+
+
+## 连接池
+
+用完后归还
+
+节约资源, 访问高效
+
+### 数据库连接池
+
+1. 标准接口:  DataSource java.sql包下
+2. 方法
+```
+// 获取连接:
+getConnection();
+// 归还连接: 
+Connection.close()
+
+从连接池中获取的连接使用 close不是关闭而是归还
+
+```
+
+3. 主要框架
+
+
+```
+  
+1. C3P0
+2. Druid
+
+
+
+
+```
+
+
+4. C3P0: 使用
+
+```
+
+1. 导入两个包
+
+https://repo1.maven.org/maven2/com/mchange/c3p0/0.9.5.2/
+https://repo1.maven.org/maven2/com/mchange/mchange-commons-java/0.2.12/
+
+
+ mchange-commons-java-0.2.12.jar
+ c3p0-0.9.5.2.jar
+
+2. 定义配置文件
+
+3. 创建核心对象 数据库连接池对象: ComboPooledDataSource
+
+4. 获取连接: getConnection
+
+```
+
+5. druid
+
+```
+
+1. 导入jar包
+http://central.maven.org/maven2/com/alibaba/druid/1.0.9/
+
+
+// 1. 导入jar包 
+// 2. 定义配置文件 
+// 3. 加配置文件   
+// 4. 获取连接池对象 
+// 5. 获取连接
+
+
+```
+### spring jdbc
+### Spring JDBC
 
 
 
