@@ -70,4 +70,37 @@ cd bin
 [去下载](https://www.oracle.com/technetwork/java/javase/downloads/jdk13-downloads-5672538.html)
 
 
+# Tomcat的文件目录介绍
 
+![QQ20200102-215908@2x](images/QQ20200102-215908@2x.png)
+
+
+
+
+# 修改端口
+
+
+```
+
+cd tomcat/conf
+
+vim server.xml
+
+// 找到8080然后修改
+
+// 停止服务器
+// 启动服务器
+
+
+```
+
+
+# 部署
+
+```
+
+将html文件压缩成一个war包
+
+然后直接将这个war 放到webapps文件夹下面就行了
+
+```
