@@ -345,3 +345,16 @@ HttpServlet  -- 抽象类
 ![QQ20200107-111651@2x](images/QQ20200107-111651@2x.png)
 
 
+## 中文显示
+
+`-Dfile.encoding=UTF-8`
+
+
+`-Dfile.encoding=UTF-8`
+
+
+![QQ20200108-203603@2x](images/QQ20200108-203603@2x.png)
+![QQ20200108-203644@2x](images/QQ20200108-203644@2x.png)
+![QQ20200108-203742@2x](images/QQ20200108-203742@2x.png)
+![QQ20200108-203915@2x](images/QQ20200108-203915@2x.png)
+
