@@ -324,7 +324,15 @@ HttpServlet  -- 抽象类
 
 
 
-
+## Servlet 路径配置
+1. 多地址 `@WebServlet({"/dd", "/tmd"})`
+2. 多层路径 `@WebServlet("/demo02/cc2")`
+3. 通配符: 
+  1. 错误: `@WebServlet("wocao*")`
+  2. 正确:`@WebServlet("*.wocao")`访问`http://localhost:8080/w.wocao`
+  3. 不是通配:`@WebServlet("/wocao*")@WebServlet("/wocao*")`访问 `http://localhost:8080/wocao*`
+  
+    
 
 
 # 遇到 的错误
