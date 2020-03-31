@@ -46,7 +46,7 @@ yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel wget v
 
 
 
-cd /  && mkdir wt && cd wt && wget http://mirror.pnl.gov/epel/6/x86_64/epel-release-6-8.noarch.rpm && rpm -Uvh epel-release-6-8.noarch.rpm && yum -y update && yum -y install transmission transmission-daemon && service transmission-daemon start && service transmission-daemon stop
+cd /  && mkdir wt && cd /wt && wget http://mirror.pnl.gov/epel/6/x86_64/epel-release-6-8.noarch.rpm && rpm -Uvh epel-release-6-8.noarch.rpm && yum -y update && yum -y install transmission transmission-daemon && service transmission-daemon start && service transmission-daemon stop
 
 ```
 
