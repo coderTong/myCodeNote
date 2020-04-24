@@ -1291,6 +1291,7 @@ ALTER TABLE 表名 ADD 列名 类型;
 
 alter table employee ADD `weihao` varchar(20);
 
+alter table `user` ADD (`password` varchar(26) , `username` varchar(26));
 ```
 
 
