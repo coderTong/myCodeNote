@@ -525,6 +525,136 @@ js----->jq: 用`$()`包裹, 像下面这个`$(h1s[i])`其中`h1s[i]`是js,被包
 8. 小于索引选择器
 9. 标题选择器
 
+```html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>基本过滤选择器</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+   <script src="../js/jquery-3.3.1.min.js"></script>
+   <style type="text/css">
+         div,span{
+             width: 180px;
+             height: 180px;
+             margin: 20px;
+             background: #9999CC;
+             border: #000 1px solid;
+            float:left;
+             font-size: 17px;
+             font-family:Roman;
+         }
+
+         div .mini{
+             width: 50px;
+             height: 50px;
+             background: #CC66FF;
+             border: #000 1px solid;
+             font-size: 12px;
+             font-family:Roman;
+         }
+
+         div .mini01{
+             width: 50px;
+             height: 50px;
+             background: #CC66FF;
+             border: #000 1px solid;
+             font-size: 12px;
+             font-family:Roman;
+         }
+    </style>
+   <script type="text/javascript">
+
+      $(function () {
+
+      // <input type="button" value=" 改变第一个 div 元素的背景色为 红色"  id="b1"/><br>    $("#b1").click(function () {
+            $("div:first").css("backgroundColor", "red");
+         });
+
+      //           <input type="button" value=" 改变最后一个 div 元素的背景色为 红色"  id="b2"/><br>
+  $("#b2").click(function () {
+            $("div:last").css("backgroundColor", "black");
+         });
+      //           <input type="button" value=" 改变class不为 one 的所有 div 元素的背景色为 红色"  id="b3"/><br>
+  $("#b3").click(function () {
+            $("div:not(.one)").css("backgroundColor", "yellow");
+         });
+      //           <input type="button" value=" 改变索引值为偶数的 div 元素的背景色为 红色"  id="b4"/><br>
+  $("#b4").click(function () {
+            $("div:even").css("backgroundColor", "green");
+         });
+      //           <input type="button" value=" 改变索引值为奇数的 div 元素的背景色为 红色"  id="b5"/><br>
+  $("#b5").click(function () {
+            $("div:odd").css("backgroundColor", "#0063FF");
+         });
+      //           <input type="button" value=" 改变索引值为大于 3 的 div 元素的背景色为 红色"  id="b6"/><br>
+  $("#b6").click(function () {
+            $("div:gt(3)").css("backgroundColor", "#006300");
+         });
+      //           <input type="button" value=" 改变索引值为等于 3 的 div 元素的背景色为 红色"  id="b7"/><br>
+  $("#b7").click(function () {
+            $("div:eq(3)").css("backgroundColor", "#006300");
+         });
+      //           <input type="button" value=" 改变索引值为小于 3 的 div 元素的背景色为 红色"  id="b8"/><br>
+  $("#b8").click(function () {
+            $("div:lt(3)").css("backgroundColor", "#006300");
+         });
+      //           <input type="button" value=" 改变所有的标题元素的背景色为 红色"  id="b9"/><br>
+  $("#b9").click(function () {
+            $(":header").css("backgroundColor", "red");
+         });
+      });
+
+   </script>
+   </head>
+
+   <body>
+
+       <input type="button" value="保存" class="mini" name="ok" class="mini" /><br>
+       <input type="button" value=" 改变第一个 div 元素的背景色为 红色" id="b1"/><br>
+       <input type="button" value=" 改变最后一个 div 元素的背景色为 红色" id="b2"/><br>
+       <input type="button" value=" 改变class不为 one 的所有 div 元素的背景色为 红色" id="b3"/><br>
+       <input type="button" value=" 改变索引值为偶数的 div 元素的背景色为 红色" id="b4"/><br>
+       <input type="button" value=" 改变索引值为奇数的 div 元素的背景色为 红色" id="b5"/><br>
+       <input type="button" value=" 改变索引值为大于 3 的 div 元素的背景色为 红色" id="b6"/><br>
+       <input type="button" value=" 改变索引值为等于 3 的 div 元素的背景色为 红色" id="b7"/><br>
+       <input type="button" value=" 改变索引值为小于 3 的 div 元素的背景色为 红色" id="b8"/><br>
+       <input type="button" value=" 改变所有的标题元素的背景色为 红色" id="b9"/><br>
+
+       <h1>有一种奇迹叫坚持</h1>
+       <h2>自信源于努力</h2>
+       <h3>嗨起来!</h3>
+       <div id="wode" class="one">
+          love xy
+       </div>
+
+        <div id="one">
+           id为one  
+
+       </div>
+
+       <div id="two" class="mini" >
+             id为two   class是 mini 
+             <div class="mini" >class是 mini</div>
+      </div>
+
+       <div class="one" >
+             class是 one 
+             <div class="mini" >class是 mini</div>
+            <div class="mini" >class是 mini</div>
+       </div>
+       <div class="one" >
+           class是 one 
+             <div class="mini01" >class是 mini01</div>
+            <div class="mini" >class是 mini</div>
+      </div>
+
+   </body>
+
+</html>
+
+```
+
 ## 4.5 表单过滤选择器
 
 1. 可用元素选择器
@@ -532,9 +662,599 @@ js----->jq: 用`$()`包裹, 像下面这个`$(h1s[i])`其中`h1s[i]`是js,被包
 3. 选中选择器
 4. 选中选择器
 
+```html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>表单属性过滤选择器</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+   <script src="../js/jquery-3.3.1.min.js"></script>
+   <style type="text/css">
+         div,span{
+             width: 180px;
+             height: 180px;
+             margin: 20px;
+             background: #9999CC;
+             border: #000 1px solid;
+            float:left;
+             font-size: 17px;
+             font-family:Roman;
+         }
+
+         div .mini{
+             width: 50px;
+             height: 50px;
+             background: #CC66FF;
+             border: #000 1px solid;
+             font-size: 12px;
+             font-family:Roman;
+         }
+
+         div .mini01{
+             width: 50px;
+             height: 50px;
+             background: #CC66FF;
+             border: #000 1px solid;
+             font-size: 12px;
+             font-family:Roman;
+         }
+         #job{
+            margin: 20px;
+         }
+         #edu{
+            margin-top:-70px;
+         }
+
+    </style>
+
+    <script type="text/javascript">
+      $(function () {
+      // <input type="button" value=" 利用 jQuery 对象的 val() 方法改变表单内可用 <input> 元素的值"  id="b1"/>
+  $("#b1").click(function () {
+            $("input[type='text']:enabled").val("aa");
+         });
+      //           <input type="button" value=" 利用 jQuery 对象的 val() 方法改变表单内不可用 <input> 元素的值"  id="b2"/>
+  $("#b2").click(function () {
+            $("input[type='text']:disabled").val("aa");
+         });
+      //           <input type="button" value=" 利用 jQuery 对象的 length 属性获取复选框选中的个数"  id="b3"/>
+  $("#b3").click(function () {
+            alert($("input[type='checkbox']:checked").length);
+         });
+      //           <input type="button" value=" 利用 jQuery 对象的 length 属性获取下拉框选中的个数"  id="b4"/>
+  $("#b4").click(function () {
+
+            alert($("#job > option:selected").length);
+         });
+      });
+
+   </script>
+
+   </head>
+
+   <body>
+
+       <input type="button" value="保存" class="mini" name="ok" class="mini" /><br>
+       <input type="button" value=" 利用 jQuery 对象的 val() 方法改变表单内可用 <input> 元素的值" id="b1"/><br>
+       <input type="button" value=" 利用 jQuery 对象的 val() 方法改变表单内不可用 <input> 元素的值" id="b2"/><br>
+       <input type="button" value=" 利用 jQuery 对象的 length 属性获取复选框选中的个数" id="b3"/><br>
+       <input type="button" value=" 利用 jQuery 对象的 length 属性获取下拉框选中的个数" id="b4"/><br>
+
+      <br><br>
+
+         <input type="text" value="不可用值1" disabled="disabled"> 
+       <input type="text" value="可用值1" >
+       <input type="text" value="不可用值2" disabled="disabled">
+       <input type="text" value="可用值2" >
+
+       <br><br>
+       <input type="checkbox" name="items" value="美容" >美容
+       <input type="checkbox" name="items" value="IT" >IT
+       <input type="checkbox" name="items" value="金融" >金融
+       <input type="checkbox" name="items" value="管理" >管理
+
+       <br><br>
+
+        <input type="radio" name="sex" value="男" >男
+        <input type="radio" name="sex" value="女" >女
+
+         <br><br>
+
+        <select name="job" id="job" multiple="multiple" size=4>
+           <option>程序员</option>
+         <option>中级程序员</option>
+         <option>高级程序员</option>
+         <option>系统分析师</option>
+          </select>
+
+          <select name="edu" id="edu">
+           <option>本科</option>
+         <option>博士</option>
+         <option>硕士</option>
+         <option>大专</option>
+          </select>
+
+      <br/>
+
+       <div id="two" class="mini" >
+             id为two   class是 mini  div
+             <div class="mini" >class是 mini</div>
+      </div>
+
+       <div class="one" >
+             class是 one 
+             <div class="mini" >class是 mini</div>
+            <div class="mini" >class是 mini</div>
+       </div>
+       <div class="one" >
+           class是 one 
+             <div class="mini01" >class是 mini01</div>
+            <div class="mini" >class是 mini</div>
+      </div>
+
+   </body>
+
+</html>
+
+
+```
+
 
 # jquery05
 # 5. DOM操作
+
+## 5.1 内容操作
+
+1. `val()`: 获取/设置元素的value属性值
+2. `html()`: 标签内容
+3. `text()`: 内容
+
+```html
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <title></title>
+      <script src="../js/jquery-3.3.1.min.js"></script>
+      <script>
+
+         $(function () {
+            // 获取myinput 的value值
+  var value = $("#myinput").val();
+            // alert(value);
+ // 获取mydiv的标签体内容  var divStr = $("#mydiv").html();
+            // alert(divStr);
+  $("#mydiv").html("<h1>你瞅啥!</h1>")
+            // 获取mydiv文本内容
+  var divContent = $("#mydiv").text();
+            alert(divContent);
+            $("#mydiv").text("你去死吧!")
+         });
+
+      </script>
+
+   </head>
+   <body>
+      <input id="myinput" type="text" name="username" value="张三" /><br />
+      <div id="mydiv"><p><a href="#">标题标签</a></p></div>
+   </body>
+</html>
+
+```
+
+## 5.2 属性操作
+
+### 5.2.1 通用属性操作
+
+1. `attr("name")`:
+2. `removeAttr("name")`:
+3. `prop("checked")`:
+4. ``:
+
+
+attr和prop区别？
+1. 如果操作的是元素的固有属性，则建议使用prop
+2. 如果操作的是元素自定义的属性，则建议使用attr
+
+```html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>获取属性</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+   <script src="../js/jquery-3.3.1.min.js"></script>
+
+   <style type="text/css">
+         div,span{
+             width: 140px;
+             height: 140px;
+             margin: 20px;
+             background: #9999CC;
+             border: #000 1px solid;
+            float:left;
+             font-size: 17px;
+             font-family:Roman;
+         }
+
+         div.mini{
+             width: 30px;
+             height: 30px;
+             background: #CC66FF;
+             border: #000 1px solid;
+             font-size: 12px;
+             font-family:Roman;
+         }
+
+         div.visible{
+            display:none;
+         }
+    </style>
+
+   <script type="text/javascript">
+      $(function () {
+            //获取北京节点的name属性值
+  var name = $("#bj").attr("name");
+         //alert(name);
+ //设置北京节点的name属性的值为dabeijing  $("#bj").attr("name","dabeijing");
+            //新增北京节点的discription属性 属性值是didu
+  $("#bj").attr("discription","didu");
+            //删除北京节点的name属性并检验name属性是否存在
+  $("#bj").removeAttr("name");
+            //获得hobby的的选中状态
+  var checked = $("#hobby").prop("checked");
+         alert(checked);
+
+            //var checked = $("#hobby").attr("checked"); //获取不到，弹出undefined    });
+
+   </script>
+
+   </head>
+
+   <body>
+
+       <ul>
+          <li id="bj" name="beijing" xxx="yyy">北京</li>
+          <li id="tj" name="tianjin">天津</li>
+       </ul>
+       <input type="checkbox" id="hobby"/>
+
+   </body>
+
+</html>
+
+```
+
+
+### 5.2.2 对class属性操作
+1. `$("#one").prop("class", "second");`:
+2. `$("#one").addClass("second");`:
+3. `$("#one").removeClass("second");`:
+4. `$("#one").toggleClass("second");`:
+5. `$("#one").css("backgroundColor");`:
+6. `$("#one").css("backgroundColor", "black");`:
+
+```html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>样式操作</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+   <script src="../js/jquery-3.3.1.min.js"></script>
+   <style type="text/css">
+         .one{
+             width: 200px;
+             height: 140px;
+             margin: 20px;
+             background: red;
+             border: #000 1px solid;
+            float:left;
+             font-size: 17px;
+             font-family:Roman;
+         }
+
+         div,span{
+             width: 140px;
+             height: 140px;
+             margin: 20px;
+             background: #9999CC;
+             border: #000 1px solid;
+            float:left;
+             font-size: 17px;
+             font-family:Roman;
+         }
+
+         div .mini{
+             width: 40px;
+             height: 40px;
+             background: #CC66FF;
+             border: #000 1px solid;
+             font-size: 12px;
+             font-family:Roman;
+         }
+         div .mini01{
+             width: 40px;
+             height: 40px;
+             background: #CC66FF;
+             border: #000 1px solid;
+             font-size: 12px;
+             font-family:Roman;
+         }
+
+         /*待用的样式*/
+  .second{
+            width: 300px;
+             height: 340px;
+             margin: 20px;
+             background: yellow;
+             border: pink 3px dotted;
+            float:left;
+             font-size: 22px;
+             font-family:Roman;
+         }
+
+    </style>
+    <script type="text/javascript">
+
+       $(function () {
+
+          //<input type="button" value="采用属性增加样式(改变id=one的样式)"  id="b1"/>
+  $("#b1").click(function () {
+            $("#one").prop("class", "second");
+          });
+          //<input type="button" value=" addClass"  id="b2"/>
+  $("#b2").click(function () {
+             $("#one").addClass("second");
+          });
+
+          //<input type="button" value="removeClass"  id="b3"/>
+  $("#b3").click(function () {
+             $("#one").removeClass("second");
+          });
+
+          //<input type="button" value=" 切换样式"  id="b4"/>
+  $("#b4").click(function () {
+             $("#one").toggleClass("second");
+          });
+
+          //<input type="button" value=" 通过css()获得id为one背景颜色"  id="b5"/>
+  $("#b5").click(function () {
+            var backG = $("#one").css("backgroundColor");
+            alert(backG);
+          });
+
+          //<input type="button" value=" 通过css()设置id为one背景颜色为绿色"  id="b6"/>
+  $("#b6").click(function () {
+             $("#one").css("backgroundColor", "black");
+          });
+       });
+
+   </script>
+
+   </head>
+
+   <body>
+
+       <input type="button" value="保存" class="mini" name="ok" class="mini" /><br>
+       <input type="button" value="采用属性增加样式(改变id=one的样式)" id="b1"/><br>
+       <input type="button" value=" addClass" id="b2"/><br>
+       <input type="button" value="removeClass" id="b3"/><br>
+       <input type="button" value=" 切换样式" id="b4"/><br>
+       <input type="button" value=" 通过css()获得id为one背景颜色" id="b5"/><br>
+       <input type="button" value=" 通过css()设置id为one背景颜色为绿色" id="b6"/><br>
+
+       <h1>有一种奇迹叫坚持</h1>
+       <h2>自信源于努力</h2>
+
+        <div id="one">
+           id为one 
+       </div>
+
+       <div id="two" class="mini" >
+             id为two   class是 mini 
+             <div class="mini" >class是 mini</div>
+      </div>
+
+       <div class="one" >
+             class是 one 
+             <div class="mini" >class是 mini</div>
+            <div class="mini" >class是 mini</div>
+       </div>
+
+       <div class="one" >
+           class是 one 
+             <div class="mini01" >class是 mini01</div>
+            <div class="mini" >class是 mini</div>
+      </div>
+
+      <span class="spanone">    span
+      </span>
+
+   </body>
+
+</html>
+
+```
+
+
+## 5.3 CRUD
+
+1. `$("#city").append($("#fk"));`:将反恐放置到city的后面
+2. `$("#fk").appendTo("#city");`:将反恐放置到city的后面
+3. `$("#city").prepend($("#fk"));`:将反恐放置到city的最前面
+4. `$("#fk").prependTo("#city");`:将反恐放置到city的最前面
+5. `$("#tj").after($("#fk"));`:将反恐插入到天津后面
+6. `$("#fk").insertAfter($("#tj"));`:将反恐插入到天津后面
+7. `$("#tj").before($("#fk"));`:将反恐插入到天津前面
+8. `$("#fk").insertBefore($("#tj"));`:将反恐插入到天津前面
+9. `$("#bj").remove();`:删除<li id='bj' name='beijing'>北京</li>
+10. `$("#city").empty();`:删除city所有的li节点   清空元素中的所有后代节点(不包含属性节点)
+
+
+```html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>内部插入脚本</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+   <script src="../js/jquery-3.3.1.min.js"></script>
+   <style type="text/css">
+         div,span{
+             width: 140px;
+             height: 140px;
+             margin: 20px;
+             background: #9999CC;
+             border: #000 1px solid;
+            float:left;
+             font-size: 17px;
+             font-family:Roman;
+         }
+
+         div .mini{
+             width: 30px;
+             height: 30px;
+             background: #CC66FF;
+             border: #000 1px solid;
+             font-size: 12px;
+             font-family:Roman;
+         }
+
+         div.visible{
+            display:none;
+         }
+    </style>
+    <script type="text/javascript">
+
+       $(function () {
+
+          // <input type="button" value="将反恐放置到city的后面"  id="b1"/>
+  $("#b1").click(function () {
+             // $("#city").append($("#fk"));
+  $("#fk").appendTo("#city");
+          });
+
+          // <input type="button" value="将反恐放置到city的最前面"  id="b2"/>
+  $("#b2").click(function () {
+             // $("#city").prepend($("#fk"));
+  $("#fk").prependTo("#city");
+          });
+
+          // <input type="button" value="将反恐插入到天津后面"  id="b3"/>
+  $("#b3").click(function () {
+
+            // $("#tj").after($("#fk"));
+  $("#fk").insertAfter($("#tj"));
+          });
+
+          // <input type="button" value="将反恐插入到天津前面"  id="b4"/>
+  $("#b4").click(function () {
+
+            // $("#tj").before($("#fk"));
+  $("#fk").insertBefore($("#tj"));
+          });
+       });
+
+   </script>
+
+   </head>
+
+   <body>
+
+      <input type="button" value="将反恐放置到city的后面" id="b1"/><br>
+      <input type="button" value="将反恐放置到city的最前面" id="b2"/><br>
+      <input type="button" value="将反恐插入到天津后面" id="b3"/><br>
+      <input type="button" value="将反恐插入到天津前面" id="b4"/><br>
+       <ul id="city">
+          <li id="bj" name="beijing">北京</li>
+          <li id="tj" name="tianjin">天津</li>
+          <li id="cq" name="chongqing">重庆</li>
+       </ul>
+
+        <ul id="love">
+          <li id="fk" name="fankong">反恐</li>
+          <li id="xj" name="xingji">星际</li>
+       </ul>
+
+      <div id="foo1">Hello1</div> 
+
+   </body>
+
+</html>
+
+```
+
+
+```html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>删除节点</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+   <script src="../js/jquery-3.3.1.min.js"></script>
+   <style type="text/css">
+         div,span{
+             width: 140px;
+             height: 140px;
+             margin: 20px;
+             background: #9999CC;
+             border: #000 1px solid;
+            float:left;
+             font-size: 17px;
+             font-family:Roman;
+         }
+
+         div.mini{
+             width: 30px;
+             height: 30px;
+             background: #CC66FF;
+             border: #000 1px solid;
+             font-size: 12px;
+             font-family:Roman;
+         }
+
+         div.visible{
+            display:none;
+         }
+    </style>
+    <script type="text/javascript">
+
+      $(function () {
+         // <input type="button" value="删除<li id='bj' name='beijing'>北京</li>"  id="b1"/>
+  $("#b1").click(function () {
+            $("#bj").remove();
+         });
+         // <input type="button" value="删除city所有的li节点   清空元素中的所有后代节点(不包含属性节点)"  id="b2"/>
+  $("#b2").click(function () {
+            $("#city").empty();
+         });
+      });
+
+   </script>
+   </head>
+
+   <body>
+
+   <input type="button" value="删除<li id='bj' name='beijing'>北京</li>" id="b1"/><br>
+   <input type="button" value="删除所有的子节点   清空元素中的所有后代节点(不包含属性节点)" id="b2"/><br>
+
+       <ul id="city">
+          <li id="bj" name="beijing">北京</li>
+          <li id="tj" name="tianjin">天津</li>
+          <li id="cq" name="chongqing">重庆</li>
+       </ul>
+       <p class="hello">Hello</p> how are <p>you?</p> 
+   </body>
+
+</html>
+
+
+```
+
 
 # jquery06
 # 6. 基础案例
