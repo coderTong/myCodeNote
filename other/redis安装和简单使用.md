@@ -15,8 +15,33 @@ echo $PATH && \
 mkdir /application/redis/conf && \
 cd /wt/redis-3.0.4 && \
 cp /wt/redis-3.0.4/redis.conf /application/redis/conf && \
-sysctl vm.overcommit_memory=1 && \
+sysctl vm.overcommit_memory=1
+
+
+
+
+// 做密码登录,改端口port 6379
+cd /application/redis/conf && vim redis.conf
+
+// 查找并修改端口 /port 6379
+// 查找并修改密码 /requirepass
+
+
+
+
+
+// 最后启动
 redis-server /application/redis/conf/redis.conf &
+
+
+
+
+➜  conf redis-cli -h 127.0.0.1 -p 686
+127.0.0.1:6686> auth foASD@#$32452obared
+OK
+127.0.0.1:6686> get hello
+"world02"
+127.0.0.1:6686> 
 
 
 ```
