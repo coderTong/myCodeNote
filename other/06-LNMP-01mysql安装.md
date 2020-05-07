@@ -607,6 +607,8 @@ echo $PATH
 
 echo 'export PATH=/application/mysql/bin:$PATH'>>/etc/profile && tail -1 /etc/profile && source /etc/profile && echo $PATH
 
+
+
 ```
 
 
