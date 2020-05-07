@@ -22,6 +22,7 @@
     4. [pom 基本配置](#mvn0504)
 
 
+
 /Users/codew/.m2/
 
 
@@ -180,6 +181,16 @@ Maven是一个项目管理工具
 -DarchetypeCatalog=internal
 
 -DarchetypeCatalog=local
+
+
+archetypeCatalog=internal
+
+
+-DarchetypeCatalog=internal
+
+-DarchetypeCatalog=local
+
+
 ```
 
 
@@ -191,24 +202,241 @@ Maven是一个项目管理工具
 ![maven16](images/maven16.png)
 ![maven18](images/maven18.png)
 
-[INFO] Generating project in Batch mode
+ IDEA 不会为我们创建完整的目录, 自己补全
+
+![maven20](images/maven20.png)
+![maven21](images/maven21.png)
+![maven22](images/maven22.png)
+
+![maven23](images/maven23.png)
+
+
+### 3.2.2 不使用maven骨架创建java工程, 建议不使用maven骨架
+![maven24](images/maven24.png)
+![maven25](images/maven25.png)
+![maven26](images/maven26.png)
+
+### 3.2.3 使用maven骨架创建一个web工程
+
+![maven27](images/maven27.png)
+![maven28](images/maven28.png)
+![maven29](images/maven29.png)
+![maven30](images/maven30.png)
+![maven31](images/maven31.png)
+![maven32](images/maven32.png)
+![maven33](images/maven33.png)
+![maven34](images/maven34.png)
+![maven35](images/maven35.png)
+
+
+## 3.3 使用 maven web项目创建一个Servlet
+
+### 3.3.1 网络上搜索maven jar包坐标
+### https://www.mvnrepository.com
+![maven36](images/maven36.png)
+![maven37](images/maven37.png)
+![maven38](images/maven38.png)
+
+### 3.3.2 new的时候没有Servlet去常见错误里看解决办法
+
+### 3.3.4 项目怎么运行
+
+![maven39](images/maven39.png)
+![maven40](images/maven40.png)
+![maven41](images/maven41.png)
+![maven42](images/maven42.png)
+![maven43](images/maven43.png)
+![maven44](images/maven44.png)
+
+### 3.3.5 放问出问题
+**Allocate exception for servlet MyMavenServlet java.lang.ClassCastException: com.domanshow.web.servlet.MyMavenServlet cannot be cast to javax.servlet.Servlet**
+![maven45](images/maven45.png)
 
 ```
 
-https://repo.maven.apache.org/maven2/archetype-catalog.xml
+严重: Allocate exception for servlet MyMavenServlet
+java.lang.ClassCastException: com.domanshow.web.servlet.MyMavenServlet cannot be cast to javax.servlet.Servlet
+	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1116)
+	at org.apache.catalina.core.StandardWrapper.allocate(StandardWrapper.java:809)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:129)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:191)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:298)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:857)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:588)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:489)
+	at java.lang.Thread.run(Thread.java:748)
 
-https://repo.maven.apache.org/maven2/org/apache/maven/archetypes/maven-archetype-bundles/2/maven-archetype-bundles-2.pom
-
-
-
-/Users/codew/.m2/repository/org/apache/maven/archetype/maven-archetype/3.1.2
 
 
 ```
 
+
+这是因为出现了冲突, 我pom.xml引入的`servlet-api`, `javax.servlet.jsp`他们与Tomcat里lib文件下的jar包冲突了
+![maven46](images/maven46.png)
+
+
+####  解决办法
+
+设置pom.xml引入的`servlet-api`, `javax.servlet.jsp`作用域, 说它只在写代码编译的时候起作用
+
+`<scope>provided</scope>`
+![maven47](images/maven47.png)
+
+
+`<scope>test</scope>`只在测试的时候起作用
+
+
+## 又出现问题了
+
+页面表现
+
+```
+
+# HTTP Status 500 - 
+
+* * *
+
+**type** Exception report
+
+**message**
+
+**description** The server encountered an internal error () that prevented it from fulfilling this request.
+
+**exception**
+
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 1 in the generated java file
+The type java.io.ObjectInputStream cannot be resolved. It is indirectly referenced from required .class files
+
+Stacktrace:
+	org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:92)
+	org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:439)
+	org.apache.jasper.compiler.Compiler.compile(Compiler.java:349)
+	org.apache.jasper.compiler.Compiler.compile(Compiler.java:327)
+	org.apache.jasper.compiler.Compiler.compile(Compiler.java:314)
+	org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:592)
+	org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:317)
+	org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:313)
+	org.apache.jasper.servlet.JspServlet.service(JspServlet.java:260)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+	com.domanshow.web.servlet.MyMavenServlet.doPost(MyMavenServlet.java:14)
+	com.domanshow.web.servlet.MyMavenServlet.doGet(MyMavenServlet.java:18)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:617)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:717)
+
+**note** The full stack trace of the root cause is available in the Apache Tomcat/6.0.29 logs.
+
+
+```
+
+![maven48](images/maven48.png)
+
+IDEA 日志表现
+
+```
+
+五月 07, 2020 2:42:11 下午 org.apache.jasper.compiler.JDTCompiler$1 findType
+严重: Compilation error
+org.eclipse.jdt.internal.compiler.classfmt.ClassFormatException
+
+```
+
+```
+
+
+五月 07, 2020 2:42:11 下午 org.apache.catalina.core.ApplicationDispatcher invoke
+严重: Servlet.service() for servlet jsp threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 1 in the generated java file
+The type java.io.ObjectInputStream cannot be resolved. It is indirectly referenced from required .class files
+
+Stacktrace:
+
+```
+
+```
+
+五月 07, 2020 2:42:11 下午 org.apache.catalina.core.StandardWrapperValve invoke
+严重: Servlet.service() for servlet MyMavenServlet threw exception
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+
+An error occurred at line: 1 in the generated java file
+The type java.io.ObjectInputStream cannot be resolved. It is indirectly referenced from required .class files
+
+Stacktrace:
+
+
+```
+
+
+#### 解决办法
+
+首先在pom.xml中加入, 让IDEA先去下载文件
+
+```xml
+
+<dependency>
+  <groupId>org.apache.tomcat.maven</groupId>
+  <artifactId>tomcat7-maven-plugin</artifactId>
+  <version>2.2</version>
+</dependency>
+
+
+```
+
+
+
+然后注释掉上面的, 然后再加下面
+
+
+tomcat模板
+```
+
+<plugin>
+  <groupId>org.apache.tomcat.maven</groupId>
+  <artifactId>tomcat7-maven-plugin</artifactId>
+  <version>2.2</version>
+  <configuration>
+    <port>8888</port>
+  </configuration>
+</plugin>
+
+```
+
+jdk模板
+
+```
+
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-compiler-plugin</artifactId>
+  <configuration>
+    <target>1.8</target>
+    <source>1.8</source>
+    <encoding>UTF-8</encoding>
+  </configuration>
+</plugin>
+
+```
+
+
+
+![maven49](images/maven49.png)
 
 # mvn04
 # 4 .Maven 工程运行调试
+
+## 4.1maven 代码模板创建
+![maven50](images/maven50.png)
+![maven51](images/maven51.png)
+![maven52](images/maven52.png)
+![maven53](images/maven53.png)
 
 ## mvn0401
 ## 4.1 端口占用处理
