@@ -42,6 +42,21 @@ ln -s /application/jdk1.8.0_251 /application/jdk
 
 ```
 
+new 
+
+```
+
+echo  'JAVA_HOME=/application/jdk'>>/etc/profile && \
+echo  'CLASSPATH=.:$JAVA_HOME/lib.tools.jar'>>/etc/profile && \
+echo  'PATH=$JAVA_HOME/bin:$PATH'>>/etc/profile && \
+echo  'export JAVA_HOME CLASSPATH PATH'>>/etc/profile && \
+echo $PATH && \
+source /etc/profile && \
+java -version
+
+
+```
+
 
 ```
 
@@ -70,6 +85,7 @@ https://mirror.bit.edu.cn/apache/tomcat/tomcat-8/v8.5.55/bin/apache-tomcat-8.5.5
 // 解压
 tar xf apache-tomcat-8.5.50.tar.gz
 
+ln -s
 
 // 进入 bin 文件 执行启动脚本 startup.sh
 cd bin
