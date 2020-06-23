@@ -8,7 +8,12 @@
     5. [1.5 Mybatis 核心配置文件概述](#mybatis001e) 
     6. [1.6 Mybatis 相应API](#mybatis001f) 
 2. [第2节 Mybatis的dao层实现原理](#mybatis002)
+    1. [Mybatis的Dao层实现](#mybatis002a)
+    2. [MyBatis映射文件深入](#mybatis002b)
+    3. [MyBatis核心配置文件深入](#mybatis002c)
 3. [第3节 Mybatis的多表操作](#mybatis003)
+
+
 
 
 
@@ -610,9 +615,448 @@ void rollback()
 ```
 
 
-
 ### mybatis002
 # 第2节 Mybatis的dao层实现原理
+
+### mybatis002a
+## 2.1 Mybatis的Dao层实现
+
+### 2.1.1 先看看传统的DAO
+
+- 1编写UserDao接口
+```java
+
+public interface UserDao {
+    List<User> findAll() throws IOException;
+}
+
+```
+
+- 2.编写UserDaoImpl实现
+
+```java
+
+public class UserDaoImpl implements UserDao {
+    public List<User> findAll() throws IOException {
+        InputStream resourceAsStream = 
+                    Resources.getResourceAsStream("SqlMapConfig.xml");
+        SqlSessionFactory sqlSessionFactory = new 
+                    SqlSessionFactoryBuilder().build(resourceAsStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        List<User> userList = sqlSession.selectList("userMapper.findAll");
+        sqlSession.close();
+        return userList;
+    }
+}
+
+```
+
+- 3 测试传统方式
+
+```java
+
+@Test
+public void testTraditionDao() throws IOException {
+    UserDao userDao = new UserDaoImpl();
+    List<User> all = userDao.findAll();
+    System.out.println(all);
+}
+
+```
+
+
+### 2.1.2 代理开发方式
+
+1. 简介
+
+采用 Mybatis 的代理开发方式实现 DAO 层的开发，这种方式是我们后面进入企业的主流。
+
+`Mapper` 接口 **开发方法** 只需要 **程序员** 编写 `Mapper` 接口(相当于Dao接口), 由 `Mybatis` 框架根据`接口`**定义** `创建` 接口的 `动态代理对象`, **代理对象**的`方法体`同上边Dao**接口实现类**方法.
+
+Mapper 接口开发需要遵循以下规范
+
+1. `Mapper.xml`文件中的`namespace`与`mapper`接口的`全限定名`相同
+2. **Mapper**`接口方法名`和`Mapper.xml`中定义的每个`statement`的`id`相同
+3. **Mapper**`接口方法名` 的 **输入参数类型** 和 `Mapper.xml`中定义的每个sql的`parameterType` 的类型相同
+4. **Mapper**`接口方法名` 的 **输出参数类型** 和`Mapper.xml` 中定义的每个sql的`resultType`的类型相同
+
+
+![mybatis015](images/mybatis015.png)
+
+```java
+
+package com.domanshow.service;
+
+import com.domanshow.dao.UserMapper;
+import com.domanshow.domain.User;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+
+public class ServiceDemo {
+
+    public static void main(String[] args) throws IOException {
+
+        // 获得核心配置文件
+  InputStream inputStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        // 获得Session工厂对象
+  SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        // 获得Session会话对象
+  SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        // 执行操作  参数userMapper+id
+  List<User> userList = mapper.findAll();
+        // 打印数据
+  System.out.println(userList);
+
+        User user = mapper.findWithId(1);
+        System.out.println(user);
+
+    }
+}
+
+```
+
+
+### 2.1.3 小结
+
+Mybatis的 Dao层实现的两种方式
+
+1. 手动Dao
+2. 代理方式
+
+### mybatis002b
+## 2.2 MyBatis映射文件深入
+
+
+### 2.2.0 添加log4j文件, 改info为debug, 就能打印 sql语句日志
+
+![mybatis016](images/mybatis016.png)
+![mybatis017](images/mybatis017.png)
+
+
+### 2.2.1 动态sql语句
+
+Mybatis 的映射文件中，前面我们的 SQL 都是比较简单的，有些时候业务`逻辑复杂时`，我们的 SQL是`动态变化`的，此时在前面的学习中我们的 SQL 就不能满足要求了。
+
+
+1. if
+
+我们根据实体类的不同取值, 使用不同的SQL语句来进行查询, 比如在`id`不为空时, 可以根据`id`查询, 如果userName不为空时, 还要加入用户名作为作为条件
+
+
+```xml
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.domanshow.dao.UserMapper">
+
+
+
+    <select id="findWithCondition" parameterType="user" resultType="user">
+        select * from t_mybatis1
+        <where>
+            <if test="id!=0">
+                and id=#{id}
+            </if>
+            <if test="userName!=null">
+                and userName=#{userName}
+            </if>
+        </where>
+    </select>
+
+
+<!--    简单sql分界 ******************************************************************************** -->
+<!--    删除操作-->
+    <delete id="delete" parameterType="int">
+        delete from t_mybatis1 where id=#{id}
+    </delete>
+
+<!--    修改-->
+    <update id="update" parameterType="user">
+        update t_mybatis1 set userName=#{userName}, password=#{password} where id=#{id}
+    </update>
+<!--    插入-->
+    <insert id="insert" parameterType="user">
+        insert into t_mybatis1 values(#{id},#{userName},#{password})
+    </insert>
+
+<!--    查询单个-->
+    <select id="findWithId" resultType="com.domanshow.domain.User" parameterType="int">
+        select * from t_mybatis1 where id=#{id}
+    </select>
+
+<!--    查询全部-->
+    <select id="findAll" resultType="com.domanshow.domain.User">
+        select * from t_mybatis1
+    </select>
+</mapper>
+
+```
+
+
+![mybatis018](images/mybatis018.png)
+
+
+2. foreach
+
+循环执行sql的拼接操作.
+
+传给人家是什么就写什么, 传的是list,  `collection="list"`
+![mybatis019](images/mybatis019.png)
+
+foreach语句说明
+![mybatis020](images/mybatis020.png)
+
+```sql
+
+select * from t_mybatis1 where id IN(1,2,4);
+
+```
+
+
+```java
+
+    @Test
+    public void test6() throws IOException {
+
+        List<Integer> requestList = new ArrayList<Integer>();
+
+        requestList.add(1);
+        requestList.add(2);
+
+        // 获得核心配置文件
+        InputStream inputStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        // 获得Session工厂对象
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        // 获得Session会话对象
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        List<User> users = mapper.findWithIds(requestList);
+        System.out.println(users);
+        sqlSession.close();
+
+    }
+
+```
+
+
+```xml
+
+<select id="findWithIds" parameterType="list" resultType="user">
+    select * from t_mybatis1
+    <where>
+        <foreach collection="list" open="id IN(" close=")" item="id" separator=",">
+            #{id}
+        </foreach>
+    </where>
+</select>
+
+```
+
+
+
+
+### 2.2.2 sql片段抽取
+
+经过上面下来看到了有如下图一样的重复sql语句, 然后我们要抽取
+![mybatis021](images/mybatis021.png)
+
+抽取后
+![mybatis022](images/mybatis022.png)
+
+### 2.2.3 小结
+
+MyBatis映射文件配置：
+- <select>：查询
+- <insert>：插入
+- <update>：修改
+- <delete>：删除
+- <where>：where条件
+- <if>：if判断
+- <foreach>：循环
+- <sql>：sql片段抽取
+
+### mybatis002c
+## 2.3 MyBatis核心配置文件深入
+
+
+### 2.3.1 typeHandlers标签
+
+无论是 `MyBatis` 在预处理语句（**PreparedStatement**）中`设置`一个参数时，还是从`结果集`中`取出`一个值时， 都会用`类型处理器`将获取的值以合适的方式`转换`成 `Java 类型`。下表描述了一些默认的类型处理器（截取部分）。
+
+![mybatis023](images/mybatis023.png)
+
+**复写**老的**新建**自己的
+
+- 你可以重写类型处理器或创建你自己的类型处理器来处理不支持的或非标准的类型。
+- 具体做法为：**实现** `org.apache.ibatis.type.TypeHandler` 接口， 或**继承**一个很便利的类`org.apache.ibatis.type.BaseTypeHandler`， 然后可以选择性地将它映射到一个JDBC类型。
+
+例如需求：一个Java中的Date数据类型，我想将之存到数据库的时候存成一个1970年至今的毫秒数，取出来时转换成java的Date，即java的Date与数据库的varchar毫秒值之间转换。
+
+
+开发步骤:
+1. 定义转换类继承类`BaseTypeHandler<T>`
+2. 覆盖4个未实现的方法, 其中
+3. 在Mybatis核心配置文件中进行注册
+4. 测试
+
+1. 创建转换类,  并实现4个未实现方法
+
+```java
+
+package com.domanshow.handler;
+
+import org.apache.ibatis.type.BaseTypeHandler;
+import org.apache.ibatis.type.JdbcType;
+
+import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Date;
+
+public class DateTypeHandler extends BaseTypeHandler<Date> {
+
+    /**
+     * 将java类型 转换成 数据库类型
+     * @param ps
+     * @param i
+     * @param date
+     * @param jdbcType
+     * @throws SQLException
+     */
+    public void setNonNullParameter(PreparedStatement ps, int i, Date date, JdbcType jdbcType) throws SQLException {
+
+        long time = date.getTime();
+        ps.setLong(i,time);
+    }
+
+
+    /**
+     * 将数据库中类型 转换成java类型
+     * @param rs
+     * @param columnName
+     * @return
+     * @throws SQLException
+     */
+    public Date getNullableResult(ResultSet rs, String columnName) throws SQLException {
+
+        long aLong = rs.getLong(columnName);
+        Date date = new Date(aLong);
+
+        return date;
+    }
+
+    /**
+     * 将数据库中类型 转换成java类型
+     * @param rs
+     * @param columnIndex
+     * @return
+     * @throws SQLException
+     */
+    public Date getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
+
+        long aLong = rs.getLong(columnIndex);
+        Date date = new Date(aLong);
+
+        return date;
+    }
+
+    /**
+     * 将数据库中类型 转换成java类型
+     * @param cs
+     * @param columnIndex
+     * @return
+     * @throws SQLException
+     */
+    public Date getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
+
+        long aLong = cs.getLong(columnIndex);
+        Date date = new Date(aLong);
+
+        return date;
+    }
+}
+
+```
+
+2. 注册实现类
+
+![mybatis024](images/mybatis024.png)
+
+3. 测试
+```java
+
+
+    /**
+     * 核心-typeHandlers标签-创建
+     * @throws IOException
+     */
+    @Test
+    public void test8() throws IOException {
+
+        User userRq = new User();
+        userRq.setUserName("zhoujielun");
+        userRq.setPassword("324");
+        userRq.setBirthday(new Date());
+
+        // 获得核心配置文件
+        InputStream inputStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        // 获得Session工厂对象
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        // 获得Session会话对象
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        mapper.save(userRq);
+
+        sqlSession.commit();
+        sqlSession.close();
+
+    }
+
+    /**
+     * 核心-typeHandlers标签-查询
+     * @throws IOException
+     */
+    @Test
+    public void test7() throws IOException {
+
+        // 获得核心配置文件
+        InputStream inputStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        // 获得Session工厂对象
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        // 获得Session会话对象
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        User user = mapper.findWithId(7);
+
+        System.out.println(user);
+        sqlSession.close();
+
+    }
+
+```
+
+
+### 2.3.2 plugins标签
+
+### 2.3.3  小结
+
 
 ### mybatis003
 # 第3节 Mybatis的多表操作
