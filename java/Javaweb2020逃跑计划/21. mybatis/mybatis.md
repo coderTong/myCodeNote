@@ -1221,14 +1221,12 @@ public class Order {
   private User user;
 }
 
-public class Order {
+public class User {
 
     private int id;
-    private Date ordertime;
-    private double total;
-
-    //代表当前订单从属于哪一个客户
-    private User user;
+    private String userName;
+    private String password;
+    private Date birthday;
 
 }
 ```
@@ -1342,6 +1340,186 @@ public interface OrderMapper {
 
 ### mybatis003b
 ## 3.2 一对多查询
+
+用户表和订单表的关系为，**一个用户**有`多个订单`，**一个订单**只从**属于一个用户**
+一对多查询的需求：**查询一个用户，与此同时查询出该用户具有的订单**
+
+
+
+1. SQL语句
+
+```sql
+
+select *, o.id oid from t_mybatis1 u left join t_orders o on u.id=o.uid
+
+```
+
+
+查询的结果如下：
+
+![mybatis027](images/mybatis027.png)
+
+
+2. 实体
+
+```java
+
+public class Order {
+
+    private int id;
+    private Date ordertime;
+    private double total;
+
+    //代表当前订单从属于哪一个客户
+    private User user;
+}
+
+public class User {
+
+    private int id;
+    private String userName;
+    private String password;
+    private Date birthday;
+    private List<Order> orderList;
+
+}
+
+```
+
+
+
+3. UserMapper.xml
+
+```xml
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.domanshow.mapper.UserMapper">
+    <resultMap id="userMap" type="user">
+
+        <!--手动指定字段与实体属性的映射关系
+            column: 数据表的字段名称
+            property：实体的属性名称
+        -->
+        <id column="uid" property="id"></id>
+        <result column="userName" property="userName"></result>
+        <result column="password" property="password"></result>
+        <result column="birthday" property="birthday"></result>
+
+        <collection property="orderList" ofType="order">
+            <id column="oid" property="id"></id>
+            <result column="ordertime" property="ordertime"></result>
+            <result column="total" property="total"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findAll" resultMap="userMap">
+        select *, o.id oid from t_mybatis1 u left join t_orders o on u.id=o.uid
+    </select>
+</mapper>
+
+```
+
+4. UserMapper
+
+```java
+
+package com.domanshow.mapper;
+
+import com.domanshow.domain.User;
+
+import java.util.List;
+
+public interface UserMapper {
+
+    public List<User> findAll();
+}
+
+```
+
+
+5. sqlMapConfig.xml
+
+```xml
+
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE  configuration  PUBLIC  "-//mybatis.org//DTD Config 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-config.dtd">   <configuration>
+
+<!--    通过properties加装数据连接信息-->
+  <properties resource="jdbcLinkInfo.properties"></properties>
+
+<!--    自定义别名-->
+  <typeAliases>
+        <typeAlias type="com.domanshow.domain.User" alias="user"></typeAlias>
+        <typeAlias type="com.domanshow.domain.Order" alias="order"></typeAlias>
+    </typeAliases>
+
+    <!--    注册类型处理器-->
+  <typeHandlers>
+        <typeHandler handler="com.domanshow.handler.DateTypeHandler"></typeHandler>
+    </typeHandlers>
+
+<!--    配数据源环境-->
+  <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${userName}"/>
+                <property name="password" value="${password}"/>
+
+            </dataSource>
+        </environment>
+    </environments>
+
+<!--    加载映射文件-->
+  <mappers>
+        <mapper resource="com/domanshow/mapper/UserMapper.xml"></mapper>
+        <mapper resource="com/domanshow/mapper/OrderMapper.xml"></mapper>
+    </mappers>
+
+</configuration>
+
+```
+
+
+6. 测试
+
+```java
+
+
+    /**
+     * 多表 - 一对多
+     * @throws IOException
+     */
+    @Test
+    public void test2() throws IOException {
+
+        // 获得核心配置文件
+        InputStream inputStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        // 获得Session工厂对象
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        // 获得Session会话对象
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        List<User> userList = mapper.findAll();
+
+        for (User user : userList) {
+
+            System.out.println(user);
+        }
+
+        sqlSession.commit();
+        sqlSession.close();
+
+    }
+
+```
 
 ### mybatis003c
 ## 3.3 多对多查询
