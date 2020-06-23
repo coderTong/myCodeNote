@@ -1055,7 +1055,92 @@ public class DateTypeHandler extends BaseTypeHandler<Date> {
 
 ### 2.3.2 plugins标签
 
+这是一个扩展插件标签
+
+`MyBatis`可以使用`第三方的插件`来对功能进行`扩展`，**分页助手**PageHelper是将分页的复杂操作进行封装，使用简单的方式即可获得分页的相关数据
+
+#### 2.3.2.1 开发步骤
+
+1. 导入通用PageHelper的坐标
+2. 在mybatis核心配置文件中配置PageHelper插件
+3. 测试分页数据获取
+
+
+1. 导入坐标
+
+```xml
+
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>3.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jsqlparser</groupId>
+            <artifactId>jsqlparser</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+
+```
+
+2. 核心文件进行配置
+![mybatis025](images/mybatis025.png)
+
+3. 测试
+
+```java
+
+    /**
+     * 核心-plugins标签-创建
+     * @throws IOException
+     */
+    @Test
+    public void test9() throws IOException {
+
+
+        // 获得核心配置文件
+        InputStream inputStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        // 获得Session工厂对象
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        // 获得Session会话对象
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        PageHelper.startPage(2,3);
+
+        List<User> userList = mapper.findAll();
+        for (User user : userList) {
+            System.out.println(user);
+        }
+        //获得与分页相关参数
+        PageInfo<User> pageInfo = new PageInfo<User>(userList);
+        System.out.println("当前页："+pageInfo.getPageNum());
+        System.out.println("每页显示条数："+pageInfo.getPageSize());
+        System.out.println("总条数："+pageInfo.getTotal());
+        System.out.println("总页数："+pageInfo.getPages());
+        System.out.println("上一页："+pageInfo.getPrePage());
+        System.out.println("下一页："+pageInfo.getNextPage());
+        System.out.println("是否是第一个："+pageInfo.isIsFirstPage());
+        System.out.println("是否是最后一个："+pageInfo.isIsLastPage());
+
+        sqlSession.close();
+
+    }
+
+```
+
+
+
 ### 2.3.3  小结
+
+MyBatis核心配置文件常用标签：
+
+1. properties标签：该标签可以加载外部的properties文件
+2. typeAliases标签：设置类型别名
+3. environments标签：数据源环境配置标签
+4. typeHandlers标签：配置自定义类型处理器
+5. plugins标签：配置MyBatis的插件
 
 
 ### mybatis003
