@@ -12,8 +12,11 @@
     2. [MyBatis映射文件深入](#mybatis002b)
     3. [MyBatis核心配置文件深入](#mybatis002c)
 3. [第3节 Mybatis的多表操作](#mybatis003)
-
-
+    1. [3.1 一对一查询](#mybatis003a)
+    2. [3.2 一对多查询](#mybatis003)
+    3. [3.3 多对多查询](#mybatis003c)
+    4. [3.4 知识小结](#mybatis003d)
+     
 
 
 
@@ -1145,3 +1148,206 @@ MyBatis核心配置文件常用标签：
 
 ### mybatis003
 # 第3节 Mybatis的多表操作
+
+```sql
+
+INSERT INTO `t_orders` VALUES ('1', '2018-12-12', '3000', '1');
+INSERT INTO `t_orders` VALUES ('2', '2018-12-12', '4000', '1');
+INSERT INTO `t_orders` VALUES ('3', '2018-12-12', '5000', '2');
+
+INSERT INTO `t_sys_role` VALUES ('1', 'CTO', 'CTO');
+INSERT INTO `t_sys_role` VALUES ('2', 'COO', 'COO');
+
+
+INSERT INTO `t_sys_user_role` VALUES ('1', '1');
+INSERT INTO `t_sys_user_role` VALUES ('2', '1');
+INSERT INTO `t_sys_user_role` VALUES ('1', '2');
+INSERT INTO `t_sys_user_role` VALUES ('2', '2');
+
+```
+
+### mybatis003a
+## 3.1 一对一查询
+
+
+
+1. 一对一查询模型和业务
+
+用户表和订单表的关系为, `一个用户`有**多个订单**, `一个订单`只从属于**一个用户**
+一对一查询的需要: 查询一个订单, 与此同时查询出该订单所属的用户
+
+![mybatis026](images/mybatis026.png)
+
+2. 创建数据库表
+
+```sql
+
+CREATE TABLE IF NOT EXISTS `t_mybatis1` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userName` varchar(10) DEFAULT NULL,
+  `password` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+```
+
+创建订单表
+
+```sql
+
+CREATE TABLE  IF NOT EXISTS `t_orders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ordertime` varchar(255) DEFAULT NULL,
+  `total` double DEFAULT NULL,
+  `uid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `uid` (`uid`),
+  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `t_mybatis1` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+```
+
+3. domain
+
+```java
+
+public class Order {
+
+    private int id;
+    private Date ordertime;
+    private double total;
+
+    //代表当前订单从属于哪一个客户
+  private User user;
+}
+
+public class Order {
+
+    private int id;
+    private Date ordertime;
+    private double total;
+
+    //代表当前订单从属于哪一个客户
+    private User user;
+
+}
+```
+
+3. mapper
+
+```java
+
+package com.domanshow.mapper;
+
+import com.domanshow.domain.Order;
+import com.domanshow.domain.User;
+
+import java.util.List;
+
+public interface OrderMapper {
+
+   public List<Order> findAll();
+}
+
+```
+
+4. sqlMapConfig.xml 添加
+
+```xml
+
+<mappers>
+
+    <mapper resource="com/domanshow/mapper/UserMapper.xml"></mapper>
+    <mapper resource="com/domanshow/mapper/OrderMapper.xml"></mapper>
+</mappers>
+
+```
+
+5. OrderMapper.xml
+
+```xml
+
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE  mapper  PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">   <mapper namespace="com.domanshow.mapper.OrderMapper">
+
+    <resultMap id="orderMap" type="com.domanshow.domain.Order">
+
+        <result column="uid" property="user.id"></result>
+        <result column="userName" property="user.userName"></result>
+        <result column="password" property="user.password"></result>
+        <result column="birthday" property="user.birthday"></result>
+
+        <result property="id" column="id"></result>
+        <result property="ordertime" column="ordertime"></result>
+        <result property="total" column="total"></result>
+
+    </resultMap>
+
+    <select id="findAll" resultMap="orderMap">
+        select * from t_orders o, t_mybatis1 u where o.uid=u.id;
+    </select>
+
+</mapper>
+
+
+```
+
+其中<resultMap>还可以配置如下：
+
+```xml
+<resultMap id="orderMap" type="com.itheima.domain.Order">
+    <result property="id" column="id"></result>
+    <result property="ordertime" column="ordertime"></result>
+    <result property="total" column="total"></result>
+    <association property="user" javaType="com.itheima.domain.User">
+        <result column="uid" property="id"></result>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="birthday" property="birthday"></result>
+    </association>
+</resultMap>
+```
+
+6. 测试
+
+
+```java
+
+    /**
+     * 多表-一对一
+     * @throws IOException
+     */
+    @Test
+    public void test1() throws IOException {
+
+        // 获得核心配置文件
+        InputStream inputStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        // 获得Session工厂对象
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        // 获得Session会话对象
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        OrderMapper mapper = sqlSession.getMapper(OrderMapper.class);
+
+        List<Order> userList = mapper.findAll();
+
+        System.out.println(userList);
+
+        sqlSession.commit();
+        sqlSession.close();
+
+    }
+
+```
+
+
+### mybatis003b
+## 3.2 一对多查询
+
+### mybatis003c
+## 3.3 多对多查询
+
+### mybatis003d
+## 3.4 知识小结
+
+
+
