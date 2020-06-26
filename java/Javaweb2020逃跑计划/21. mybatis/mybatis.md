@@ -1524,8 +1524,149 @@ public interface UserMapper {
 ### mybatis003c
 ## 3.3 多对多查询
 
+1. 多对多查询的模型
+
+用户表和角色表的关系为, `一个用户`有**多个角色**, `一个角色`被**多个用户使用**
+
+多对多查询的需求: 查询用户同时查询出改用户的所有角色
+
+![mybatis028](images/mybatis028.png)
+
+
+2. Role
+
+```java
+
+package com.domanshow.domain;
+
+public class Role {
+
+    private int id;
+    private String roleName;
+    private String roleDesc;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public String getRoleDesc() {
+        return roleDesc;
+    }
+
+    public void setRoleDesc(String roleDesc) {
+        this.roleDesc = roleDesc;
+    }
+
+    @Override
+  public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", roleName='" + roleName + '\'' +
+                ", roleDesc='" + roleDesc + '\'' +
+                '}';
+    }
+}
+
+```
+
+
+3. User
+
+![mybatis029](images/mybatis029.png)
+
+4. UserMapper
+
+![mybatis030](images/mybatis030.png)
+
+
+5. UserMapper.xml
+
+```xml
+
+    <resultMap id="userRoleMap" type="user">
+<!--        user信息-->
+        <id column="userId" property="id"></id>
+        <result column="userName" property="userName"></result>
+        <result column="password" property="password"></result>
+        <result column="birthday" property="birthday"></result>
+
+        <collection property="roleList2" ofType="role">
+            <id column="roleid" property="id"></id>
+            <result column="rolename" property="roleName"></result>
+            <result column="roleDesc" property="roleDesc"></result>
+        </collection>
+
+    </resultMap>
+
+    <select id="findUserAndRoleAll" resultMap="userRoleMap">
+        SELECT * FROM t_mybatis1 u, t_sys_user_role ur, t_sys_role r WHERE u.id=ur.userid AND ur.roleid=r.id;
+    </select>
+
+
+```
+
+![mybatis031](images/mybatis031.png)
+
+6. sqlMapConfig.xml
+
+![mybatis032](images/mybatis032.png)
+
+
+7. 测试
+
+```java
+
+    /**
+     * 多表 - 多对多
+     * @throws IOException
+     */
+    @Test
+    public void test3() throws IOException {
+
+        // 获得核心配置文件
+        InputStream inputStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        // 获得Session工厂对象
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        // 获得Session会话对象
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        List<User> userList = mapper.findUserAndRoleAll();
+
+        for (User user : userList) {
+
+            System.out.println(user);
+        }
+
+        sqlSession.close();
+
+    }
+
+
+```
+
+
 ### mybatis003d
 ## 3.4 知识小结
 
+MyBatis多表配置方式：
 
+**一对一配置：使用<resultMap>做配置**
+
+**一对多配置：使用<resultMap>+<collection>做配置**
+
+**多对多配置：使用<resultMap>+<collection>做配置**
 
