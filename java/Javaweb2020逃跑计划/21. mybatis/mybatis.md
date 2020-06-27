@@ -881,14 +881,22 @@ select * from t_mybatis1 where id IN(1,2,4);
 ### 2.2.3 小结
 
 MyBatis映射文件配置：
-- <select>：查询
-- <insert>：插入
-- <update>：修改
-- <delete>：删除
-- <where>：where条件
-- <if>：if判断
-- <foreach>：循环
-- <sql>：sql片段抽取
+
+- `<select>`：查询
+
+- `<insert>`：插入
+
+- `<update>`：修改
+
+- `<delete>`：删除
+
+- `<where>`：where条件
+
+- `<if>`：if判断
+
+- `<foreach>`：循环
+
+- `<sql>`：sql片段抽取
 
 ### mybatis002c
 ## 2.3 MyBatis核心配置文件深入
