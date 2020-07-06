@@ -3,7 +3,7 @@
 
 ```sql
 
-create database if not exists mybatis001 character set utf8;
+create database if not exists mavenHLevel character set utf8;
 
 ```
 
