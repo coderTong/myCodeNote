@@ -136,8 +136,21 @@ x264
 ![encodeH264007](images/encodeH264007.png)
 
 
-
 # 4. OpenGL ES 渲染YUV图像
 
 
+# 4.1 解码类继续讲解 Video20
+
+`PopupViewController`, 渲染显示控制器
+`OpenGLFrameView` opengl类
+
+HardwareDecode: 硬件解码
+
+![encodeH264011](images/encodeH264011.png)
+
+
+![encodeH264012](images/encodeH264012.png)
+
+
+大概介绍了一下
 
