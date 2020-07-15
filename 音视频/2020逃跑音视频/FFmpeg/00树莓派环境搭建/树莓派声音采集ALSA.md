@@ -29,6 +29,7 @@ https://github.com/coderTong/raspberrypi_alsa_pcm
 ### alsa002
 # 2. 软件和库安装
 
+### alsa002a
 ## 2.1 库安装
 
 ```shell
@@ -49,7 +50,7 @@ sudo  apt-get  install  build-essential
 ```
 
 
-
+### alsa002b
 ## 2.2 安装 audacity软件
 
 ```c
@@ -62,6 +63,7 @@ sudo  apt  install  audacity
 ### alsa003
 # 3. 编辑 ~/.asoundrc
 
+### alsa003a
 ## 3.1 编辑 asoundrc文件
 
 0. 进入文件夹 cd ~
@@ -104,6 +106,7 @@ pcm.!default
 ```
 
 
+### alsa003b
 ## 3.2 其中`YouDeviceName`具体写什么?
 
 1. 在`Terminal` 敲密令` arecord -l `
