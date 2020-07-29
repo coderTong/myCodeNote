@@ -28,7 +28,15 @@
     5. [多级指针](#chighdata005e)
 6. [多维数组](#chighdata006)
     1. [一维数组](#chighdata006a)
+        1. [数组名](#chighdata006a1)
+        2. [下标引用](#chighdata006a2)
+        3. [数组和指针](#chighdata006a3)
+        4. [作为函数参数的数组名](#chighdata006a4)
     2. [多维数组](#chighdata006b)
+        1. [数组名](#chighdata006b1)
+        2. [指向数组的指针(数组指针)](#chighdata006b2)
+        3. [指针数组(元素为指针)](#chighdata006b3)
+        4. [二维数组三种参数形式](#chighdata006b4)
     3. [总结](#chighdata006c)
      
 7. [结构体](#chighdata007)
@@ -42,10 +50,14 @@
     2. [结构体嵌套指针](#chighdata007b) 
     3. [结构体成员偏移量](#chighdata007c) 
     4. [结构体字节对齐](#chighdata007d) 
+        1. [内存对齐](#chighdata007d1)
+        2. [内存对齐案例](#chighdata007d2)
 
 
 8. [文件操作](#chighdata008)
     1. [文件相关概念](#chighdata008a)
+        1. [文件的概念](#chighdata008a1)
+        2. [流的概念](#chighdata008a2)
     2. [文件的操作](#chighdata008b)
         1. [文件流总览](#chighdata008b1)
         2. [文件指针](#chighdata008b2)
@@ -76,10 +88,14 @@
     1. [预处理的基本概念](#chighdata011a) 
     2. [文件包含指令(#include)](#chighdata011b) 
     3. [宏定义](#chighdata011c) 
-    4. [](#chighdata011d) 
-    5. [](#chighdata011e) 
+    4. [条件编译](#chighdata011d) 
+    5. [一些特殊的预定宏](#chighdata011e) 
 12. [动态库的封装和使用](#chighdata012)
 13. [递归函数](#chighdata013)
+    1. [递归函数基本概念](#chighdata013a)
+    2. [普通函数调用](#chighdata013b)
+    3. [递归函数调用](#chighdata013c)
+    4. [递归实现字符串反转](#chighdata013d)
 14. [面向接口编程](#chighdata014)
 15. [位运算](#chighdata015)
     1. [位逻辑运算符](#chighdata015a)
@@ -88,242 +104,6 @@
 
 
 
-
-### chighdata015
-# 15. 位运算
-
-可以使用C对变量中的个别位进行操作。您可能对人们想这样做的原因感到奇怪。这种能力有时确实是必须的，或者至少是有用的。C提供位的逻辑运算符和移位运算符。在以下例子中，我们将使用二进制计数法写出值，以便您可以了解对位发生的操作。在一个实际程序中，您可以使用一般的形式的整数变量或常量。例如不适用00011001的形式，而写为25或者031或者0x19.在我们的例子中，我们将使用8位数字，从左到右，每位的编号是7到0。
-
-### chighdata015a
-## 15.1 位逻辑运算符
-
-### 15.1.1 按位取反`~`
-
-一元运算符~将每个1变为0，将每个0变为1，如下面的例子：
-
-```c
-
-~(10011010)
-01100101
-
-```
-
-假设a是一个unsigned char，已赋值为2.在二进制中，2是00000010.于是-a的值为11111101或者253。请注意该运算符不会改变a的值，a仍为2。
-
-```c
-
-unsigned char a = 2;   //00000010
-unsigned char b = ~a;  //11111101
-printf("ret = %d\n", a); //ret = 2
-printf("ret = %d\n", b); //ret = 253
-
-```
-
-
-
-### 15.1.2 位与（`AND`）: `&`
-
-二进制运算符&通过对两个操作数逐位进行比较产生一个新值。对于每个位，只有两个操作数的对应位都是1时结果才为1。
-
-```c
-
-   (10010011) 
- & (00111101) 
- = (00010001)
-
-```
-
-
-C也有一个组合的位与-赋值运算符：&=。下面两个将产生相同的结果：
-
-```c
-
-val &= 0377
-val = val & 0377
-
-```
-
-
-### 15.1.3 位或（`OR`）:`|`
-
-二进制运算符|通过对两个操作数逐位进行比较产生一个新值。对于每个位，如果其中任意操作数中对应的位为1，那么结果位就为1.
-
-```c
-
-	(10010011)
-  | (00111101)
-  = (10111111)
-
-```
-
-C也有组合位或-赋值运算符： |=
-
-```c
-
-val |= 0377
-val = val | 0377
-
-```
-
-
-### 15.1.4 位异或: 
-
-二进制运算符^对两个操作数逐位进行比较。对于每个位，如果操作数中的对应位有一个是1(但不是都是1)，那么结果是1.如果都是0或者都是1，则结果位0.
-
-
-```c
-
-	(10010011)
-  ^ (00111101)
-  = (10101110)
-
-```
-
-
-C也有一个组合的位异或-赋值运算符： ^=
-
-```c
-
-val ^= 0377
-val = val ^ 0377
-
-```
-
-
-### 15.1.5 用法
-
-### 15.1.5.1 打开位
-
-已知：10011010：
-
-1. 将位2打开
-
-flag |  10011010
-
-```c
-
-(10011010)
-|(00000100)
-=(10011110)
-
-```
-
-2. 将所有位打开。
-
-flag | ~flag
-
-```c
-
-(10011010)
-|(01100101)
-=(11111111)
-
-```
-
-### 15.1.5.2 关闭位
-
-flag & ~flag
-
-```c
-
-(10011010)
-&(01100101)
-=(00000000)
-
-```
-
-### 15.1.5.3 转置位
-
-转置(toggling)一个位表示如果该位打开，则关闭该位；如果该位关闭，则打开。您可以使用位异或运算符来转置。其思想是如果b是一个位(1或0)，那么如果b为1则b^1为0，如果b为0，则1^b为1。无论b的值是0还是1,0^b为b.
-
-flag ^ 0xff
-
-```c
-
-(10010011)
-^(11111111)
-=(01101100)
-
-```
-
-
-### 15.1.5.4 交换两个数不需要临时变量
-
-```c
-
-//a ^ b = temp;
-//a ^ temp = b;
-//b ^ temp = a
- (10010011)
-^(00100110)
-=(10110101)
-
- (10110101)
-^(00100110)
-  10010011
-  
-  int a = 10;
-  int b = 30;
-
-```
-
-
-### chighdata015b
-## 15.2 移位运算符
-
-
-现在让我们了解一下C的移位运算符。移位运算符将位向左或向右移动。同样，我们仍将明确地使用二进制形式来说明该机制的工作原理。
-
-## 15.2.1 左移 <<
-
-左移运算符<<将其左侧操作数的值的每位向左移动，移动的位数由其右侧操作数指定。空出来的位用0填充，并且丢弃移出左侧操作数末端的位。在下面例子中，每位向左移动两个位置。
-
-```c
-
-(10001010) << 2
-(00101000)
-
-```
-
-该操作将产生一个新位置，但是不改变其操作数。
-
-```c
-
-1 << 1 = 2;
-2 << 1 = 4;
-4 << 1 = 8;
-8 << 2 = 32
-
-```
-
-左移一位相当于原值*2.
-
-## 15.2.2 右移 >>
-
-右移运算符>>将其左侧的操作数的值每位向右移动，移动的位数由其右侧的操作数指定。丢弃移出左侧操作数有段的位。对于unsigned类型，使用0填充左端空出的位。**对于有符号类型，结果依赖于机器。空出的位可能用0填充，或者使用符号(最左端)位的副本填充。**
-
-
-```c
-
-//有符号值
-(10001010) >> 2
-(00100010)     //在某些系统上的结果值
-
-(10001010) >> 2
-(11100010)     //在另一些系统上的结果
-
-//无符号值
-(10001010) >> 2
-(00100010)    //所有系统上的结果值
-
-```
-
-
-## 15.2.3 用法：移位运算符
-
-移位运算符能够提供快捷、高效（依赖于硬件）对2的幂的乘法和除法。
-
-![c1highdata002](images/c1highdata002.png)
 
 
 ### chighdata001
@@ -2023,18 +1803,458 @@ void test(){
 ### chighdata006
 # 6. 多维数组
 
-可以使用C对变量中的个别位进行操作。您可能对人们想这样做的原因感到奇怪。这种能力有时确实是必须的，或者至少是有用的。C提供位的逻辑运算符和移位运算符。在以下例子中，我们将使用二进制计数法写出值，以便您可以了解对位发生的操作。在一个实际程序中，您可以使用一般的形式的整数变量或常量。例如不适用00011001的形式，而写为25或者031或者0x19.在我们的例子中，我们将使用8位数字，从左到右，每位的编号是7到0。
-
 ### chighdata006a
 # 6.1 一维数组
 
 
+- 元素类型角度：数组是相同类型的变量的有序集合
+
+- 内存角度：连续的一大片内存空间
+
+![c1highdata026](images/c1highdata026.png)
+
+在讨论多维数组之前，我们还需要学习很多关于一维数组的知识。首先让我们学习一个概念。
+
+
+
+### chighdata006a1
+## 6.1.1 数组名
+
+
+考虑下面这些声明：
+
+```c
+
+
+int a;
+int b[10];
+
+```
+
+我们把a称作标量，因为它是个单一的值，这个变量是的类型是一个整数。我们把b称作数组，因为它是一些值的集合。下标和数名一起使用，用于标识该集合中某个特定的值。例如，b[0]表示数组b的第1个值，b[4]表示第5个值。每个值都是一个特定的标量。
+
+那么问题是b的类型是什么？它所表示的又是什么？一个合乎逻辑的答案是它表示整个数组，但事实并非如此。在C中，在几乎所有数组名的表达式中，数组名的值是一个**指针常量**，也就是数组第一个元素的地址。它的类型取决于数组元素的类型：如果他们是int类型，那么数组名的类型就是“指向int的常量指针”；如果它们是其他类型，那么数组名的类型也就是“指向**其他类型**的常量指针”。
+
+
+**请问：指针和数组是等价的吗？**
+
+答案是**否定**的。数组名在表达式中使用的时候，编译器才会产生一个指针常量。那么数组在什么情况下不能作为指针常量呢？在以下两种场景下：
+
+- 当数组名作为sizeof操作符的操作数的时候，此时sizeof返回的是整个数组的长度，而不是指针数组指针的长度。
+
+- 当数组名作为&操作符的操作数的时候，此时返回的是一个指向数组的指针，而不是指向某个数组元素的指针常量。
+
+```c
+
+int arr[10];
+//arr = NULL; //arr作为指针常量，不可修改
+int *p = arr; //此时arr作为指针常量来使用
+printf("sizeof(arr):%d\n", sizeof(arr)); //此时sizeof结果为整个数组的长度
+printf("&arr type is %s\n", typeid(&arr).name()); //int(*)[10]而不是int*
+
+```
+
+
+
+### chighdata006a2
+## 6.1.2 下标引用
+
+
+```c
+
+int arr[] = { 1, 2, 3, 4, 5, 6 };
+
+```
+
+`*`**(arr + 3)** ,这个表达式是什么意思呢？
+
+首先，我们说数组在表达式中是一个指向整型的指针，所以此表达式表示arr指针向后移动了3个元素的长度。然后通过间接访问操作符从这个新地址开始获取这个位置的值。这个和下标的引用的执行过程完全相同。所以如下表达式是等同的：
+
+```c
+
+*(arr + 3)
+arr[3]
+
+```
+
+**问题** **1**数组下标可否为负值？
+
+**问题2**请阅读如下代码，说出结果：
+
+```c
+
+int arr[] = { 5, 3, 6, 8, 2, 9 };
+int *p = arr + 2;
+printf("*p = %d\n", *p);
+printf("*p = %d\n", p[-1]);
+
+```
+
+
+那么是用下标还是指针来操作数组呢？对于大部分人而言，下标的可读性会强一些。
+
+### chighdata006a3
+## 6.1.3 数组和指针
+
+指针和数组并不是相等的。为了说明这个概念，请考虑下面两个声明：
+
+```c
+
+int a[10];
+int *b;
+
+```
+
+声明一个数组时，编译器根据声明所指定的元素数量为数组分配内存空间，然后再创建数组名，指向这段空间的起始位置。声明一个指针变量的时候，编译器只为指针本身分配内存空间，并不为任何整型值分配内存空间，指针并未初始化指向任何现有的内存空间。
+
+因此，表达式`*`a是完全合法的，但是表达式`*`b却是非法的。*b将访问内存中一个不确定的位置，将会导致程序终止。另一方面b`++`可以通过编译，a`++`却不行，因为a是一个常量值。
+
+
+### chighdata006a4
+## 6.1.4 作为函数参数的数组名
+
+当一个数组名作为一个参数传递给一个函数的时候发生什么情况呢？我们现在知道数组名其实就是一个指向数组第1个元素的指针，所以很明白此时传递给函数的是一份指针的拷贝。所以函数的形参实际上是一个指针。但是为了使程序员新手容易上手一些，编译器也接受数组形式的函数形参。因此下面两种函数原型是相等的：
+
+
+```c
+
+int print_array(int *arr);
+int print_array(int arr[]);
+
+```
+
+我们可以使用任何一种声明，但哪一个更准确一些呢？答案是指针。因为实参实际上是个指针，而不是数组。同样sizeof arr值是指针的长度，而不是数组的长度。
+
+现在我们清楚了，为什么一维数组中无须写明它的元素数目了，因为形参只是一个指针，并不需要为数组参数分配内存。另一方面，这种方式使得函数无法知道数组的长度。如果函数需要知道数组的长度，它必须显式传递一个长度参数给函数。
+
 ### chighdata006b
 # 6.2 多维数组
+
+如果某个数组的维数不止1个，它就被称为多维数组。接下来的案例讲解以二维数组
+
+举例。
+
+```c
+
+void test01(){
+	//二维数组初始化
+	int arr1[3][3] = {
+		{ 1, 2, 3 },
+		{ 4, 5, 6 },
+		{ 7, 8, 9 }
+	};
+	int arr2[3][3] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	int arr3[][3] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+	//打印二维数组
+	for (int i = 0; i < 3; i++){
+		for (int j = 0; j < 3; j ++){
+			printf("%d ",arr1[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+```
+
+
+
+### chighdata006b1
+## 6.2.1 数组名
+
+一维数组名的值是一个指针常量，它的类型是“指向元素类型的指针”，它指向数组的第1个元素。多维数组也是同理，多维数组的数组名也是指向第一个元素，只不过第一个元素是一个数组。例如：
+
+
+```c
+
+int arr[3][10]
+
+```
+
+
+可以理解为这是一个一维数组，包含了3个元素，只是每个元素恰好是包含了10个元素的数组。arr就表示指向它的第1个元素的指针，所以arr是一个指向了包含了10个整型元素的数组的指针。
+
+
+### chighdata006b2
+## 6.2.2 指向数组的指针(数组指针)
+
+数组指针，它是指针，指向数组的指针。
+
+数组的类型由**元素类型**和**数组大小**共同决定：int array[5]  的类型为  int[5]；C语言可通过typedef定义一个数组类型：
+
+定义数组指针有一下三种方式：
+
+```c
+
+//方式一
+void test01(){
+
+	//先定义数组类型，再用数组类型定义数组指针
+	int arr[10] = {1,2,3,4,5,6,7,8,9,10};
+	//有typedef是定义类型，没有则是定义变量,下面代码定义了一个数组类型ArrayType
+	typedef int(ArrayType)[10];
+	//int ArrayType[10]; //定义一个数组，数组名为ArrayType
+
+	ArrayType myarr; //等价于 int myarr[10];
+	ArrayType* pArr = &arr; //定义了一个数组指针pArr，并且指针指向数组arr
+	for (int i = 0; i < 10;i++){
+		printf("%d ",(*pArr)[i]);
+	}
+	printf("\n");
+}
+
+//方式二
+void test02(){
+
+	int arr[10];
+	//定义数组指针类型
+	typedef int(*ArrayType)[10];
+	ArrayType pArr = &arr; //定义了一个数组指针pArr，并且指针指向数组arr
+	for (int i = 0; i < 10; i++){
+		(*pArr)[i] = i + 1;
+	}
+	for (int i = 0; i < 10; i++){
+		printf("%d ", (*pArr)[i]);
+	}
+	printf("\n");
+
+}
+
+//方式三
+void test03(){
+	
+	int arr[10];
+	int(*pArr)[10] = &arr;
+
+	for (int i = 0; i < 10; i++){
+		(*pArr)[i] = i + 1;
+
+	}
+	for (int i = 0; i < 10; i++){
+		printf("%d ", (*pArr)[i]);
+	}
+	printf("\n");
+}
+
+```
+
+
+### chighdata006b3
+## 6.2.3 指针数组(元素为指针)
+
+1. 栈区指针数组
+
+```c
+
+//数组做函数函数，退化为指针
+void array_sort(char** arr,int len){
+
+	for (int i = 0; i < len; i++){
+		for (int j = len - 1; j > i; j --){
+			//比较两个字符串
+			if (strcmp(arr[j-1],arr[j]) > 0){
+				char* temp = arr[j - 1];
+				arr[j - 1] = arr[j];
+				arr[j] = temp;
+			}
+		}
+	}
+
+}
+
+//打印数组
+void array_print(char** arr,int len){
+	for (int i = 0; i < len;i++){
+		printf("%s\n",arr[i]);
+	}
+	printf("----------------------\n");
+}
+
+void test(){
+	
+	//主调函数分配内存
+	//指针数组
+	char* p[] = { "bbb", "aaa", "ccc", "eee", "ddd"};
+	//char** p = { "aaa", "bbb", "ccc", "ddd", "eee" }; //错误
+	int len = sizeof(p) / sizeof(char*);
+	//打印数组
+	array_print(p, len);
+	//对字符串进行排序
+	array_sort(p, len);
+	//打印数组
+	array_print(p, len);
+}
+
+```
+
+
+2. 堆区指针数组
+
+```c
+
+//分配内存
+char** allocate_memory(int n){
+	
+	if (n < 0 ){
+		return NULL;
+	}
+
+	char** temp = (char**)malloc(sizeof(char*) * n);
+	if (temp == NULL){
+		return NULL;
+	}
+
+	//分别给每一个指针malloc分配内存
+	for (int i = 0; i < n; i ++){
+		temp[i] = malloc(sizeof(char)* 30);
+		sprintf(temp[i], "%2d_hello world!", i + 1);
+	}
+
+	return temp;
+}
+
+//打印数组
+void array_print(char** arr,int len){
+	for (int i = 0; i < len;i++){
+		printf("%s\n",arr[i]);
+	}
+	printf("----------------------\n");
+}
+
+//释放内存
+void free_memory(char** buf,int len){
+	if (buf == NULL){
+		return;
+	}
+	for (int i = 0; i < len; i ++){
+		free(buf[i]);
+		buf[i] = NULL;
+	}
+
+	free(buf);
+}
+
+void test(){
+	
+	int n = 10;
+	char** p = allocate_memory(n);
+	//打印数组
+	array_print(p, n);
+	//释放内存
+	free_memory(p, n);
+}
+
+```
+
+
+### chighdata006b4
+## 6.2.4 二维数组三种参数形式
+
+1. 二维数组的线性存储特性
+
+```c
+
+void PrintArray(int* arr, int len){
+	for (int i = 0; i < len; i++){
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+}
+
+//二维数组的线性存储
+void test(){
+	int arr[][3] = {
+		{ 1, 2, 3 },
+		{ 4, 5, 6 },
+		{ 7, 8, 9 }
+	};
+
+	int arr2[][3] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	int len = sizeof(arr2) / sizeof(int);
+
+	//如何证明二维数组是线性的？
+	//通过将数组首地址指针转成Int*类型，那么步长就变成了4，就可以遍历整个数组
+	int* p = (int*)arr;
+	for (int i = 0; i < len; i++){
+		printf("%d ", p[i]);
+	}
+	printf("\n");
+
+	PrintArray((int*)arr, len);
+	PrintArray((int*)arr2, len);
+}
+
+```
+
+2. 二维数组的3种形式参数
+
+```c
+
+//二维数组的第一种形式
+void PrintArray01(int arr[3][3]){
+	for (int i = 0; i < 3; i++){
+		for (int j = 0; j < 3; j++){
+			printf("arr[%d][%d]:%d\n", i, j, arr[i][j]);
+		}
+	}
+}
+
+//二维数组的第二种形式
+void PrintArray02(int arr[][3]){
+	for (int i = 0; i < 3; i++){
+		for (int j = 0; j < 3; j++){
+			printf("arr[%d][%d]:%d\n", i, j, arr[i][j]);
+		}
+	}
+}
+
+//二维数组的第二种形式
+void PrintArray03(int(*arr)[3]){
+	for (int i = 0; i < 3; i++){
+		for (int j = 0; j < 3; j++){
+			printf("arr[%d][%d]:%d\n", i, j, arr[i][j]);
+		}
+	}
+}
+
+void test(){
+	
+	int arr[][3] = { 
+		{ 1, 2, 3 },
+		{ 4, 5, 6 },
+		{ 7, 8, 9 }
+	};
+	
+	PrintArray01(arr);
+	PrintArray02(arr);
+	PrintArray03(arr);
+}
+
+
+```
 
 
 ### chighdata006c
 # 6.3 总结
+
+
+### **6.3.1 编程提示**
+
+- 源代码的可读性几乎总是比程序的运行时效率更为重要
+
+- 只要有可能，函数的指针形参都应该声明为const
+
+- 在多维数组的初始值列表中使用完整的多层花括号提高可读性
+
+### **6.3.2 内容总结**
+
+在绝大多数表达式中，数组名的值是指向数组第1个元素的指针。这个规则只有两个例外，sizeof和对数组名&。
+
+指针和数组并不相等。当我们声明一个数组的时候，同时也分配了内存。但是声明指针的时候，只分配容纳指针本身的空间。
+
+当数组名作为函数参数时，实际传递给函数的是一个指向数组第1个元素的指针。
+
+我们不单可以创建指向普通变量的指针，也可创建指向数组的指针。
 
 ### chighdata007
 # 7. 结构体
@@ -2044,42 +2264,498 @@ void test(){
 
 
 #### chighdata007a1
-## 7.1.1 结构体类型的定义
+### 7.1.1 结构体类型的定义
+
+```c
+
+struct Person{
+	char name[64];
+	int age;
+};
+
+typedef struct _PERSON{
+	char name[64];
+	int age;
+}Person;
+
+```
+
+**注意：**定义结构体类型时不要直接给成员赋值，结构体只是一个类型，编译器还没有为其分配空间，只有根据其类型定义变量时，才分配空间，有空间后才能赋值。
+
+
 
 #### chighdata007a2
-## 7.1.2 结构体变量的定义
+### 7.1.2 结构体变量的定义
+
+
+```c
+
+struct Person{
+	char name[64];
+	int age;
+}p1; //定义类型同时定义变量
+
+
+struct{
+	char name[64];
+	int age;
+}p2; //定义类型同时定义变量
+
+
+struct Person p3; //通过类型直接定义
+
+```
+
 
 #### chighdata007a3
-## 7.1.3 结构体变量的初始化
+### 7.1.3 结构体变量的初始化
+
+```c
+
+struct Person{
+	char name[64];
+	int age;
+}p1 = {"john",10}; //定义类型同时初始化变量
+
+struct{
+	char name[64];
+	int age;
+}p2 = {"Obama",30}; //定义类型同时初始化变量
+
+struct Person p3 = {"Edward",33}; //通过类型直接定义
+
+```
+
 
 #### chighdata007a4
-## 7.1.4 结构体成员的使用
+### 7.1.4 结构体成员的使用
+
+
+```c
+
+struct Person{
+	char name[64];
+	int age;
+};
+void test(){
+	//在栈上分配空间
+	struct Person p1;
+	strcpy(p1.name, "John");
+	p1.age = 30;
+	//如果是普通变量，通过点运算符操作结构体成员
+	printf("Name:%s Age:%d\n", p1.name, p1.age);
+
+	//在堆上分配空间
+	struct Person* p2 = (struct Person*)malloc(sizeof(struct Person));
+	strcpy(p2->name, "Obama");
+	p2->age = 33;
+	//如果是指针变量，通过->操作结构体成员
+	printf("Name:%s Age:%d\n", p2->name, p2->age);
+}
+
+```
 
 #### chighdata007a5
-## 7.1.5 结构体赋值
+### 7.1.5 结构体赋值
+
+1. 赋值基本概念
+
+相同的两个结构体变量可以相互赋值，把一个结构体变量的值拷贝给另一个结构体，这两个变量还是两个独立的变量。
+
+```c
+
+
+struct Person{
+	char name[64];
+	int age;
+};
+
+void test(){
+	//在栈上分配空间
+	struct Person p1 = { "John" , 30};
+	struct Person p2 = { "Obama", 33 };
+	printf("Name:%s Age:%d\n", p1.name, p1.age);
+	printf("Name:%s Age:%d\n", p2.name, p2.age);
+	//将p2的值赋值给p1
+	p1 = p2;
+	printf("Name:%s Age:%d\n", p1.name, p1.age);
+	printf("Name:%s Age:%d\n", p2.name, p2.age);
+}
+
+```
+
+2. 深拷贝和浅拷贝
+
+```c
+
+//一个老师有N个学生
+typedef struct _TEACHER{
+	char* name;
+}Teacher;
+
+
+void test(){
+	
+	Teacher t1;
+	t1.name = malloc(64);
+	strcpy(t1.name , "John");
+
+	Teacher t2;
+	t2 = t1;
+
+	//对手动开辟的内存，需要手动拷贝
+	t2.name = malloc(64);
+	strcpy(t2.name, t1.name);
+
+	if (t1.name != NULL){
+		free(t1.name);
+		t1.name = NULL;
+	}
+	if (t2.name != NULL){
+		free(t2.name);
+		t1.name = NULL;
+	}
+}
+
+```
+
+
 
 #### chighdata007a6
-## 7.1.6 结构体数组
+### 7.1.6 结构体数组
 
+```c
+
+
+struct Person{
+	char name[64];
+	int age;
+};
+
+void test(){
+	//在栈上分配空间
+	struct Person p1[3] = {
+		{ "John", 30 },
+		{ "Obama", 33 },
+		{ "Edward", 25}
+	};
+
+	struct Person p2[3] = { "John", 30, "Obama", 33, "Edward", 25 };
+	for (int i = 0; i < 3;i ++){
+		printf("Name:%s Age:%d\n",p1[i].name,p1[i].age);
+	}
+	printf("-----------------\n");
+	for (int i = 0; i < 3; i++){
+		printf("Name:%s Age:%d\n", p2[i].name, p2[i].age);
+	}
+	printf("-----------------\n");
+	//在堆上分配结构体数组
+	struct Person* p3 = (struct Person*)malloc(sizeof(struct Person) * 3);
+	for (int i = 0; i < 3;i++){
+		sprintf(p3[i].name, "Name_%d", i + 1);
+		p3[i].age = 20 + i;
+	}
+	for (int i = 0; i < 3; i++){
+		printf("Name:%s Age:%d\n", p3[i].name, p3[i].age);
+	}
+}
+
+```
 
 
 ### chighdata007b
 ## 7.2 结构体嵌套指针
 
+
+1. 结构体嵌套一级指针
+
+```c
+
+struct Person{
+	char* name;
+	int age;
+};
+
+void allocate_memory(struct Person** person){
+	if (person == NULL){
+		return;
+	}
+	struct Person* temp = (struct Person*)malloc(sizeof(struct Person));
+	if (temp == NULL){
+		return;
+	}
+	//给name指针分配内存
+	temp->name = (char*)malloc(sizeof(char)* 64);
+	strcpy(temp->name, "John");
+	temp->age = 100;
+
+	*person = temp;
+}
+
+void print_person(struct Person* person){
+	printf("Name:%s Age:%d\n",person->name,person->age);
+}
+
+void free_memory(struct Person** person){
+	if (person == NULL){
+		return;
+	}
+	struct Person* temp = *person;
+	if (temp->name != NULL){
+		free(temp->name);
+		temp->name = NULL;
+	}
+
+	free(temp);
+}
+
+void test(){
+	
+	struct Person* p = NULL;
+	allocate_memory(&p);
+	print_person(p);
+	free_memory(&p);
+}
+
+```
+
+2. 结构体嵌套二级指针
+
+```c
+
+//一个老师有N个学生
+typedef struct _TEACHER{
+	char name[64];
+	char** students;
+}Teacher;
+
+void create_teacher(Teacher** teacher,int n,int m){
+
+	if (teacher == NULL){
+		return;
+	}
+
+	//创建老师数组
+	Teacher* teachers = (Teacher*)malloc(sizeof(Teacher)* n);
+	if (teachers == NULL){
+		return;
+	}
+
+	//给每一个老师分配学生
+	int num = 0;
+	for (int i = 0; i < n; i ++){
+		sprintf(teachers[i].name, "老师_%d", i + 1);
+		teachers[i].students = (char**)malloc(sizeof(char*) * m);
+		for (int j = 0; j < m;j++){
+			teachers[i].students[j] = malloc(64);
+			sprintf(teachers[i].students[j], "学生_%d", num + 1);
+			num++;
+		}
+	}
+
+	*teacher = teachers;	
+}
+
+void print_teacher(Teacher* teacher,int n,int m){
+	for (int i = 0; i < n; i ++){
+		printf("%s:\n", teacher[i].name);
+		for (int j = 0; j < m;j++){
+			printf("  %s",teacher[i].students[j]);
+		}
+		printf("\n");
+	}
+}
+
+void free_memory(Teacher** teacher,int n,int m){
+	if (teacher == NULL){
+		return;
+	}
+
+	Teacher* temp = *teacher;
+
+	for (int i = 0; i < n; i ++){
+		
+		for (int j = 0; j < m;j ++){
+			free(temp[i].students[j]);
+			temp[i].students[j] = NULL;
+		}
+
+		free(temp[i].students);
+		temp[i].students = NULL;
+	}
+
+	free(temp);
+
+}
+
+void test(){
+	
+	Teacher* p = NULL;
+	create_teacher(&p,2,3);
+	print_teacher(p, 2, 3);
+	free_memory(&p,2,3);
+}
+
+```
+
+
 ### chighdata007c
 ## 7.3 结构体成员偏移量
+
+```c
+
+//一旦结构体定义下来，则结构体中的成员内存布局就定下了
+#include <stddef.h>
+struct Teacher
+{
+	char a;
+	int b;
+};
+
+void test01(){
+
+	struct Teacher  t1;
+	struct Teacher*p = &t1;
+
+
+	int offsize1 = (int)&(p->b) - (int)p;  //成员b 相对于结构体 Teacher的偏移量
+	int offsize2 = offsetof(struct Teacher, b);
+
+	printf("offsize1:%d \n", offsize1); //打印b属性对于首地址的偏移量
+	printf("offsize2:%d \n", offsize2);
+}
+
+```
+
 
 ### chighdata007d
 ## 7.4 结构体字节对齐
 
+在用sizeof运算符求算某结构体所占空间时，并不是简单地将结构体中所有元素各自占的空间相加，这里涉及到内存字节对齐的问题。
+
+从理论上讲，对于任何变量的访问都可以从任何地址开始访问，但是事实上不是如此，实际上访问特定类型的变量只能在特定的地址访问，这就需要各个变量在空间上按一定的规则排列， 而不是简单地顺序排列，这就是内存对齐。
+
+### chighdata007d1
+### 7.4.1 内存对齐
+
+1. 内存对齐原因
+我们知道内存的最小单元是一个字节，当cpu从内存中读取数据的时候，是一个一个字节读取，所以内存对我们应该是入下图这样：
+
+![c1highdata027](images/c1highdata027.png)
+
+但是实际上cpu将内存当成多个块，每次从内存中读取一个块，这个块的大小可能是2、4、8、16等，
+
+那么下面，我们来分析下非内存对齐和内存对齐的优缺点在哪？
+
+内存对齐是操作系统为了提高访问内存的策略。操作系统在访问内存的时候，每次读取一定长度(这个长度是操作系统默认的对齐数，或者默认对齐数的整数倍)。如果没有对齐，为了访问一个变量可能产生二次访问。
+
+**至此大家应该能够简单明白，为什么要简单内存对齐？**
+
+- 提高存取数据的速度。比如有的平台每次都是从偶地址处读取数据，对于一个int型的变量，若从偶地址单元处存放，则只需一个读取周期即可读取该变量；但是若从奇地址单元处存放，则需要2个读取周期读取该变量。
+
+- 某些平台只能在特定的地址处访问特定类型的数据，否则抛出硬件异常给操作系统。
+
+2. 如何内存对齐
+
+- 对于标准数据类型，它的地址只要是它的长度的整数倍。
+
+- 对于非标准数据类型，比如结构体，要遵循一下对齐原则：
+
+![c1highdata028](images/c1highdata028.png)
+
+
+手动设置对齐模数:
+
+
+![c1highdata029](images/c1highdata029.png)
+
+### chighdata007d2
+### 7.4.2 内存对齐案例
+
+
+```c
+
+
+
+#pragma pack(4)
+
+typedef struct _STUDENT{
+	int a;
+	char b;
+	double c;
+	float d;
+}Student;
+
+typedef struct _STUDENT2{
+	char a;
+	Student b; 
+	double c;
+}Student2;
+
+void test01(){
+
+	//Student
+	//a从偏移量0位置开始存储
+	//b从4位置开始存储
+	//c从8位置开始存储
+	//d从12位置开存储
+	//所以Student内部对齐之后的大小为20 ，整体对齐，整体为最大类型的整数倍 也就是8的整数倍 为24
+
+	printf("sizeof Student:%d\n",sizeof(Student));
+
+	//Student2 
+	//a从偏移量为0位置开始 
+	//b从偏移量为Student内部最大成员整数倍开始，也就是8开始
+	//c从8的整数倍地方开始,也就是32开始
+	//所以结构体Sutdnet2内部对齐之后的大小为：40 ， 由于结构体中最大成员为8，必须为8的整数倍 所以大小为40
+	printf("sizeof Student2:%d\n", sizeof(Student2));
+}
+
+
+```
 
 
 ### chighdata008
 # 8.文件操作
 
+文件在今天的计算机系统中作用是很重要的。文件用来存放程序、文档、数据、表格、图片和其他很多种类的信息。作为一名程序员，您必须编程来创建、写入和读取文件。编写程序从文件读取信息或者将结果写入文件是一种经常性的需求。C提供了强大的和文件进行通信的方法。使用这种方法我们可以在程序中打开文件，然后使用专门的I/O函数读取文件或者写入文件。
 
 ### chighdata008a
 ## 8.1 文件相关概念
+
+### chighdata008a1
+### 8.1.1 文件的概念
+
+一个文件通常就是磁盘上一段命名的存储区。但是对于操作系统来说，文件就会更复杂一些。例如，一个大文件可以存储在一些分散的区段中，或者还会包含一些操作系统可以确定其文件类型的附加数据，但是这些是操作系统，而不是我们程序员所要关心的事情。我们应该考虑如何在C程序中处理文件。
+
+### chighdata008a2
+### 8.1.2 流的概念
+
+流是一个动态的概念，可以将一个字节形象地比喻成一滴水，字节在设备、文件和程序之间的传输就是流，类似于水在管道中的传输，可以看出，流是对输入输出源的一种抽象，也是对传输信息的一种抽象。
+
+C语言中，I/O操作可以简单地看作是从程序移进或移出字节，这种搬运的过程便称为流(stream)。程序只需要关心是否正确地输出了字节数据，以及是否正确地输入了要读取字节数据，特定I/O设备的细节对程序员是隐藏的。
+
+
+**1.文本流**
+
+文本流，也就是我们常说的以文本模式读取文件。文本流的有些特性在不同的系统中可能不同。其中之一就是文本行的最大长度。标准规定至少允许254个字符。另一个可能不同的特性是文本行的结束方式。例如在Windows系统中，文本文件约定以一个回车符和一个换行符结尾。但是在Linux下只使用一个换行符结尾。
+
+标准C把文本定义为零个或者多个字符，后面跟一个表示结束的换行符(\n).对于那些文本行的外在表现形式与这个定义不同的系统上，库函数负责外部形式和内部形式之间的翻译。例如，在Windows系统中，在输出时，文本的换行符被写成一对回车/换行符。在输入时，文本中的回车符被丢弃。这种不必考虑文本的外部形势而操纵文本的能力简化了可移植程序的创建。
+
+
+
+**2.二进制流**
+
+二进制流中的字节将完全根据程序编写它们的形式写入到文件中，而且完全根据它们从文件或设备读取的形式读入到程序中。它们并未做任何改变。这种类型的流适用于非文本数据，但是如果你不希望I/O函数修改文本文件的行末字符，也可以把它们用于文本文件。
+
+c语言在处理这两种文件的时候并不区分，都看成是字符流，按字节进行处理。
+
+**我们程序中，经常看到的文本方式打开文件和二进制方式打开文件仅仅体现在换行符的处理上。**
+
+比如说，在widows下，文件的换行符是\r\n，而在Linux下换行符则是\n.
+
+当对文件使用文本方式打开的时候，读写的windows文件中的换行符\r\n会被替换成\n读到内存中，当在windows下写入文件的时候，\n被替换成\r\n再写入文件。如果使用二进制方式打开文件，则不进行\r\n和\n之间的转换。 那么由于Linux下的换行符就是\n,所以文本文件方式和二进制方式无区别
+
 
 ### chighdata008b
 ## 8.2 文件的操作
@@ -2087,24 +2763,550 @@ void test(){
 ### chighdata008b1
 ### 8.2.1 文件流总览
 
+标准库函数是的我们在C程序中执行与文件相关的I/O任务非常方便。下面是关于文件I/O的一般概况。
+
+1.  程序为同时处于活动状态的每个文件声明一个指针变量，其类型为FILE*。这个指针指向这个FILE结构，当它处于活动状态时由流使用。
+
+2. 流通过fopen函数打开。为了打开一个流，我们必须指定需要访问的文件或设备以及他们的访问方式(读、写、或者读写)。Fopen和操作系统验证文件或者设备是否存在并初始化FILE。
+
+3. 根据需要对文件进行读写操作。
+
+4. 最后调用fclose函数关闭流。关闭一个流可以防止与它相关的文件被再次访问，保证任何存储于缓冲区中的数据被正确写入到文件中，并且释放FILE结构。
+
+
+
+标准I/O更为简单，因为它们并不需要打开或者关闭。
+
+I/O函数以三种基本的形式处理数据：**单个字符**、**文本行**和**二进制数据**。对于每种形式都有一组特定的函数对它们进行处理。
+
+**输入/输出函数家族**
+
+![c1highdata030](images/c1highdata030.png)
+
+
+
+
 ### chighdata008b2
 ### 8.2.2 文件指针
+
+我们知道，文件是由操作系统管理的单元。当我们想操作一个文件的时候，让操作系统帮我们打开文件，操作系统把我们指定要打开文件的信息保存起来，并且返回给我们一个指针指向文件的信息。文件指针也可以理解为代指打开的文件。这个指针的类型为FILE类型。该类型定义在stdio.h头文件中。通过文件指针，我们就可以对文件进行各种操作。
+
+对于每一个ANSI C程序，运行时系统必须提供至少三个流-标准输入(stdin)、标准输出(stdout)、标准错误(stderr)，它们都是一个指向FILE结构的指针。标准输入是缺省情况下的输入来源，标准输出时缺省情况下的输出设置。具体缺省值因编译器而异，通常标准输入为键盘设备、标准输出为终端或者屏幕。
+
+![c1highdata031](images/c1highdata031.png)
+
+ANSI C并未规定FILE的成员，不同编译器可能有不同的定义。VS下FILE信息如下：
+
+```c
+
+struct _iobuf { 
+        char  *_ptr;         //文件输入的下一个位置 
+        int   _cnt;          //剩余多少字符未被读取
+        char  *_base;        //指基础位置(应该是文件的其始位置) 
+        int   _flag;         //文件标志 
+        int   _file;         //文件的有效性验证 
+        int   _charbuf;      //检查缓冲区状况,如果无缓冲区则不读取 
+        int   _bufsiz;       //文件的大小 
+        char  *_tmpfname;    //临时文件名 
+}; 
+typedef struct _iobuf FILE;
+
+
+```
+
 
 ### chighdata008b3
 ### 8.2.3 文件缓冲区
 
+
+**文件缓冲区**
+
+ANSI C标准采用“缓冲文件系统”处理数据文件 所谓缓冲文件系统是指系统自动地在内存区为程序中每一个正在使用的文件开辟一个文件缓冲区从内存向磁盘输出数据必须先送到内存中的缓冲区，装满缓冲区后才一起送到磁盘去 如果从磁盘向计算机读入数据，则一次从磁盘文件将一批数据输入到内存缓冲区(充满缓冲 区)，然后再从缓冲区逐个地将数据送到程序数据区(给程序变量) 。
+
+
+**那么文件缓冲区有什么作用呢？**
+
+>如我们从磁盘里取信息，我们先把读出的数据放在缓冲区，计算机再直接从缓冲区中取数据，等缓冲区的数据取完后再去磁盘中读取，这样就可以减少磁盘的读写次数，再加上计算机对缓冲区的操作大大快于对磁盘的操作，故应用缓冲区可大大提高计算机的运行速度。
+
+![c1highdata032](images/c1highdata032.png)
+
+
+
 ### chighdata008b4
 ### 8.2.4 文件打开关闭
+
+**1.文件打开(fopen)**
+
+文件的打开操作表示将给用户指定的文件在内存分配一个FILE结构区，并将该结构的指针返回给用户程序，以后用户程序就可用此FILE指针来实现对指定文件的存取操作了。当使用打开函数时，必须给出文件名、文件操作方式(读、写或读写)。
+
+![c1highdata034](images/c1highdata034.png)
+
+**示例代码：**
+
+```c
+
+void test(){
+	
+	FILE *fp = NULL;
+
+	// "\\"这样的路径形式，只能在windows使用
+	// "/"这样的路径形式，windows和linux平台下都可用，建议使用这种
+	// 路径可以是相对路径，也可是绝对路径
+	fp = fopen("../test", "w");
+	//fp = fopen("..\\test", "w");
+
+	if (fp == NULL) //返回空，说明打开失败
+	{
+		//perror()是标准出错打印函数，能打印调用库函数出错原因
+		perror("open");
+		return -1;
+	}
+}
+
+```
+
+
+应该检查fopen的返回值!如何函数失败，它会返回一个NULL值。如果程序不检查错误，这个NULL指针就会传给后续的I/O函数。它们将对这个指针执行间接访问，并将失败.
+
+
+
+**2.文件关闭(fclose)**
+
+文件操作完成后，如果程序没有结束，必须要用fclose()函数进行关闭，这是因为对打开的文件进行写入时，若文件缓冲区的空间未被写入的内容填满，这些内容不会写到打开的文件中。只有对打开的文件进行关闭操作时，停留在文件缓冲区的内容才能写到该文件中去，从而使文件完整。再者一旦关闭了文件，该文件对应的FILE结构将被释放，从而使关闭的文件得到保护，因为这时对该文件的存取操作将不会进行。文件的关闭也意味着释放了该文件的缓冲区。
+
+![c1highdata035](images/c1highdata035.png)
+
+它表示该函数将关闭FILE指针对应的文件，并返回一个整数值。若成功地关闭了文件，则返回一个0值，否则返回一个非0值.
+
+
 
 ### chighdata008b5
 ### 8.2.5 文件读写函数回顾
 
+![c1highdata036](images/c1highdata036.png)
 
+**1.字符读写函数回顾**
+
+![c1highdata037](images/c1highdata037.png)
+
+```c
+
+void test(){
+
+	//写文件
+	FILE* fp_write= NULL;
+	//写方式打开文件
+	fp_write = fopen("./mydata.txt", "w+");
+	if (fp_write == NULL){
+		return;
+	}
+
+	char buf[] = "this is a test for pfutc!";
+	for (int i = 0; i < strlen(buf);i++){
+		fputc(buf[i], fp_write);
+	}
+	
+	fclose(fp_write);
+
+	//读文件
+	FILE* fp_read = NULL;
+	fp_read = fopen("./mydata.txt", "r");
+	if (fp_read == NULL){
+		return;
+	}
+
+#if 0
+	//判断文件结尾 注意：多输出一个空格
+	while (!feof(fp_read)){
+		printf("%c",fgetc(fp_read));
+	}
+#else
+	char ch;
+	while ((ch = fgetc(fp_read)) != EOF){
+		printf("%c", ch);
+	}
+#endif
+}
+
+```
+
+
+
+将把流指针fp指向的文件中的一个字符读出，并赋给ch，当执行fgetc()函数时，若当时文件指针指到文件尾，即遇到文件结束标志EOF(其对应值为-1)，该函数返回一个 -1 给ch，在程序中常用检查该函数返回值是否为 -1 来判断是否已读到文件尾，从而决定是否继续。
+
+
+
+
+2. 行读写函数回顾
+
+![c1highdata038](images/c1highdata038.png)
+
+```c
+
+void test(){
+
+	//写文件
+	FILE* fp_write= NULL;
+	//写方式打开文件
+	fp_write = fopen("./mydata.txt", "w+");
+	if (fp_write == NULL){
+		perror("fopen:");
+		return;
+	}
+
+	char* buf[] = {
+		"01 this is a test for pfutc!\n",
+		"02 this is a test for pfutc!\n",
+		"03 this is a test for pfutc!\n",
+		"04 this is a test for pfutc!\n",
+	};
+	for (int i = 0; i < 4; i ++){
+		fputs(buf[i], fp_write);
+	}
+	
+	fclose(fp_write);
+
+	//读文件
+	FILE* fp_read = NULL;
+	fp_read = fopen("./mydata.txt", "r");
+	if (fp_read == NULL){
+		perror("fopen:");
+		return;
+	}
+
+	//判断文件结尾
+	while (!feof(fp_read)){
+		char temp[1024] = { 0 };
+		fgets(temp, 1024, fp_read);
+		printf("%s",temp);
+	}
+
+	fclose(fp_read);
+}
+
+```
+
+
+3. 块读写函数回顾
+
+![c1highdata039](images/c1highdata039.png)
+
+```c
+
+
+typedef struct _TEACHER{
+	char name[64];
+	int age;
+}Teacher;
+
+void test(){
+
+	//写文件
+	FILE* fp_write= NULL;
+	//写方式打开文件
+	fp_write = fopen("./mydata.txt", "wb");
+	if (fp_write == NULL){
+		perror("fopen:");
+		return;
+	}
+
+	Teacher teachers[4] = {
+		{ "Obama", 33 },
+		{ "John", 28 },
+		{ "Edward", 45},
+		{ "Smith", 35}
+	};
+	
+	for (int i = 0; i < 4; i ++){
+		fwrite(&teachers[i],sizeof(Teacher),1, fp_write);
+	}
+	//关闭文件
+	fclose(fp_write);
+
+	//读文件
+	FILE* fp_read = NULL;
+	fp_read = fopen("./mydata.txt", "rb");
+	if (fp_read == NULL){
+		perror("fopen:");
+		return;
+	}
+
+	Teacher temps[4];
+	fread(&temps, sizeof(Teacher), 4, fp_read);
+	for (int i = 0; i < 4;i++){
+		printf("Name:%s Age:%d\n",temps[i].name,temps[i].age);
+	}
+
+	fclose(fp_read);
+}
+
+
+```
+
+4. 格式化读写函数回顾
+
+![c1highdata040](images/c1highdata040.png)
+
+**注意**：**fscanf遇到空格和换行时结束。**
+
+```c
+
+void test(){
+
+	//写文件
+	FILE* fp_write= NULL;
+	//写方式打开文件
+	fp_write = fopen("./mydata.txt", "w");
+	if (fp_write == NULL){
+		perror("fopen:");
+		return;
+	}
+
+	fprintf(fp_write,"hello world:%d!",10);
+
+	//关闭文件
+	fclose(fp_write);
+
+	//读文件
+	FILE* fp_read = NULL;
+	fp_read = fopen("./mydata.txt", "rb");
+	if (fp_read == NULL){
+		perror("fopen:");
+		return;
+	}
+	
+	char temps[1024] = { 0 };
+	while (!feof(fp_read)){
+		fscanf(fp_read, "%s", temps);
+		printf("%s", temps);
+	}
+
+	fclose(fp_read);
+}
+
+```
+
+
+5. 随机读写函数回顾
+
+![c1highdata041](images/c1highdata041.png)
+
+```c
+
+typedef struct _TEACHER{
+	char name[64];
+	int age;
+}Teacher;
+
+void test(){
+	//写文件
+	FILE* fp_write = NULL;
+	//写方式打开文件
+	fp_write = fopen("./mydata.txt", "wb");
+	if (fp_write == NULL){
+		perror("fopen:");
+		return;
+	}
+
+	Teacher teachers[4] = {
+		{ "Obama", 33 },
+		{ "John", 28 },
+		{ "Edward", 45 },
+		{ "Smith", 35 }
+	};
+
+	for (int i = 0; i < 4; i++){
+		fwrite(&teachers[i], sizeof(Teacher), 1, fp_write);
+	}
+	//关闭文件
+	fclose(fp_write);
+
+	//读文件
+	FILE* fp_read = NULL;
+	fp_read = fopen("./mydata.txt", "rb");
+	if (fp_read == NULL){
+		perror("fopen:");
+		return;
+	}
+
+	Teacher temp;
+	//读取第三个数组
+	fseek(fp_read , sizeof(Teacher) * 2 , SEEK_SET);
+	fread(&temp, sizeof(Teacher), 1, fp_read);
+	printf("Name:%s Age:%d\n",temp.name,temp.age);
+
+	memset(&temp,0,sizeof(Teacher));
+
+	fseek(fp_read, -(int)sizeof(Teacher), SEEK_END);
+	fread(&temp, sizeof(Teacher), 1, fp_read);
+	printf("Name:%s Age:%d\n", temp.name, temp.age);
+
+	rewind(fp_read);
+	fread(&temp, sizeof(Teacher), 1, fp_read);
+	printf("Name:%s Age:%d\n", temp.name, temp.age);
+
+	fclose(fp_read);
+}
+
+
+```
 
 
 ### chighdata008c
 ## 8.3 文件读写案例
 
+读写配置文件
+
+配置文件格式如下：
+
+正式的数据以 ‘:’冒号进行分割，冒号前为key起到索引作用，冒号后为value是实值。#开头的为注释，而不是正式数据
+
+```c
+
+#英雄的Id
+
+heroId:1
+
+#英雄的姓名
+
+heroName:德玛西亚
+
+#英雄的攻击力
+
+heroAtk:1000
+
+#英雄的防御力
+
+heroDef:500
+
+#英雄的简介
+
+heroInfo:前排坦克
+
+```
+
+```c
+
+struct ConfigInfo
+{
+	char key[64];
+	char value[64];
+};
+
+//获取文件有效行数
+int getFileLine(const char  * filePath)
+{
+	FILE * file = fopen(filePath, "r");
+	char buf[1024] = {0};
+	int lines = 0;
+	while (fgets(buf,1024,file) != NULL)
+	{
+		if (isValidLine(buf))
+		{
+			lines++;
+		}
+		memset(buf, 0, 1024);
+	}
+	 
+	fclose(file);
+	
+	return lines;
+
+}
+//解析文件
+void parseFile(const char  * filePath, int lines, struct ConfigInfo** configInfo)
+{
+
+	struct ConfigInfo * pConfig =  malloc(sizeof(struct ConfigInfo) * lines);
+
+	if (pConfig == NULL)
+	{
+		return;
+	}
+
+
+
+	FILE * file = fopen(filePath, "r");
+	char buf[1024] = { 0 };
+	
+	int index = 0;
+	while (fgets(buf, 1024, file) != NULL)
+	{
+		if (isValidLine(buf))
+		{
+			//解析数据到struct ConfigInfo中
+			memset(pConfig[index].key, 0, 64);
+			memset(pConfig[index].value, 0, 64);
+			char * pos = strchr(buf, ':');
+			strncpy(pConfig[index].key, buf, pos - buf);
+			strncpy(pConfig[index].value, pos + 1, strlen(pos + 1) - 1); // 从第二个单词开始截取字符串，并且不截取换行符
+			//printf("key = %s\n", pConfig[index].key);
+			//printf("value = %s\n", pConfig[index].value);
+			index++;
+		}
+		memset(buf, 0, 1024);
+	}
+
+
+
+	*configInfo = pConfig;
+
+}
+
+//获取指定的配置信息
+char * getInfoByKey(char * key, struct ConfigInfo*configInfo ,int lines)
+{
+	for (int i = 0; i < lines;i++)
+	{
+		if (strcmp(key, configInfo[i].key) == 0)
+		{
+			return configInfo[i].value;
+		}
+	}
+	return NULL;
+}
+
+//释放配置文件信息
+void freeConfigInfo(struct ConfigInfo*configInfo)
+{
+	free(configInfo);
+	configInfo = NULL;
+}
+
+//判断当前行是否为有效行
+int isValidLine(char * buf)
+{
+	if (buf[0] == '0' || buf[0] == '\0' || strchr(buf,':') == NULL)
+	{
+		return 0;// 如果行无限 返回假
+	}
+	return 1;
+}
+
+int main(){
+
+	char * filePath = "./config.txt";
+	int lines = getFileLine(filePath);
+	printf("文件有效行数为：%d\n", lines);
+
+	struct ConfigInfo * config = NULL;
+	parseFile(filePath, lines, &config);
+
+	printf("heroId = %s\n", getInfoByKey("heroId", config, lines));
+	printf("heroName: = %s\n", getInfoByKey("heroName", config, lines));
+	printf("heroAtk = %s\n", getInfoByKey("heroAtk", config, lines));
+	printf("heroDef: = %s\n", getInfoByKey("heroDef", config, lines));
+	printf("heroInfo: = %s\n", getInfoByKey("heroInfo", config, lines));
+
+
+	freeConfigInfo(config);
+	config = NULL;
+
+	system("pause");
+	return EXIT_SUCCESS;
+}
+
+```
 
 
 ### chighdata009
@@ -2118,19 +3320,195 @@ void test(){
 
 ### chighdata009a1
 ### 9.1.1 什么是链表
+![c1highdata042](images/c1highdata042.png)
+
+- 链表是一种常用的数据结构，它通过指针将一些列数据结点，连接成一个数据链。相对于数组，链表具有更好的动态性（非顺序存储）。
+
+- 数据域用来存储数据，指针域用于建立与下一个结点的联系。
+
+- 建立链表时无需预先知道数据总量的，可以随机的分配空间，可以高效的在链表中的任意位置实时插入或删除数据。
+
+- 链表的开销，主要是访问顺序性和组织链的空间损失。
+
+**数组和链表的区别：**
+![c1highdata043](images/c1highdata043.png)
 
 
 ### chighdata009a2
 ### 9.1.2 有关结构体的自身引用
+问题1：请问结构体可以嵌套本类型的结构体变量吗？
+
+问题2：请问结构体可以嵌套本类型的结构体指针变量吗？
 
 
+```c
+
+typedef struct _STUDENT{
+	char name[64];
+	int age;
+}Student;
+
+typedef struct _TEACHER{
+	char name[64];
+	Student stu; //结构体可以嵌套其他类型的结构体
+	//Teacher stu;
+	//struct _TEACHER teacher; //此时Teacher类型的成员还没有确定，编译器无法分配内存
+	struct _TEACHER* teacher; //不论什么类型的指针，都只占4个字节，编译器可确定内存分配
+}Teacher;
+
+```
+
+- 结构体可以嵌套另外一个结构体的任何类型变量;
+
+- 结构体嵌套本结构体普通变量（不可以）。本结构体的类型大小无法确定，类型本质：固定大小内存块别名;
+
+- 结构体嵌套本结构体指针变量（可以）, 指针变量的空间能确定，32位， 4字节， 64位， 8字节;
 ### chighdata009a3
 ### 9.1.3 链表节点
 
+大家思考一下，我们说链表是由一系列的节点组成，那么如何表示一个包含了数据域和指针域的节点呢？
+
+链表的节点类型实际上是结构体变量，此结构体包含数据域和指针域：
+
+- 数据域用来存储数据；
+
+- 指针域用于建立与下一个结点的联系，`当此节点为尾节点时，指针域的值为NULL`；
+
+```c
+
+typedef struct Node 
+{
+	//数据域
+	int id;
+	char name[50];
+
+	//指针域
+	struct Node *next;       
+}Node;
+
+```
+![c1highdata044](images/c1highdata044.png)
 
 ### chighdata009a4
 ### 9.1.4 链表的分类
 
+链表分为：静态链表和动态链表
+
+静态链表和动态链表是线性表链式存储结构的两种不同的表示方式：
+
+- 所有结点都是在程序中定义的，不是临时开辟的，也不能用完后释放，这种链表称为“静态链表”。
+
+- 所谓动态链表，是指在程序执行过程中从无到有地建立起一个链表，即一个一个地开辟结点和输入各结点数据，并建立起前后相链的关系。
+
+### chighdata009a4a
+#### **9.1.4.1 静态链表**
+
+
+```c
+
+typedef struct Stu
+{
+	int id;	//数据域
+	char name[100];
+
+	struct Stu *next; //指针域
+}Stu;
+
+void test()
+{
+	//初始化三个结构体变量
+	Stu s1 = { 1, "yuri", NULL };
+	Stu s2 = { 2, "lily", NULL };
+	Stu s3 = { 3, "lilei", NULL };
+
+	s1.next = &s2; //s1的next指针指向s2
+	s2.next = &s3;
+	s3.next = NULL; //尾结点
+
+	Stu *p = &s1;
+	while (p != NULL)
+	{
+		printf("id = %d, name = %s\n", p->id, p->name);
+
+		//结点往后移动一位
+		p = p->next; 
+	}
+}
+
+```
+
+### chighdata009a4b
+#### 9.1.4.2 动态链表
+
+```c
+
+typedef struct Stu{
+	int id;	//数据域
+	char name[100];
+
+	struct Stu *next; //指针域
+}Stu;
+
+void test(){
+	//动态分配3个节点
+	Stu *s1 = (Stu *)malloc(sizeof(Stu));
+	s1->id = 1;
+	strcpy(s1->name, "yuri");
+
+	Stu *s2 = (Stu *)malloc(sizeof(Stu));
+	s2->id = 2;
+	strcpy(s2->name, "lily");
+
+	Stu *s3 = (Stu *)malloc(sizeof(Stu));
+	s3->id = 3;
+	strcpy(s3->name, "lilei");
+
+	//建立节点的关系
+	s1->next = s2; //s1的next指针指向s2
+	s2->next = s3;
+	s3->next = NULL; //尾结点
+
+	//遍历节点
+	Stu *p = s1;
+	while (p != NULL)
+	{
+		printf("id = %d, name = %s\n", p->id, p->name);
+
+		//结点往后移动一位
+		p = p->next; 
+	}
+
+	//释放节点空间
+	p = s1;
+	Stu *tmp = NULL;
+	while (p != NULL)
+	{
+		tmp = p;
+		p = p->next;
+
+		free(tmp);
+		tmp = NULL;
+	}
+}
+
+```
+
+
+### chighdata009a4c
+#### **9.1.4.3** **带头和不带头链表**
+
+- 带头链表：固定一个节点作为头结点(数据域不保存有效数据)，起一个标志位的作用，以后不管链表节点如果改变，此头结点固定不变。
+
+![c1highdata045](images/c1highdata045.png)
+
+- 不带头链表：头结点不固定，根据实际需要变换头结点(如在原来头结点前插入新节点，然后，新节点重新作为链表的头结点)。
+
+![c1highdata046](images/c1highdata046.png)
+
+### chighdata009a4d
+#### **9.1.4.4 单向链表、双向链表、循环链表**
+
+![c1highdata047](images/c1highdata047.png)
 
 ### chighdata009b
 ## 9.2 链表基本操作
@@ -2138,18 +3516,221 @@ void test(){
 ### chighdata009b1
 ### 9.2.1 创建链表
 
+使用结构体定义节点类型：
+
+```c
+
+typedef struct _LINKNODE
+{
+	int id; //数据域
+	struct _LINKNODE* next; //指针域
+}link_node;
+
+```
+
+编写函数：`link_node* init_linklist()`
+
+建立带有头结点的单向链表，循环创建结点，结点数据域中的数值从键盘输入，以 -1 作为输入结束标志，链表的头结点地址由函数值返回.
+
+```c
+
+typedef struct _LINKNODE{
+	int data;
+	struct _LINKNODE* next;
+}link_node;
+
+link_node* init_linklist(){
+	
+	//创建头结点指针
+	link_node* head = NULL;
+	//给头结点分配内存
+	head = (link_node*)malloc(sizeof(link_node));
+	if (head == NULL){
+		return NULL;
+	}
+	head->data = -1;
+	head->next = NULL;
+
+	//保存当前节点
+	link_node* p_current = head;
+	int data = -1;
+	//循环向链表中插入节点
+	while (1){
+	
+		printf("please input data:\n");
+		scanf("%d",&data);
+
+		//如果输入-1，则退出循环
+		if (data == -1){
+			break;
+		}
+
+		//给新节点分配内存
+		link_node* newnode = (link_node*)malloc(sizeof(link_node));
+		if (newnode == NULL){
+			break;
+		}
+
+		//给节点赋值
+		newnode->data = data;
+		newnode->next = NULL;
+
+		//新节点入链表，也就是将节点插入到最后一个节点的下一个位置
+		p_current->next = newnode;
+		//更新辅助指针p_current
+		p_current = newnode;
+	}
+
+	return head;
+}
+
+```
+
+
 ### chighdata009b2
 ### 9.2.2 遍历链表
+
+编写函数：`void foreach_linklist(link_node* head)`
+
+顺序输出单向链表各项结点数据域中的内容：
+
+```c
+
+
+//遍历链表
+void foreach_linklist(link_node* head){
+	if (head == NULL){
+		return;
+	}
+
+	//赋值指针变量
+	link_node* p_current = head->next;
+	while (p_current != NULL){
+		printf("%d ",p_current->data);
+		p_current = p_current->next;
+	}
+	printf("\n");
+}
+
+
+```
+
+
 
 ### chighdata009b3
 ### 9.2.3 插入节点
 
+编写函数: `void insert_linklist(link_node* head,int val,int data).`
+
+在指定值后面插入数据data,如果值val不存在，则在尾部插入。
+
+```c
+
+//在值val前插入节点
+void insert_linklist(link_node* head, int val, int data){
+	
+	if (head == NULL){
+		return;
+	}
+
+	//两个辅助指针
+	link_node* p_prev = head;
+	link_node* p_current = p_prev->next;
+	while (p_current != NULL){
+		if (p_current->data == val){
+			break;
+		}
+		p_prev = p_current;
+		p_current = p_prev->next;
+	}
+
+	//如果p_current为NULL，说明不存在值为val的节点
+	if (p_current == NULL){
+		printf("不存在值为%d的节点!\n",val);
+		return;
+	}
+
+	//创建新的节点
+	link_node* newnode = (link_node*)malloc(sizeof(link_node));
+	newnode->data = data;
+	newnode->next = NULL;
+
+	//新节点入链表
+	newnode->next = p_current;
+	p_prev->next = newnode;
+}
+
+```
+
+
 ### chighdata009b4
 ### 9.2.4 删除节点
+
+编写函数: `void remove_linklist(link_node* head,int val)`
+
+删除第一个值为val的结点.
+
+
+```c
+
+
+//删除值为val的节点
+void remove_linklist(link_node* head,int val){
+	if (head == NULL){
+		return;
+	}
+
+	//辅助指针
+	link_node* p_prev = head;
+	link_node* p_current = p_prev->next;
+
+	//查找值为val的节点
+	while (p_current != NULL){
+		if (p_current->data == val){
+			break;
+		}
+		p_prev = p_current;
+		p_current = p_prev->next;
+	}
+	//如果p_current为NULL，表示没有找到
+	if (p_current == NULL){
+		return;
+	}
+	
+	//删除当前节点： 重新建立待删除节点(p_current)的前驱后继节点关系
+	p_prev->next = p_current->next;
+	//释放待删除节点的内存
+	free(p_current);
+}
+
+```
 
 
 ### chighdata009b5
 ### 9.2.5 销毁链表
+
+编写函数: `void destroy_linklist(link_node* head)`
+
+销毁链表，释放所有节点的空间.
+
+```c
+
+//销毁链表
+void destroy_linklist(link_node* head){
+	if (head == NULL){
+		return;
+	}
+	//赋值指针
+	link_node* p_current = head;
+	while (p_current != NULL){
+		//缓存当前节点下一个节点
+		link_node* p_next = p_current->next;
+		free(p_current);
+		p_current = p_next;
+	}
+}
+
+```
 
 
 
@@ -2163,17 +3744,221 @@ void test(){
 ### chighdata010a1
 ## 10.1.1 函数类型
 
+通过什么来区分两个不同的函数？
+
+一个函数在编译时被分配一个入口地址，这个地址就称为函数的指针，函数名代表函数的入口地址。
+
+函数三要素： 名称、参数、返回值。C语言中的函数有自己特定的类型。
+
+c语言中通过typedef为函数类型重命名：
+
+```c
+
+typedef int f(int, int);		// f 为函数类型
+typedef void p(int);		// p 为函数类型
+
+```
+
+这一点和数组一样，因此我们可以用一个指针变量来存放这个入口地址，然后通过该指针变量调用函数。
+
+**注意：**通过函数类型定义的变量是不能够直接执行，因为没有函数体。只能通过类型定义一个函数指针指向某一个具体函数，才能调用。
+
+
+```c
+
+typedef int(p)(int, int);
+
+void my_func(int a,int b){
+	printf("%d %d\n",a,b);
+}
+
+void test(){
+
+	p p1;
+	//p1(10,20); //错误，不能直接调用，只描述了函数类型，但是并没有定义函数体，没有函数体无法调用
+	p* p2 = my_func;
+	p2(10,20); //正确，指向有函数体的函数入口地址
+}
+
+```
+
 
 
 ### chighdata010a2
 ## 10.1.2 函数指针(指向函数的指针)
 
+- 函数指针定义方式(先定义函数类型，根据类型定义指针变量);
+
+-  先定义函数指针类型，根据类型定义指针变量;
+
+-  直接定义函数指针变量;
+
+```c
+
+int my_func(int a,int b){
+	printf("ret:%d\n", a + b);
+	return 0;
+}
+
+//1. 先定义函数类型，通过类型定义指针
+void test01(){
+	typedef int(FUNC_TYPE)(int, int);
+	FUNC_TYPE* f = my_func;
+	//如何调用？
+	(*f)(10, 20);
+	f(10, 20);
+}
+
+//2. 定义函数指针类型
+void test02(){
+	typedef int(*FUNC_POINTER)(int, int);
+	FUNC_POINTER f = my_func;
+	//如何调用？
+	(*f)(10, 20);
+	f(10, 20);
+}
+
+//3. 直接定义函数指针变量
+void test03(){
+	
+	int(*f)(int, int) = my_func;
+	//如何调用？
+	(*f)(10, 20);
+	f(10, 20);
+}
+
+
+```
+
+
+
 ### chighdata010a3
 ## 10.1.3 函数指针数组
+
+函数指针数组，每个元素都是函数指针。
+
+```c
+
+void func01(int a){
+	printf("func01:%d\n",a);
+}
+void func02(int a){
+	printf("func02:%d\n", a);
+}
+void func03(int a){
+	printf("func03:%d\n", a);
+}
+
+void test(){
+
+#if 0
+	//定义函数指针
+	void(*func_array[])(int) = { func01, func02, func03 };
+#else
+	void(*func_array[3])(int);
+	func_array[0] = func01;
+	func_array[1] = func02;
+	func_array[2] = func03;
+#endif
+
+	for (int i = 0; i < 3; i ++){
+		func_array[i](10 + i);
+		(*func_array[i])(10 + i);
+	}
+}
+
+```
+
+
 
 ### chighdata010a4
 ## 10.1.4 函数指针做函数参数(回调函数)
 
+函数参数除了是普通变量，还可以是函数指针变量。
+
+```c
+
+//形参为普通变量
+void fun( int x ){}
+//形参为函数指针变量
+void fun( int(*p)(int a) ){}
+
+```
+
+函数指针变量常见的用途之一是把指针作为参数传递到其他函数，指向函数的指针也可以作为参数，以实现函数地址的传递。
+
+```c
+
+int plus(int a, int b)
+{
+	return a + b;
+}
+int sub(int a, int b)
+{
+	return a - b;
+}
+int mul(int a, int b)
+{
+	return a * b;
+}
+int division(int a, int b)
+{
+	return a / b;
+}
+
+//函数指针 做函数的参数 --- 回调函数
+void Calculator(int(*myCalculate)(int, int), int a, int b)
+{
+	int ret = myCalculate(a, b); //dowork中不确定用户选择的内容，由后期来指定运算规则
+	printf("ret = %d\n", ret);
+}
+
+void test01()
+{
+	printf("请输入操作符\n");
+	printf("1、+ \n");
+	printf("2、- \n");
+	printf("3、* \n");
+	printf("4、/ \n");
+
+	int select = -1;
+	scanf("%d", &select);
+
+	int num1 = 0;
+	printf("请输入第一个操作数：\n");
+	scanf("%d", &num1);
+
+	int num2 = 0;
+	printf("请输入第二个操作数：\n");
+	scanf("%d", &num2);
+
+	switch (select)
+	{
+	case  1:
+		Calculator(plus, num1, num2);
+		break;
+	case  2:
+		Calculator(sub, num1, num2);
+		break;
+	case 3:
+		Calculator(mul, num1, num2);
+		break;
+	case 4:
+		Calculator(division, num1, num2);
+		break;
+	default:
+		break;
+	}
+
+}
+
+```
+
+**注意：**函数指针和指针函数的区别：
+
+- 函数指针是指向函数的指针；
+
+- 指针函数是返回类型为指针的函数
 
 ### chighdata011
 # 11.  预处理
@@ -2181,29 +3966,688 @@ void test(){
 ### chighdata011a
 ## 11.1 预处理的基本概念
 
+C语言对源程序处理的四个步骤：预处理、编译、汇编、链接。
+
+预处理是在程序源代码被编译之前，由预处理器（Preprocessor）对程序源代码进行的处理。这个过程并不对程序的源代码语法进行解析，但它会把源代码分割或处理成为特定的符号为下一步的编译做准备工作。
+
 ### chighdata011b
 ## 11.2 文件包含指令(#include)
 
+### chighdata011b1
+### **11.2.1 文件包含处理**
+
+“文件包含处理”是指一个源文件可以将另外一个文件的全部内容包含进来。Ｃ语言提供了#include命令用来实现“文件包含”的操作。
+
+![c1highdata048](images/c1highdata048.png)
+
+### chighdata011b2
+### **11.2.2 #incude<>和#include****""****区别**
+
+- "" 表示系统先在file1.c所在的当前目录找file1.h，如果找不到，再按系统指定的目录检索。
+
+- < > 表示系统直接按系统指定的目录检索。
+
+注意：
+
+1\. #include <>常用于包含库函数的头文件；
+
+2\. #include ""常用于包含自定义的头文件；
+
+3\. 理论上#include可以包含任意格式的文件(.c .h等) ，但一般用于头文件的包含；
+
 ### chighdata011c
-## 11.3
+## 11.3 宏定义
+
+### chighdata011c1
+### 11.3.1 无参数的宏定义(宏常量)
+
+如果在程序中大量使用到了100这个值，那么为了方便管理，我们可以将其定义为：
+
+`const int num = 100;` 但是如果我们使用num定义一个数组，在不支持c99标准的编译器上是不支持的，因为num不是一个编译器常量，如果想得到了一个编译器常量，那么可以使用：
+
+`#define num 100`
+
+在编译预处理时，将程序中在该语句以后出现的所有的num都用100代替。这种方法使用户能以一个简单的名字代替一个长的字符串，在预编译时将宏名替换成字符串的过程称为“**宏展开**”。宏定义，只在宏定义的文件中起作用。
+
+```c
+
+#define PI 3.1415
+void test(){
+	double r = 10.0;
+	double s = PI * r * r;
+	printf("s = %lf\n", s);
+}
+
+```
+
+说明：
+
+1) 宏名一般用大写，以便于与变量区别；
+
+2) 宏定义可以是常数、表达式等；
+
+3) 宏定义不作语法检查，只有在编译被宏展开后的源程序才会报错；
+
+4) 宏定义不是C语言，不在行末加分号；
+
+5) 宏名有效范围为从定义到本源文件结束；
+
+6) 可以用#undef命令终止宏定义的作用域；
+
+7) 在宏定义中，可以引用已定义的宏名；
+
+### chighdata011c2
+### 11.3.2 带参数的宏定义(宏函数)
+
+在项目中，经常把一些短小而又频繁使用的函数写成宏函数，这是由于宏函数没有普通函数参数压栈、跳转、返回等的开销，可以调高程序的效率。
+
+宏通过使用参数，可以创建外形和作用都与函数类似地类函数宏(function-like macro). 宏的参数也用圆括号括起来。
+
+```c
+
+#define SUM(x,y) (( x )+( y ))
+void test(){
+	
+	//仅仅只是做文本替换 下例替换为 int ret = ((10)+(20));
+	//不进行计算
+	int ret = SUM(10, 20);
+	printf("ret:%d\n",ret);
+}
+
+```
+
+
+**注意:**
+
+1) 宏的名字中不能有空格，但是在替换的字符串中可以有空格。ANSI C允许在参数列表中使用空格；
+
+2) 用括号括住每一个参数，并括住宏的整体定义。
+
+3) 用大写字母表示宏的函数名。
+
+4) 如果打算宏代替函数来加快程序运行速度。假如在程序中只使用一次宏对程序的运行时间没有太大提高。
+
+
 
 ### chighdata011d
-## 11.4
+## 11.4 条件编译
+
+### chighdata011d
+### 11.4.1 基本概念
+
+一般情况下，源程序中所有的行都参加编译。但有时希望对部分源程序行只在满足一定条件时才编译，即对这部分源程序行指定编译条件。
+![c1highdata049](images/c1highdata049.png)
+
+
+
+### chighdata011d
+### 11.4.2 条件编译
+
+- 防止头文件被重复包含引用；
+
+```c
+
+#ifndef _SOMEFILE_H
+#define _SOMEFILE_H
+
+//需要声明的变量、函数
+//宏定义
+//结构体
+
+#endif
+
+```
+
+
 
 ### chighdata011e
-## 11.5 
+## 11.5  一些特殊的预定宏
 
+C编译器，提供了几个特殊形式的预定义宏，在实际编程中可以直接使用，很方便。
+
+
+```c
+
+//	__FILE__			宏所在文件的源文件名 
+//	__LINE__			宏所在行的行号
+//	__DATE__			代码编译的日期
+//	__TIME__			代码编译的时间
+
+void test()
+{
+	printf("%s\n", __FILE__);
+	printf("%d\n", __LINE__);
+	printf("%s\n", __DATE__);
+	printf("%s\n", __TIME__);
+}
+
+```
 
 
 ### chighdata012
 # 12. 动态库的封装和使用
 
+### chighdata012a
+## 12.1 库的基本概念
+
+库是已经写好的、成熟的、可复用的代码。每个程序都需要依赖很多底层库，不可能每个人的代码从零开始编写代码，因此库的存在具有非常重要的意义。
+
+在我们的开发的应用中经常有一些公共代码是需要反复使用的，就把这些代码编译为库文件。
+
+库可以简单看成一组目标文件的集合，将这些目标文件经过压缩打包之后形成的一个文件。像在Windows这样的平台上，最常用的c语言库是由集成按开发环境所附带的运行库，这些库一般由编译厂商提供。
+
+### chighdata012b
+## 12.2 windows下静态库创建和使用
+
+
+### chighdata012b1
+### **12.2.1 静态库的创建**
+
+![c1highdata050](images/c1highdata050.png)
+
+### chighdata012b2
+### **12.2.2 静态库的使用**
+
+![c1highdata051](images/c1highdata051.png)
+
+### chighdata012b3
+### **12.2.3 静态库优缺点**
+
+![c1highdata052](images/c1highdata052.png)
+
+
+
+
+### chighdata012c
+## 12.3 windows下动态库创建和使用
+
+
+
+要解决空间浪费和更新困难这两个问题，最简单的办法就是把程序的模块相互分割开来，形成独立的文件，而不是将他们静态的链接在一起。简单地讲，就是不对哪些组成程序的目标程序进行链接，等程序运行的时候才进行链接。也就是说，把整个链接过程推迟到了运行时再进行，这就是动态链接的基本思想。
+
+
+### **12.3.1 动态库的创建**
+
+1\. 创建一个新项目，在已安装的模板中选择“常规”，在右边的类型下选择“空项目”，在名称和解决方案名称中输入mydll。点击确定。
+
+2.在解决方案资源管理器的头文件中添加,mydll.h文件，在源文件添加mydll.c文件（即实现文件）。
+
+3.在test.h文件中添加如下代码：
+
+```c
+
+#ifndef TEST_H
+#define TEST_H
+
+__declspec(dllexport) int myminus(int a, int b);
+
+#endif
+
+```
+
+4.在test.c文件中添加如下代码：
+
+```c
+
+#include"test.h"
+__declspec(dllexport) int myminus(int a, int b){
+	return a - b;
+}
+
+```
+
+5. 配置项目属性。因为这是一个动态链接库，所以应在项目属性的“配置属性”下选择“常规”，在其下的配置类型中选择“动态库（.dll）。
+
+6. 编译生成新的解决方案，在Debug文件夹下会得到mydll.dll (对象文件库），将该.dll文件、.lib文件和相应头文件给用户，用户就可以使用该库里的函数了。
+
+![c1highdata053](images/c1highdata053.png)
+
+
+### **12.3.2 动态库的使用**
+
+
+**方法一：隐式调用**
+![c1highdata054](images/c1highdata054.png)
+
+
+**方法二：显式调用**
+
+	HANDLE hDll; //声明一个dll实例文件句柄
+	hDll = LoadLibrary("mydll.dll"); //导入动态链接库
+	MYFUNC minus_test; //创建函数指针
+	//获取导入函数的函数指针
+	minus_test = (MYFUNC)GetProcAddress(hDll, "myminus");
+
 
 ### chighdata013
 # 13. 递归函数
 
+### chighdata013a
+## 13.1 递归函数基本概念
+C通过运行时堆栈来支持递归函数的实现。递归函数就是直接或间接调用自身的函数。
+
+### chighdata013b
+## 13.2 普通函数调用
+
+```c
+
+
+void funB(int b){
+	printf("b = %d\n", b);
+}
+
+void funA(int a){
+	funB(a - 1);
+	printf("a = %d\n", a);
+}
+
+int main(void){
+	funA(2);
+    printf("main\n");
+	return 0;
+}
+
+```
+函数的调用流程如下：
+![c1highdata055](images/c1highdata055.png)
+
+
+### chighdata013c
+## 13.3 递归函数调用
+
+
+```c
+
+void fun(int a){
+	
+	if (a == 1){
+		printf("a = %d\n", a);
+		return; //中断函数很重要
+	}
+
+	fun(a - 1);
+	printf("a = %d\n", a);
+}
+
+int main(void){
+	
+	fun(2);
+	printf("main\n");
+
+	return 0;
+}
+
+```
+
+
+函数的调用流程如下：
+
+![c1highdata056](images/c1highdata056.png)
+
+**作业：**
+
+递归实现给出一个数8793，依次打印千位数字8、百位数字7、十位数字9、个位数字3。
+
+
+```c
+
+void recursion(int val){
+	if (val == 0){
+		return;
+	}
+	int ret = val / 10;
+	recursion(ret);
+	printf("%d ",val % 10);
+}
+
+```
+
+### chighdata013d
+## 13.4 递归实现字符串反转 
+
+
+```c
+
+int reverse1(char *str){
+	if (str == NULL)
+	{
+		return -1;
+	}
+
+	if (*str == '\0') // 函数递归调用结束条件
+	{
+		return 0;
+	}
+	
+	reverse1(str + 1);
+	printf("%c", *str);
+
+	return 0;
+}
+
+char buf[1024] = { 0 };  //全局变量
+
+int reverse2(char *str){
+	if (str == NULL) 
+	{
+		return -1;
+	}
+
+	if ( *str == '\0' ) // 函数递归调用结束条件
+	{
+		return 0;
+	}
+
+	reverse2(str + 1);
+	strncat(buf, str, 1);
+
+	return 0;
+}
+
+int reverse3(char *str, char *dst){
+	if (str == NULL || dst == NULL) 
+	{
+		return -1;
+	}
+
+	if (*str == '\0') // 函数递归调用结束条件
+	{
+		return 0;
+	}
+
+	reverse3(str + 1);
+
+	strncat(dst, str, 1);
+
+	return 0;
+}
+
+
+```
+
+
 
 ### chighdata014
 # 14. 面向接口编程
+
+## **14.1****案例背景**
+
+一般的企业信息系统都有成熟的框架。软件框架一般不发生变化，能自由的集成第三方厂商的产品。
+
+## **14.2** **案例需求**
+
+要求在企业信息系统框架中集成第三方厂商的游戏功能产品。软件设计要求：能够满足用户需求，完成的产品可以与用户完美对接。
+
+## **14.3 案例要求**
+
+1）能支持多个厂商的游戏功能产品入围
+
+2）能够实现第三方产品和用户产品的对接
+
+3）系统整体框架不轻易发生改变
+
+## **14.4 编程提示**
+
+1）抽象游戏中玩家结构体设计（struct Player）
+
+2）框架接口设计（playGame）
+
+ a) 初始化游戏
+
+ b) 核心功能战斗
+
+ c) 查看玩家信息
+
+      d) 结束游戏
+
+3）   a) 游戏厂商1入围（GameCompany1）
+
+       b) 游戏厂商2入围（GameCompany2）
+
+4）框架接口分文件编写
+
+
+
+
+
+
+
+
+### chighdata015
+# 15. 位运算
+
+可以使用C对变量中的个别位进行操作。您可能对人们想这样做的原因感到奇怪。这种能力有时确实是必须的，或者至少是有用的。C提供位的逻辑运算符和移位运算符。在以下例子中，我们将使用二进制计数法写出值，以便您可以了解对位发生的操作。在一个实际程序中，您可以使用一般的形式的整数变量或常量。例如不适用00011001的形式，而写为25或者031或者0x19.在我们的例子中，我们将使用8位数字，从左到右，每位的编号是7到0。
+
+### chighdata015a
+## 15.1 位逻辑运算符
+
+### 15.1.1 按位取反`~`
+
+一元运算符~将每个1变为0，将每个0变为1，如下面的例子：
+
+```c
+
+~(10011010)
+01100101
+
+```
+
+假设a是一个unsigned char，已赋值为2.在二进制中，2是00000010.于是-a的值为11111101或者253。请注意该运算符不会改变a的值，a仍为2。
+
+```c
+
+unsigned char a = 2;   //00000010
+unsigned char b = ~a;  //11111101
+printf("ret = %d\n", a); //ret = 2
+printf("ret = %d\n", b); //ret = 253
+
+```
+
+
+
+### 15.1.2 位与（`AND`）: `&`
+
+二进制运算符&通过对两个操作数逐位进行比较产生一个新值。对于每个位，只有两个操作数的对应位都是1时结果才为1。
+
+```c
+
+   (10010011) 
+ & (00111101) 
+ = (00010001)
+
+```
+
+
+C也有一个组合的位与-赋值运算符：&=。下面两个将产生相同的结果：
+
+```c
+
+val &= 0377
+val = val & 0377
+
+```
+
+
+### 15.1.3 位或（`OR`）:`|`
+
+二进制运算符|通过对两个操作数逐位进行比较产生一个新值。对于每个位，如果其中任意操作数中对应的位为1，那么结果位就为1.
+
+```c
+
+	(10010011)
+  | (00111101)
+  = (10111111)
+
+```
+
+C也有组合位或-赋值运算符： |=
+
+```c
+
+val |= 0377
+val = val | 0377
+
+```
+
+
+### 15.1.4 位异或: 
+
+二进制运算符^对两个操作数逐位进行比较。对于每个位，如果操作数中的对应位有一个是1(但不是都是1)，那么结果是1.如果都是0或者都是1，则结果位0.
+
+
+```c
+
+	(10010011)
+  ^ (00111101)
+  = (10101110)
+
+```
+
+
+C也有一个组合的位异或-赋值运算符： ^=
+
+```c
+
+val ^= 0377
+val = val ^ 0377
+
+```
+
+
+### 15.1.5 用法
+
+### 15.1.5.1 打开位
+
+已知：10011010：
+
+1. 将位2打开
+
+flag |  10011010
+
+```c
+
+(10011010)
+|(00000100)
+=(10011110)
+
+```
+
+2. 将所有位打开。
+
+flag | ~flag
+
+```c
+
+(10011010)
+|(01100101)
+=(11111111)
+
+```
+
+### 15.1.5.2 关闭位
+
+flag & ~flag
+
+```c
+
+(10011010)
+&(01100101)
+=(00000000)
+
+```
+
+### 15.1.5.3 转置位
+
+转置(toggling)一个位表示如果该位打开，则关闭该位；如果该位关闭，则打开。您可以使用位异或运算符来转置。其思想是如果b是一个位(1或0)，那么如果b为1则b^1为0，如果b为0，则1^b为1。无论b的值是0还是1,0^b为b.
+
+flag ^ 0xff
+
+```c
+
+(10010011)
+^(11111111)
+=(01101100)
+
+```
+
+
+### 15.1.5.4 交换两个数不需要临时变量
+
+```c
+
+//a ^ b = temp;
+//a ^ temp = b;
+//b ^ temp = a
+ (10010011)
+^(00100110)
+=(10110101)
+
+ (10110101)
+^(00100110)
+  10010011
+  
+  int a = 10;
+  int b = 30;
+
+```
+
+
+### chighdata015b
+## 15.2 移位运算符
+
+
+现在让我们了解一下C的移位运算符。移位运算符将位向左或向右移动。同样，我们仍将明确地使用二进制形式来说明该机制的工作原理。
+
+## 15.2.1 左移 <<
+
+左移运算符<<将其左侧操作数的值的每位向左移动，移动的位数由其右侧操作数指定。空出来的位用0填充，并且丢弃移出左侧操作数末端的位。在下面例子中，每位向左移动两个位置。
+
+```c
+
+(10001010) << 2
+(00101000)
+
+```
+
+该操作将产生一个新位置，但是不改变其操作数。
+
+```c
+
+1 << 1 = 2;
+2 << 1 = 4;
+4 << 1 = 8;
+8 << 2 = 32
+
+```
+
+左移一位相当于原值*2.
+
+## 15.2.2 右移 >>
+
+右移运算符>>将其左侧的操作数的值每位向右移动，移动的位数由其右侧的操作数指定。丢弃移出左侧操作数有段的位。对于unsigned类型，使用0填充左端空出的位。**对于有符号类型，结果依赖于机器。空出的位可能用0填充，或者使用符号(最左端)位的副本填充。**
+
+
+```c
+
+//有符号值
+(10001010) >> 2
+(00100010)     //在某些系统上的结果值
+
+(10001010) >> 2
+(11100010)     //在另一些系统上的结果
+
+//无符号值
+(10001010) >> 2
+(00100010)    //所有系统上的结果值
+
+```
+
+
+## 15.2.3 用法：移位运算符
+
+移位运算符能够提供快捷、高效（依赖于硬件）对2的幂的乘法和除法。
+
+![c1highdata002](images/c1highdata002.png)
+
 
 
