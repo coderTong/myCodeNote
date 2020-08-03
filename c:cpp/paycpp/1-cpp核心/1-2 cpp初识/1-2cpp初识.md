@@ -4,8 +4,8 @@
 
 
 2. [C++初识](#cpp1data002)
-    1. [c++ hello world](#cpp1data002)
-    2. [面向对象三大特性](#cpp1data002)
+    1. [c++ hello world](#cpp1data002a)
+    2. [面向对象三大特性](#cpp1data002b)
 
 
 
