@@ -1,0 +1,45 @@
+1、命名规范
+	1) 类名：单词首字母大小，单词和单词之间直接连接，无需连接字符 
+		如：MyClass，QPushButton
+		class MainWindow
+		{
+		};
+		
+	2) Qt中内置的类型，头文件和类命名同名。
+		如：
+		#include <QString>
+		QSring str;
+		
+		#include <QWidget>
+		QWidget w;
+
+
+	3) 函数名字，变量名：首字母小写，之后每个单词首字母大写，单词和单词之间直接连接，无需连接字符
+		如：
+		void connectTheSignal();
+		
+	4) 	类的成员变量设置函数用使用 set+成员变量名，
+		获取成员变量的函数直接用成员变量名（如果是bool类型，有可能会用一些表示状态的术语，如isVisilble，hasFocus）：
+		如：
+		//普通成员变量设置和获取
+		void setText(QString text);
+		QString text()const;
+		//bool的成员变量获取
+		bool isEnabled()const;
+		bool hasFocus()const;
+		
+		
+2、Qtcreator常用快捷键
+	运行  ctrl +R
+	编译  ctrl +B
+	帮助文档  F1 ，点击F1两次跳到帮助界面
+	跳到符号定义 F2 或者 Ctrl + 鼠标点击
+	注释 ctrl+/
+	字体缩放  ctrl + 鼠标滚轮
+	整行移动代码 ctrl + shift + ↑或↓
+	自动对齐   ctrl + i
+	同名之间的.h和.cpp文件跳转 F4
+	
+		
+
+
