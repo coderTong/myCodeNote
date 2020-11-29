@@ -82,4 +82,12 @@ sudo apt-get install vim
 sudo apt-get install build-essential
 
 
+
+
+
+
+
+sudo apt-get install libasound2 libasound2-dev libv4l-dev libx264-dev fawebcam fswebcam vim build-essential -y
+
+
 ```
