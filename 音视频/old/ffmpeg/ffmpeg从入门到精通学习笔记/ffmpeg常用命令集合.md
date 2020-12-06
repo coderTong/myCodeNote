@@ -55,7 +55,7 @@ ffmpeg -ss 4800 -i ffmpeg.mp4 -c copy -t 480 rtmpflv.mp4
 `ffmpeg -ss 2400 -i ffmpeg.mp4 -vn -acodec copy -t 40 mp3Video.xx`
 
 
-
+ffmpeg -i c.mp4 -vn -y -acodec copy 3.aac
 
 # 调整mp4的moov
 
