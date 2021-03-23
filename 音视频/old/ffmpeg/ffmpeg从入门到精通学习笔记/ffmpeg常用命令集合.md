@@ -70,8 +70,8 @@ ffmpeg -i ccz.mp4 -c copy -f mp4 -movflags faststart fastmoov.mp4
 
 # 
 
-for name in `ls`; do openssl enc -des-cbc -k 622153 -iv 0000000000000001 -nosalt -in $name -out $name.mp4 -d; done
-for name in `ls`; do ffmpeg -i $name -ac 1 $name.1.aac; done
+
+
 
 
 

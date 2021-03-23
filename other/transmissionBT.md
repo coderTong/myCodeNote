@@ -1,3 +1,37 @@
+# 7
+
+```c
+
+yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel wget vim zsh gcc -y && wget https://github.com/git/git/archive/v2.24.0.tar.gz && tar -zxf v2.24.0.tar.gz && cd git-2.24.0 && make prefix=/usr/local all && sudo make prefix=/usr/local install && sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
+
+cd /  && mkdir wt && cd /wt && yum install epel-release -y && yum update -y && yum -y install transmission transmission-daemon
+
+systemctl start transmission-daemon.service
+systemctl stop transmission-daemon.service
+
+
+vim /var/lib/transmission/.config/transmission-daemon/settings.json
+
+
+split -b  1800M  5.vp  top
+
+cat lo* > lop.ve
+```
+
+
+
+```bash
+
+1.  `"rpc-authentication-required":  true,` 
+2.  `"rpc-enabled":  true,` 
+3.  `"rpc-password":  "mypassword",` 
+4.  `"rpc-username":  "mysuperlogin",` 
+5.  `"rpc-whitelist-enabled":  false,` 
+6.  `"rpc-whitelist":  "0.0.0.0",`
+
+```
+
 
 # 6
 # lscpu

@@ -20,9 +20,15 @@ ln -s /application/nginx/sbin/nginx /usr/bin/nginx
 
 
 然后
-certbot --nginx --nginx-server-root=/application/nginx/conf -d nibaba.domanshow.com
+certbot --nginx --nginx-server-root=/application/nginx/conf -d www.itopengl.com
 
+
+http://www.itopengl.com/
+
+www.domanshow.com
 /application/nginx/sbin/nginx -t
 /application/nginx/sbin/nginx -s  reload
+
+
 
 ```
