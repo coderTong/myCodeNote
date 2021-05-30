@@ -30,8 +30,22 @@ cat lo* > lop.ve
 5.  `"rpc-whitelist-enabled":  false,` 
 6.  `"rpc-whitelist":  "0.0.0.0",`
 
+"download-queue-enabled": true, 
+    "download-queue-size": 5,
+
 ```
 
+
+
+# nginx
+
+```
+
+yum install pcre pcre-devel -y && wget -q http://nginx.org/download/nginx-1.6.3.tar.gz && useradd www -s /sbin/nologin -M && tar xf nginx-1.6.3.tar.gz && cd nginx-1.6.3 && yum install openssl openssl-devel gcc -y && ./configure --user=www --group=www --with-http_ssl_module --with-http_stub_status_module --prefix=/application/nginx-1.6.3/ && make && make install &&  ln -s /application/nginx-1.6.3/ /application/nginx
+
+
+
+```
 
 # 6
 # lscpu

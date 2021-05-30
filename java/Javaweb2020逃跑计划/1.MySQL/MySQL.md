@@ -1231,6 +1231,9 @@ IDENTIFIED BY 'mypass': 用户密码
 // 3. 创建一个doukeyi用户密码是123456a7, 从哪里 都可以登录, 所有库所有表都可以访问
 grant all on *.* to 'doukeyi'@'%' identified by '123456a7'
 
+
+
+
 grant all on *.* to 'mytest1'@'111.194.40.169' identified by '123456a78';
 ```
 
