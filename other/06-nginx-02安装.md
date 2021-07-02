@@ -1,3 +1,5 @@
+
+
 # l.安装Nginx所需的pcre库
 Pcre 全称(PerlCompatible RegularExpessions)，中文“perl 兼容正则表达式”，官
 方站点为tp://www.pcre.org/,安装pcre 库是为了使Nginx 皮持具备URI重写功能的
@@ -14,9 +16,25 @@ yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel wget v
 
 ```
 
+## 20
+```
+
+yum install vim wget pcre pcre-devel -y && wget -q http://nginx.org/download/nginx-1.20.0.tar.gz && useradd www -s /sbin/nologin -M && tar xf nginx-1.20.0.tar.gz && cd nginx-1.20.0 && yum install openssl openssl-devel gcc -y && ./configure --user=www --group=www --with-http_ssl_module --with-ngx_http_v2_module --with-http_stub_status_module --prefix=/application/nginx-1.20.0/ && make && make install && ln -s /application/nginx-1.20.0/ /application/nginx
+
+
+```
+
+
 
 ```
 yum install pcre pcre-devel -y && wget -q http://nginx.org/download/nginx-1.6.3.tar.gz && useradd www -s /sbin/nologin -M && tar xf nginx-1.6.3.tar.gz && cd nginx-1.6.3 && yum install openssl openssl-devel gcc -y && ./configure --user=www --group=www --with-http_ssl_module --with-http_stub_status_module --prefix=/application/nginx-1.6.3/ && make && make install &&  ln -s /application/nginx-1.6.3/ /application/nginx
+
+
+
+yum install pcre pcre-devel -y && wget -q http://nginx.org/download/nginx-1.20.0.zip
+
+
+nginx-1.20.0.tar.gz
 
 ```
 

@@ -22,6 +22,7 @@ ln -s /application/nginx/sbin/nginx /usr/bin/nginx
 然后
 certbot --nginx --nginx-server-root=/application/nginx/conf -d www.itopengl.com
 
+certbot --nginx --nginx-server-root=/application/nginx/conf -d www.domanshow.com
 
 http://www.itopengl.com/
 
