@@ -2,7 +2,7 @@
 
 ```
 
-yum install vim wget pcre pcre-devel -y && wget -q http://nginx.org/download/nginx-1.20.0.tar.gz && useradd www -s /sbin/nologin -M && tar xf nginx-1.20.0.tar.gz && cd nginx-1.20.0 && yum install openssl openssl-devel gcc -y && ./configure --user=www --group=www --with-http_ssl_module --with-ngx_http_v2_module --with-http_stub_status_module --prefix=/application/nginx-1.20.0/ && make && make install && ln -s /application/nginx-1.20.0/ /application/nginx
+yum install vim wget pcre pcre-devel -y && wget -q http://nginx.org/download/nginx-1.20.0.tar.gz && useradd www -s /sbin/nologin -M && tar xf nginx-1.20.0.tar.gz && cd nginx-1.20.0 && yum install openssl openssl-devel gcc -y && ./configure --user=www --group=www --with-http_ssl_module --with-http_stub_status_module --prefix=/application/nginx-1.20.0/ && make && make install && ln -s /application/nginx-1.20.0/ /application/nginx
 
 
 ```
@@ -63,7 +63,7 @@ netstat -lntup|grep 80
 然后
 certbot --nginx --nginx-server-root=/application/nginx/conf -d www.ccc.com
 
-certbot --nginx --nginx-server-root=/application/nginx/conf -d www.cccc.com
+certbot --nginx --nginx-server-root=/application/nginx/conf -d www.domanshow.com
 
 http://www.cccc.com/
 
@@ -105,8 +105,9 @@ bash <(curl -sL https://raw.githubusercontent.com/hijkpw/scripts/master/goV2.sh)
 // 看一眼
 cat /etc/v2ray/config.json
 
+cd  /etc/v2ray
 // 怕改坏先留存一份原来的
- cp config.json config20210702092157.json
+ cp config.json config20210702092158.json
 
 
 
@@ -154,7 +155,7 @@ ss -ntlp | grep v2ray
     "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/bb/cc"
+          "path": "/api/employee/recruit/publish/position/list"
         }
       },
     "listen": "127.0.0.1"
