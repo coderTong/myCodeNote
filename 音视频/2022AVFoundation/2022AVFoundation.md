@@ -82,4 +82,4 @@ if ([self.captureSession canAddInput:videoInput]) {
 看看是否能支持聚焦
 
 - iPhone6的前置摄像头是不支持聚焦的.
-
+- iPhone6P 6s 一声 前置摄像头才支持聚焦
