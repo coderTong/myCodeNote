@@ -83,3 +83,12 @@ if ([self.captureSession canAddInput:videoInput]) {
 
 - iPhone6的前置摄像头是不支持聚焦的.
 - iPhone6P 6s 一声 前置摄像头才支持聚焦
+
+
+
+
+## lockForConfiguration
+
+因为配置时, 不能让多个对象对他进行更改, 所以要对该过程上锁
+
+[-AVCaptureDevice lockForConfiguration]
