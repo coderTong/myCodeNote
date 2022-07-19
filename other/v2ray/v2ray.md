@@ -2,7 +2,14 @@
 
 ```
 
+yum install wget vim zsh git -y && sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" -Y
+
+
+
+
+
 yum install vim wget pcre pcre-devel -y && wget -q http://nginx.org/download/nginx-1.20.0.tar.gz && useradd www -s /sbin/nologin -M && tar xf nginx-1.20.0.tar.gz && cd nginx-1.20.0 && yum install openssl openssl-devel gcc -y && ./configure --user=www --group=www --with-http_ssl_module --with-http_stub_status_module --prefix=/application/nginx-1.20.0/ && make && make install && ln -s /application/nginx-1.20.0/ /application/nginx
+
 
 
 ```
@@ -27,7 +34,7 @@ yum install vim wget pcre pcre-devel -y && wget -q http://nginx.org/download/ngi
 // 顺滑重启
 /application/nginx/sbin/nginx -s reload
 
-
+https://www.bwgss.org/wp-content/uploads/2020/11/clash_template2.yaml
 
 ```
 
@@ -63,7 +70,7 @@ netstat -lntup|grep 80
 然后
 certbot --nginx --nginx-server-root=/application/nginx/conf -d www.ccc.com
 
-certbot --nginx --nginx-server-root=/application/nginx/conf -d www.domanshow.com
+certbot --nginx --nginx-server-root=/application/nginx/conf -d bbs.domanshow.com
 
 http://www.cccc.com/
 
@@ -73,6 +80,11 @@ www.cccc.com
 
 
 
+ Certificate Path: /etc/letsencrypt/live/bbs.domanshow.com/fullchain.pem
+
+ Private Key Path: 
+
+/etc/letsencrypt/live/bbs.domanshow.com/privkey.pem
 ```
 
 
