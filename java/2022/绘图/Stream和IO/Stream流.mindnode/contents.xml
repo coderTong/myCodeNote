@@ -32,7 +32,7 @@
 				<key>location</key>
 				<string>{-61.791246973169507, -19.192502750002575}</string>
 				<key>nodeID</key>
-				<string>D88D3103-F0EC-454D-926D-DAB845EEC31F</string>
+				<string>8BE56859-7029-452D-B82C-ECC68039AA39</string>
 				<key>strokeColor</key>
 				<string>{0.965, 0.965, 0.965, 1.000}</string>
 				<key>strokeStyle</key>
@@ -53,9 +53,9 @@
 						<key>isLeftAligned</key>
 						<false/>
 						<key>location</key>
-						<string>{118.20875302683049, -304.19250275000257}</string>
+						<string>{118.20875302683049, -469.69250275000257}</string>
 						<key>nodeID</key>
-						<string>CAFA73CC-80A5-4F34-88E0-73CE615CAFC3</string>
+						<string>4F1D9C71-E6C5-476D-85CD-9369CC708F70</string>
 						<key>strokeColor</key>
 						<string>{0.822, 0.084, 0.348, 1.000}</string>
 						<key>strokeStyle</key>
@@ -76,9 +76,9 @@
 								<key>isLeftAligned</key>
 								<false/>
 								<key>location</key>
-								<string>{230.20875302683049, -304.19250275000257}</string>
+								<string>{230.20875302683049, -469.69250275000257}</string>
 								<key>nodeID</key>
-								<string>702C2615-0CA6-4698-9BF6-7B61FF8A437C</string>
+								<string>94F455BA-7A8A-4C0B-BA23-C49468AF65E3</string>
 								<key>strokeColor</key>
 								<string>{0.822, 0.084, 0.348, 1.000}</string>
 								<key>strokeStyle</key>
@@ -99,9 +99,9 @@
 										<key>isLeftAligned</key>
 										<false/>
 										<key>location</key>
-										<string>{385.20875302683049, -304.19250275000257}</string>
+										<string>{385.20875302683049, -469.69250275000257}</string>
 										<key>nodeID</key>
-										<string>016F0CFB-1248-4F57-95DC-1EB452509D31</string>
+										<string>7F1D0F41-8A09-4CC6-8D74-D12EF25EDAC5</string>
 										<key>strokeColor</key>
 										<string>{0.822, 0.084, 0.348, 1.000}</string>
 										<key>strokeStyle</key>
@@ -178,9 +178,9 @@
 						<key>isLeftAligned</key>
 						<false/>
 						<key>location</key>
-						<string>{118.20875302683049, -263.19250275000257}</string>
+						<string>{118.20875302683049, -428.69250275000257}</string>
 						<key>nodeID</key>
-						<string>E0909E9A-10A9-40A5-BF99-9190A8A833EC</string>
+						<string>62C6FC2D-3F5C-4DEE-AD98-2450FBE6B018</string>
 						<key>strokeColor</key>
 						<string>{0.822, 0.084, 0.348, 1.000}</string>
 						<key>strokeStyle</key>
@@ -201,9 +201,9 @@
 								<key>isLeftAligned</key>
 								<false/>
 								<key>location</key>
-								<string>{262.20875302683049, -263.19250275000257}</string>
+								<string>{262.20875302683049, -428.69250275000257}</string>
 								<key>nodeID</key>
-								<string>123D19D8-F535-4BE5-8CCA-E870581E11EE</string>
+								<string>D94E2EF9-C277-4E9B-A40F-238854618770</string>
 								<key>strokeColor</key>
 								<string>{0.822, 0.084, 0.348, 1.000}</string>
 								<key>strokeStyle</key>
@@ -263,7 +263,7 @@
 						<key>location</key>
 						<string>{118.20875302683049, -160.69250275000257}</string>
 						<key>nodeID</key>
-						<string>91536303-E103-492F-B2E8-050A833B68C4</string>
+						<string>DAD60EE3-C337-499F-A5F1-449FA721D0DF</string>
 						<key>strokeColor</key>
 						<string>{0.822, 0.084, 0.348, 1.000}</string>
 						<key>strokeStyle</key>
@@ -284,9 +284,9 @@
 								<key>isLeftAligned</key>
 								<false/>
 								<key>location</key>
-								<string>{262.20875302683049, -222.19250275000257}</string>
+								<string>{262.20875302683049, -387.69250275000257}</string>
 								<key>nodeID</key>
-								<string>839C956D-0B1B-4F1B-96DF-CC82506B434E</string>
+								<string>5F430122-C3A6-4D18-9AE8-FB540507056B</string>
 								<key>strokeColor</key>
 								<string>{0.822, 0.084, 0.348, 1.000}</string>
 								<key>strokeStyle</key>
@@ -294,7 +294,49 @@
 								<key>strokeWidth</key>
 								<real>5</real>
 								<key>subnodes</key>
-								<array/>
+								<array>
+									<dict>
+										<key>contentAlignment</key>
+										<integer>1</integer>
+										<key>fillColor</key>
+										<string>{1.000, 1.000, 1.000, 1.000}</string>
+										<key>isDecreasingBranchThickness</key>
+										<true/>
+										<key>isDrawingFill</key>
+										<false/>
+										<key>isLeftAligned</key>
+										<false/>
+										<key>location</key>
+										<string>{406.20875302683049, -387.69250275000257}</string>
+										<key>nodeID</key>
+										<string>C1CB55D1-EDFF-4B5C-A8C2-1F1FAD96DDEE</string>
+										<key>strokeColor</key>
+										<string>{0.822, 0.084, 0.348, 1.000}</string>
+										<key>strokeStyle</key>
+										<integer>0</integer>
+										<key>strokeWidth</key>
+										<real>4</real>
+										<key>subnodes</key>
+										<array/>
+										<key>title</key>
+										<dict>
+											<key>constrainedWidth</key>
+											<integer>300</integer>
+											<key>htmlText</key>
+											<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 5px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://gitee.com/wutongxd/java2022/blob/master/basic003API1/src/com/itopengl/IStream/MyStream.java'&gt;https://gitee.com/wutongxd/java2022/blob/master/basic003API1/src/com/itopengl/IStream/MyStream.java&lt;/a&gt;&lt;/p&gt;</string>
+											<key>shrinkToFitContent</key>
+											<integer>1</integer>
+											<key>text</key>
+											<string>{\rtf1\ansi\ansicpg936\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;}
+{\colortbl;\red255\green255\blue255;\red91\green91\blue91;}
+{\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+{\field{\*\fldinst{HYPERLINK "https://gitee.com/wutongxd/java2022/blob/master/basic003API1/src/com/itopengl/IStream/MyStream.java"}}{\fldrslt 
+\f0\fs10 \cf2 https://gitee.com/wutongxd/java2022/blob/master/basic003API1/src/com/itopengl/IStream/MyStream.java}}}</string>
+										</dict>
+									</dict>
+								</array>
 								<key>title</key>
 								<dict>
 									<key>constrainedWidth</key>
@@ -325,9 +367,9 @@
 								<key>isLeftAligned</key>
 								<false/>
 								<key>location</key>
-								<string>{262.20875302683049, -181.19250275000257}</string>
+								<string>{262.20875302683049, -245.69250275000257}</string>
 								<key>nodeID</key>
-								<string>2E1D0847-3272-4A2A-83AA-F813D2AB338C</string>
+								<string>956F62D0-4931-4F6F-B2BB-78FBACBF3A2B</string>
 								<key>strokeColor</key>
 								<string>{0.822, 0.084, 0.348, 1.000}</string>
 								<key>strokeStyle</key>
@@ -348,9 +390,9 @@
 										<key>isLeftAligned</key>
 										<false/>
 										<key>location</key>
-										<string>{406.20875302683049, -181.19250275000257}</string>
+										<string>{406.20875302683049, -346.69250275000257}</string>
 										<key>nodeID</key>
-										<string>962E308D-F3CC-4C3F-BA1E-AF108FFB1309</string>
+										<string>48C412F9-32E5-41D9-B3AD-E602371F57DB</string>
 										<key>strokeColor</key>
 										<string>{0.822, 0.084, 0.348, 1.000}</string>
 										<key>strokeStyle</key>
@@ -375,6 +417,75 @@
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f0\fs36 \cf2 \'d2\'bb\'b4\'ce\'b2\'d9\'d7\'f7\'d6\'ae\'ba\'f3,\'bb\'b9\'bf\'c9\'d2\'d4\'bc\'cc\'d0\'f8\'c6\'e4\'cb\'fb\'b2\'d9\'d7\'f7}</string>
+										</dict>
+									</dict>
+									<dict>
+										<key>contentAlignment</key>
+										<integer>1</integer>
+										<key>fillColor</key>
+										<string>{1.000, 1.000, 1.000, 1.000}</string>
+										<key>isDecreasingBranchThickness</key>
+										<true/>
+										<key>isDrawingFill</key>
+										<false/>
+										<key>isLeftAligned</key>
+										<false/>
+										<key>location</key>
+										<string>{406.20875302683049, -305.69250275000257}</string>
+										<key>nodeID</key>
+										<string>53AE7588-1105-45CD-80C2-27DEF79D7A1A</string>
+										<key>strokeColor</key>
+										<string>{0.822, 0.084, 0.348, 1.000}</string>
+										<key>strokeStyle</key>
+										<integer>0</integer>
+										<key>strokeWidth</key>
+										<real>4</real>
+										<key>subnodes</key>
+										<array/>
+										<key>title</key>
+										<dict>
+											<key>constrainedWidth</key>
+											<integer>661</integer>
+											<key>htmlText</key>
+											<string>&lt;p style='color: rgba(251, 1, 6, 1.000000); font: 13px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;过滤&lt;/p&gt;&lt;p&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;Stream&lt;/span&gt;&lt;span style='background-color: rgba(220, 255, 219, 1.000000); color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;&amp;lt;T&amp;gt;&lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt; filter(Predicate&lt;/span&gt;&lt;span style='font: 13px "Courier"; -cocoa-font-postscriptname: "Courier"; '&gt;&amp;lt;? super T&amp;gt; &lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;predicate);&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style='color: rgba(251, 1, 6, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;limit(2) &lt;/span&gt;&lt;span style='color: rgba(251, 1, 6, 1.000000); font: 13px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;只要前面两个&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;Stream&lt;/span&gt;&lt;span style='background-color: rgba(220, 255, 219, 1.000000); color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;&amp;lt;T&amp;gt;&lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt; limit(long maxSize); //&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style='color: rgba(251, 1, 6, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;skip(2) &lt;/span&gt;&lt;span style='color: rgba(251, 1, 6, 1.000000); font: 13px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;除了前面两个后面的都要&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;Stream&lt;/span&gt;&lt;span style='background-color: rgba(220, 255, 219, 1.000000); color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;&amp;lt;T&amp;gt;&lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt; skip(long n);&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style='color: rgba(251, 1, 6, 1.000000); font: 13px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;合并两个&lt;/span&gt;&lt;span style='color: rgba(251, 1, 6, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;Stream&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;public static &lt;/span&gt;&lt;span style='background-color: rgba(220, 255, 219, 1.000000); color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;&amp;lt;T&amp;gt;&lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt; Stream&lt;/span&gt;&lt;span style='background-color: rgba(220, 255, 219, 1.000000); color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;&amp;lt;T&amp;gt;&lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt; concat(Stream&lt;/span&gt;&lt;span style='font: 13px "Courier"; -cocoa-font-postscriptname: "Courier"; '&gt;&amp;lt;? extends T&amp;gt; &lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;a, Stream&lt;/span&gt;&lt;span style='font: 13px "Courier"; -cocoa-font-postscriptname: "Courier"; '&gt;&amp;lt;? extends T&amp;gt; &lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;b)&lt;/span&gt;&lt;/p&gt;&lt;p style='color: rgba(251, 1, 6, 1.000000); font: 13px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;去重&lt;/p&gt;&lt;p&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;Stream&lt;/span&gt;&lt;span style='background-color: rgba(220, 255, 219, 1.000000); color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;&amp;lt;T&amp;gt;&lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt; distinct();&lt;/span&gt;&lt;/p&gt;</string>
+											<key>shrinkToFitContent</key>
+											<integer>0</integer>
+											<key>text</key>
+											<string>{\rtf1\ansi\ansicpg936\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;\f1\fmodern\fcharset0 Courier-Oblique;\f2\fmodern\fcharset0 Courier;
+}
+{\colortbl;\red255\green255\blue255;\red251\green2\blue7;\red109\green109\blue109;\red220\green255\blue219;
+}
+{\*\expandedcolortbl;;\cssrgb\c100000\c14913\c0;\csgenericrgb\c42745\c42745\c42745;\csgenericrgb\c86275\c100000\c85882;
+}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs26 \cf2 \'b9\'fd\'c2\'cb
+\f1\i \cf3 \
+Stream\cb4 &lt;T&gt;\cb1  filter(Predicate
+\f2\i0 \cf0 &lt;? super T&gt; 
+\f1\i \cf3 predicate);\
+\cf2 limit(2) 
+\f0\i0 \'d6\'bb\'d2\'aa\'c7\'b0\'c3\'e6\'c1\'bd\'b8\'f6
+\f1\i \cf3 \
+Stream\cb4 &lt;T&gt;\cb1  limit(long maxSize); //\
+\cf2 skip(2) 
+\f0\i0 \'b3\'fd\'c1\'cb\'c7\'b0\'c3\'e6\'c1\'bd\'b8\'f6\'ba\'f3\'c3\'e6\'b5\'c4\'b6\'bc\'d2\'aa
+\f1\i \cf3 \
+Stream\cb4 &lt;T&gt;\cb1  skip(long n);\
+
+\f0\i0 \cf2 \'ba\'cf\'b2\'a2\'c1\'bd\'b8\'f6
+\f1\i Stream\cf3 \
+public static \cb4 &lt;T&gt;\cb1  Stream\cb4 &lt;T&gt;\cb1  concat(Stream
+\f2\i0 \cf0 &lt;? extends T&gt; 
+\f1\i \cf3 a, Stream
+\f2\i0 \cf0 &lt;? extends T&gt; 
+\f1\i \cf3 b)\
+
+\f0\i0 \cf2 \'c8\'a5\'d6\'d8
+\f1\i \cf3 \
+Stream\cb4 &lt;T&gt;\cb1  distinct();\
+}</string>
 										</dict>
 									</dict>
 								</array>
@@ -408,9 +519,9 @@
 								<key>isLeftAligned</key>
 								<false/>
 								<key>location</key>
-								<string>{262.20875302683049, -119.69250275000257}</string>
+								<string>{262.20875302683049, -103.69250275000257}</string>
 								<key>nodeID</key>
-								<string>EED355E3-EC57-4774-A89F-46FF2267DDFB</string>
+								<string>83424AAE-0172-43AA-9333-34FE07148D9F</string>
 								<key>strokeColor</key>
 								<string>{0.822, 0.084, 0.348, 1.000}</string>
 								<key>strokeStyle</key>
@@ -431,9 +542,95 @@
 										<key>isLeftAligned</key>
 										<false/>
 										<key>location</key>
-										<string>{406.20875302683049, -140.19250275000257}</string>
+										<string>{406.20875302683049, -103.69250275000257}</string>
 										<key>nodeID</key>
-										<string>4DA3EB7C-C196-463C-878E-A4633A21C6EF</string>
+										<string>FE2805CB-44DE-49CB-A7C2-28677120BD67</string>
+										<key>strokeColor</key>
+										<string>{0.822, 0.084, 0.348, 1.000}</string>
+										<key>strokeStyle</key>
+										<integer>0</integer>
+										<key>strokeWidth</key>
+										<real>4</real>
+										<key>subnodes</key>
+										<array/>
+										<key>title</key>
+										<dict>
+											<key>constrainedWidth</key>
+											<integer>605</integer>
+											<key>htmlText</key>
+											<string>&lt;p&gt;&lt;span style='font: 9px "Courier"; -cocoa-font-postscriptname: "Courier"; '&gt;List&amp;lt;Integer&amp;gt; integerList = integers.stream().filter(number -&amp;gt; number % &lt;/span&gt;&lt;span style='color: rgba(0, 0, 254, 1.000000); font: 9px "Courier"; -cocoa-font-postscriptname: "Courier"; '&gt;2 &lt;/span&gt;&lt;span style='font: 9px "Courier"; -cocoa-font-postscriptname: "Courier"; '&gt;== &lt;/span&gt;&lt;span style='color: rgba(0, 0, 254, 1.000000); font: 9px "Courier"; -cocoa-font-postscriptname: "Courier"; '&gt;0&lt;/span&gt;&lt;span style='font: 9px "Courier"; -cocoa-font-postscriptname: "Courier"; '&gt;).collect(Collectors.&lt;/span&gt;&lt;span style='font: italic 9px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;toList&lt;/span&gt;&lt;span style='font: 9px "Courier"; -cocoa-font-postscriptname: "Courier"; '&gt;());&lt;/span&gt;&lt;/p&gt;</string>
+											<key>shrinkToFitContent</key>
+											<integer>0</integer>
+											<key>text</key>
+											<string>{\rtf1\ansi\ansicpg936\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 Courier;\f1\fmodern\fcharset0 Courier-Oblique;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue254;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c99608;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs18 \cf0 List&lt;Integer&gt; integerList = integers.stream().filter(number -&gt; number % \cf2 2 \cf0 == \cf2 0\cf0 ).collect(Collectors.
+\f1\i toList
+\f0\i0 ());\
+}</string>
+										</dict>
+									</dict>
+								</array>
+								<key>title</key>
+								<dict>
+									<key>constrainedWidth</key>
+									<integer>300</integer>
+									<key>htmlText</key>
+									<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;收集操作&lt;/p&gt;</string>
+									<key>shrinkToFitContent</key>
+									<integer>1</integer>
+									<key>text</key>
+									<string>{\rtf1\ansi\ansicpg936\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;}
+{\colortbl;\red255\green255\blue255;\red91\green91\blue91;}
+{\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs36 \cf2 \'ca\'d5\'bc\'af\'b2\'d9\'d7\'f7}</string>
+								</dict>
+							</dict>
+							<dict>
+								<key>contentAlignment</key>
+								<integer>1</integer>
+								<key>fillColor</key>
+								<string>{1.000, 1.000, 1.000, 1.000}</string>
+								<key>isDecreasingBranchThickness</key>
+								<true/>
+								<key>isDrawingFill</key>
+								<false/>
+								<key>isLeftAligned</key>
+								<false/>
+								<key>location</key>
+								<string>{262.20875302683049, 1.8074972499974251}</string>
+								<key>nodeID</key>
+								<string>C38662D7-7EF1-4491-96A9-87CD243B01DE</string>
+								<key>strokeColor</key>
+								<string>{0.822, 0.084, 0.348, 1.000}</string>
+								<key>strokeStyle</key>
+								<integer>0</integer>
+								<key>strokeWidth</key>
+								<real>5</real>
+								<key>subnodes</key>
+								<array>
+									<dict>
+										<key>contentAlignment</key>
+										<integer>1</integer>
+										<key>fillColor</key>
+										<string>{1.000, 1.000, 1.000, 1.000}</string>
+										<key>isDecreasingBranchThickness</key>
+										<true/>
+										<key>isDrawingFill</key>
+										<false/>
+										<key>isLeftAligned</key>
+										<false/>
+										<key>location</key>
+										<string>{406.20875302683049, -62.692502750002575}</string>
+										<key>nodeID</key>
+										<string>ED21C6CE-EFFF-4610-A6CE-0F3F8026F4D5</string>
 										<key>strokeColor</key>
 										<string>{0.822, 0.084, 0.348, 1.000}</string>
 										<key>strokeStyle</key>
@@ -447,7 +644,7 @@
 											<key>constrainedWidth</key>
 											<integer>300</integer>
 											<key>htmlText</key>
-											<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;一个Stream流只有一个终结方法&lt;/p&gt;</string>
+											<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;一个Stream流只有一个终结方法&lt;/p&gt;&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;最后一步操作&lt;/p&gt;</string>
 											<key>shrinkToFitContent</key>
 											<integer>1</integer>
 											<key>text</key>
@@ -457,7 +654,8 @@
 {\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
-\f0\fs36 \cf2 \'d2\'bb\'b8\'f6Stream\'c1\'f7\'d6\'bb\'d3\'d0\'d2\'bb\'b8\'f6\'d6\'d5\'bd\'e1\'b7\'bd\'b7\'a8}</string>
+\f0\fs36 \cf2 \'d2\'bb\'b8\'f6Stream\'c1\'f7\'d6\'bb\'d3\'d0\'d2\'bb\'b8\'f6\'d6\'d5\'bd\'e1\'b7\'bd\'b7\'a8\
+\'d7\'ee\'ba\'f3\'d2\'bb\'b2\'bd\'b2\'d9\'d7\'f7}</string>
 										</dict>
 									</dict>
 									<dict>
@@ -472,9 +670,9 @@
 										<key>isLeftAligned</key>
 										<false/>
 										<key>location</key>
-										<string>{406.20875302683049, -99.192502750002575}</string>
+										<string>{406.20875302683049, 3.3074972499974251}</string>
 										<key>nodeID</key>
-										<string>E451A973-BCBE-49C5-A47B-96E58DC5E68F</string>
+										<string>C31FD841-A62B-46A8-9CFA-A4E07EE91FE4</string>
 										<key>strokeColor</key>
 										<string>{0.822, 0.084, 0.348, 1.000}</string>
 										<key>strokeStyle</key>
@@ -486,19 +684,37 @@
 										<key>title</key>
 										<dict>
 											<key>constrainedWidth</key>
-											<integer>300</integer>
+											<integer>541</integer>
 											<key>htmlText</key>
-											<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;最后一步操作&lt;/p&gt;</string>
+											<string>&lt;p style='color: rgba(0, 0, 0, 1.000000); font: 13px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;终结方法&lt;/p&gt;&lt;p style='text-align: left; '&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;void &lt;/span&gt;&lt;span style='color: rgba(251, 1, 6, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;forEach&lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;(&lt;/span&gt;&lt;span style='color: rgba(127, 0, 127, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;Consumer&lt;/span&gt;&lt;span style='font: 13px "Courier"; -cocoa-font-postscriptname: "Courier"; '&gt;&amp;lt;? super T&amp;gt; &lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;action); &lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: 13px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;对此流的每个元素执行操作&lt;/span&gt;&lt;/p&gt;&lt;p style='text-align: left; '&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;   - &lt;/span&gt;&lt;span style='color: rgba(127, 0, 127, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;Consumer&lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: 13px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;接口中的方法&lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;  void &lt;/span&gt;&lt;span style='color: rgba(252, 127, 8, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;accept&lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;(T t); &lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: 13px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;对给定的参数执行此操作&lt;/span&gt;&lt;/p&gt;&lt;p style='text-align: left; '&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;long &lt;/span&gt;&lt;span style='color: rgba(251, 1, 6, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;count&lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt;(); &lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: 13px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;返回此流中的元素个数&lt;/span&gt;&lt;span style='color: rgba(109, 109, 109, 1.000000); font: italic 13px "Courier"; -cocoa-font-postscriptname: "Courier-Oblique"; '&gt; &lt;/span&gt;&lt;/p&gt;</string>
 											<key>shrinkToFitContent</key>
-											<integer>1</integer>
+											<integer>0</integer>
 											<key>text</key>
 											<string>{\rtf1\ansi\ansicpg936\cocoartf2636
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;}
-{\colortbl;\red255\green255\blue255;\red91\green91\blue91;}
-{\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;\f1\fmodern\fcharset0 Courier-Oblique;\f2\fmodern\fcharset0 Courier;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red109\green109\blue109;\red251\green2\blue7;
+\red128\green0\blue128;\red253\green128\blue8;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\csgenericrgb\c42745\c42745\c42745;\cssrgb\c100000\c14913\c0;
+\cssrgb\c57919\c12801\c57269;\cssrgb\c100000\c57637\c0;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
-\f0\fs36 \cf2 \'d7\'ee\'ba\'f3\'d2\'bb\'b2\'bd\'b2\'d9\'d7\'f7}</string>
+\f0\fs26 \cf2 \'d6\'d5\'bd\'e1\'b7\'bd\'b7\'a8
+\f1\i \cf3 \
+void \cf4 forEach\cf3 (\cf5 Consumer
+\f2\i0 \cf0 &lt;? super T&gt; 
+\f1\i \cf3 action); 
+\f0\i0 \'b6\'d4\'b4\'cb\'c1\'f7\'b5\'c4\'c3\'bf\'b8\'f6\'d4\'aa\'cb\'d8\'d6\'b4\'d0\'d0\'b2\'d9\'d7\'f7
+\f1\i \
+   - \cf5 Consumer
+\f0\i0 \cf3 \'bd\'d3\'bf\'da\'d6\'d0\'b5\'c4\'b7\'bd\'b7\'a8
+\f1\i   void \cf6 accept\cf3 (T t); 
+\f0\i0 \'b6\'d4\'b8\'f8\'b6\'a8\'b5\'c4\'b2\'ce\'ca\'fd\'d6\'b4\'d0\'d0\'b4\'cb\'b2\'d9\'d7\'f7
+\f1\i \
+long \cf4 count\cf3 (); 
+\f0\i0 \'b7\'b5\'bb\'d8\'b4\'cb\'c1\'f7\'d6\'d0\'b5\'c4\'d4\'aa\'cb\'d8\'b8\'f6\'ca\'fd
+\f1\i  \
+}</string>
 										</dict>
 									</dict>
 								</array>
@@ -551,9 +767,9 @@
 						<key>isLeftAligned</key>
 						<false/>
 						<key>location</key>
-						<string>{118.20875302683049, 73.807497249997425}</string>
+						<string>{118.20875302683049, 239.30749724999743}</string>
 						<key>nodeID</key>
-						<string>47BDC904-49E3-4D1B-BA57-B0C00F7EF5AB</string>
+						<string>9BECB405-85AC-4717-9B4B-67215DA08885</string>
 						<key>strokeColor</key>
 						<string>{0.194, 0.734, 0.282, 1.000}</string>
 						<key>strokeStyle</key>
@@ -574,9 +790,9 @@
 								<key>isLeftAligned</key>
 								<false/>
 								<key>location</key>
-								<string>{280.20875302683049, -45.692502750002575}</string>
+								<string>{280.20875302683049, 119.80749724999743}</string>
 								<key>nodeID</key>
-								<string>CFFB99C2-BEFC-4CDA-8A66-46600A45838E</string>
+								<string>02FC8E00-6D08-48DA-87D7-34A224ADF5BD</string>
 								<key>strokeColor</key>
 								<string>{0.194, 0.734, 0.282, 1.000}</string>
 								<key>strokeStyle</key>
@@ -597,9 +813,9 @@
 										<key>isLeftAligned</key>
 										<false/>
 										<key>location</key>
-										<string>{424.20875302683049, -58.192502750002575}</string>
+										<string>{424.20875302683049, 107.30749724999743}</string>
 										<key>nodeID</key>
-										<string>4FC15D03-76DD-4CF4-BED8-774553038252</string>
+										<string>22E25A5C-4BDA-417C-B342-54BCB3335F11</string>
 										<key>strokeColor</key>
 										<string>{0.194, 0.734, 0.282, 1.000}</string>
 										<key>strokeStyle</key>
@@ -619,8 +835,8 @@
 											<key>text</key>
 											<string>{\rtf1\ansi\ansicpg936\cocoartf2636
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;}
-{\colortbl;\red255\green255\blue255;\red91\green91\blue91;\red251\green2\blue7;}
-{\*\expandedcolortbl;;\csgenericrgb\c35700\c35700\c35700;\cssrgb\c100000\c14913\c0;}
+{\colortbl;\red255\green255\blue255;\red91\green91\blue91;\red251\green1\blue6;}
+{\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;\csgenericrgb\c98431\c392\c2353;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f0\fs36 \cf2 \'bf\'c9\'d2\'d4\'ca\'b9\'d3\'c3\cf3 Collection\cf2 \'bd\'d3\'bf\'da\'d6\'d0\'b5\'c4\'c4\'ac\'c8\'cf\'b7\'bd\'b7\'a8\cf3 stream()\cf2 \'c9\'fa\'b3\'c9}</string>
@@ -639,7 +855,7 @@
 									<string>{\rtf1\ansi\ansicpg936\cocoartf2636
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;}
 {\colortbl;\red255\green255\blue255;\red91\green91\blue91;}
-{\*\expandedcolortbl;;\csgenericrgb\c35700\c35700\c35700;}
+{\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f0\fs36 \cf2 \'b5\'a5\'c1\'d0\'bc\'af\'ba\'cf}</string>
@@ -657,9 +873,9 @@
 								<key>isLeftAligned</key>
 								<false/>
 								<key>location</key>
-								<string>{280.20875302683049, 32.807497249997425}</string>
+								<string>{280.20875302683049, 198.30749724999743}</string>
 								<key>nodeID</key>
-								<string>CEB37A7E-94E5-4BE4-9380-3C1D339138F2</string>
+								<string>F298AD65-5667-4DB7-AA4F-8246BE5B27BA</string>
 								<key>strokeColor</key>
 								<string>{0.194, 0.734, 0.282, 1.000}</string>
 								<key>strokeStyle</key>
@@ -680,9 +896,9 @@
 										<key>isLeftAligned</key>
 										<false/>
 										<key>location</key>
-										<string>{424.20875302683049, 7.8074972499974251}</string>
+										<string>{424.20875302683049, 173.30749724999743}</string>
 										<key>nodeID</key>
-										<string>F13F67BA-0CD8-4369-8D88-DB1BA9554209</string>
+										<string>0C9B0028-518E-4425-B068-9F8F13C8DA98</string>
 										<key>strokeColor</key>
 										<string>{0.194, 0.734, 0.282, 1.000}</string>
 										<key>strokeStyle</key>
@@ -701,13 +917,15 @@
 											<integer>0</integer>
 											<key>text</key>
 											<string>{\rtf1\ansi\ansicpg936\cocoartf2636
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;}
-{\colortbl;\red255\green255\blue255;\red251\green2\blue7;\red91\green91\blue91;}
-{\*\expandedcolortbl;;\cssrgb\c100000\c14913\c0;\csgenericrgb\c35700\c35700\c35700;}
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red251\green1\blue6;\red91\green91\blue91;}
+{\*\expandedcolortbl;;\csgenericrgb\c98431\c392\c2353;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
-\f0\fs36 \cf2 \'bc\'e4\'bd\'d3\cf3 \'b5\'c4\'c9\'fa\'b3\'c9\'c1\'f7, \cf2 \'cf\'c8\cf3 \'c4\'c3\cf2 set\'d4\'d9\cf3 \'c4\'c3\cf2 Stream\cf3 \'c1\'f7\
-\'cb\'ab\'c1\'d0\'bc\'af\'ba\'cf\'cf\'c8\'cd\'a8\'b9\'fd\cf2 keySet()\cf3 , \'bb\'f2\'d5\'df\cf2 entrySet()\cf3 \'cf\'c8\'c4\'c3\'b5\'bd\'d2\'bb\'b8\'f6"\cf2 Set\cf3 \'a1\'b1\'bc\'af\'ba\'cf,\'d4\'d9\'bb\'f1\'c8\'a1\cf2 Stream\cf3 \'c1\'f7}</string>
+\f0\fs36 \cf2 \'bc\'e4\'bd\'d3\cf3 \'b5\'c4\'c9\'fa\'b3\'c9\'c1\'f7, \cf2 \'cf\'c8\cf3 \'c4\'c3\cf2 set\'d4\'d9\cf3 \'c4\'c3\cf2 Stream\cf3 \'c1\'f7
+\f1\fs24 \cf0 \
+
+\f0\fs36 \cf3 \'cb\'ab\'c1\'d0\'bc\'af\'ba\'cf\'cf\'c8\'cd\'a8\'b9\'fd\cf2 keySet()\cf3 , \'bb\'f2\'d5\'df\cf2 entrySet()\cf3 \'cf\'c8\'c4\'c3\'b5\'bd\'d2\'bb\'b8\'f6"\cf2 Set\cf3 \'a1\'b1\'bc\'af\'ba\'cf,\'d4\'d9\'bb\'f1\'c8\'a1\cf2 Stream\cf3 \'c1\'f7}</string>
 										</dict>
 									</dict>
 								</array>
@@ -723,7 +941,7 @@
 									<string>{\rtf1\ansi\ansicpg936\cocoartf2636
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;}
 {\colortbl;\red255\green255\blue255;\red91\green91\blue91;}
-{\*\expandedcolortbl;;\csgenericrgb\c35700\c35700\c35700;}
+{\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f0\fs36 \cf2 \'cb\'ab\'c1\'d0\'bc\'af\'ba\'cf}</string>
@@ -741,9 +959,9 @@
 								<key>isLeftAligned</key>
 								<false/>
 								<key>location</key>
-								<string>{280.20875302683049, 111.30749724999743}</string>
+								<string>{280.20875302683049, 276.80749724999743}</string>
 								<key>nodeID</key>
-								<string>99BEC472-D6DB-470B-AA2F-CE4AE2BF9CE9</string>
+								<string>9173909F-4936-41EE-8545-8ACA7955843E</string>
 								<key>strokeColor</key>
 								<string>{0.194, 0.734, 0.282, 1.000}</string>
 								<key>strokeStyle</key>
@@ -764,9 +982,9 @@
 										<key>isLeftAligned</key>
 										<false/>
 										<key>location</key>
-										<string>{392.20875302683049, 98.807497249997425}</string>
+										<string>{392.20875302683049, 264.30749724999743}</string>
 										<key>nodeID</key>
-										<string>770E8A72-DE26-425C-B777-AC4D78288944</string>
+										<string>2ACE3452-CA1F-4400-A3CD-C80CF7C2435B</string>
 										<key>strokeColor</key>
 										<string>{0.194, 0.734, 0.282, 1.000}</string>
 										<key>strokeStyle</key>
@@ -786,8 +1004,8 @@
 											<key>text</key>
 											<string>{\rtf1\ansi\ansicpg936\cocoartf2636
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;}
-{\colortbl;\red255\green255\blue255;\red91\green91\blue91;\red251\green2\blue7;}
-{\*\expandedcolortbl;;\csgenericrgb\c35700\c35700\c35700;\cssrgb\c100000\c14913\c0;}
+{\colortbl;\red255\green255\blue255;\red91\green91\blue91;\red251\green1\blue6;}
+{\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;\csgenericrgb\c98431\c392\c2353;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f0\fs36 \cf2 \'cd\'a8\'b9\'fd\'b9\'a4\'be\'df\'c0\'e0\cf3 Arrays\cf2 \'d6\'d0\'b5\'c4\'be\'b2\'cc\'ac\'b7\'bd\'b7\'a8Stream\'c9\'fa\'b3\'c9\'c1\'f7}</string>
@@ -806,7 +1024,7 @@
 									<string>{\rtf1\ansi\ansicpg936\cocoartf2636
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;}
 {\colortbl;\red255\green255\blue255;\red91\green91\blue91;}
-{\*\expandedcolortbl;;\csgenericrgb\c35700\c35700\c35700;}
+{\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f0\fs36 \cf2 \'ca\'fd\'d7\'e9}</string>
@@ -824,9 +1042,9 @@
 								<key>isLeftAligned</key>
 								<false/>
 								<key>location</key>
-								<string>{280.20875302683049, 185.30749724999743}</string>
+								<string>{280.20875302683049, 350.80749724999743}</string>
 								<key>nodeID</key>
-								<string>B4DDE85A-27AB-49DF-94EC-403BC7F79E23</string>
+								<string>FF46FE75-C696-497D-B818-175FD6603472</string>
 								<key>strokeColor</key>
 								<string>{0.194, 0.734, 0.282, 1.000}</string>
 								<key>strokeStyle</key>
@@ -847,9 +1065,9 @@
 										<key>isLeftAligned</key>
 										<false/>
 										<key>location</key>
-										<string>{550.20875302683044, 164.80749724999743}</string>
+										<string>{550.20875302683044, 330.30749724999743}</string>
 										<key>nodeID</key>
-										<string>0F06FCF3-44C4-4C63-B124-E6B566824830</string>
+										<string>E5076804-AC5B-4905-9375-CE85FCC167D7</string>
 										<key>strokeColor</key>
 										<string>{0.194, 0.734, 0.282, 1.000}</string>
 										<key>strokeStyle</key>
@@ -870,7 +1088,7 @@
 											<string>{\rtf1\ansi\ansicpg936\cocoartf2636
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;}
 {\colortbl;\red255\green255\blue255;\red91\green91\blue91;}
-{\*\expandedcolortbl;;\csgenericrgb\c35700\c35700\c35700;}
+{\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f0\fs36 \cf2 1,2,2,3,4,5,5}</string>
@@ -888,9 +1106,9 @@
 										<key>isLeftAligned</key>
 										<false/>
 										<key>location</key>
-										<string>{550.20875302683044, 205.80749724999743}</string>
+										<string>{550.20875302683044, 371.30749724999743}</string>
 										<key>nodeID</key>
-										<string>96B587F1-50BF-4CBC-A207-C094A2DDA5D8</string>
+										<string>9A056667-C818-4794-B4B1-0DB9586D007D</string>
 										<key>strokeColor</key>
 										<string>{0.194, 0.734, 0.282, 1.000}</string>
 										<key>strokeStyle</key>
@@ -911,7 +1129,7 @@
 											<string>{\rtf1\ansi\ansicpg936\cocoartf2636
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;}
 {\colortbl;\red255\green255\blue255;\red91\green91\blue91;}
-{\*\expandedcolortbl;;\csgenericrgb\c35700\c35700\c35700;}
+{\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f0\fs36 \cf2 \'a1\'b0abc\'a1\'b1, \'a1\'b0fgv\'a1\'b1, \'a1\'b0wrgh\'a1\'b1}</string>
@@ -930,7 +1148,7 @@
 									<string>{\rtf1\ansi\ansicpg936\cocoartf2636
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;}
 {\colortbl;\red255\green255\blue255;\red91\green91\blue91;}
-{\*\expandedcolortbl;;\csgenericrgb\c35700\c35700\c35700;}
+{\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f0\fs36 \cf2 \'cd\'ac\'d6\'d6\'ca\'fd\'be\'dd\'c0\'e0\'d0\'cd\'b5\'c4\'b6\'e0\'b8\'f6\'ca\'fd\'be\'dd}</string>
@@ -949,7 +1167,7 @@
 							<string>{\rtf1\ansi\ansicpg936\cocoartf2636
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;}
 {\colortbl;\red255\green255\blue255;\red91\green91\blue91;}
-{\*\expandedcolortbl;;\csgenericrgb\c35700\c35700\c35700;}
+{\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f0\fs36 \cf2 \'cb\'ad\'bf\'c9\'d2\'d4\'bb\'f1\'c8\'a1}</string>
@@ -967,9 +1185,9 @@
 						<key>isLeftAligned</key>
 						<false/>
 						<key>location</key>
-						<string>{118.20875302683049, 246.80749724999743}</string>
+						<string>{118.20875302683049, 412.30749724999743}</string>
 						<key>nodeID</key>
-						<string>121BDA07-F8DE-4778-8C07-C56350FA491F</string>
+						<string>9F16F52E-9AAA-4F88-B417-82DD4845BCD8</string>
 						<key>strokeColor</key>
 						<string>{0.136, 0.807, 0.880, 1.000}</string>
 						<key>strokeStyle</key>
@@ -990,9 +1208,9 @@
 								<key>isLeftAligned</key>
 								<false/>
 								<key>location</key>
-								<string>{231.20875302683049, 246.80749724999743}</string>
+								<string>{231.20875302683049, 412.30749724999743}</string>
 								<key>nodeID</key>
-								<string>1EE8F6E5-D0A3-47D1-B567-D73B14461666</string>
+								<string>69005C53-EDB6-44FA-AA61-159DE4959D95</string>
 								<key>strokeColor</key>
 								<string>{0.136, 0.807, 0.880, 1.000}</string>
 								<key>strokeStyle</key>
@@ -1048,9 +1266,9 @@
 						<key>isLeftAligned</key>
 						<false/>
 						<key>location</key>
-						<string>{118.20875302683049, 287.80749724999743}</string>
+						<string>{118.20875302683049, 453.30749724999743}</string>
 						<key>nodeID</key>
-						<string>5876BE70-DCE6-4FFD-8EAE-5DB67FA775DA</string>
+						<string>02356EDC-8E91-4B31-B8AA-C1823D4A9701</string>
 						<key>strokeColor</key>
 						<string>{0.136, 0.807, 0.880, 1.000}</string>
 						<key>strokeStyle</key>
