@@ -32,7 +32,7 @@
 				<key>location</key>
 				<string>{0, 0}</string>
 				<key>nodeID</key>
-				<string>009F586D-081D-4374-8279-FD09E59D15BA</string>
+				<string>1F541903-B2E8-4329-8CA4-D027DBF5659B</string>
 				<key>strokeColor</key>
 				<string>{0.965, 0.965, 0.965, 1.000}</string>
 				<key>strokeStyle</key>
@@ -53,9 +53,9 @@
 						<key>isLeftAligned</key>
 						<false/>
 						<key>location</key>
-						<string>{172, -1491.5}</string>
+						<string>{172, -887}</string>
 						<key>nodeID</key>
-						<string>0373CBC3-0AE9-4AC4-966B-ECE086E1F507</string>
+						<string>EC5C347A-6C40-43E3-99BC-CE85CDBCCC59</string>
 						<key>strokeColor</key>
 						<string>{0.822, 0.084, 0.348, 1.000}</string>
 						<key>strokeStyle</key>
@@ -76,9 +76,9 @@
 								<key>isLeftAligned</key>
 								<false/>
 								<key>location</key>
-								<string>{388, -1697.5}</string>
+								<string>{388, -1093}</string>
 								<key>nodeID</key>
-								<string>CB8D6194-ABB0-4B81-8999-676A54B43C37</string>
+								<string>B17093FA-4CD0-4A93-8B81-0692276E67B7</string>
 								<key>strokeColor</key>
 								<string>{0.822, 0.084, 0.348, 1.000}</string>
 								<key>strokeStyle</key>
@@ -117,9 +117,9 @@
 								<key>isLeftAligned</key>
 								<false/>
 								<key>location</key>
-								<string>{388, -1533}</string>
+								<string>{388, -928.5}</string>
 								<key>nodeID</key>
-								<string>DC65C5E8-C3F1-4B57-87EA-661168C98F74</string>
+								<string>22DD7174-6B9D-4E30-B3FC-DCF7E5639633</string>
 								<key>strokeColor</key>
 								<string>{0.822, 0.084, 0.348, 1.000}</string>
 								<key>strokeStyle</key>
@@ -140,9 +140,9 @@
 										<key>isLeftAligned</key>
 										<false/>
 										<key>location</key>
-										<string>{662, -1631.5}</string>
+										<string>{662, -1027}</string>
 										<key>nodeID</key>
-										<string>C0A5212E-3056-466C-9B33-928172B2EF23</string>
+										<string>A2730A40-0E94-4CEC-9B87-848BEA1D4832</string>
 										<key>strokeColor</key>
 										<string>{0.822, 0.084, 0.348, 1.000}</string>
 										<key>strokeStyle</key>
@@ -181,9 +181,9 @@
 										<key>isLeftAligned</key>
 										<false/>
 										<key>location</key>
-										<string>{662, -1526.5}</string>
+										<string>{662, -922}</string>
 										<key>nodeID</key>
-										<string>690CD99D-ECA0-41B8-85FE-383FC4C332A4</string>
+										<string>E2BBA79D-16FD-43B4-AAB1-1726AB097E2B</string>
 										<key>strokeColor</key>
 										<string>{0.822, 0.084, 0.348, 1.000}</string>
 										<key>strokeStyle</key>
@@ -204,9 +204,9 @@
 												<key>isLeftAligned</key>
 												<false/>
 												<key>location</key>
-												<string>{774, -1590.5}</string>
+												<string>{774, -986}</string>
 												<key>nodeID</key>
-												<string>394B386F-16D6-4AF5-9BD2-B6E05F1594BA</string>
+												<string>31B3B9D7-B490-418D-B582-940F7F2DEFE0</string>
 												<key>strokeColor</key>
 												<string>{0.822, 0.084, 0.348, 1.000}</string>
 												<key>strokeStyle</key>
@@ -262,9 +262,9 @@
 										<key>isLeftAligned</key>
 										<false/>
 										<key>location</key>
-										<string>{662, -1434.5}</string>
+										<string>{662, -830}</string>
 										<key>nodeID</key>
-										<string>3D849440-46CA-4D27-A53B-8E6204A8CC66</string>
+										<string>93DF26B4-0F79-4E87-AAFC-E3080246E8AA</string>
 										<key>strokeColor</key>
 										<string>{0.822, 0.084, 0.348, 1.000}</string>
 										<key>strokeStyle</key>
@@ -322,9 +322,9 @@
 								<key>isLeftAligned</key>
 								<false/>
 								<key>location</key>
-								<string>{388, -1393.5}</string>
+								<string>{388, -789}</string>
 								<key>nodeID</key>
-								<string>F753F805-4DBC-46BB-ABF6-2415DE6A05F9</string>
+								<string>291378FD-80E3-4CA5-9F32-89B1EF855E7F</string>
 								<key>strokeColor</key>
 								<string>{0.822, 0.084, 0.348, 1.000}</string>
 								<key>strokeStyle</key>
@@ -364,9 +364,9 @@
 								<key>isLeftAligned</key>
 								<false/>
 								<key>location</key>
-								<string>{388, -1327.5}</string>
+								<string>{388, -723}</string>
 								<key>nodeID</key>
-								<string>899EFC4F-CF91-49CE-8BF8-D8C153641B63</string>
+								<string>A1259D40-EA76-47E1-A156-6C253CB4715E</string>
 								<key>strokeColor</key>
 								<string>{0.822, 0.084, 0.348, 1.000}</string>
 								<key>strokeStyle</key>
@@ -386,8 +386,8 @@
 									<key>text</key>
 									<string>{\rtf1\ansi\ansicpg936\cocoartf2636
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;}
-{\colortbl;\red255\green255\blue255;\red91\green91\blue91;\red251\green2\blue7;}
-{\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;\cssrgb\c100000\c14913\c0;}
+{\colortbl;\red255\green255\blue255;\red91\green91\blue91;\red251\green1\blue6;}
+{\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;\csgenericrgb\c98431\c392\c2353;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
 \f0\fs36 \cf2 4. IDEA \'c9\'cf\'cf\'c2\'d2\'c6\'b6\'af\'b4\'fa\'c2\'eb: 
@@ -427,7 +427,7 @@
 						<key>location</key>
 						<string>{172, 237.5}</string>
 						<key>nodeID</key>
-						<string>F2BDC543-4CBB-4CD3-967B-CAEF0FBE92E9</string>
+						<string>DE0C22F8-29A6-4705-BB2D-52AE10D72C37</string>
 						<key>strokeColor</key>
 						<string>{0.689, 0.215, 0.952, 1.000}</string>
 						<key>strokeStyle</key>
@@ -450,7 +450,7 @@
 								<key>location</key>
 								<string>{324, 237.5}</string>
 								<key>nodeID</key>
-								<string>064741BD-086E-41BF-8308-59AE23E553BE</string>
+								<string>44632E0C-C75A-4B4C-B6C0-69141BE743E0</string>
 								<key>strokeColor</key>
 								<string>{0.689, 0.215, 0.952, 1.000}</string>
 								<key>strokeStyle</key>
@@ -471,9 +471,50 @@
 										<key>isLeftAligned</key>
 										<false/>
 										<key>location</key>
-										<string>{448, -1182}</string>
+										<string>{448, -640}</string>
 										<key>nodeID</key>
-										<string>EAD67461-96AA-4692-A766-AB2939AEC71C</string>
+										<string>05396C4F-4E6E-47A4-81D3-38C74332DB38</string>
+										<key>strokeColor</key>
+										<string>{0.689, 0.215, 0.952, 1.000}</string>
+										<key>strokeStyle</key>
+										<integer>0</integer>
+										<key>strokeWidth</key>
+										<real>4</real>
+										<key>subnodes</key>
+										<array/>
+										<key>title</key>
+										<dict>
+											<key>constrainedWidth</key>
+											<integer>472</integer>
+											<key>htmlText</key>
+											<string>&lt;p style='color: rgba(251, 1, 6, 1.000000); font: 36px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Medium"; '&gt;内部类关注匿名内部类就行&lt;/p&gt;</string>
+											<key>shrinkToFitContent</key>
+											<integer>0</integer>
+											<key>text</key>
+											<string>{\rtf1\ansi\ansicpg936\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset134 PingFangSC-Medium;}
+{\colortbl;\red255\green255\blue255;\red251\green2\blue7;}
+{\*\expandedcolortbl;;\cssrgb\c100000\c14913\c0;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs72 \cf2 \'c4\'da\'b2\'bf\'c0\'e0\'b9\'d8\'d7\'a2\'c4\'e4\'c3\'fb\'c4\'da\'b2\'bf\'c0\'e0\'be\'cd\'d0\'d0}</string>
+										</dict>
+									</dict>
+									<dict>
+										<key>contentAlignment</key>
+										<integer>1</integer>
+										<key>fillColor</key>
+										<string>{1.000, 1.000, 1.000, 1.000}</string>
+										<key>isDecreasingBranchThickness</key>
+										<true/>
+										<key>isDrawingFill</key>
+										<false/>
+										<key>isLeftAligned</key>
+										<false/>
+										<key>location</key>
+										<string>{448, -567}</string>
+										<key>nodeID</key>
+										<string>AD4862B6-26A0-4257-BB38-A76A3FE40970</string>
 										<key>strokeColor</key>
 										<string>{0.689, 0.215, 0.952, 1.000}</string>
 										<key>strokeStyle</key>
@@ -494,9 +535,9 @@
 												<key>isLeftAligned</key>
 												<false/>
 												<key>location</key>
-												<string>{728, -1244.5}</string>
+												<string>{728, -574}</string>
 												<key>nodeID</key>
-												<string>2647C472-85D5-4304-8193-858E0FF806CA</string>
+												<string>70D02EA5-FD6B-42D7-8345-C8CE7AB6AE02</string>
 												<key>strokeColor</key>
 												<string>{0.689, 0.215, 0.952, 1.000}</string>
 												<key>strokeStyle</key>
@@ -510,7 +551,7 @@
 													<key>constrainedWidth</key>
 													<integer>300</integer>
 													<key>htmlText</key>
-													<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/Java%E5%9F%BA%E7%A1%80IDEA%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA.pdf'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/Java%E5%9F%BA%E7%A1%80IDEA%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA.pdf&lt;/a&gt;&lt;/p&gt;</string>
+													<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 9px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/Java%E5%9F%BA%E7%A1%80IDEA%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA.pdf'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/Java%E5%9F%BA%E7%A1%80IDEA%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA.pdf&lt;/a&gt;&lt;/p&gt;</string>
 													<key>shrinkToFitContent</key>
 													<integer>1</integer>
 													<key>text</key>
@@ -520,7 +561,7 @@
 {\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 {\field{\*\fldinst{HYPERLINK "https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/Java%E5%9F%BA%E7%A1%80IDEA%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA.pdf"}}{\fldrslt 
-\f0\fs36 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/Java%E5%9F%BA%E7%A1%80IDEA%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA.pdf}}}</string>
+\f0\fs18 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/Java%E5%9F%BA%E7%A1%80IDEA%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA.pdf}}}</string>
 												</dict>
 											</dict>
 										</array>
@@ -554,9 +595,9 @@
 										<key>isLeftAligned</key>
 										<false/>
 										<key>location</key>
-										<string>{448, -1078.5}</string>
+										<string>{448, -519}</string>
 										<key>nodeID</key>
-										<string>6F055A89-9DCD-4B59-BA4A-7C87A2C9E312</string>
+										<string>532E979B-61C0-403E-ACEF-26F5929711FB</string>
 										<key>strokeColor</key>
 										<string>{0.689, 0.215, 0.952, 1.000}</string>
 										<key>strokeStyle</key>
@@ -577,9 +618,9 @@
 												<key>isLeftAligned</key>
 												<false/>
 												<key>location</key>
-												<string>{604, -1078.5}</string>
+												<string>{604, -519}</string>
 												<key>nodeID</key>
-												<string>77F03D92-E320-46A8-8CAA-0178C09D27C4</string>
+												<string>224F6BDA-D7C5-48F3-8941-8326359D003A</string>
 												<key>strokeColor</key>
 												<string>{0.689, 0.215, 0.952, 1.000}</string>
 												<key>strokeStyle</key>
@@ -637,9 +678,9 @@
 										<key>isLeftAligned</key>
 										<false/>
 										<key>location</key>
-										<string>{448, -1037.5}</string>
+										<string>{448, -478}</string>
 										<key>nodeID</key>
-										<string>1FF4191F-5B94-46CE-B926-4E3D2AB75FDD</string>
+										<string>C8C1D50F-BF1D-422F-AB06-13105454427E</string>
 										<key>strokeColor</key>
 										<string>{0.689, 0.215, 0.952, 1.000}</string>
 										<key>strokeStyle</key>
@@ -660,9 +701,9 @@
 												<key>isLeftAligned</key>
 												<false/>
 												<key>location</key>
-												<string>{644, -1037.5}</string>
+												<string>{644, -478}</string>
 												<key>nodeID</key>
-												<string>10E00BE7-547A-447C-ADDD-559037C19737</string>
+												<string>65F80F13-45E2-4409-A731-3EAB87F4DCF3</string>
 												<key>strokeColor</key>
 												<string>{0.689, 0.215, 0.952, 1.000}</string>
 												<key>strokeStyle</key>
@@ -720,9 +761,9 @@
 										<key>isLeftAligned</key>
 										<false/>
 										<key>location</key>
-										<string>{448, 361.5}</string>
+										<string>{448, 339}</string>
 										<key>nodeID</key>
-										<string>C990D44E-FB86-4023-BFCF-509964713CF5</string>
+										<string>816849F1-A032-4DDD-B1AE-41FDE266207C</string>
 										<key>strokeColor</key>
 										<string>{0.689, 0.215, 0.952, 1.000}</string>
 										<key>strokeStyle</key>
@@ -743,9 +784,9 @@
 												<key>isLeftAligned</key>
 												<false/>
 												<key>location</key>
-												<string>{678, -689.5}</string>
+												<string>{678, -320}</string>
 												<key>nodeID</key>
-												<string>A74F618D-35A0-46BF-A7C3-27FFEFF60A0A</string>
+												<string>F241BE43-EDAE-417D-B8D8-087153236ECD</string>
 												<key>strokeColor</key>
 												<string>{0.689, 0.215, 0.952, 1.000}</string>
 												<key>strokeStyle</key>
@@ -766,9 +807,9 @@
 														<key>isLeftAligned</key>
 														<false/>
 														<key>location</key>
-														<string>{918, -888.5}</string>
+														<string>{918, -402.5}</string>
 														<key>nodeID</key>
-														<string>4FEC7B87-C520-4175-B5D0-0A53A7313B51</string>
+														<string>9A75E743-02B1-49F0-9264-EADC07476521</string>
 														<key>strokeColor</key>
 														<string>{0.689, 0.215, 0.952, 1.000}</string>
 														<key>strokeStyle</key>
@@ -789,9 +830,9 @@
 																<key>isLeftAligned</key>
 																<false/>
 																<key>location</key>
-																<string>{1130, -934}</string>
+																<string>{1130, -423.5}</string>
 																<key>nodeID</key>
-																<string>1914E9B3-9C51-437D-B417-A48B86FF453C</string>
+																<string>B35F7DAC-6E1B-4A27-9789-03702F5A7E8C</string>
 																<key>strokeColor</key>
 																<string>{0.689, 0.215, 0.952, 1.000}</string>
 																<key>strokeStyle</key>
@@ -812,9 +853,9 @@
 																		<key>isLeftAligned</key>
 																		<false/>
 																		<key>location</key>
-																		<string>{1242, -996.5}</string>
+																		<string>{1242, -437}</string>
 																		<key>nodeID</key>
-																		<string>4F330E01-D3D8-4188-A536-8C5757E310AA</string>
+																		<string>02F51927-73B1-4D2D-A8D7-F1A2F711A7B8</string>
 																		<key>strokeColor</key>
 																		<string>{0.689, 0.215, 0.952, 1.000}</string>
 																		<key>strokeStyle</key>
@@ -828,7 +869,7 @@
 																			<key>constrainedWidth</key>
 																			<integer>300</integer>
 																			<key>htmlText</key>
-																			<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/day07_03_Scanner%E7%9A%84%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4.mp4'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/day07_03_Scanner%E7%9A%84%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4.mp4&lt;/a&gt;&lt;/p&gt;</string>
+																			<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 9px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/day07_03_Scanner%E7%9A%84%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4.mp4'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/day07_03_Scanner%E7%9A%84%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4.mp4&lt;/a&gt;&lt;/p&gt;</string>
 																			<key>shrinkToFitContent</key>
 																			<integer>1</integer>
 																			<key>text</key>
@@ -838,7 +879,7 @@
 {\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 {\field{\*\fldinst{HYPERLINK "https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/day07_03_Scanner%E7%9A%84%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4.mp4"}}{\fldrslt 
-\f0\fs36 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/day07_03_Scanner%E7%9A%84%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4.mp4}}}</string>
+\f0\fs18 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/day07_03_Scanner%E7%9A%84%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4.mp4}}}</string>
 																		</dict>
 																	</dict>
 																</array>
@@ -872,9 +913,9 @@
 																<key>isLeftAligned</key>
 																<false/>
 																<key>location</key>
-																<string>{1130, -830.5}</string>
+																<string>{1130, -369}</string>
 																<key>nodeID</key>
-																<string>AFD48342-45F2-4B1C-98BA-AB64157E410B</string>
+																<string>D894D6A3-3D06-4362-AE40-451F9977A2A3</string>
 																<key>strokeColor</key>
 																<string>{0.689, 0.215, 0.952, 1.000}</string>
 																<key>strokeStyle</key>
@@ -888,7 +929,7 @@
 																	<key>constrainedWidth</key>
 																	<integer>300</integer>
 																	<key>htmlText</key>
-																	<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc1.png'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc1.png&lt;/a&gt;&lt;/p&gt;</string>
+																	<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 9px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc1.png'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc1.png&lt;/a&gt;&lt;/p&gt;</string>
 																	<key>shrinkToFitContent</key>
 																	<integer>1</integer>
 																	<key>text</key>
@@ -898,7 +939,7 @@
 {\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 {\field{\*\fldinst{HYPERLINK "https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc1.png"}}{\fldrslt 
-\f0\fs36 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc1.png}}}</string>
+\f0\fs18 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc1.png}}}</string>
 																</dict>
 															</dict>
 														</array>
@@ -932,9 +973,9 @@
 														<key>isLeftAligned</key>
 														<false/>
 														<key>location</key>
-														<string>{918, -561}</string>
+														<string>{918, -265}</string>
 														<key>nodeID</key>
-														<string>9EE09129-06D4-4378-93CE-771391FA0DDA</string>
+														<string>51EBEA8F-A7FE-4D58-B9F4-607F59D1051A</string>
 														<key>strokeColor</key>
 														<string>{0.689, 0.215, 0.952, 1.000}</string>
 														<key>strokeStyle</key>
@@ -955,9 +996,9 @@
 																<key>isLeftAligned</key>
 																<false/>
 																<key>location</key>
-																<string>{1149, -739.5}</string>
+																<string>{1149, -327}</string>
 																<key>nodeID</key>
-																<string>E9912AC0-964F-4A96-97B6-63D5B58E3177</string>
+																<string>1AAD458F-2BDE-470B-9B9F-12044068B6A9</string>
 																<key>strokeColor</key>
 																<string>{0.689, 0.215, 0.952, 1.000}</string>
 																<key>strokeStyle</key>
@@ -971,7 +1012,7 @@
 																	<key>constrainedWidth</key>
 																	<integer>300</integer>
 																	<key>htmlText</key>
-																	<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/day07_09_Random%E7%94%9F%E6%88%90%E6%8C%87%E5%AE%9A%E8%8C%83%E5%9B%B4%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0.mp4'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/day07_09_Random%E7%94%9F%E6%88%90%E6%8C%87%E5%AE%9A%E8%8C%83%E5%9B%B4%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0.mp4&lt;/a&gt;&lt;/p&gt;</string>
+																	<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 9px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/day07_09_Random%E7%94%9F%E6%88%90%E6%8C%87%E5%AE%9A%E8%8C%83%E5%9B%B4%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0.mp4'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/day07_09_Random%E7%94%9F%E6%88%90%E6%8C%87%E5%AE%9A%E8%8C%83%E5%9B%B4%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0.mp4&lt;/a&gt;&lt;/p&gt;</string>
 																	<key>shrinkToFitContent</key>
 																	<integer>1</integer>
 																	<key>text</key>
@@ -981,7 +1022,7 @@
 {\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 {\field{\*\fldinst{HYPERLINK "https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/day07_09_Random%E7%94%9F%E6%88%90%E6%8C%87%E5%AE%9A%E8%8C%83%E5%9B%B4%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0.mp4"}}{\fldrslt 
-\f0\fs36 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/day07_09_Random%E7%94%9F%E6%88%90%E6%8C%87%E5%AE%9A%E8%8C%83%E5%9B%B4%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0.mp4}}}</string>
+\f0\fs18 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/day07_09_Random%E7%94%9F%E6%88%90%E6%8C%87%E5%AE%9A%E8%8C%83%E5%9B%B4%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B0.mp4}}}</string>
 																</dict>
 															</dict>
 															<dict>
@@ -996,9 +1037,9 @@
 																<key>isLeftAligned</key>
 																<false/>
 																<key>location</key>
-																<string>{1149, -523.5}</string>
+																<string>{1149, -246}</string>
 																<key>nodeID</key>
-																<string>6085B6F6-C130-4E1B-8D52-B3FDDCACDF8D</string>
+																<string>C6C80E62-A9C2-46D0-817C-391811C36634</string>
 																<key>strokeColor</key>
 																<string>{0.689, 0.215, 0.952, 1.000}</string>
 																<key>strokeStyle</key>
@@ -1012,7 +1053,7 @@
 																	<key>constrainedWidth</key>
 																	<integer>300</integer>
 																	<key>htmlText</key>
-																	<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc2.png'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc2.png&lt;/a&gt;&lt;/p&gt;</string>
+																	<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 9px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc2.png'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc2.png&lt;/a&gt;&lt;/p&gt;</string>
 																	<key>shrinkToFitContent</key>
 																	<integer>1</integer>
 																	<key>text</key>
@@ -1022,7 +1063,7 @@
 {\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 {\field{\*\fldinst{HYPERLINK "https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc2.png"}}{\fldrslt 
-\f0\fs36 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc2.png}}}</string>
+\f0\fs18 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc2.png}}}</string>
 																</dict>
 															</dict>
 															<dict>
@@ -1037,9 +1078,9 @@
 																<key>isLeftAligned</key>
 																<false/>
 																<key>location</key>
-																<string>{1149, -432.5}</string>
+																<string>{1149, -204}</string>
 																<key>nodeID</key>
-																<string>5DCF7C65-0A8B-4190-AE62-BFD7932193D5</string>
+																<string>8A441E76-51B5-4AD0-8ABF-C44C875BDE7C</string>
 																<key>strokeColor</key>
 																<string>{0.689, 0.215, 0.952, 1.000}</string>
 																<key>strokeStyle</key>
@@ -1053,7 +1094,7 @@
 																	<key>constrainedWidth</key>
 																	<integer>300</integer>
 																	<key>htmlText</key>
-																	<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc3.png'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc3.png&lt;/a&gt;&lt;/p&gt;</string>
+																	<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 9px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc3.png'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc3.png&lt;/a&gt;&lt;/p&gt;</string>
 																	<key>shrinkToFitContent</key>
 																	<integer>1</integer>
 																	<key>text</key>
@@ -1063,7 +1104,7 @@
 {\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 {\field{\*\fldinst{HYPERLINK "https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc3.png"}}{\fldrslt 
-\f0\fs36 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc3.png}}}</string>
+\f0\fs18 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc3.png}}}</string>
 																</dict>
 															</dict>
 														</array>
@@ -1116,9 +1157,9 @@
 												<key>isLeftAligned</key>
 												<false/>
 												<key>location</key>
-												<string>{678, 642.5}</string>
+												<string>{678, 430}</string>
 												<key>nodeID</key>
-												<string>EB72C4C1-E32A-447B-B7EE-9EA60CDC6412</string>
+												<string>65CBF1EB-9CAB-40E5-A43D-86480086E35E</string>
 												<key>strokeColor</key>
 												<string>{0.689, 0.215, 0.952, 1.000}</string>
 												<key>strokeStyle</key>
@@ -1139,9 +1180,9 @@
 														<key>isLeftAligned</key>
 														<false/>
 														<key>location</key>
-														<string>{898, -316.5}</string>
+														<string>{898, -137}</string>
 														<key>nodeID</key>
-														<string>A8579C99-D07F-4532-9DA0-10737903A875</string>
+														<string>4B451581-17D3-4EFD-B460-DCB71795CB10</string>
 														<key>strokeColor</key>
 														<string>{0.689, 0.215, 0.952, 1.000}</string>
 														<key>strokeStyle</key>
@@ -1162,9 +1203,9 @@
 																<key>isLeftAligned</key>
 																<false/>
 																<key>location</key>
-																<string>{1010, -316.5}</string>
+																<string>{1010, -137}</string>
 																<key>nodeID</key>
-																<string>3F51C1ED-1DD3-4A64-9393-847BFBB86D28</string>
+																<string>0BFA02C3-4173-475B-A0E7-6DB5F738788B</string>
 																<key>strokeColor</key>
 																<string>{0.689, 0.215, 0.952, 1.000}</string>
 																<key>strokeStyle</key>
@@ -1185,9 +1226,9 @@
 																		<key>isLeftAligned</key>
 																		<false/>
 																		<key>location</key>
-																		<string>{1154, -341.5}</string>
+																		<string>{1154, -162}</string>
 																		<key>nodeID</key>
-																		<string>53CD1755-BF7B-4A0B-86EC-569F546F0B7E</string>
+																		<string>FC3394D4-2DFB-45CE-8511-AE07E344424D</string>
 																		<key>strokeColor</key>
 																		<string>{0.689, 0.215, 0.952, 1.000}</string>
 																		<key>strokeStyle</key>
@@ -1267,9 +1308,9 @@
 														<key>isLeftAligned</key>
 														<false/>
 														<key>location</key>
-														<string>{898, -238}</string>
+														<string>{898, -58.5}</string>
 														<key>nodeID</key>
-														<string>615D9768-B275-4FE4-9DC5-D884860BEEF0</string>
+														<string>D998A7B1-1345-4197-B1BA-CE165CEF092C</string>
 														<key>strokeColor</key>
 														<string>{0.689, 0.215, 0.952, 1.000}</string>
 														<key>strokeStyle</key>
@@ -1290,9 +1331,9 @@
 																<key>isLeftAligned</key>
 																<false/>
 																<key>location</key>
-																<string>{1010, -250.5}</string>
+																<string>{1010, -71}</string>
 																<key>nodeID</key>
-																<string>AC83D0B6-ABCE-464A-8121-DDE4716F9876</string>
+																<string>BE3102EE-A4A3-4FA3-9D19-DBC871D22D54</string>
 																<key>strokeColor</key>
 																<string>{0.689, 0.215, 0.952, 1.000}</string>
 																<key>strokeStyle</key>
@@ -1353,9 +1394,9 @@
 														<key>isLeftAligned</key>
 														<false/>
 														<key>location</key>
-														<string>{898, -67}</string>
+														<string>{898, 112.5}</string>
 														<key>nodeID</key>
-														<string>B33C3205-8106-4128-A917-AAE7E20879D6</string>
+														<string>FF2FA7E4-4844-40EB-A7A7-F9B2B68FD475</string>
 														<key>strokeColor</key>
 														<string>{0.689, 0.215, 0.952, 1.000}</string>
 														<key>strokeStyle</key>
@@ -1376,9 +1417,9 @@
 																<key>isLeftAligned</key>
 																<false/>
 																<key>location</key>
-																<string>{1105, -184.5}</string>
+																<string>{1105, -5}</string>
 																<key>nodeID</key>
-																<string>6538F71C-44F8-491F-B4EC-A44E2326FB90</string>
+																<string>6EF765C1-C5C7-40A1-9710-F0591659D689</string>
 																<key>strokeColor</key>
 																<string>{0.689, 0.215, 0.952, 1.000}</string>
 																<key>strokeStyle</key>
@@ -1425,9 +1466,9 @@
 																<key>isLeftAligned</key>
 																<false/>
 																<key>location</key>
-																<string>{1105, -79.5}</string>
+																<string>{1105, 100}</string>
 																<key>nodeID</key>
-																<string>190CCC6B-9C05-42F3-A3A0-B79729841EB2</string>
+																<string>246A063C-287E-4F45-8CBA-900DEDBE4541</string>
 																<key>strokeColor</key>
 																<string>{0.689, 0.215, 0.952, 1.000}</string>
 																<key>strokeStyle</key>
@@ -1466,9 +1507,9 @@
 																<key>isLeftAligned</key>
 																<false/>
 																<key>location</key>
-																<string>{1105, -13.5}</string>
+																<string>{1105, 166}</string>
 																<key>nodeID</key>
-																<string>BEA306A1-FBEE-4EB8-8FF0-E315DA5419ED</string>
+																<string>1D83B344-CB4D-4983-85E2-1614313CC9D6</string>
 																<key>strokeColor</key>
 																<string>{0.689, 0.215, 0.952, 1.000}</string>
 																<key>strokeStyle</key>
@@ -1534,9 +1575,9 @@
 														<key>isLeftAligned</key>
 														<false/>
 														<key>location</key>
-														<string>{898, 859}</string>
+														<string>{898, 646.5}</string>
 														<key>nodeID</key>
-														<string>1DD57247-95FA-4776-A483-1808D7692831</string>
+														<string>9AB9003E-8BCB-43BE-A94B-9D5F3CE9E819</string>
 														<key>strokeColor</key>
 														<string>{0.689, 0.215, 0.952, 1.000}</string>
 														<key>strokeStyle</key>
@@ -1557,9 +1598,9 @@
 																<key>isLeftAligned</key>
 																<false/>
 																<key>location</key>
-																<string>{1051, 768}</string>
+																<string>{1051, 580.5}</string>
 																<key>nodeID</key>
-																<string>28915B60-F3DB-4D58-8E7C-61C39936CB18</string>
+																<string>416F1837-0E26-417D-B43E-6409AF79A505</string>
 																<key>strokeColor</key>
 																<string>{0.689, 0.215, 0.952, 1.000}</string>
 																<key>strokeStyle</key>
@@ -1580,9 +1621,9 @@
 																		<key>isLeftAligned</key>
 																		<false/>
 																		<key>location</key>
-																		<string>{1163, 91.5}</string>
+																		<string>{1163, 271}</string>
 																		<key>nodeID</key>
-																		<string>F2F4E75C-4643-4D4C-9B24-960063C49C7B</string>
+																		<string>560E1F02-BD94-4F04-B8FE-614805BAAC8C</string>
 																		<key>strokeColor</key>
 																		<string>{0.689, 0.215, 0.952, 1.000}</string>
 																		<key>strokeStyle</key>
@@ -1638,9 +1679,9 @@
 																		<key>isLeftAligned</key>
 																		<false/>
 																		<key>location</key>
-																		<string>{1163, 257.5}</string>
+																		<string>{1163, 437}</string>
 																		<key>nodeID</key>
-																		<string>7C39C57F-0706-4667-A027-B955E75740AB</string>
+																		<string>0EE9FB6F-D22F-43E5-A915-C1597296B1B8</string>
 																		<key>strokeColor</key>
 																		<string>{0.689, 0.215, 0.952, 1.000}</string>
 																		<key>strokeStyle</key>
@@ -1679,9 +1720,9 @@
 																		<key>isLeftAligned</key>
 																		<false/>
 																		<key>location</key>
-																		<string>{1163, 523.5}</string>
+																		<string>{1163, 628}</string>
 																		<key>nodeID</key>
-																		<string>D23A40B5-F311-45A7-856C-7E8CBD794E60</string>
+																		<string>19994812-51EB-4464-B01C-1F43E72F64FE</string>
 																		<key>strokeColor</key>
 																		<string>{0.689, 0.215, 0.952, 1.000}</string>
 																		<key>strokeStyle</key>
@@ -1702,9 +1743,9 @@
 																				<key>isLeftAligned</key>
 																				<false/>
 																				<key>location</key>
-																				<string>{1361, 448.5}</string>
+																				<string>{1361, 628}</string>
 																				<key>nodeID</key>
-																				<string>49A07E05-47F3-48DB-ABE0-AD169E7D8AE1</string>
+																				<string>BFAB8985-4FB4-41CE-968B-E7D44EA99181</string>
 																				<key>strokeColor</key>
 																				<string>{0.689, 0.215, 0.952, 1.000}</string>
 																				<key>strokeStyle</key>
@@ -1718,7 +1759,7 @@
 																					<key>constrainedWidth</key>
 																					<integer>300</integer>
 																					<key>htmlText</key>
-																					<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95.mp4'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95.mp4&lt;/a&gt;&lt;/p&gt;</string>
+																					<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 6px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95.mp4'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95.mp4&lt;/a&gt;&lt;/p&gt;</string>
 																					<key>shrinkToFitContent</key>
 																					<integer>1</integer>
 																					<key>text</key>
@@ -1728,7 +1769,7 @@
 {\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 {\field{\*\fldinst{HYPERLINK "https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95.mp4"}}{\fldrslt 
-\f0\fs36 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95.mp4}}}</string>
+\f0\fs12 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95.mp4}}}</string>
 																				</dict>
 																			</dict>
 																		</array>
@@ -1762,9 +1803,9 @@
 																		<key>isLeftAligned</key>
 																		<false/>
 																		<key>location</key>
-																		<string>{1163, 702}</string>
+																		<string>{1163, 669}</string>
 																		<key>nodeID</key>
-																		<string>61E8C086-5372-4F77-8084-9D3FE8E81000</string>
+																		<string>23E87553-9AB9-4B53-B220-BE8EEE41F50F</string>
 																		<key>strokeColor</key>
 																		<string>{0.689, 0.215, 0.952, 1.000}</string>
 																		<key>strokeStyle</key>
@@ -1785,9 +1826,9 @@
 																				<key>isLeftAligned</key>
 																				<false/>
 																				<key>location</key>
-																				<string>{1325, 639.5}</string>
+																				<string>{1325, 669}</string>
 																				<key>nodeID</key>
-																				<string>89E498FF-CB4B-4C7F-9C4F-54A60B2DE9EB</string>
+																				<string>85AA4FD5-4859-4EBD-84C4-0C9A9990EBF5</string>
 																				<key>strokeColor</key>
 																				<string>{0.689, 0.215, 0.952, 1.000}</string>
 																				<key>strokeStyle</key>
@@ -1801,7 +1842,7 @@
 																					<key>constrainedWidth</key>
 																					<integer>300</integer>
 																					<key>htmlText</key>
-																					<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%B8%B8%E9%87%8F.mp4'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%B8%B8%E9%87%8F.mp4&lt;/a&gt;&lt;/p&gt;</string>
+																					<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 8px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%B8%B8%E9%87%8F.mp4'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%B8%B8%E9%87%8F.mp4&lt;/a&gt;&lt;/p&gt;</string>
 																					<key>shrinkToFitContent</key>
 																					<integer>1</integer>
 																					<key>text</key>
@@ -1811,7 +1852,7 @@
 {\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 {\field{\*\fldinst{HYPERLINK "https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%B8%B8%E9%87%8F.mp4"}}{\fldrslt 
-\f0\fs36 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%B8%B8%E9%87%8F.mp4}}}</string>
+\f0\fs16 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%B8%B8%E9%87%8F.mp4}}}</string>
 																				</dict>
 																			</dict>
 																		</array>
@@ -1845,9 +1886,9 @@
 																		<key>isLeftAligned</key>
 																		<false/>
 																		<key>location</key>
-																		<string>{1163, 805.5}</string>
+																		<string>{1163, 710}</string>
 																		<key>nodeID</key>
-																		<string>9D4208AB-FE0A-4A3E-8010-AE66EC5336F1</string>
+																		<string>35DD3617-1887-472C-A82A-6E3D7BABE535</string>
 																		<key>strokeColor</key>
 																		<string>{0.689, 0.215, 0.952, 1.000}</string>
 																		<key>strokeStyle</key>
@@ -1868,9 +1909,9 @@
 																				<key>isLeftAligned</key>
 																				<false/>
 																				<key>location</key>
-																				<string>{1307, 805.5}</string>
+																				<string>{1307, 710}</string>
 																				<key>nodeID</key>
-																				<string>CC581AAD-F7C9-4CBF-B7C7-B792CCD976D9</string>
+																				<string>F774026A-20D1-4F8C-AA4D-916361AC2281</string>
 																				<key>strokeColor</key>
 																				<string>{0.689, 0.215, 0.952, 1.000}</string>
 																				<key>strokeStyle</key>
@@ -1928,9 +1969,9 @@
 																		<key>isLeftAligned</key>
 																		<false/>
 																		<key>location</key>
-																		<string>{1163, 921.5}</string>
+																		<string>{1163, 755}</string>
 																		<key>nodeID</key>
-																		<string>E6064547-34B9-471C-9BED-F0490D8E3C1E</string>
+																		<string>BEA1B40D-88E6-4DE5-9F0F-4BA8075E545E</string>
 																		<key>strokeColor</key>
 																		<string>{0.689, 0.215, 0.952, 1.000}</string>
 																		<key>strokeStyle</key>
@@ -1951,9 +1992,9 @@
 																				<key>isLeftAligned</key>
 																				<false/>
 																				<key>location</key>
-																				<string>{1510, 846.5}</string>
+																				<string>{1510, 751}</string>
 																				<key>nodeID</key>
-																				<string>BFA09CA2-C94A-48CA-81F3-D340D1878E10</string>
+																				<string>EAC02218-5B51-483A-BEC3-85D47B68DD78</string>
 																				<key>strokeColor</key>
 																				<string>{0.689, 0.215, 0.952, 1.000}</string>
 																				<key>strokeStyle</key>
@@ -1967,7 +2008,7 @@
 																					<key>constrainedWidth</key>
 																					<integer>300</integer>
 																					<key>htmlText</key>
-																					<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95.mp4'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95.mp4&lt;/a&gt;&lt;/p&gt;</string>
+																					<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 8px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95.mp4'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95.mp4&lt;/a&gt;&lt;/p&gt;</string>
 																					<key>shrinkToFitContent</key>
 																					<integer>1</integer>
 																					<key>text</key>
@@ -1977,7 +2018,7 @@
 {\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 {\field{\*\fldinst{HYPERLINK "https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95.mp4"}}{\fldrslt 
-\f0\fs36 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95.mp4}}}</string>
+\f0\fs16 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95.mp4}}}</string>
 																				</dict>
 																			</dict>
 																		</array>
@@ -2011,9 +2052,9 @@
 																		<key>isLeftAligned</key>
 																		<false/>
 																		<key>location</key>
-																		<string>{1163, 1112.5}</string>
+																		<string>{1163, 804}</string>
 																		<key>nodeID</key>
-																		<string>5768A6B3-6536-4726-8741-DF9B33F8A4CC</string>
+																		<string>D6EA88F8-D8C0-4FC8-A1D1-C8EC99CE5C05</string>
 																		<key>strokeColor</key>
 																		<string>{0.689, 0.215, 0.952, 1.000}</string>
 																		<key>strokeStyle</key>
@@ -2034,9 +2075,9 @@
 																				<key>isLeftAligned</key>
 																				<false/>
 																				<key>location</key>
-																				<string>{1406, 1037.5}</string>
+																				<string>{1406, 800}</string>
 																				<key>nodeID</key>
-																				<string>1CBBF7AF-9B64-4DAD-B454-50D9ECB4B2F2</string>
+																				<string>088006CA-0237-42FE-BBE5-55687A8B5F0E</string>
 																				<key>strokeColor</key>
 																				<string>{0.689, 0.215, 0.952, 1.000}</string>
 																				<key>strokeStyle</key>
@@ -2050,7 +2091,7 @@
 																					<key>constrainedWidth</key>
 																					<integer>300</integer>
 																					<key>htmlText</key>
-																					<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/java9%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95.mp4'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/java9%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95.mp4&lt;/a&gt;&lt;/p&gt;</string>
+																					<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 8px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/java9%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95.mp4'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/java9%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95.mp4&lt;/a&gt;&lt;/p&gt;</string>
 																					<key>shrinkToFitContent</key>
 																					<integer>1</integer>
 																					<key>text</key>
@@ -2060,7 +2101,7 @@
 {\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 {\field{\*\fldinst{HYPERLINK "https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/java9%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95.mp4"}}{\fldrslt 
-\f0\fs36 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/java9%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95.mp4}}}</string>
+\f0\fs16 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/java9%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95.mp4}}}</string>
 																				</dict>
 																			</dict>
 																		</array>
@@ -2094,9 +2135,9 @@
 																		<key>isLeftAligned</key>
 																		<false/>
 																		<key>location</key>
-																		<string>{1163, 1278.5}</string>
+																		<string>{1163, 849}</string>
 																		<key>nodeID</key>
-																		<string>76BF0679-5310-4579-A78A-52E25C4D0732</string>
+																		<string>F94E5672-CF27-4EE2-88A6-916C119E647F</string>
 																		<key>strokeColor</key>
 																		<string>{0.689, 0.215, 0.952, 1.000}</string>
 																		<key>strokeStyle</key>
@@ -2117,9 +2158,9 @@
 																				<key>isLeftAligned</key>
 																				<false/>
 																				<key>location</key>
-																				<string>{1325, 1228.5}</string>
+																				<string>{1325, 849}</string>
 																				<key>nodeID</key>
-																				<string>80AE173C-DF12-4EEA-A3F5-C618C015F8E1</string>
+																				<string>CEBA976B-44B6-4EBF-9E7D-8D8FC9AD943B</string>
 																				<key>strokeColor</key>
 																				<string>{0.689, 0.215, 0.952, 1.000}</string>
 																				<key>strokeStyle</key>
@@ -2133,7 +2174,7 @@
 																					<key>constrainedWidth</key>
 																					<integer>300</integer>
 																					<key>htmlText</key>
-																					<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/final%E5%85%B3%E9%94%AE%E5%AD%97.mov'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/final%E5%85%B3%E9%94%AE%E5%AD%97.mov&lt;/a&gt;&lt;/p&gt;</string>
+																					<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 8px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/final%E5%85%B3%E9%94%AE%E5%AD%97.mov'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/final%E5%85%B3%E9%94%AE%E5%AD%97.mov&lt;/a&gt;&lt;/p&gt;</string>
 																					<key>shrinkToFitContent</key>
 																					<integer>1</integer>
 																					<key>text</key>
@@ -2143,7 +2184,7 @@
 {\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 {\field{\*\fldinst{HYPERLINK "https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/final%E5%85%B3%E9%94%AE%E5%AD%97.mov"}}{\fldrslt 
-\f0\fs36 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/final%E5%85%B3%E9%94%AE%E5%AD%97.mov}}}</string>
+\f0\fs16 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/final%E5%85%B3%E9%94%AE%E5%AD%97.mov}}}</string>
 																				</dict>
 																			</dict>
 																		</array>
@@ -2177,9 +2218,9 @@
 																		<key>isLeftAligned</key>
 																		<false/>
 																		<key>location</key>
-																		<string>{1163, 1407}</string>
+																		<string>{1163, 890}</string>
 																		<key>nodeID</key>
-																		<string>EC541C85-55C4-49AD-AE8C-2CBFFF6A9173</string>
+																		<string>F1AF396A-2706-4103-A65A-838EE096052F</string>
 																		<key>strokeColor</key>
 																		<string>{0.689, 0.215, 0.952, 1.000}</string>
 																		<key>strokeStyle</key>
@@ -2200,9 +2241,9 @@
 																				<key>isLeftAligned</key>
 																				<false/>
 																				<key>location</key>
-																				<string>{1296, 1369.5}</string>
+																				<string>{1296, 890}</string>
 																				<key>nodeID</key>
-																				<string>199A4044-D8FD-468C-A591-252F2E38D188</string>
+																				<string>D423E0FA-74C2-4DE7-BB65-7A8EEC841C3D</string>
 																				<key>strokeColor</key>
 																				<string>{0.689, 0.215, 0.952, 1.000}</string>
 																				<key>strokeStyle</key>
@@ -2216,7 +2257,7 @@
 																					<key>constrainedWidth</key>
 																					<integer>300</integer>
 																					<key>htmlText</key>
-																					<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/javaAPI_math.mp4'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/javaAPI_math.mp4&lt;/a&gt;&lt;/p&gt;</string>
+																					<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 8px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/javaAPI_math.mp4'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/javaAPI_math.mp4&lt;/a&gt;&lt;/p&gt;</string>
 																					<key>shrinkToFitContent</key>
 																					<integer>1</integer>
 																					<key>text</key>
@@ -2226,7 +2267,7 @@
 {\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 {\field{\*\fldinst{HYPERLINK "https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/javaAPI_math.mp4"}}{\fldrslt 
-\f0\fs36 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/javaAPI_math.mp4}}}</string>
+\f0\fs16 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/javaAPI_math.mp4}}}</string>
 																				</dict>
 																			</dict>
 																		</array>
@@ -2279,9 +2320,9 @@
 																<key>isLeftAligned</key>
 																<false/>
 																<key>location</key>
-																<string>{1051, 1510.5}</string>
+																<string>{1051, 931}</string>
 																<key>nodeID</key>
-																<string>6E969091-7207-40B0-BAA4-462F36E92FAE</string>
+																<string>A3D91D0A-409E-4B80-8C41-C6FB748A9816</string>
 																<key>strokeColor</key>
 																<string>{0.689, 0.215, 0.952, 1.000}</string>
 																<key>strokeStyle</key>
@@ -2302,9 +2343,9 @@
 																		<key>isLeftAligned</key>
 																		<false/>
 																		<key>location</key>
-																		<string>{1163, 1485.5}</string>
+																		<string>{1163, 931}</string>
 																		<key>nodeID</key>
-																		<string>46C33562-B887-4066-98FF-86DF4EB077B9</string>
+																		<string>6D805125-AAD6-4F22-94AF-F2E05B93D5E5</string>
 																		<key>strokeColor</key>
 																		<string>{0.689, 0.215, 0.952, 1.000}</string>
 																		<key>strokeStyle</key>
@@ -2318,7 +2359,7 @@
 																			<key>constrainedWidth</key>
 																			<integer>300</integer>
 																			<key>htmlText</key>
-																			<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/basicDuoTai.mp4'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/basicDuoTai.mp4&lt;/a&gt;&lt;/p&gt;</string>
+																			<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 8px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/basicDuoTai.mp4'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/basicDuoTai.mp4&lt;/a&gt;&lt;/p&gt;</string>
 																			<key>shrinkToFitContent</key>
 																			<integer>1</integer>
 																			<key>text</key>
@@ -2328,7 +2369,7 @@
 {\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 {\field{\*\fldinst{HYPERLINK "https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/basicDuoTai.mp4"}}{\fldrslt 
-\f0\fs36 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/basicDuoTai.mp4}}}</string>
+\f0\fs16 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/video/basicDuoTai.mp4}}}</string>
 																		</dict>
 																	</dict>
 																</array>
@@ -2362,9 +2403,9 @@
 																<key>isLeftAligned</key>
 																<false/>
 																<key>location</key>
-																<string>{1051, 1576.5}</string>
+																<string>{1051, 972}</string>
 																<key>nodeID</key>
-																<string>4D691923-7F2D-4448-AB0A-C6EA315E055C</string>
+																<string>B719BC85-25CA-43BE-9862-0134F840D3CE</string>
 																<key>strokeColor</key>
 																<string>{0.689, 0.215, 0.952, 1.000}</string>
 																<key>strokeStyle</key>
@@ -2385,9 +2426,9 @@
 																		<key>isLeftAligned</key>
 																		<false/>
 																		<key>location</key>
-																		<string>{1298, 1576.5}</string>
+																		<string>{1298, 972}</string>
 																		<key>nodeID</key>
-																		<string>DE1D2996-9235-4E88-B612-9A2B83A41053</string>
+																		<string>CAAFB42A-E8E6-43AD-A58D-944C4573F0B0</string>
 																		<key>strokeColor</key>
 																		<string>{0.689, 0.215, 0.952, 1.000}</string>
 																		<key>strokeStyle</key>
@@ -2401,7 +2442,7 @@
 																			<key>constrainedWidth</key>
 																			<integer>300</integer>
 																			<key>htmlText</key>
-																			<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 18px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc4.pdf'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc4.pdf&lt;/a&gt;&lt;/p&gt;</string>
+																			<string>&lt;p style='color: rgba(91, 91, 91, 1.000000); font: 9px "PingFang SC"; text-align: left; -cocoa-font-postscriptname: "PingFangSC-Regular"; '&gt;&lt;a href='https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc4.pdf'&gt;https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc4.pdf&lt;/a&gt;&lt;/p&gt;</string>
 																			<key>shrinkToFitContent</key>
 																			<integer>1</integer>
 																			<key>text</key>
@@ -2411,7 +2452,7 @@
 {\*\expandedcolortbl;;\csgenericrgb\c35686\c35686\c35686;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 {\field{\*\fldinst{HYPERLINK "https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc4.pdf"}}{\fldrslt 
-\f0\fs36 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc4.pdf}}}</string>
+\f0\fs18 \cf2 https://cdcome.oss-cn-chengdu.aliyuncs.com/javaStudy/base/api1/images/cccc4.pdf}}}</string>
 																		</dict>
 																	</dict>
 																</array>
@@ -2484,9 +2525,9 @@
 												<key>isLeftAligned</key>
 												<false/>
 												<key>location</key>
-												<string>{678, 1693.5}</string>
+												<string>{678, 1089}</string>
 												<key>nodeID</key>
-												<string>BAA05FFC-7759-419B-B07B-0A724E86A71E</string>
+												<string>1B2A25D1-C982-4591-B9B2-DF7BD60F6045</string>
 												<key>strokeColor</key>
 												<string>{0.689, 0.215, 0.952, 1.000}</string>
 												<key>strokeStyle</key>
@@ -2507,9 +2548,9 @@
 														<key>isLeftAligned</key>
 														<false/>
 														<key>location</key>
-														<string>{836, 1673}</string>
+														<string>{836, 1068.5}</string>
 														<key>nodeID</key>
-														<string>66CF51E9-7983-47D2-9A9F-2DDA5181FEA0</string>
+														<string>67E2D0B7-5761-403A-993C-C082C9FDA40C</string>
 														<key>strokeColor</key>
 														<string>{0.689, 0.215, 0.952, 1.000}</string>
 														<key>strokeStyle</key>
@@ -2530,9 +2571,9 @@
 																<key>isLeftAligned</key>
 																<false/>
 																<key>location</key>
-																<string>{948, 1673}</string>
+																<string>{948, 1068.5}</string>
 																<key>nodeID</key>
-																<string>524D0986-A01F-4EEA-B7B1-BF5F9B613685</string>
+																<string>D9DDA69D-7B19-4443-8501-6E0C8E004530</string>
 																<key>strokeColor</key>
 																<string>{0.689, 0.215, 0.952, 1.000}</string>
 																<key>strokeStyle</key>
@@ -2553,9 +2594,9 @@
 																		<key>isLeftAligned</key>
 																		<false/>
 																		<key>location</key>
-																		<string>{1068, 1667.5}</string>
+																		<string>{1068, 1063}</string>
 																		<key>nodeID</key>
-																		<string>D4B9870C-6C42-434E-8643-586E0C440466</string>
+																		<string>A2B96FC7-80F9-40DA-AE61-4B93F1A1F0C7</string>
 																		<key>strokeColor</key>
 																		<string>{0.689, 0.215, 0.952, 1.000}</string>
 																		<key>strokeStyle</key>
@@ -2632,9 +2673,9 @@
 														<key>isLeftAligned</key>
 														<false/>
 														<key>location</key>
-														<string>{836, 1719.5}</string>
+														<string>{836, 1115}</string>
 														<key>nodeID</key>
-														<string>7C440A5B-0D2B-465B-8C80-E2B287C5EF38</string>
+														<string>CE43A9A5-37A8-4627-8E15-FCFB10FEA925</string>
 														<key>strokeColor</key>
 														<string>{0.689, 0.215, 0.952, 1.000}</string>
 														<key>strokeStyle</key>
@@ -2655,9 +2696,9 @@
 																<key>isLeftAligned</key>
 																<false/>
 																<key>location</key>
-																<string>{1048, 1719.5}</string>
+																<string>{1048, 1115}</string>
 																<key>nodeID</key>
-																<string>177E5245-9D96-41F6-84B2-47F81D39290A</string>
+																<string>F6B79692-CF00-4538-B103-3F27D7E277F4</string>
 																<key>strokeColor</key>
 																<string>{0.689, 0.215, 0.952, 1.000}</string>
 																<key>strokeStyle</key>
