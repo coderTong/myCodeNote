@@ -83,6 +83,10 @@ make && make install
 
 ln -s /application/FFmpeg/bin/nasm /usr/sbin/nasm
 
+ln -s /usr/local/bin/python3.8 /usr/local/bin/python
+
+
+ln -s /application/FFmpeg/bin/ffmpeg /usr/local/bin/ffmpeg
 ```
 
 6. 装x264

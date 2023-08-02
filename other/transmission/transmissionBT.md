@@ -23,6 +23,13 @@ cat lo* > lop.ve
 ```
 
 
+```
+
+curl -o um.mp4 http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4
+
+```
+
+
 
 ```bash
 
@@ -35,6 +42,11 @@ cat lo* > lop.ve
 "download-queue-enabled": true, 
     "download-queue-size": 5,
 
+
+//上传速度限制，KB/s。对于ADSL，设为35已经很好了。tr可设置。
+"speed-limit-up": 100,
+/,启用上传速度限制，默认不启动，对于ADSL，还是根据需要开启吧。 tr可设置。
+"speed-limit-up-enabled": true
 ```
 
 
